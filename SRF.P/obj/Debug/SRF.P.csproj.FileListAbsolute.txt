@@ -48,3 +48,4 @@ D:\GitProjects\SRFNew.Portal\SRF.P\bin\EPPlus.xml
 D:\GitProjects\SRFNew.Portal\SRF.P\bin\Microsoft.IO.RecyclableMemoryStream.xml
 D:\GitProjects\SRFNew.Portal\SRF.P\obj\Debug\SRF.P.dll
 D:\GitProjects\SRFNew.Portal\SRF.P\obj\Debug\SRF.P.pdb
+D:\GitProjects\SRFNew.Portal\SRF.P\obj\Debug\SRF.P.csprojResolveAssemblyReference.cache

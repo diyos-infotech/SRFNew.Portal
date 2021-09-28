@@ -31,7 +31,7 @@ namespace SRF.P.Module_Reports
                     if (Session["UserId"] != null && Session["AccessLevel"] != null)
                     {
 
-                       
+
 
                     }
                     else
@@ -61,7 +61,7 @@ namespace SRF.P.Module_Reports
             CmpIDPrefix = Session["CmpIDPrefix"].ToString();
         }
 
-     
+
 
         protected void btnPoliceVfctn_Click(object sender, EventArgs e)
         {
@@ -156,7 +156,7 @@ namespace SRF.P.Module_Reports
 
             #endregion End New Code As on [31-05-2014]
 
-            string imagepath1 = Server.MapPath("assets/EmpPhotos/");
+            string imagepath1 = Server.MapPath("~/assets/EmpPhotos/");
 
             if (dtEmpdetails.Rows.Count > 0)
             {
@@ -2001,7 +2001,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
 
 
                 #region Headings of the Pdf
@@ -5039,7 +5039,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("assets/Images");
+                string imagepath1 = Server.MapPath("~/assets/Images");
 
 
                 #region for ICICI Form
@@ -7340,7 +7340,7 @@ namespace SRF.P.Module_Reports
             writer.PageEvent = pageEventHelper;
 
             document.Open();
-            string imagepath1 = Server.MapPath("assets/Images");
+            string imagepath1 = Server.MapPath("~/assets/Images");
 
 
             #region  for ESI form
@@ -9083,8 +9083,8 @@ namespace SRF.P.Module_Reports
                     var writer = PdfWriter.GetInstance(document, ms);
                     document.Open();
                     BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    string imagepath1 = Server.MapPath("assets/EmpPhotos/");
-                    string imagepath2 = Server.MapPath("assets/Images/");
+                    string imagepath1 = Server.MapPath("~/assets/EmpPhotos/");
+                    string imagepath2 = Server.MapPath("~/assets/Images/");
 
                     #region Headings of the Pdf
 
@@ -10848,8 +10848,8 @@ namespace SRF.P.Module_Reports
                     var writer = PdfWriter.GetInstance(document, ms);
                     document.Open();
                     BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    string imagepath1 = Server.MapPath("assets/EmpPhotos/");
-                    string imagepath2 = Server.MapPath("assets/Images/");
+                    string imagepath1 = Server.MapPath("~/assets/EmpPhotos/");
+                    string imagepath2 = Server.MapPath("~/assets/Images/");
 
                     #region Headings of the Pdf
 
@@ -12694,7 +12694,7 @@ namespace SRF.P.Module_Reports
                 document.Open();
 
 
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 string image = "";
                 #region Headings of the Pdf
 
@@ -12727,9 +12727,9 @@ namespace SRF.P.Module_Reports
                 cellpfdeclaration.Border = 0;
                 tablespf.AddCell(cellpfdeclaration);
 
-                string imagepathpf1 = Server.MapPath("assets/images");
+                string imagepathpf1 = Server.MapPath("~/assets/images");
 
-                string imagepathpf = Server.MapPath("assets");
+                string imagepathpf = Server.MapPath("~/assets");
                 iTextSharp.text.Image headtext = iTextSharp.text.Image.GetInstance(imagepathpf + "/EPFLogo.PNG");
                 headtext.ScalePercent(80f);
                 PdfPCell esiclogo = new PdfPCell();
@@ -15178,7 +15178,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
 
                 PdfPTable table = new PdfPTable(6);
                 table.TotalWidth = 500f;
@@ -16109,7 +16109,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tblnew = new PdfPTable(6);
@@ -17120,7 +17120,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablenew = new PdfPTable(12);
@@ -18118,7 +18118,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablenewa = new PdfPTable(12);
@@ -18750,7 +18750,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablecoloum = new PdfPTable(16);
@@ -19631,7 +19631,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablecall1 = new PdfPTable(7);
@@ -20366,7 +20366,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablecall2 = new PdfPTable(6);
@@ -21836,7 +21836,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablecall4 = new PdfPTable(6);
@@ -22558,7 +22558,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablecall5 = new PdfPTable(6);
@@ -23240,7 +23240,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tableregister = new PdfPTable(16);
@@ -24123,7 +24123,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablenewa1 = new PdfPTable(12);
@@ -24830,7 +24830,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablenew7 = new PdfPTable(12);
@@ -25597,7 +25597,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablenew8 = new PdfPTable(11);
@@ -26359,7 +26359,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablenewone = new PdfPTable(12);
@@ -27182,7 +27182,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablenew = new PdfPTable(12);
@@ -28142,7 +28142,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tblenew = new PdfPTable(13);
@@ -28959,7 +28959,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablenewc = new PdfPTable(11);
@@ -29723,7 +29723,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablenewc = new PdfPTable(11);
@@ -30457,7 +30457,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tablesnewone = new PdfPTable(12);
@@ -31234,7 +31234,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
                 #region
 
                 PdfPTable tblenewapp1 = new PdfPTable(13);
@@ -31821,8 +31821,8 @@ namespace SRF.P.Module_Reports
 
             #endregion End New Code As on [31-05-2014]
 
-            string imagepath1 = Server.MapPath("assets/EmpPhotos/");
-            string imagepathNoImage = Server.MapPath("assets/EmpPhotos/NoPhoto.jpg");
+            string imagepath1 = Server.MapPath("~/assets/EmpPhotos/");
+            string imagepathNoImage = Server.MapPath("~/assets/EmpPhotos/NoPhoto.jpg");
             if (dtEmpdetails.Rows.Count > 0)
             {
 
@@ -33166,7 +33166,7 @@ namespace SRF.P.Module_Reports
 
             // string imagepathSeal = Server.MapPath("assets/seal.jpg");
             //string imagepathArrow = Server.MapPath("assets/Arrow.png");
-            string imagepath2 = Server.MapPath("assets/Images/srflogo.png");
+            string imagepath2 = Server.MapPath("~/assets/Images/srflogo.png");
 
             if (dtEmpdetails.Rows.Count > 0)
             {
@@ -33864,7 +33864,7 @@ namespace SRF.P.Module_Reports
 
             // string imagepathSeal = Server.MapPath("assets/seal.jpg");
             //string imagepathArrow = Server.MapPath("assets/Arrow.png");
-            string imagepath2 = Server.MapPath("assets/Images/srflogo.png");
+            string imagepath2 = Server.MapPath("~/assets/Images/srflogo.png");
 
             if (dtEmpdetails.Rows.Count > 0)
             {
@@ -34548,7 +34548,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
 
                 #region
                 string empname = "";
@@ -34946,7 +34946,7 @@ namespace SRF.P.Module_Reports
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("images");
+                string imagepath1 = Server.MapPath("~/images");
 
 
                 PdfPTable table = new PdfPTable(6);
@@ -35701,7 +35701,7 @@ namespace SRF.P.Module_Reports
                     var writer = PdfWriter.GetInstance(document, ms);
                     document.Open();
                     BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    string imagepath1 = Server.MapPath("images");
+                    string imagepath1 = Server.MapPath("~/images");
                     #region
 
                     PdfPTable tablesnewone = new PdfPTable(4);
@@ -36692,8 +36692,8 @@ namespace SRF.P.Module_Reports
                     var writer = PdfWriter.GetInstance(document, ms);
                     document.Open();
                     BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    string imagepath1 = Server.MapPath("assets/EmpPhotos/");
-                    string imagepath2 = Server.MapPath("assets/Images/");
+                    string imagepath1 = Server.MapPath("~/assets/EmpPhotos/");
+                    string imagepath2 = Server.MapPath("~/assets/Images/");
 
                     #region Headings of the Pdf
 

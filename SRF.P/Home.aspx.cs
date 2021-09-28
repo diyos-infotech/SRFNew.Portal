@@ -70,12 +70,23 @@ namespace SRF.P
                     Session["DCPrefix"] = DtBranchPrefix.Rows[0]["DCPrefix"].ToString();
 
                 }
-               
+
             }
 
             #endregion
 
-           
+            string RedirectPage = "";
+            string ID = "";
+            string Query = "select distinct  M.REDIRECT_PAGE,M.ID from MENU_PREVILIGE PM inner join MENU M on M.MENU_ID=PM.Menu_ID inner join LoginDetails L on l.previligeid=pm.previligeid where M.PARENT_ID='PARENT' and L.UserName='" + UserName + "' and Access=1 order by id";
+
+            DataTable DtPrefix = config.ExecuteAdaptorAsyncWithQueryParams(Query).Result;
+            if (DtPrefix.Rows.Count > 0)
+            {
+                RedirectPage = DtPrefix.Rows[0]["REDIRECT_PAGE"].ToString();
+
+            }
+
+
             Session["homepage"] = "Reminders.aspx";
             Response.Redirect("Reminders.aspx");
 

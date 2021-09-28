@@ -122,6 +122,95 @@
     <Content Include="assets\3SBillLogo.png" />
     <Content Include="assets\BillLogo3s.png" />
     <Content Include="assets\Calculator.png" />
+    <Content Include="assets\EmpPhotos\006420Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006421Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006422Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006464Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006465Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006466Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006467Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006468Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006469Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006470Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006471Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006472Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006473Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006474Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006475Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006476Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006477Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006478Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006479Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006480Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006481Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006482Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006483Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006484Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006485Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006486Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006487Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006488Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006489Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006490Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006491Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006492Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006493Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006497Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006498Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006499Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006500Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006502Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006503Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006504Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006505Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006506Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006507Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006508Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006509Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006510Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006511Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006512Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006513Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006561Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006562Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006563Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006564Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006565Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006682Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006687Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006688Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006689Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006691Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006692Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006693Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006694Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006695Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006696Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006697Photo.jpg" />
+    <Content Include="assets\EmpPhotos\006700Photo.jpg" />
+    <Content Include="assets\EmpPhotos\007669Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008195Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008210Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008211Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008212Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008213Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008214Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008215Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008216Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008217Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008218Photo.jpg" />
+    <Content Include="assets\EmpPhotos\008307Photo.jpg" />
+    <Content Include="assets\EmpPhotos\011456Photo.jpg" />
+    <Content Include="assets\EmpPhotos\017714Photo.jpg" />
+    <Content Include="assets\EmpPhotos\NoPhoto.jpg" />
+    <Content Include="assets\EmpSign1\006252Sign.jpg" />
+    <Content Include="assets\EmpSign1\006256Sign.jpg" />
+    <Content Include="assets\EmpSign1\006464Sign.jpg" />
+    <Content Include="assets\EmpSign1\006464Sign1.jpg" />
+    <Content Include="assets\EmpSign1\006465Sign.jpg" />
+    <Content Include="assets\EmpSign1\006466Sign.jpg" />
+    <Content Include="assets\EmpSign1\006467Sign.jpg" />
+    <Content Include="assets\EmpSign1\006468Sign.jpg" />
     <Content Include="assets\EPFLogo.png" />
     <Content Include="assets\footer.png" />
     <Content Include="assets\Images\addressproof.png" />
@@ -140,6 +229,9 @@
     <Content Include="assets\Images\personaldetails.png" />
     <Content Include="assets\Images\SFBillLogo.png" />
     <Content Include="assets\Images\sign.jpg" />
+    <Content Include="assets\Images\srflogo.png" />
+    <Content Include="assets\Images\srflogo2.png" />
+    <Content Include="assets\Images\srflogo23.png" />
     <Content Include="assets\Images\Text.png" />
     <Content Include="assets\Images\yourwork.png" />
     <Content Include="assets\L1.png" />
@@ -390,6 +482,46 @@
     <Content Include="Module_Inventory\ViewItems.aspx" />
     <Content Include="Module_Reports\ActiveClientReports.aspx" />
     <Content Include="Module_Reports\ActiveEmployeeReports.aspx" />
+    <Content Include="Module_Reports\assets\billlogo.png" />
+    <Content Include="Module_Reports\assets\BillLogo1.png" />
+    <Content Include="Module_Reports\assets\Calculator.png" />
+    <Content Include="Module_Reports\assets\EPFLogo.png" />
+    <Content Include="Module_Reports\assets\Images\006464.jpg" />
+    <Content Include="Module_Reports\assets\Images\addressproof.png" />
+    <Content Include="Module_Reports\assets\Images\Authority.png" />
+    <Content Include="Module_Reports\assets\Images\black-check.png" />
+    <Content Include="Module_Reports\assets\Images\cardcharges.png" />
+    <Content Include="Module_Reports\assets\Images\checkbox1.png" />
+    <Content Include="Module_Reports\assets\Images\commaddress.png" />
+    <Content Include="Module_Reports\assets\Images\Declaration.png" />
+    <Content Include="Module_Reports\assets\Images\ESIC-LOGO102.png" />
+    <Content Include="Module_Reports\assets\Images\ForICICI.png" />
+    <Content Include="Module_Reports\assets\Images\icicin.png" />
+    <Content Include="Module_Reports\assets\Images\KAStatePolice.png" />
+    <Content Include="Module_Reports\assets\Images\KYC.png" />
+    <Content Include="Module_Reports\assets\Images\peraddress.png" />
+    <Content Include="Module_Reports\assets\Images\personaldetails.png" />
+    <Content Include="Module_Reports\assets\Images\srflogo.png" />
+    <Content Include="Module_Reports\assets\Images\srflogo1.png" />
+    <Content Include="Module_Reports\assets\Images\Text.png" />
+    <Content Include="Module_Reports\assets\Images\yourwork.png" />
+    <Content Include="Module_Reports\assets\KAStatePolice.png" />
+    <Content Include="Module_Reports\assets\Kl logo.png" />
+    <Content Include="Module_Reports\assets\L1.png" />
+    <Content Include="Module_Reports\assets\lnfooternew.png" />
+    <Content Include="Module_Reports\assets\lnheadnew.png" />
+    <Content Include="Module_Reports\assets\loader.gif" />
+    <Content Include="Module_Reports\assets\logo %286%29.jpg" />
+    <Content Include="Module_Reports\assets\logo.png" />
+    <Content Include="Module_Reports\assets\logo1.png" />
+    <Content Include="Module_Reports\assets\logo12.png" />
+    <Content Include="Module_Reports\assets\P.png" />
+    <Content Include="Module_Reports\assets\PP.png" />
+    <Content Include="Module_Reports\assets\srflogo.png" />
+    <Content Include="Module_Reports\assets\Status_Active.png" />
+    <Content Include="Module_Reports\assets\Status_Archive.png" />
+    <Content Include="Module_Reports\assets\UL.png" />
+    <Content Include="Module_Reports\assets\WO.png" />
     <Content Include="Module_Reports\BankUploadFormats.aspx" />
     <Content Include="Module_Reports\BillingReports.aspx" />
     <Content Include="Module_Reports\BillingWagesReport.aspx" />
@@ -405,14 +537,36 @@
     <Content Include="Module_Reports\EmpIDCard.aspx" />
     <Content Include="Module_Reports\EmployeeForms.aspx" />
     <Content Include="Module_Reports\EmployeeReports.aspx" />
+    <Content Include="Module_Reports\EmployeewiseESIPFPTReports.aspx" />
     <Content Include="Module_Reports\EmpSummary.aspx" />
     <Content Include="Module_Reports\EmpWageSlips.aspx" />
     <Content Include="Module_Reports\EmpWiseLoanDetails.aspx" />
     <Content Include="Module_Reports\ESIandPFForms.aspx" />
     <Content Include="Module_Reports\EsiDetailsReport.aspx" />
+    <Content Include="Module_Reports\ESIReports.aspx" />
+    <Content Include="Module_Reports\ESIUploadReport.aspx" />
     <Content Include="Module_Reports\FullandFinal.aspx" />
     <Content Include="Module_Reports\IDCardExpireDetails.aspx" />
     <Content Include="Module_Reports\IDCardReport.aspx" />
+    <Content Include="Module_Reports\Images\006464.jpg" />
+    <Content Include="Module_Reports\Images\addressproof.png" />
+    <Content Include="Module_Reports\Images\Authority.png" />
+    <Content Include="Module_Reports\Images\black-check.png" />
+    <Content Include="Module_Reports\Images\cardcharges.png" />
+    <Content Include="Module_Reports\Images\checkbox1.png" />
+    <Content Include="Module_Reports\Images\commaddress.png" />
+    <Content Include="Module_Reports\Images\Declaration.png" />
+    <Content Include="Module_Reports\Images\ESIC-LOGO102.png" />
+    <Content Include="Module_Reports\Images\ForICICI.png" />
+    <Content Include="Module_Reports\Images\icicin.png" />
+    <Content Include="Module_Reports\Images\KAStatePolice.png" />
+    <Content Include="Module_Reports\Images\KYC.png" />
+    <Content Include="Module_Reports\Images\peraddress.png" />
+    <Content Include="Module_Reports\Images\personaldetails.png" />
+    <Content Include="Module_Reports\Images\srflogo.png" />
+    <Content Include="Module_Reports\Images\srflogo1.png" />
+    <Content Include="Module_Reports\Images\Text.png" />
+    <Content Include="Module_Reports\Images\yourwork.png" />
     <Content Include="Module_Reports\ImportAadhaarNo.aspx" />
     <Content Include="Module_Reports\ImportAbscondedEmployees.aspx" />
     <Content Include="Module_Reports\ImportAttendance.aspx" />
@@ -434,6 +588,7 @@
     <Content Include="Module_Reports\PaySheetReport.aspx" />
     <Content Include="Module_Reports\PaySheetWagesReport.aspx" />
     <Content Include="Module_Reports\PfdetailsReport.aspx" />
+    <Content Include="Module_Reports\PFReports.aspx" />
     <Content Include="Module_Reports\PTReport.aspx" />
     <Content Include="Module_Reports\QuarterlyandYearlyReport.aspx" />
     <Content Include="Module_Reports\ReportforBillingAndPaysheet.aspx" />
@@ -447,6 +602,7 @@
     <Content Include="Module_Reports\SalaryReport.aspx" />
     <Content Include="Module_Reports\SampleAttendance.aspx" />
     <Content Include="Module_Reports\SubClientsWithMainClientReports.aspx" />
+    <Content Include="Module_Reports\UnitwiseESIPFPTReports.aspx" />
     <Content Include="Module_Reports\WageSheetReports.aspx" />
     <Content Include="Module_Settings\AccessPrevilegers.aspx" />
     <Content Include="Module_Settings\ActivateEmployee.aspx" />
@@ -486,11 +642,15 @@
     <Content Include="login\Thumbs.db" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="Reminders.aspx" />
-    <Content Include="script\BitString.as" />
-    <Content Include="script\JPGEncoder.as" />
-    <Content Include="script\jscam.as" />
-    <Content Include="script\Makefile" />
-    <Content Include="script\webcam.jquery.json" />
+    <Content Include="script\global00.css" />
+    <Content Include="script\jquery-ui.css" />
+    <Content Include="script\jquery-ui.js" />
+    <Content Include="script\jquery.freezeheader.js" />
+    <Content Include="script\jquery.min.js" />
+    <Content Include="script\jquery.stickytableheaders.js" />
+    <Content Include="script\jquery00.js" />
+    <Content Include="script\JScript.js" />
+    <Content Include="script\ScrollableTablePlugin_1.0_min.js" />
     <Content Include="Service References\plugins\ckeditor\CHANGES.md" />
     <Content Include="Service References\plugins\ckeditor\LICENSE.md" />
     <Content Include="Service References\plugins\ckeditor\plugins\scayt\LICENSE.md" />
@@ -516,6 +676,7 @@
     <Content Include="Module_Clients\Clients.master" />
     <Content Include="Module_Employees\EmployeeMaster.master" />
     <Content Include="Module_Reports\ReportMaster.master" />
+    <Content Include="Module_Reports\assets\Thumbs.db" />
     <None Include="Properties\PublishProfiles\SRF.P.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -527,24 +688,6 @@
   <ItemGroup>
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="script\chosen.jquery.js" />
-    <Content Include="script\Extension.min.js" />
-    <Content Include="script\global00.css" />
-    <Content Include="script\gridviewScroll.js" />
-    <Content Include="script\gridviewScroll.min.js" />
-    <Content Include="script\jquery-1.4.2.min.js" />
-    <Content Include="script\jquery-ui.css" />
-    <Content Include="script\jquery-ui.js" />
-    <Content Include="script\jquery.fullpage.extensions.min.js" />
-    <Content Include="script\jquery.min.js" />
-    <Content Include="script\jquery.stickytableheaders.js" />
-    <Content Include="script\jquery.webcam.js" />
-    <Content Include="script\jquery00.js" />
-    <Content Include="script\jscam.swf" />
-    <Content Include="script\jscam.xml" />
-    <Content Include="script\jscam_canvas_only.swf" />
-    <Content Include="script\JScript.js" />
-    <Content Include="script\Nitgen.js" />
     <Content Include="Service References\plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="Service References\plugins\bootstrap-slider\slider.css" />
     <Content Include="Service References\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
@@ -1689,6 +1832,13 @@
     <Compile Include="Module_Reports\EmployeeReports.aspx.designer.cs">
       <DependentUpon>EmployeeReports.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Module_Reports\EmployeewiseESIPFPTReports.aspx.cs">
+      <DependentUpon>EmployeewiseESIPFPTReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Reports\EmployeewiseESIPFPTReports.aspx.designer.cs">
+      <DependentUpon>EmployeewiseESIPFPTReports.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Module_Reports\EmpSummary.aspx.cs">
       <DependentUpon>EmpSummary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1723,6 +1873,20 @@
     </Compile>
     <Compile Include="Module_Reports\EsiDetailsReport.aspx.designer.cs">
       <DependentUpon>EsiDetailsReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module_Reports\ESIReports.aspx.cs">
+      <DependentUpon>ESIReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Reports\ESIReports.aspx.designer.cs">
+      <DependentUpon>ESIReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module_Reports\ESIUploadReport.aspx.cs">
+      <DependentUpon>ESIUploadReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Reports\ESIUploadReport.aspx.designer.cs">
+      <DependentUpon>ESIUploadReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Module_Reports\FullandFinal.aspx.cs">
       <DependentUpon>FullandFinal.aspx</DependentUpon>
@@ -1892,6 +2056,13 @@
     <Compile Include="Module_Reports\PfdetailsReport.aspx.designer.cs">
       <DependentUpon>PfdetailsReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Module_Reports\PFReports.aspx.cs">
+      <DependentUpon>PFReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Reports\PFReports.aspx.designer.cs">
+      <DependentUpon>PFReports.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Module_Reports\PTReport.aspx.cs">
       <DependentUpon>PTReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1986,6 +2157,13 @@
     </Compile>
     <Compile Include="Module_Reports\SubClientsWithMainClientReports.aspx.designer.cs">
       <DependentUpon>SubClientsWithMainClientReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module_Reports\UnitwiseESIPFPTReports.aspx.cs">
+      <DependentUpon>UnitwiseESIPFPTReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Reports\UnitwiseESIPFPTReports.aspx.designer.cs">
+      <DependentUpon>UnitwiseESIPFPTReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="Module_Reports\WageSheetReports.aspx.cs">
       <DependentUpon>WageSheetReports.aspx</DependentUpon>
@@ -2119,8 +2297,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\Empsign\" />
     <Folder Include="ImportDocuments\" />
     <Folder Include="Models\" />
+    <Folder Include="Module_Reports\ImportDocuments\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <PropertyGroup>

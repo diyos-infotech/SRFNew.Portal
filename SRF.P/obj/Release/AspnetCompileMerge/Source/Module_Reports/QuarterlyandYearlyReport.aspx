@@ -86,12 +86,12 @@
             d.value = dt;
         }
 
-        function setProperty() {
+         function setProperty() {
             $.widget("custom.combobox", {
                 _create: function () {
                     this.wrapper = $("<span>")
-                      .addClass("custom-combobox")
-                      .insertAfter(this.element);
+                        .addClass("custom-combobox")
+                        .insertAfter(this.element);
 
                     this.element.hide();
                     this._createAutocomplete();
@@ -100,23 +100,23 @@
 
                 _createAutocomplete: function () {
                     var selected = this.element.children(":selected"),
-                      value = selected.val() ? selected.text() : "";
+                        value = selected.val() ? selected.text() : "";
 
                     this.input = $("<input>")
-                      .appendTo(this.wrapper)
-                      .val(value)
-                      .attr("title", "")
-                      .addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
-                      .autocomplete({
-                          delay: 0,
-                          minLength: 0,
-                          source: $.proxy(this, "_source")
-                      })
-                      .tooltip({
-                          classes: {
-                              "ui-tooltip": "ui-state-highlight"
-                          }
-                      });
+                        .appendTo(this.wrapper)
+                        .val(value)
+                        .attr("title", "")
+                        .addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
+                        .autocomplete({
+                            delay: 0,
+                            minLength: 0,
+                            source: $.proxy(this, "_source")
+                        })
+                        .tooltip({
+                            classes: {
+                                "ui-tooltip": "ui-state-highlight"
+                            }
+                        });
 
                     this._on(this.input, {
                         autocompleteselect: function (event, ui) {
@@ -132,35 +132,35 @@
 
                 _createShowAllButton: function () {
                     var input = this.input,
-                      wasOpen = false;
+                        wasOpen = false;
 
                     $("<a>")
-                      .attr("tabIndex", -1)
-                      .attr("title", "Show All Items")
-                      .tooltip()
-                      .appendTo(this.wrapper)
-                      .button({
-                          icons: {
-                              primary: "ui-icon-triangle-1-s"
-                          },
-                          text: false
-                      })
-                      .removeClass("ui-corner-all")
-                      .addClass("custom-combobox-toggle ui-corner-right")
-                      .on("mousedown", function () {
-                          wasOpen = input.autocomplete("widget").is(":visible");
-                      })
-                      .on("click", function () {
-                          input.trigger("focus");
+                        .attr("tabIndex", -1)
+                        .attr("title", "Show All Items")
+                        .tooltip()
+                        .appendTo(this.wrapper)
+                        .button({
+                            icons: {
+                                primary: "ui-icon-triangle-1-s"
+                            },
+                            text: false
+                        })
+                        .removeClass("ui-corner-all")
+                        .addClass("custom-combobox-toggle ui-corner-right")
+                        .on("mousedown", function () {
+                            wasOpen = input.autocomplete("widget").is(":visible");
+                        })
+                        .on("click", function () {
+                            input.trigger("focus");
 
-                          // Close if already visible
-                          if (wasOpen) {
-                              return;
-                          }
+                            // Close if already visible
+                            if (wasOpen) {
+                                return;
+                            }
 
-                          // Pass empty string as value to search for, displaying all results
-                          input.autocomplete("search", "");
-                      });
+                            // Pass empty string as value to search for, displaying all results
+                            input.autocomplete("search", "");
+                        });
                 },
 
                 _source: function (request, response) {
@@ -185,8 +185,8 @@
 
                     // Search for a match (case-insensitive)
                     var value = this.input.val(),
-                      valueLowerCase = value.toLowerCase(),
-                      valid = false;
+                        valueLowerCase = value.toLowerCase(),
+                        valid = false;
                     this.element.children("option").each(function () {
                         if ($(this).text().toLowerCase() === valueLowerCase) {
                             this.selected = valid = true;
@@ -201,9 +201,9 @@
 
                     // Remove invalid value
                     this.input
-                      .val("")
-                      .attr("title", value + " didn't match any item")
-                      .tooltip("open");
+                        .val("")
+                        .attr("title", value + " didn't match any item")
+                        .tooltip("open");
                     this.element.val("");
                     this._delay(function () {
                         this.input.tooltip("close").attr("title", "");
@@ -217,8 +217,8 @@
                 }
             });
             $(".ddlautocomplete").combobox({
-                select: function (event, ui) { $("#ddlclientid").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientidchange(event, ui); },
-                select: function (event, ui) { $("#ddlcname").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientnamechange(event, ui); },
+                select: function (event, ui) { $("#<%=ddlclientid.ClientID %>").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientidchange(event, ui); },
+                select: function (event, ui) { $("#<%=ddlcname.ClientID %>").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientnamechange(event, ui); },
                 minLength: 4
             });
         }
@@ -228,13 +228,11 @@
         });
 
         function OnAutoCompleteDDLClientidchange(event, ui) {
-            $('#ddlclientid').trigger('change');
-
+            $("#<%=ddlclientid.ClientID %>").trigger('change');
         }
 
         function OnAutoCompleteDDLClientnamechange(event, ui) {
-
-            $('#ddlcname').trigger('change');
+            $("#<%=ddlcname.ClientID %>").trigger('change');
         }
 
 

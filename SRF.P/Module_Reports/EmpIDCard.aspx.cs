@@ -176,9 +176,9 @@ namespace SRF.P.Module_Reports
                 MemoryStream ms = new MemoryStream();
 
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("assets/EmpPhotos/");
-                string imagepath2 = Server.MapPath("assets/Images/");
-                string imagepath3 = Server.MapPath("assets/EmpSign/");
+                string imagepath1 = Server.MapPath("~/assets/EmpPhotos/");
+                string imagepath2 = Server.MapPath("~/assets/Images/");
+                string imagepath3 = Server.MapPath("~/assets/EmpSign/");
 
 
                 Document document = new Document(PageSize.A4);
@@ -671,10 +671,10 @@ namespace SRF.P.Module_Reports
             {
                 MemoryStream ms = new MemoryStream();
                 BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                string imagepath1 = Server.MapPath("assets/EmpPhotos/");
-                string imagepath2 = Server.MapPath("assets/Images/");
-                string imagepath3 = Server.MapPath("assets/EmpSign/");
-                string imagepath4 = Server.MapPath("assets/");
+                string imagepath1 = Server.MapPath("~/assets/EmpPhotos/");
+                string imagepath2 = Server.MapPath("~/assets/Images/");
+                string imagepath3 = Server.MapPath("~/assets/EmpSign/");
+                string imagepath4 = Server.MapPath("~/assets/");
                 Document document = new Document(PageSize.A4);
                 var writer = PdfWriter.GetInstance(document, ms);
                 document.Open();

@@ -21,6 +21,273 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/Calculator.png">
       <publishTime>08/09/2021 18:51:17</publishTime>
     </File>
+    <File Include="assets/EmpPhotos/006420Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006421Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006422Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006464Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006465Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006466Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006467Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006468Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006469Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006470Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006471Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006472Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006473Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006474Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006475Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006476Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006477Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006478Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006479Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006480Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006481Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006482Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006483Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006484Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006485Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006486Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006487Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006488Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006489Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006490Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006491Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006492Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006493Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006497Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006498Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006499Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006500Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006502Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006503Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006504Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006505Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006506Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006507Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006508Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006509Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006510Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006511Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006512Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006513Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006561Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006562Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006563Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006564Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006565Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006682Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006687Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006688Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006689Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006691Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006692Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006693Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006694Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006695Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006696Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006697Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/006700Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/007669Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008195Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008210Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008211Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008212Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008213Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008214Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008215Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008216Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008217Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008218Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/008307Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/011456Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/017714Photo.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpPhotos/NoPhoto.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpSign1/006252Sign.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpSign1/006256Sign.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpSign1/006464Sign.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpSign1/006464Sign1.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpSign1/006465Sign.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpSign1/006466Sign.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpSign1/006467Sign.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/EmpSign1/006468Sign.jpg">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
     <File Include="assets/EPFLogo.png">
       <publishTime>08/09/2021 18:51:17</publishTime>
     </File>
@@ -31,7 +298,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/09/2021 18:51:17</publishTime>
     </File>
     <File Include="assets/Images/Authority.png">
-      <publishTime>08/09/2021 18:51:17</publishTime>
+      <publishTime>03/04/2021 18:22:09</publishTime>
     </File>
     <File Include="assets/Images/black-check.png">
       <publishTime>08/09/2021 18:51:17</publishTime>
@@ -74,6 +341,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/Images/sign.jpg">
       <publishTime>08/09/2021 18:51:17</publishTime>
+    </File>
+    <File Include="assets/Images/srflogo.png">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/Images/srflogo2.png">
+      <publishTime>03/04/2021 18:22:09</publishTime>
+    </File>
+    <File Include="assets/Images/srflogo23.png">
+      <publishTime>03/04/2021 18:22:09</publishTime>
     </File>
     <File Include="assets/Images/Text.png">
       <publishTime>08/09/2021 18:51:17</publishTime>
@@ -139,10 +415,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/20/2021 18:05:01</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/21/2021 10:55:46</publishTime>
+      <publishTime>09/28/2021 15:16:05</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/21/2021 10:55:46</publishTime>
+      <publishTime>09/28/2021 15:16:05</publishTime>
     </File>
     <File Include="bin/bootstrap/css/bootstrap.css">
       <publishTime>08/09/2021 18:51:17</publishTime>
@@ -250,7 +526,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/18/2015 20:19:46</publishTime>
     </File>
     <File Include="bin/SRF.P.dll">
-      <publishTime>09/21/2021 10:55:41</publishTime>
+      <publishTime>09/28/2021 15:16:00</publishTime>
     </File>
     <File Include="companyinfo.aspx">
       <publishTime>09/20/2021 21:17:09</publishTime>
@@ -913,7 +1189,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2021 08:24:48</publishTime>
     </File>
     <File Include="Module_Inventory/InventoryDetailsReport.aspx">
-      <publishTime>09/21/2021 07:07:36</publishTime>
+      <publishTime>09/28/2021 11:39:24</publishTime>
     </File>
     <File Include="Module_Inventory/InvInflowDetails.aspx">
       <publishTime>09/20/2021 21:58:12</publishTime>
@@ -955,7 +1231,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2021 10:15:02</publishTime>
     </File>
     <File Include="Module_Inventory/UniformItemIssuedDetails.aspx">
-      <publishTime>09/21/2021 07:07:00</publishTime>
+      <publishTime>09/28/2021 11:39:32</publishTime>
     </File>
     <File Include="Module_Inventory/UniformPDF.aspx">
       <publishTime>09/20/2021 18:47:14</publishTime>
@@ -967,13 +1243,136 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2021 07:24:54</publishTime>
     </File>
     <File Include="Module_Reports/ActiveEmployeeReports.aspx">
-      <publishTime>09/21/2021 07:26:29</publishTime>
+      <publishTime>09/28/2021 15:08:22</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/billlogo.png">
+      <publishTime>03/23/2021 23:03:20</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/BillLogo1.png">
+      <publishTime>03/23/2021 23:03:20</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Calculator.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/EPFLogo.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/006464.jpg">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/addressproof.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/Authority.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/black-check.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/cardcharges.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/checkbox1.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/commaddress.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/Declaration.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/ESIC-LOGO102.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/ForICICI.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/icicin.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/KAStatePolice.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/KYC.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/peraddress.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/personaldetails.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/srflogo.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/srflogo1.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/Text.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Images/yourwork.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/KAStatePolice.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Kl logo.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/L1.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/lnfooternew.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/lnheadnew.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/loader.gif">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/logo %286%29.jpg">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/logo.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/logo1.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/logo12.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/P.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/PP.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/srflogo.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Status_Active.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Status_Archive.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/Thumbs.db">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/UL.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
+    </File>
+    <File Include="Module_Reports/assets/WO.png">
+      <publishTime>03/23/2021 23:03:19</publishTime>
     </File>
     <File Include="Module_Reports/BankUploadFormats.aspx">
       <publishTime>09/21/2021 07:27:57</publishTime>
     </File>
     <File Include="Module_Reports/BillingReports.aspx">
-      <publishTime>09/21/2021 07:29:23</publishTime>
+      <publishTime>09/28/2021 12:31:19</publishTime>
     </File>
     <File Include="Module_Reports/BillingWagesReport.aspx">
       <publishTime>09/21/2021 07:30:42</publishTime>
@@ -982,7 +1381,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2021 07:32:13</publishTime>
     </File>
     <File Include="Module_Reports/BulkLeftEmployeeDetails.aspx">
-      <publishTime>09/21/2021 07:33:33</publishTime>
+      <publishTime>09/28/2021 15:08:42</publishTime>
     </File>
     <File Include="Module_Reports/BulkWageSlipsReport.aspx">
       <publishTime>09/21/2021 07:35:41</publishTime>
@@ -1000,28 +1399,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2021 07:38:12</publishTime>
     </File>
     <File Include="Module_Reports/ConsolidatedUniformDeductionReport.aspx">
-      <publishTime>09/21/2021 07:39:25</publishTime>
+      <publishTime>09/28/2021 15:09:11</publishTime>
     </File>
     <File Include="Module_Reports/EmpBioData.aspx">
-      <publishTime>09/21/2021 07:40:45</publishTime>
+      <publishTime>09/28/2021 15:09:23</publishTime>
     </File>
     <File Include="Module_Reports/EmpIDCard.aspx">
-      <publishTime>09/21/2021 07:43:38</publishTime>
+      <publishTime>09/28/2021 15:09:31</publishTime>
     </File>
     <File Include="Module_Reports/EmployeeForms.aspx">
-      <publishTime>09/21/2021 07:45:02</publishTime>
+      <publishTime>09/28/2021 15:09:41</publishTime>
     </File>
     <File Include="Module_Reports/EmployeeReports.aspx">
       <publishTime>09/20/2021 18:12:08</publishTime>
     </File>
+    <File Include="Module_Reports/EmployeewiseESIPFPTReports.aspx">
+      <publishTime>09/28/2021 15:08:03</publishTime>
+    </File>
     <File Include="Module_Reports/EmpSummary.aspx">
-      <publishTime>09/21/2021 07:46:26</publishTime>
+      <publishTime>09/28/2021 15:09:53</publishTime>
     </File>
     <File Include="Module_Reports/EmpWageSlips.aspx">
-      <publishTime>09/21/2021 07:49:26</publishTime>
+      <publishTime>09/28/2021 15:10:03</publishTime>
     </File>
     <File Include="Module_Reports/EmpWiseLoanDetails.aspx">
-      <publishTime>09/21/2021 07:50:41</publishTime>
+      <publishTime>09/28/2021 15:10:12</publishTime>
     </File>
     <File Include="Module_Reports/ESIandPFForms.aspx">
       <publishTime>09/21/2021 07:52:13</publishTime>
@@ -1029,59 +1431,122 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Module_Reports/EsiDetailsReport.aspx">
       <publishTime>09/21/2021 07:55:06</publishTime>
     </File>
+    <File Include="Module_Reports/ESIReports.aspx">
+      <publishTime>09/28/2021 14:48:53</publishTime>
+    </File>
+    <File Include="Module_Reports/ESIUploadReport.aspx">
+      <publishTime>09/28/2021 14:57:53</publishTime>
+    </File>
     <File Include="Module_Reports/FullandFinal.aspx">
-      <publishTime>09/21/2021 07:56:25</publishTime>
+      <publishTime>09/28/2021 15:11:42</publishTime>
     </File>
     <File Include="Module_Reports/IDCardExpireDetails.aspx">
-      <publishTime>09/21/2021 07:57:29</publishTime>
+      <publishTime>09/28/2021 15:11:42</publishTime>
     </File>
     <File Include="Module_Reports/IDCardReport.aspx">
-      <publishTime>09/21/2021 07:58:28</publishTime>
+      <publishTime>09/28/2021 15:11:42</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/006464.jpg">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/addressproof.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/Authority.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/black-check.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/cardcharges.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/checkbox1.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/commaddress.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/Declaration.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/ESIC-LOGO102.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/ForICICI.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/icicin.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/KAStatePolice.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/KYC.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/peraddress.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/personaldetails.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/srflogo.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/srflogo1.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/Text.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
+    </File>
+    <File Include="Module_Reports/Images/yourwork.png">
+      <publishTime>03/23/2021 23:08:17</publishTime>
     </File>
     <File Include="Module_Reports/ImportAadhaarNo.aspx">
-      <publishTime>09/21/2021 10:36:08</publishTime>
+      <publishTime>09/22/2021 09:12:24</publishTime>
     </File>
     <File Include="Module_Reports/ImportAbscondedEmployees.aspx">
-      <publishTime>09/21/2021 10:38:28</publishTime>
+      <publishTime>09/22/2021 09:10:53</publishTime>
     </File>
     <File Include="Module_Reports/ImportAttendance.aspx">
       <publishTime>09/21/2021 08:00:01</publishTime>
     </File>
     <File Include="Module_Reports/ImportBankACNo.aspx">
-      <publishTime>09/21/2021 10:36:21</publishTime>
+      <publishTime>09/22/2021 09:12:15</publishTime>
     </File>
     <File Include="Module_Reports/ImportBankPfEsiNos.aspx">
       <publishTime>09/21/2021 07:24:16</publishTime>
     </File>
     <File Include="Module_Reports/ImportDrivingLicenseNo.aspx">
-      <publishTime>09/21/2021 10:36:34</publishTime>
+      <publishTime>09/22/2021 09:12:07</publishTime>
     </File>
     <File Include="Module_Reports/ImportEmpLoanDetails.aspx">
-      <publishTime>09/21/2021 08:02:05</publishTime>
+      <publishTime>09/28/2021 15:11:42</publishTime>
     </File>
     <File Include="Module_Reports/ImportESINos.aspx">
-      <publishTime>09/21/2021 10:36:57</publishTime>
+      <publishTime>09/22/2021 09:11:47</publishTime>
     </File>
     <File Include="Module_Reports/ImportExitDate.aspx">
-      <publishTime>09/21/2021 10:38:14</publishTime>
+      <publishTime>09/22/2021 09:11:06</publishTime>
     </File>
     <File Include="Module_Reports/ImportMonthlyAttendance.aspx">
       <publishTime>09/21/2021 08:03:31</publishTime>
     </File>
     <File Include="Module_Reports/ImportPANNo.aspx">
-      <publishTime>09/21/2021 10:37:31</publishTime>
+      <publishTime>09/22/2021 09:11:34</publishTime>
     </File>
     <File Include="Module_Reports/ImportPFNos.aspx">
-      <publishTime>09/21/2021 10:37:13</publishTime>
+      <publishTime>09/22/2021 09:11:40</publishTime>
     </File>
     <File Include="Module_Reports/Imports.aspx">
       <publishTime>09/21/2021 10:50:31</publishTime>
     </File>
     <File Include="Module_Reports/ImportUANNos.aspx">
-      <publishTime>09/21/2021 10:37:46</publishTime>
+      <publishTime>09/22/2021 09:11:19</publishTime>
     </File>
     <File Include="Module_Reports/ImportVoterNo.aspx">
-      <publishTime>09/21/2021 10:38:00</publishTime>
+      <publishTime>09/22/2021 09:11:12</publishTime>
     </File>
     <File Include="Module_Reports/LoanDetailsMonthlywise.aspx">
       <publishTime>09/21/2021 08:04:47</publishTime>
@@ -1090,7 +1555,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2021 08:06:05</publishTime>
     </File>
     <File Include="Module_Reports/LoansDetailReport.aspx">
-      <publishTime>09/21/2021 08:09:11</publishTime>
+      <publishTime>09/28/2021 15:11:42</publishTime>
     </File>
     <File Include="Module_Reports/PaySheetReport.aspx">
       <publishTime>09/21/2021 10:00:40</publishTime>
@@ -1101,11 +1566,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Module_Reports/PfdetailsReport.aspx">
       <publishTime>09/21/2021 08:18:36</publishTime>
     </File>
+    <File Include="Module_Reports/PFReports.aspx">
+      <publishTime>09/28/2021 14:56:39</publishTime>
+    </File>
     <File Include="Module_Reports/PTReport.aspx">
       <publishTime>09/21/2021 08:19:51</publishTime>
     </File>
     <File Include="Module_Reports/QuarterlyandYearlyReport.aspx">
-      <publishTime>09/21/2021 10:04:10</publishTime>
+      <publishTime>09/28/2021 14:01:04</publishTime>
     </File>
     <File Include="Module_Reports/ReportforBillingAndPaysheet.aspx">
       <publishTime>09/21/2021 08:17:04</publishTime>
@@ -1123,10 +1591,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2021 08:14:44</publishTime>
     </File>
     <File Include="Module_Reports/ReportforProfitLoss.aspx">
-      <publishTime>09/21/2021 08:13:46</publishTime>
+      <publishTime>09/28/2021 15:12:27</publishTime>
     </File>
     <File Include="Module_Reports/ReportForUnitWiseProfitMargin.aspx">
-      <publishTime>09/21/2021 10:08:26</publishTime>
+      <publishTime>09/28/2021 15:13:12</publishTime>
     </File>
     <File Include="Module_Reports/ReportMaster.master">
       <publishTime>09/21/2021 10:52:44</publishTime>
@@ -1138,10 +1606,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2021 10:09:30</publishTime>
     </File>
     <File Include="Module_Reports/SampleAttendance.aspx">
-      <publishTime>09/21/2021 08:11:15</publishTime>
+      <publishTime>09/28/2021 15:11:42</publishTime>
     </File>
     <File Include="Module_Reports/SubClientsWithMainClientReports.aspx">
       <publishTime>09/21/2021 10:10:35</publishTime>
+    </File>
+    <File Include="Module_Reports/UnitwiseESIPFPTReports.aspx">
+      <publishTime>09/28/2021 14:54:45</publishTime>
     </File>
     <File Include="Module_Reports/WageSheetReports.aspx">
       <publishTime>09/21/2021 08:12:33</publishTime>
@@ -1198,7 +1669,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/20/2021 18:15:13</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/21/2021 10:55:44</publishTime>
+      <publishTime>09/28/2021 15:16:02</publishTime>
     </File>
     <File Include="Reminders.aspx">
       <publishTime>09/20/2021 18:12:11</publishTime>
@@ -1213,7 +1684,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/09/2021 18:51:20</publishTime>
     </File>
     <File Include="script/global00.css">
-      <publishTime>08/09/2021 18:51:20</publishTime>
+      <publishTime>03/23/2021 23:08:38</publishTime>
     </File>
     <File Include="script/gridviewScroll.js">
       <publishTime>08/09/2021 18:51:20</publishTime>
@@ -1231,22 +1702,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/09/2021 18:51:20</publishTime>
     </File>
     <File Include="script/jquery-ui.js">
-      <publishTime>08/09/2021 18:51:20</publishTime>
+      <publishTime>03/23/2021 23:08:38</publishTime>
+    </File>
+    <File Include="script/jquery.freezeheader.js">
+      <publishTime>03/23/2021 23:08:38</publishTime>
     </File>
     <File Include="script/jquery.fullpage.extensions.min.js">
       <publishTime>08/09/2021 18:51:20</publishTime>
     </File>
     <File Include="script/jquery.min.js">
-      <publishTime>08/09/2021 18:51:20</publishTime>
+      <publishTime>03/23/2021 23:08:38</publishTime>
     </File>
     <File Include="script/jquery.stickytableheaders.js">
-      <publishTime>08/09/2021 18:51:20</publishTime>
+      <publishTime>03/23/2021 23:08:38</publishTime>
     </File>
     <File Include="script/jquery.webcam.js">
       <publishTime>08/09/2021 18:51:20</publishTime>
     </File>
     <File Include="script/jquery00.js">
-      <publishTime>08/09/2021 18:51:20</publishTime>
+      <publishTime>03/23/2021 23:08:38</publishTime>
     </File>
     <File Include="script/jscam.as">
       <publishTime>08/09/2021 18:51:20</publishTime>
@@ -1268,6 +1742,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="script/Nitgen.js">
       <publishTime>08/09/2021 18:51:20</publishTime>
+    </File>
+    <File Include="script/ScrollableTablePlugin_1.0_min.js">
+      <publishTime>03/23/2021 23:08:38</publishTime>
     </File>
     <File Include="script/webcam.jquery.json">
       <publishTime>08/09/2021 18:51:20</publishTime>
@@ -3493,7 +3970,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/09/2021 18:51:17</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/21/2021 10:39:09</publishTime>
+      <publishTime>09/27/2021 09:16:25</publishTime>
     </File>
   </ItemGroup>
 </Project>

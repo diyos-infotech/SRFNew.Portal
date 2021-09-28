@@ -4,12 +4,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
 
     <link rel="shortcut icon" href="assets/Mushroom.ico" />
-    <link href="css/chosen.css" rel="stylesheet" />
-    <link href="css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/chosen.css" rel="stylesheet" />
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
 
-    <script src="script/jquery.min.js" type="text/javascript"></script>
+    <script src="../script/jquery.min.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="script/jscript.js"></script>
+    <script type="text/javascript" src="../script/jscript.js"></script>
 
     <%-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
   <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -144,8 +144,8 @@
         <div class="content-holder">
             <div id="breadcrumb">
                 <ul class="crumbs">
-                    <li class="first"><a href="#" style="z-index: 9;"><span></span>Reports</a></li>
-                    <li><a href="Reports.aspx" style="z-index: 8;">Employee Reports</a></li>
+                     <li class="first"><a href="#" style="z-index: 9;"><span></span>Reports</a></li>
+                        <li><a href="EmployeeReports.aspx" style="z-index: 8;">Employee Reports</a></li>
                     <li class="active"><a href="EmpIDCard.aspx" style="z-index: 7;" class="active_bread">EMPLOYEE ID CARD</a></li>
                 </ul>
             </div>

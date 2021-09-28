@@ -17,7 +17,8 @@
     <script type="text/javascript">
         function AssignExportHTML() {
 
-            document.getElementById('hidGridView').value = htmlEscape(forExport.innerHTML);
+            document.getElementById("ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder3_hidGridView").value =
+          htmlEscape(ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder3_forExport.innerHTML);
         }
         function htmlEscape(str) {
             return String(str)
@@ -126,7 +127,15 @@
         }
     </style>
 
-    <script type="text/javascript">
+   <script type="text/javascript">
+
+        function pageLoad(sender, args) {
+            if (!args.get_isPartialLoad()) {
+                //  add our handler to the document's
+                //  keydown event
+                $addHandler(document, "keydown", onKeyDown);
+            }
+        }
 
         function dtval(d, e) {
             var pK = e ? e.which : window.event.keyCode;
@@ -142,12 +151,13 @@
             d.value = dt;
         }
 
+
         function setProperty() {
             $.widget("custom.combobox", {
                 _create: function () {
                     this.wrapper = $("<span>")
-                      .addClass("custom-combobox")
-                      .insertAfter(this.element);
+                        .addClass("custom-combobox")
+                        .insertAfter(this.element);
 
                     this.element.hide();
                     this._createAutocomplete();
@@ -156,23 +166,23 @@
 
                 _createAutocomplete: function () {
                     var selected = this.element.children(":selected"),
-                      value = selected.val() ? selected.text() : "";
+                        value = selected.val() ? selected.text() : "";
 
                     this.input = $("<input>")
-                      .appendTo(this.wrapper)
-                      .val(value)
-                      .attr("title", "")
-                      .addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
-                      .autocomplete({
-                          delay: 0,
-                          minLength: 0,
-                          source: $.proxy(this, "_source")
-                      })
-                      .tooltip({
-                          classes: {
-                              "ui-tooltip": "ui-state-highlight"
-                          }
-                      });
+                        .appendTo(this.wrapper)
+                        .val(value)
+                        .attr("title", "")
+                        .addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
+                        .autocomplete({
+                            delay: 0,
+                            minLength: 0,
+                            source: $.proxy(this, "_source")
+                        })
+                        .tooltip({
+                            classes: {
+                                "ui-tooltip": "ui-state-highlight"
+                            }
+                        });
 
                     this._on(this.input, {
                         autocompleteselect: function (event, ui) {
@@ -188,35 +198,35 @@
 
                 _createShowAllButton: function () {
                     var input = this.input,
-                      wasOpen = false;
+                        wasOpen = false;
 
                     $("<a>")
-                      .attr("tabIndex", -1)
-                      .attr("title", "Show All Items")
-                      .tooltip()
-                      .appendTo(this.wrapper)
-                      .button({
-                          icons: {
-                              primary: "ui-icon-triangle-1-s"
-                          },
-                          text: false
-                      })
-                      .removeClass("ui-corner-all")
-                      .addClass("custom-combobox-toggle ui-corner-right")
-                      .on("mousedown", function () {
-                          wasOpen = input.autocomplete("widget").is(":visible");
-                      })
-                      .on("click", function () {
-                          input.trigger("focus");
+                        .attr("tabIndex", -1)
+                        .attr("title", "Show All Items")
+                        .tooltip()
+                        .appendTo(this.wrapper)
+                        .button({
+                            icons: {
+                                primary: "ui-icon-triangle-1-s"
+                            },
+                            text: false
+                        })
+                        .removeClass("ui-corner-all")
+                        .addClass("custom-combobox-toggle ui-corner-right")
+                        .on("mousedown", function () {
+                            wasOpen = input.autocomplete("widget").is(":visible");
+                        })
+                        .on("click", function () {
+                            input.trigger("focus");
 
-                          // Close if already visible
-                          if (wasOpen) {
-                              return;
-                          }
+                            // Close if already visible
+                            if (wasOpen) {
+                                return;
+                            }
 
-                          // Pass empty string as value to search for, displaying all results
-                          input.autocomplete("search", "");
-                      });
+                            // Pass empty string as value to search for, displaying all results
+                            input.autocomplete("search", "");
+                        });
                 },
 
                 _source: function (request, response) {
@@ -241,8 +251,8 @@
 
                     // Search for a match (case-insensitive)
                     var value = this.input.val(),
-                      valueLowerCase = value.toLowerCase(),
-                      valid = false;
+                        valueLowerCase = value.toLowerCase(),
+                        valid = false;
                     this.element.children("option").each(function () {
                         if ($(this).text().toLowerCase() === valueLowerCase) {
                             this.selected = valid = true;
@@ -257,9 +267,9 @@
 
                     // Remove invalid value
                     this.input
-                      .val("")
-                      .attr("title", value + " didn't match any item")
-                      .tooltip("open");
+                        .val("")
+                        .attr("title", value + " didn't match any item")
+                        .tooltip("open");
                     this.element.val("");
                     this._delay(function () {
                         this.input.tooltip("close").attr("title", "");
@@ -273,8 +283,8 @@
                 }
             });
             $(".ddlautocomplete").combobox({
-                select: function (event, ui) { $("#ddlClientID").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientidchange(event, ui); },
-                select: function (event, ui) { $("#ddlCName").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientnamechange(event, ui); },
+                select: function (event, ui) { $("#<%=ddlClientID.ClientID %>").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientidchange(event, ui); },
+                select: function (event, ui) { $("#<%=ddlCName.ClientID %>").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientnamechange(event, ui); },
                 minLength: 4
             });
         }
@@ -284,14 +294,14 @@
         });
 
         function OnAutoCompleteDDLClientidchange(event, ui) {
-            $('#ddlClientID').trigger('change');
-
+            $("#<%=ddlClientID.ClientID %>").trigger('change');
         }
 
         function OnAutoCompleteDDLClientnamechange(event, ui) {
-
-            $('#ddlCName').trigger('change');
+            $("#<%=ddlCName.ClientID %>").trigger('change');
         }
+
+
 
     </script>
 
@@ -299,8 +309,8 @@
             <div class="content-holder">
                 <div id="breadcrumb">
                     <ul class="crumbs">
-                        <li class="first"><a href="#" style="z-index: 9;"><span></span>Reports</a></li>
-                        <li><a href="Reports.aspx" style="z-index: 8;">Employee Reports</a></li>
+                       <li class="first"><a href="#" style="z-index: 9;"><span></span>Reports</a></li>
+                        <li><a href="EmployeeReports.aspx" style="z-index: 8;">Employee Reports</a></li>
                         <li class="active"><a href="#" style="z-index: 7;" class="active_bread">Sample Attendance </a></li>
                     </ul>
                 </div>

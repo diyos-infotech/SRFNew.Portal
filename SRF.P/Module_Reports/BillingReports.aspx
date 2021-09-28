@@ -3,7 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
 
- <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
     <script language="javascript" src="scripts\Calendar.js" type="text/javascript"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
     <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -309,14 +309,14 @@
                                             <td>Client ID
                                             </td>
                                             <td>
-                                                 <asp:DropDownList ID="ddlClientId" runat="server" CssClass="ddlautocomplete chosen-select" AutoPostBack="True" OnSelectedIndexChanged="ddlClientId_SelectedIndexChanged"
+                                                <asp:DropDownList ID="ddlClientId" runat="server" CssClass="ddlautocomplete chosen-select" AutoPostBack="True" OnSelectedIndexChanged="ddlClientId_SelectedIndexChanged"
                                                     Width="120px">
                                                 </asp:DropDownList>
                                             </td>
                                             <td style="padding-left: 80px">Client Name
                                             </td>
                                             <td>
-                                                 <asp:DropDownList ID="ddlcname" runat="server" placeholder="select" CssClass="ddlautocomplete chosen-select" AutoPostBack="true" OnSelectedIndexChanged="ddlcname_OnSelectedIndexChanged"
+                                                <asp:DropDownList ID="ddlcname" runat="server" placeholder="select" CssClass="ddlautocomplete chosen-select" AutoPostBack="true" OnSelectedIndexChanged="ddlcname_OnSelectedIndexChanged"
                                                     Style="width: 355px">
                                                 </asp:DropDownList>
                                             </td>
@@ -406,7 +406,7 @@
 
                                 </div>
                                 <asp:HiddenField ID="hidGridView" runat="server" />
-                                <div id="forExport" style="overflow: scroll; width: 960px;">
+                                <div id="forExport" style="overflow: scroll; width: 960px;" runat="server">
                                     <asp:GridView ID="GVInvoiceBills" runat="server" AutoGenerateColumns="False"
                                         CellPadding="4" ForeColor="#333333" CssClass="table table-striped table-bordered table-condensed table-hover"
                                         OnRowDataBound="GVInvoiceBills_RowDataBound" ShowFooter="true" Style="overflow: scroll; width: 950px">
