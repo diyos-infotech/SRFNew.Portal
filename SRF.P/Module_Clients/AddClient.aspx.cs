@@ -41,13 +41,7 @@ namespace SRF.P.Module_Clients
                     LoadStatenames();
                     LoadAreas();
                     LoadZones();
-                    string ImagesFolderPath = Server.MapPath("ImportDocuments");
-                    string[] filePaths = Directory.GetFiles(ImagesFolderPath);
-
-                    foreach (string file in filePaths)
-                    {
-                        File.Delete(file);
-                    }
+                    
                 }
             }
             catch (Exception ex)

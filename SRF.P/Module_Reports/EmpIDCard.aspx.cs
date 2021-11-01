@@ -564,7 +564,7 @@ namespace SRF.P.Module_Reports
                 sa.Append(fontname + "\n");
             }
 
-            int Fontsize = 11;
+            int Fontsize = 10;
             string fontstyle = "Calibri";
 
             List<String> EmpId_list = new List<string>();

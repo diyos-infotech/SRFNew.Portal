@@ -2129,10 +2129,6 @@ namespace SRF.P.Module_Reports
                 return null;
             }
             ExcelSheetname = dt.Rows[0]["TABLE_NAME"].ToString();
-            ////foreach (DataRow row in dt.Rows)
-            ////{
-            ////    ExcelSheetname = row["TABLE_NAME"].ToString();
-            ////}
 
             return ExcelSheetname;
         }

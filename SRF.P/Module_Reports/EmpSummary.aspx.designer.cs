@@ -49,15 +49,6 @@ namespace SRF.P.Module_Reports {
         protected global::System.Web.UI.WebControls.TextBox txtEmpid;
         
         /// <summary>
-        /// EmpIdtoAutoCompleteExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender EmpIdtoAutoCompleteExtender;
-        
-        /// <summary>
         /// lblempname control.
         /// </summary>
         /// <remarks>
@@ -74,15 +65,6 @@ namespace SRF.P.Module_Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtName;
-        
-        /// <summary>
-        /// EmpNameAutoCompleteExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender EmpNameAutoCompleteExtender;
         
         /// <summary>
         /// ddlloantype control.
