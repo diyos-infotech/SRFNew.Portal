@@ -248,6 +248,10 @@
                                             <asp:BoundField HeaderText="Date of Joining" ItemStyle-Width="60px" DataField="EmpDtofJoining">
                                                 <ItemStyle Width="60px"></ItemStyle>
                                             </asp:BoundField>
+
+                                             <asp:BoundField HeaderText="Date of Absconding" ItemStyle-Width="60px" DataField="EmpDateofAbsconding">
+                                                <ItemStyle Width="60px"></ItemStyle>
+                                            </asp:BoundField>
                                             <asp:TemplateField HeaderText="Status" ItemStyle-Width="30px">
                                                 <ItemTemplate>
                                                     <asp:Label runat="server" ID="lblempGen" Text="<%#Bind('empstatus')%>"></asp:Label>

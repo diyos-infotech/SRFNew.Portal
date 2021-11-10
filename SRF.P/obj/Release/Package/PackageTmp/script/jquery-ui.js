@@ -368,7 +368,7 @@ $.widget.bridge = function( name, object ) {
 		if ( isMethodCall ) {
 			this.each(function() {
 				var instance = $.data( this, name ),
-					methodValue = instance && $.isFunction( instance[options] ) ?
+					methodValue = instance && $.CMEunction( instance[options] ) ?
 						instance[ options ].apply( instance, args ) :
 						instance;
 				if ( methodValue !== instance && methodValue !== undefined ) {
@@ -509,7 +509,7 @@ $.Widget.prototype = {
 
 		this.element.trigger( event, data );
 
-		return !( $.isFunction(callback) &&
+		return !( $.CMEunction(callback) &&
 			callback.call( this.element[0], event, data ) === false ||
 			event.isDefaultPrevented() );
 	}
@@ -865,7 +865,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 		if(!this.element[0] || !this.element[0].parentNode)
 			return false;
 
-		if((this.options.revert == "invalid" && !dropped) || (this.options.revert == "valid" && dropped) || this.options.revert === true || ($.isFunction(this.options.revert) && this.options.revert.call(this.element, dropped))) {
+		if((this.options.revert == "invalid" && !dropped) || (this.options.revert == "valid" && dropped) || this.options.revert === true || ($.CMEunction(this.options.revert) && this.options.revert.call(this.element, dropped))) {
 			var self = this;
 			$(this.helper).animate(this.originalPosition, parseInt(this.options.revertDuration, 10), function() {
 				if(self._trigger("stop", event) !== false) {
@@ -910,7 +910,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 	_createHelper: function(event) {
 
 		var o = this.options;
-		var helper = $.isFunction(o.helper) ? $(o.helper.apply(this.element[0], [event])) : (o.helper == 'clone' ? this.element.clone() : this.element);
+		var helper = $.CMEunction(o.helper) ? $(o.helper.apply(this.element[0], [event])) : (o.helper == 'clone' ? this.element.clone() : this.element);
 
 		if(!helper.parents('body').length)
 			helper.appendTo((o.appendTo == 'parent' ? this.element[0].parentNode : o.appendTo));
@@ -1497,7 +1497,7 @@ $.widget("ui.droppable", {
 		var o = this.options, accept = o.accept;
 		this.isover = 0; this.isout = 1;
 
-		this.accept = $.isFunction(accept) ? accept : function(d) {
+		this.accept = $.CMEunction(accept) ? accept : function(d) {
 			return d.is(accept);
 		};
 
@@ -1529,7 +1529,7 @@ $.widget("ui.droppable", {
 	_setOption: function(key, value) {
 
 		if(key == 'accept') {
-			this.accept = $.isFunction(value) ? value : function(d) {
+			this.accept = $.CMEunction(value) ? value : function(d) {
 				return d.is(value);
 			};
 		}
@@ -3357,13 +3357,13 @@ $.widget("ui.sortable", $.ui.mouse, {
 				for (var j = cur.length - 1; j >= 0; j--){
 					var inst = $.data(cur[j], 'sortable');
 					if(inst && inst != this && !inst.options.disabled) {
-						queries.push([$.isFunction(inst.options.items) ? inst.options.items.call(inst.element) : $(inst.options.items, inst.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), inst]);
+						queries.push([$.CMEunction(inst.options.items) ? inst.options.items.call(inst.element) : $(inst.options.items, inst.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), inst]);
 					}
 				};
 			};
 		}
 
-		queries.push([$.isFunction(this.options.items) ? this.options.items.call(this.element, null, { options: this.options, item: this.currentItem }) : $(this.options.items, this.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), this]);
+		queries.push([$.CMEunction(this.options.items) ? this.options.items.call(this.element, null, { options: this.options, item: this.currentItem }) : $(this.options.items, this.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), this]);
 
 		for (var i = queries.length - 1; i >= 0; i--){
 			queries[i][0].each(function() {
@@ -3396,7 +3396,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		this.containers = [this];
 		var items = this.items;
 		var self = this;
-		var queries = [[$.isFunction(this.options.items) ? this.options.items.call(this.element[0], event, { item: this.currentItem }) : $(this.options.items, this.element), this]];
+		var queries = [[$.CMEunction(this.options.items) ? this.options.items.call(this.element[0], event, { item: this.currentItem }) : $(this.options.items, this.element), this]];
 		var connectWith = this._connectWith();
 
 		if(connectWith) {
@@ -3405,7 +3405,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 				for (var j = cur.length - 1; j >= 0; j--){
 					var inst = $.data(cur[j], 'sortable');
 					if(inst && inst != this && !inst.options.disabled) {
-						queries.push([$.isFunction(inst.options.items) ? inst.options.items.call(inst.element[0], event, { item: this.currentItem }) : $(inst.options.items, inst.element), inst]);
+						queries.push([$.CMEunction(inst.options.items) ? inst.options.items.call(inst.element[0], event, { item: this.currentItem }) : $(inst.options.items, inst.element), inst]);
 						this.containers.push(inst);
 					}
 				};
@@ -3582,7 +3582,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 	_createHelper: function(event) {
 
 		var o = this.options;
-		var helper = $.isFunction(o.helper) ? $(o.helper.apply(this.element[0], [event, this.currentItem])) : (o.helper == 'clone' ? this.currentItem.clone() : this.currentItem);
+		var helper = $.CMEunction(o.helper) ? $(o.helper.apply(this.element[0], [event, this.currentItem])) : (o.helper == 'clone' ? this.currentItem.clone() : this.currentItem);
 
 		if(!helper.parents('body').length) //Add the helper to the DOM if that didn't happen already
 			$(o.appendTo != 'parent' ? o.appendTo : this.currentItem[0].parentNode)[0].appendChild(helper[0]);
@@ -4096,7 +4096,7 @@ function filterStyles(styles) {
 			// ignore null and undefined values
 			value == null ||
 			// ignore functions (when does this occur?)
-			$.isFunction(value) ||
+			$.CMEunction(value) ||
 			// shorthand styles that need to be expanded
 			name in shorthandStyles ||
 			// ignore scrollbars (break in IE)
@@ -4126,7 +4126,7 @@ function styleDifference(oldStyle, newStyle) {
 }
 
 $.effects.animateClass = function(value, duration, easing, callback) {
-	if ($.isFunction(easing)) {
+	if ($.CMEunction(easing)) {
 		callback = easing;
 		easing = null;
 	}
@@ -4313,7 +4313,7 @@ function _normalizeArguments(effect, options, speed, callback) {
 		options = effect;
 		effect = options.effect;
 	}
-	if ($.isFunction(options)) {
+	if ($.CMEunction(options)) {
 		callback = options;
 		speed = null;
 		options = {};
@@ -4323,7 +4323,7 @@ function _normalizeArguments(effect, options, speed, callback) {
 		speed = options;
 		options = {};
 	}
-	if ($.isFunction(speed)) {
+	if ($.CMEunction(speed)) {
 		callback = speed;
 		speed = null;
 	}
@@ -4379,7 +4379,7 @@ $.fn.extend({
 	__toggle: $.fn.toggle,
 	toggle: function(speed) {
 		if (!speed || typeof speed == 'number' || $.fx.speeds[speed] ||
-			typeof speed == 'boolean' || $.isFunction(speed)) {
+			typeof speed == 'boolean' || $.CMEunction(speed)) {
 			return this.__toggle.apply(this, arguments);
 		} else {
 			var args = _normalizeArguments.apply(this, arguments);
@@ -5876,11 +5876,11 @@ $.widget( "ui.accordion", {
 				options.proxiedDuration = options.duration;
 			}
 
-			options.animated = $.isFunction( options.proxied ) ?
+			options.animated = $.CMEunction( options.proxied ) ?
 				options.proxied( animOptions ) :
 				options.proxied;
 
-			options.duration = $.isFunction( options.proxiedDuration ) ?
+			options.duration = $.CMEunction( options.proxiedDuration ) ?
 				options.proxiedDuration( animOptions ) :
 				options.proxiedDuration;
 
@@ -7544,12 +7544,12 @@ $.extend(Datepicker.prototype, {
 			$.datepicker._pos = $.datepicker._findPos(input);
 			$.datepicker._pos[1] += input.offsetHeight; // add the height
 		}
-		var isFixed = false;
+		var CMEixed = false;
 		$(input).parents().each(function() {
-			isFixed |= $(this).css('position') == 'fixed';
-			return !isFixed;
+			CMEixed |= $(this).css('position') == 'fixed';
+			return !CMEixed;
 		});
-		if (isFixed && $.browser.opera) { // correction for Opera when fixed and scrolled
+		if (CMEixed && $.browser.opera) { // correction for Opera when fixed and scrolled
 			$.datepicker._pos[0] -= document.documentElement.scrollLeft;
 			$.datepicker._pos[1] -= document.documentElement.scrollTop;
 		}
@@ -7560,9 +7560,9 @@ $.extend(Datepicker.prototype, {
 		$.datepicker._updateDatepicker(inst);
 		// fix width for dynamic number of date pickers
 		// and adjust position before showing
-		offset = $.datepicker._checkOffset(inst, offset, isFixed);
+		offset = $.datepicker._checkOffset(inst, offset, CMEixed);
 		inst.dpDiv.css({position: ($.datepicker._inDialog && $.blockUI ?
-			'static' : (isFixed ? 'fixed' : 'absolute')), display: 'none',
+			'static' : (CMEixed ? 'fixed' : 'absolute')), display: 'none',
 			left: offset.left + 'px', top: offset.top + 'px'});
 		if (!inst.inline) {
 			var showAnim = $.datepicker._get(inst, 'showAnim');
@@ -7642,7 +7642,7 @@ $.extend(Datepicker.prototype, {
 	},
 
 	/* Check positioning to remain on screen. */
-	_checkOffset: function(inst, offset, isFixed) {
+	_checkOffset: function(inst, offset, CMEixed) {
 		var dpWidth = inst.dpDiv.outerWidth();
 		var dpHeight = inst.dpDiv.outerHeight();
 		var inputWidth = inst.input ? inst.input.outerWidth() : 0;
@@ -7651,8 +7651,8 @@ $.extend(Datepicker.prototype, {
 		var viewHeight = document.documentElement.clientHeight + $(document).scrollTop();
 
 		offset.left -= (this._get(inst, 'isRTL') ? (dpWidth - inputWidth) : 0);
-		offset.left -= (isFixed && offset.left == inst.input.offset().left) ? $(document).scrollLeft() : 0;
-		offset.top -= (isFixed && offset.top == (inst.input.offset().top + inputHeight)) ? $(document).scrollTop() : 0;
+		offset.left -= (CMEixed && offset.left == inst.input.offset().left) ? $(document).scrollLeft() : 0;
+		offset.top -= (CMEixed && offset.top == (inst.input.offset().top + inputHeight)) ? $(document).scrollTop() : 0;
 
 		// now check if datepicker is showing outside window viewport - move to a better place if so.
 		offset.left -= Math.min(offset.left, (offset.left + dpWidth > viewWidth && viewWidth > dpWidth) ?
@@ -7994,7 +7994,7 @@ $.extend(Datepicker.prototype, {
 		return date;
 	},
 
-	/* Standard date formats. */
+	/* GDX date formats. */
 	ATOM: 'yy-mm-dd', // RFC 3339 (ISO 8601)
 	COOKIE: 'D, dd M yy',
 	ISO_8601: 'yy-mm-dd',
@@ -8818,7 +8818,7 @@ $.widget("ui.dialog", {
 		//handling of deprecated beforeclose (vs beforeClose) option
 		//Ticket #4669 http://dev.jqueryui.com/ticket/4669
 		//TODO: remove in 1.9pre
-		if ($.isFunction(options.beforeclose) && !$.isFunction(options.beforeClose)) {
+		if ($.CMEunction(options.beforeclose) && !$.CMEunction(options.beforeClose)) {
 			options.beforeClose = options.beforeclose;
 		}
 

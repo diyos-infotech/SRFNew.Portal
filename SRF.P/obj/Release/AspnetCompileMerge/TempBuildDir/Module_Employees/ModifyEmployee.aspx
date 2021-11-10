@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Module_Employees/EmployeeMaster.Master" AutoEventWireup="true" CodeBehind="ModifyEmployee.aspx.cs" Inherits="SRF.P.Module_Employees.ModifyEmployee" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
 
-       <style type="text/css">
+    <style type="text/css">
         .modal {
             position: fixed;
             top: 0;
@@ -68,10 +69,10 @@
         });
     </script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>MODIFY EMPLOYEE</title>
-    <link rel="shortcut icon" href="assets/Mushroom.ico" />
-    <link href="css/global.css" rel="stylesheet" type="text/css" />
-    <link href="css/Calendar.css" rel="stylesheet" type="text/css" />
+
+    <link rel="shortcut icon" href="../assets/Mushroom.ico" />
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/Calendar.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
 
@@ -91,11 +92,11 @@
 
     </script>
 
-    <link rel="stylesheet" href="script/jquery-ui.css" />
+    <link rel="stylesheet" href="../script/jquery-ui.css" />
 
-    <script type="text/javascript" src="script/jquery.min.js"></script>
+    <script type="text/javascript" src="../script/jquery.min.js"></script>
 
-    <script type="text/javascript" src="script/jquery-ui.js"></script>
+    <script type="text/javascript" src="../script/jquery-ui.js"></script>
 
     <script type="text/javascript">
         var currentTab = 0;
@@ -229,8 +230,9 @@
                                                         <td>
                                                             <asp:TextBox ID="txtEmpid" TabIndex="3" runat="server" MaxLength="6" ReadOnly="True"
                                                                 class="sinput"></asp:TextBox>
-                                                            <cc1:filteredtextboxextender id="FilteredTextEmpid" runat="server" enabled="True" targetcontrolid="txtEmpid"
-                                                                validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextEmpid" runat="server" Enabled="True" TargetControlID="txtEmpid"
+                                                                ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                         <td>&nbsp;
                                                         </td>
@@ -291,10 +293,12 @@
                                                         <td>
                                                             <asp:TextBox ID="txtEmpDtofInterview" TabIndex="20" runat="server" class="sinput"
                                                                 MaxLength="10"></asp:TextBox>
-                                                            <cc1:calendarextender id="CEDtofInterview" runat="server" enabled="true" targetcontrolid="txtEmpDtofInterview"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FTBEDOI" runat="server" enabled="True" targetcontrolid="txtEmpDtofInterview"
-                                                                validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CEDtofInterview" runat="server" Enabled="true" TargetControlID="txtEmpDtofInterview"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FTBEDOI" runat="server" Enabled="True" TargetControlID="txtEmpDtofInterview"
+                                                                ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                         <td></td>
                                                     </tr>
@@ -308,8 +312,9 @@
                                                         <td>
                                                             <asp:TextBox ID="txtPhone" TabIndex="22" MaxLength="12" runat="server" class="sinput">
                                                             </asp:TextBox>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender1" runat="server" enabled="True"
-                                                                targetcontrolid="txtPhone" filtermode="ValidChars" filtertype="Numbers"></cc1:filteredtextboxextender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" Enabled="True"
+                                                                TargetControlID="txtPhone" FilterMode="ValidChars" FilterType="Numbers">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                         <td>&nbsp;
                                                         </td>
@@ -387,16 +392,16 @@
                                                             <td>ID card issued date </td>
                                                             <td>
                                                                 <asp:TextBox ID="TxtIDCardIssuedDt" runat="server" AutoPostBack="True" CssClass="sinput" OnTextChanged="TxtIDCardIssuedDt_TextChanged" TabIndex="41"></asp:TextBox>
-                                                                <cc1:calendarextender id="CalendarExtender1" runat="server" enabled="true" format="dd/MM/yyyy" targetcontrolid="TxtIDCardIssuedDt"></cc1:calendarextender>
-                                                                <cc1:filteredtextboxextender id="FtBIDCardIssuedDt" runat="server" enabled="True" targetcontrolid="TxtIDCardIssuedDt" validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                                <cc1:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="true" Format="dd/MM/yyyy" TargetControlID="TxtIDCardIssuedDt"></cc1:CalendarExtender>
+                                                                <cc1:FilteredTextBoxExtender ID="FtBIDCardIssuedDt" runat="server" Enabled="True" TargetControlID="TxtIDCardIssuedDt" ValidChars="/0123456789"></cc1:FilteredTextBoxExtender>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Date of Absconding </td>
                                                             <td>
                                                                 <asp:TextBox ID="txtdtofabsconding" runat="server" AutoPostBack="True" CssClass="sinput" TabIndex="42"></asp:TextBox>
-                                                                <cc1:calendarextender id="CalendarExtender5" runat="server" enabled="true" format="dd/MM/yyyy" targetcontrolid="txtdtofabsconding"></cc1:calendarextender>
-                                                                <cc1:filteredtextboxextender id="FilteredTextBoxExtender12" runat="server" enabled="True" targetcontrolid="txtdtofabsconding" validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                                <cc1:CalendarExtender ID="CalendarExtender5" runat="server" Enabled="true" Format="dd/MM/yyyy" TargetControlID="txtdtofabsconding"></cc1:CalendarExtender>
+                                                                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender12" runat="server" Enabled="True" TargetControlID="txtdtofabsconding" ValidChars="/0123456789"></cc1:FilteredTextBoxExtender>
                                                             </td>
                                                         </tr>
                                                         <tr style="visibility: hidden">
@@ -457,10 +462,12 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="txtEmpDtofBirth" TabIndex="8" runat="server" class="sinput" MaxLength="10"></asp:TextBox>
-                                                            <cc1:calendarextender id="CEEmpDtofBirth" runat="server" enabled="true" targetcontrolid="txtEmpDtofBirth"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FTBEDOB" runat="server" enabled="True" targetcontrolid="txtEmpDtofBirth"
-                                                                validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CEEmpDtofBirth" runat="server" Enabled="true" TargetControlID="txtEmpDtofBirth"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FTBEDOB" runat="server" Enabled="True" TargetControlID="txtEmpDtofBirth"
+                                                                ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                         <td>&nbsp;
                                                         </td>
@@ -508,10 +515,12 @@
                                                         <td>
                                                             <asp:TextBox ID="txtEmpDtofJoining" TabIndex="21" runat="server" class="sinput" size="20"
                                                                 MaxLength="10"></asp:TextBox>
-                                                            <cc1:calendarextender id="CEEmpDtofJoining" runat="server" enabled="true" targetcontrolid="txtEmpDtofJoining"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender2" runat="server" enabled="True"
-                                                                targetcontrolid="txtEmpDtofJoining" validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CEEmpDtofJoining" runat="server" Enabled="true" TargetControlID="txtEmpDtofJoining"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" Enabled="True"
+                                                                TargetControlID="txtEmpDtofJoining" ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                         <td>&nbsp;
                                                         </td>
@@ -521,10 +530,12 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="txtDofleaving" TabIndex="23" runat="server" class="sinput" MaxLength="10"></asp:TextBox>
-                                                            <cc1:calendarextender id="CEDofleaving" runat="server" enabled="true" targetcontrolid="txtDofleaving"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender5" runat="server" enabled="True"
-                                                                targetcontrolid="txtDofleaving" validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CEDofleaving" runat="server" Enabled="true" TargetControlID="txtDofleaving"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" Enabled="True"
+                                                                TargetControlID="txtDofleaving" ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                         <td>&nbsp;
                                                         </td>
@@ -586,8 +597,9 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="txtGrossSalary" runat="server" class="sinput" TabIndex="37"></asp:TextBox>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender11" runat="server" enabled="True" targetcontrolid="txtGrossSalary"
-                                                                validchars="0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender11" runat="server" Enabled="True" TargetControlID="txtGrossSalary"
+                                                                ValidChars="0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                     </tr>
 
@@ -604,10 +616,12 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="TxtIdCardValid" runat="server" CssClass="sinput" TabIndex="41"></asp:TextBox>
-                                                            <cc1:calendarextender id="CalendarExtender2" runat="server" enabled="true" targetcontrolid="TxtIdCardValid"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FTBIdCardValid" runat="server" enabled="True" targetcontrolid="TxtIdCardValid"
-                                                                validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="true" TargetControlID="TxtIdCardValid"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FTBIdCardValid" runat="server" Enabled="True" TargetControlID="TxtIdCardValid"
+                                                                ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                     </tr>
 
@@ -991,10 +1005,12 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="txtprResidingDate" runat="server" class="sinput" Style="margin-left: 12px"></asp:TextBox>
-                                                            <cc1:calendarextender id="CalendarExtender3" runat="server" enabled="true" targetcontrolid="txtprResidingDate"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender9" runat="server" enabled="True"
-                                                                targetcontrolid="txtprResidingDate" validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CalendarExtender3" runat="server" Enabled="true" TargetControlID="txtprResidingDate"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender9" runat="server" Enabled="True"
+                                                                TargetControlID="txtprResidingDate" ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
 
                                                         </td>
                                                     </tr>
@@ -1187,10 +1203,12 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="txtResidingDate" runat="server" class="sinput"></asp:TextBox>
-                                                            <cc1:calendarextender id="CalendarExtender4" runat="server" enabled="true" targetcontrolid="txtResidingDate"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender10" runat="server" enabled="True"
-                                                                targetcontrolid="txtResidingDate" validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CalendarExtender4" runat="server" Enabled="true" TargetControlID="txtResidingDate"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender10" runat="server" Enabled="True"
+                                                                TargetControlID="txtResidingDate" ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1273,8 +1291,9 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="txtBranchCode" runat="server" TabIndex="5" class="sinput" MaxLength="50"></asp:TextBox>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender3" runat="server" enabled="True"
-                                                                targetcontrolid="txtBranchCode" filtermode="ValidChars" filtertype="Numbers"></cc1:filteredtextboxextender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" Enabled="True"
+                                                                TargetControlID="txtBranchCode" FilterMode="ValidChars" FilterType="Numbers">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1297,10 +1316,12 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="txtNomDoB" runat="server" TabIndex="11" class="sinput"></asp:TextBox>
-                                                            <cc1:calendarextender id="CENomDoB" runat="server" enabled="true" targetcontrolid="txtNomDoB"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender6" runat="server" enabled="True"
-                                                                targetcontrolid="txtNomDoB" validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CENomDoB" runat="server" Enabled="true" TargetControlID="txtNomDoB"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" Enabled="True"
+                                                                TargetControlID="txtNomDoB" ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1308,8 +1329,9 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="txtInsCover" TabIndex="13" runat="server" class="sinput" MaxLength="10"></asp:TextBox>
-                                                            <cc1:filteredtextboxextender id="FTBEInsCover" runat="server" enabled="True" targetcontrolid="txtInsCover"
-                                                                filtermode="ValidChars" filtertype="Numbers"></cc1:filteredtextboxextender>
+                                                            <cc1:FilteredTextBoxExtender ID="FTBEInsCover" runat="server" Enabled="True" TargetControlID="txtInsCover"
+                                                                FilterMode="ValidChars" FilterType="Numbers">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                     </tr>
 
@@ -1359,8 +1381,9 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="txtRegCode" TabIndex="8" runat="server" class="sinput"></asp:TextBox>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender4" runat="server" enabled="True"
-                                                                targetcontrolid="txtRegCode" filtermode="ValidChars" filtertype="Numbers"></cc1:filteredtextboxextender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" Enabled="True"
+                                                                TargetControlID="txtRegCode" FilterMode="ValidChars" FilterType="Numbers">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1382,8 +1405,9 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="txtInsDeb" TabIndex="14" runat="server" class="sinput"></asp:TextBox>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender7" runat="server" enabled="True"
-                                                                targetcontrolid="txtInsDeb" filtermode="ValidChars" filtertype="Numbers"></cc1:filteredtextboxextender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender7" runat="server" Enabled="True"
+                                                                TargetControlID="txtInsDeb" FilterMode="ValidChars" FilterType="Numbers">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1455,10 +1479,12 @@
                                                         <td>
                                                             <asp:TextBox runat="server" TabIndex="18" class="sinput" ID="txtPFEnrollDate" size="20" Style="margin-left: 2px"
                                                                 MaxLength="10"></asp:TextBox>
-                                                            <cc1:calendarextender id="CEPFEnrollDate" runat="server" enabled="true" targetcontrolid="txtPFEnrollDate"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FilteredTextBoxExtender8" runat="server" enabled="True"
-                                                                targetcontrolid="txtPFEnrollDate" validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CEPFEnrollDate" runat="server" Enabled="true" TargetControlID="txtPFEnrollDate"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender8" runat="server" Enabled="True"
+                                                                TargetControlID="txtPFEnrollDate" ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                     </tr>
                                                     <tr style="visibility: hidden">
@@ -1951,10 +1977,12 @@
                                                         <td style="height: 20px">
                                                             <asp:TextBox ID="txtDOfEnroll" runat="server" TabIndex="19" class="sinput" size="20"
                                                                 MaxLength="10"></asp:TextBox>
-                                                            <cc1:calendarextender id="CEDOfEnroll" runat="server" enabled="true" targetcontrolid="txtDOfEnroll"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FTBEDOfEnroll" runat="server" enabled="True" targetcontrolid="txtDOfEnroll"
-                                                                validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CEDOfEnroll" runat="server" Enabled="true" TargetControlID="txtDOfEnroll"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FTBEDOfEnroll" runat="server" Enabled="True" TargetControlID="txtDOfEnroll"
+                                                                ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
 
                                                         </td>
                                                     </tr>
@@ -2000,10 +2028,12 @@
                                                         <td style="height: 20px">
                                                             <asp:TextBox ID="txtDofDischarge" runat="server" TabIndex="20" class="sinput" size="20"
                                                                 MaxLength="10"></asp:TextBox>
-                                                            <cc1:calendarextender id="CEDofDischarge" runat="server" enabled="true" targetcontrolid="txtDofDischarge"
-                                                                format="dd/MM/yyyy"></cc1:calendarextender>
-                                                            <cc1:filteredtextboxextender id="FTBEDofDischarge" runat="server" enabled="True"
-                                                                targetcontrolid="txtDofDischarge" validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                            <cc1:CalendarExtender ID="CEDofDischarge" runat="server" Enabled="true" TargetControlID="txtDofDischarge"
+                                                                Format="dd/MM/yyyy">
+                                                            </cc1:CalendarExtender>
+                                                            <cc1:FilteredTextBoxExtender ID="FTBEDofDischarge" runat="server" Enabled="True"
+                                                                TargetControlID="txtDofDischarge" ValidChars="/0123456789">
+                                                            </cc1:FilteredTextBoxExtender>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -2705,10 +2735,12 @@
                                                             </td>
                                                             <td>
                                                                 <asp:TextBox ID="txtpvcresidedate" runat="server" class="sinput" Style="margin-left: 12px"></asp:TextBox>
-                                                                <cc1:calendarextender id="CEPvcreside" runat="server" enabled="true" targetcontrolid="txtpvcresidedate"
-                                                                    format="dd/MM/yyyy"></cc1:calendarextender>
-                                                                <cc1:filteredtextboxextender id="FTBpvcreside" runat="server" enabled="True"
-                                                                    targetcontrolid="txtpvcresidedate" validchars="/0123456789"></cc1:filteredtextboxextender>
+                                                                <cc1:CalendarExtender ID="CEPvcreside" runat="server" Enabled="true" TargetControlID="txtpvcresidedate"
+                                                                    Format="dd/MM/yyyy">
+                                                                </cc1:CalendarExtender>
+                                                                <cc1:FilteredTextBoxExtender ID="FTBpvcreside" runat="server" Enabled="True"
+                                                                    TargetControlID="txtpvcresidedate" ValidChars="/0123456789">
+                                                                </cc1:FilteredTextBoxExtender>
 
                                                             </td>
                                                         </tr>
@@ -2863,8 +2895,8 @@
                             </tr>
                         </table>
                         <br />
-                        <cc1:tabcontainer id="TabContainer1" runat="server" activetabindex="0">
-                            </cc1:tabcontainer>
+                        <cc1:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0">
+                        </cc1:TabContainer>
 
 
                     </div>
@@ -2873,7 +2905,7 @@
             <div class="loading" align="center">
                 Loading. Please wait.<br />
                 <br />
-                <img src="assets/loader.gif" alt="Loading" />
+                <img src="../assets/loader.gif" alt="Loading" />
             </div>
             <div class="clear">
             </div>
