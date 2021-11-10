@@ -69,7 +69,6 @@ namespace SRF.P.Module_Inventory
         {
             if (Session.Keys.Count > 0)
             {
-                EmpIDPrefix = Session["EmpIDPrefix"].ToString();
                 CmpIDPrefix = Session["CmpIDPrefix"].ToString();
                 UserID = Session["UserId"].ToString();
                 POIDPrefix = Session["POPrefix"].ToString();
