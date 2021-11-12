@@ -72,7 +72,7 @@ namespace SRF.P.Module_Reports
         public void SampleExport()
         {
 
-            string query = "Select top 1 '' as EmpID,''  from EmpDetails";
+            string query = "Select top 1 '' as EmpID,'' as EmpAbscondingDate,''  from EmpDetails";
             DataTable dt = config.ExecuteAdaptorAsyncWithQueryParams(query).Result;
             gvlistofemp.DataSource = dt;
             gvlistofemp.DataBind();

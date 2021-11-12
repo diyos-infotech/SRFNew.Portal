@@ -16,10 +16,7 @@
             height: 26px;
         }
 
-        .auto-style2 {
-            width: 174px;
-        }
-    </style>
+        </style>
 
 
     <div id="content-holder">
@@ -36,7 +33,7 @@
                 <div class="dashboard_center">
                     <div class="sidebox">
                         <div class="boxhead">
-                            <h2 style="text-align: center">Import Exit Date
+                            <h2 style="text-align: center">Import Absconding Date
                             </h2>
                         </div>
                         <div class="boxbody" style="padding: 5px 5px 5px 5px;">
@@ -76,12 +73,13 @@
                                                         <asp:Label runat="server" ID="lblempid" Text=' <%#Eval("EmpID")%>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <%-- <asp:TemplateField HeaderText="Date of Leaving">
-                                            <ItemTemplate>
-                                                <asp:Label runat="server" ID="lblDtofLeaving" Text='<%#Eval("EmpDtofLeaving")%>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                                --%>
+
+                                            <%--    <asp:TemplateField HeaderText="Date of Leaving">
+                                                    <ItemTemplate>
+                                                        <asp:Label runat="server" ID="lblDtofLeaving" Text='<%#Eval("EmpDtofLeaving")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>--%>
+
                                                 <asp:TemplateField HeaderText="Remarks">
                                                     <ItemTemplate>
                                                         <asp:Label runat="server" ID="lblRemarks" Text='<%#Eval("Remark")%>'></asp:Label>
@@ -107,11 +105,11 @@
                                                         <asp:Label runat="server" ID="lblempid" Text=' <%#Eval("EmpID")%>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <%--  <asp:TemplateField HeaderText="Date of Leaving">
+                                                  <asp:TemplateField HeaderText="Date of Absconding">
                                             <ItemTemplate>
-                                                <asp:Label runat="server" ID="lblDtofLeaving" Text='<%#Eval("EmpDtofLeaving")%>'></asp:Label>
+                                                <asp:Label runat="server" ID="lblDtofAbsconding" Text='<%#Eval("EmpAbscondingDate")%>'></asp:Label>
                                             </ItemTemplate>
-                                        </asp:TemplateField>--%>
+                                        </asp:TemplateField>
                                             </Columns>
                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
