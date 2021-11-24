@@ -165,7 +165,7 @@ namespace SRF.P.Module_Reports
 
                             if (EmpStatus == 1)
                             {
-                                string UpdatQry = "update empdetails set EmpAbscondingDate='" + DateTime.Now + "', Empstatus='2' where empid='" + EmpID + "'";
+                                string UpdatQry = "update empdetails set EmpDateofAbsconding='" + DateTime.Now + "', Empstatus='2' where empid='" + EmpID + "'";
                                 result = config.ExecuteNonQueryWithQueryAsync(UpdatQry).Result;
                                 if (result > 0)
                                 {

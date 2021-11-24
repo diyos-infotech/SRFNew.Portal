@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -445,6 +446,7 @@
     <Content Include="Module_Reports\BankUploadFormats.aspx" />
     <Content Include="Module_Reports\BillingReports.aspx" />
     <Content Include="Module_Reports\BillingWagesReport.aspx" />
+    <Content Include="Module_Reports\BillModification.aspx" />
     <Content Include="Module_Reports\BillsVsActuals.aspx" />
     <Content Include="Module_Reports\BulkLeftEmployeeDetails.aspx" />
     <Content Include="Module_Reports\BulkWageSlipsReport.aspx" />
@@ -1683,6 +1685,13 @@
     </Compile>
     <Compile Include="Module_Reports\BillingWagesReport.aspx.designer.cs">
       <DependentUpon>BillingWagesReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module_Reports\BillModification.aspx.cs">
+      <DependentUpon>BillModification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Reports\BillModification.aspx.designer.cs">
+      <DependentUpon>BillModification.aspx</DependentUpon>
     </Compile>
     <Compile Include="Module_Reports\BillsVsActuals.aspx.cs">
       <DependentUpon>BillsVsActuals.aspx</DependentUpon>
