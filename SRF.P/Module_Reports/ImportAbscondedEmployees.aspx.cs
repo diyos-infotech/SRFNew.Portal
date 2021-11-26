@@ -6,6 +6,7 @@ using System.IO;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using SRF.P.DAL;
+using KLTS.Data;
 
 namespace SRF.P.Module_Reports
 {
@@ -28,7 +29,7 @@ namespace SRF.P.Module_Reports
             {
                 if (Session["UserId"] != null && Session["AccessLevel"] != null)
                 {
-                    
+
                 }
                 else
                 {
@@ -122,7 +123,7 @@ namespace SRF.P.Module_Reports
             dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
             ExcelSheetname = dt.Rows[0]["TABLE_NAME"].ToString();
 
-            OleDbCommand cmd = new OleDbCommand("Select [Emp ID] from [" + ExcelSheetname + "]", con);
+            OleDbCommand cmd = new OleDbCommand("Select [Emp ID],[Date of Absconding(yyyy/MM/dd)] from [" + ExcelSheetname + "]", con);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             DataTable ds = new DataTable();
             da.Fill(ds);
@@ -135,12 +136,19 @@ namespace SRF.P.Module_Reports
             {
                 sqlcon.Open();
 
-                string EmpID = ""; string DtofLeaving = ""; int EmpStatus = 0;
+                string EmpID = ""; string AbscondDate = ""; int EmpStatus = 0;
 
 
                 for (int i = 0; i < ds.Rows.Count; i++)
                 {
                     EmpID = ds.Rows[i]["Emp ID"].ToString();
+                    AbscondDate = ds.Rows[i]["Date of Absconding(yyyy/MM/dd)"].ToString();
+
+                    if (AbscondDate.Length > 0)
+                    {
+                        string db1 = Convert.ToDateTime(AbscondDate).ToString("dd/MM/yyyy");
+                        AbscondDate = Timings.Instance.CheckDateFormat(db1);
+                    }
 
                     if (EmpID.Length > 0)
                     {
@@ -165,7 +173,7 @@ namespace SRF.P.Module_Reports
 
                             if (EmpStatus == 1)
                             {
-                                string UpdatQry = "update empdetails set EmpDateofAbsconding='" + DateTime.Now + "', Empstatus='2' where empid='" + EmpID + "'";
+                                string UpdatQry = "update empdetails set EmpDateofAbsconding='" + AbscondDate + "', Empstatus='2' where empid='" + EmpID + "'";
                                 result = config.ExecuteNonQueryWithQueryAsync(UpdatQry).Result;
                                 if (result > 0)
                                 {
