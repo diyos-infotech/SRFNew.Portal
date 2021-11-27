@@ -105,7 +105,7 @@
                                                         <asp:Label runat="server" ID="lblempid" Text=' <%#Eval("EmpID")%>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                  <asp:TemplateField HeaderText="Date of Absconding">
+                                                  <asp:TemplateField HeaderText="Date of Absconding(yyyy/MM/dd)">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblDtofAbsconding" Text='<%#Eval("EmpAbscondingDate")%>'></asp:Label>
                                             </ItemTemplate>

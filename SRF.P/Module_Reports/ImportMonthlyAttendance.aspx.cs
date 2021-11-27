@@ -2312,7 +2312,7 @@ namespace SRF.P.Module_Reports
 
                             empid = ds.Tables[0].Rows[i]["Emp Id"].ToString();
 
-                            string sqlchkempid = "select empid from empdetails where empid='" + empid + "'";
+                            string sqlchkempid = "select empid from empdetails where empid='" + empid + "' and empstatus=1";
                             DataTable dtchkempid = config.ExecuteAdaptorAsyncWithQueryParams(sqlchkempid).Result;
 
                             if (dtchkempid.Rows.Count > 0)
@@ -2647,7 +2647,7 @@ namespace SRF.P.Module_Reports
                                 ViewState["empid"] = empid;
                                 empid = ViewState["empid"].ToString();
 
-                                string sqlchkempid = "select empid from empdetails where empid='" + empid + "'";
+                                string sqlchkempid = "select empid from empdetails where empid='" + empid + "' and empstatus=1";
                                 DataTable dtchkempid = config.ExecuteAdaptorAsyncWithQueryParams(sqlchkempid).Result;
 
                                 for (int i = 0; i < dtchkempid.Rows.Count; i++)
