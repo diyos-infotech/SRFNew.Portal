@@ -162,7 +162,7 @@ namespace SRF.P.Module_Employees
             }
             return month;
         }
-       
+
         public void ClearNonPaysheetGenerated()
         {
             lblPaysheetGeneratedTime.Text = "";
@@ -175,6 +175,7 @@ namespace SRF.P.Module_Employees
         {
             PaySheetSummary();
             DisplayData();
+            ExcelData();
             GetUniformDedList();
             VisibleFreeze();
             ClearNonPaysheetGenerated();
@@ -40685,6 +40686,7 @@ namespace SRF.P.Module_Employees
                 Fillcname();
                 PaySheetSummary();
                 DisplayData();
+                ExcelData();
                 VisibleFreeze();
                 GetBillingDuties();
                 NonGeneratedPaysheetList();
@@ -40705,6 +40707,7 @@ namespace SRF.P.Module_Employees
                 FillClientid();
                 PaySheetSummary();
                 DisplayData();
+                ExcelData();
                 VisibleFreeze();
                 GetBillingDuties();
                 NonGeneratedPaysheetList();
@@ -42248,6 +42251,7 @@ namespace SRF.P.Module_Employees
         {
 
             DisplayData();
+            ExcelData();
             VisibleFreeze();
             GetBillingDuties();
             lblPaysheetGeneratedTime.Text = "";
@@ -43988,6 +43992,726 @@ namespace SRF.P.Module_Employees
             if (dt.Rows.Count > 0)
             {
                 GVUtill.ExceFromTpaysheet(dt, Filename, line, line1, line2, line3, line4);
+            }
+
+        }
+
+        protected void lbtn_Export_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var formatInfoinfo = new DateTimeFormatInfo();
+                string[] monthName = formatInfoinfo.MonthNames;
+                int payMonth = GetMonth(ddlmonth.SelectedValue);
+                int month = GetMonthBasedOnSelectionDateorMonth();
+                string strQry = "Select * from CompanyInfo  where   ClientidPrefix='" + CmpIDPrefix + "'";
+                DataTable compInfo = SqlHelper.Instance.GetTableByQuery(strQry);
+                string companyName = "Your Company Name";
+                string companyAddress = "Your Company Address";
+
+                if (compInfo.Rows.Count > 0)
+                {
+                    companyName = compInfo.Rows[0]["CompanyName"].ToString();
+                    companyAddress = compInfo.Rows[0]["Address"].ToString();
+                }
+
+                string AddrHno = "";
+
+               
+
+                string selectcontracts = "select typeofwork from Contracts where clientid= '" + ddlClients.SelectedValue + "'";
+                DataTable dtcontraccts = SqlHelper.Instance.GetTableByQuery(selectcontracts);
+                string typeofwork = "";
+                if (dtcontraccts.Rows.Count > 0)
+                {
+                    typeofwork = dtcontraccts.Rows[0]["typeofwork"].ToString() + "";
+                }
+
+              
+                int totalcount = 40;
+
+                
+
+                string line = "[ See Rule 24(9-B) of the Karnataka Shops & Commercial Establishments Rules, 1963] in lieu of";
+
+                string line1 = "Form XVII<br>Register Of Wages<br>Wages Period Monthly<br>For The Month Of " + GetMonthName().ToUpper() + "" + GetMonthOfYear();
+
+                string line2 = "Name & Address of the Establishment Under Which Contract in Carried on  : < br>" + companyName + "<br>" + companyAddress + "";
+
+                string line3 = "1. Form I, II of Rule 22(4): Form IV of Rule 28(2); Form V & VII of Rule 29(1) & (5) of Karnataka Minimum wages Rules 1958;<br>2. Form I of Rules 3 (1) of Karnataka Payment of Wages Rules, 1963;<br> 3. Form XIII of Rules 75; Form XV, XVII, XX, XXI, XXII, XXIII, of Rule 78 (1) a(i), (ii) &(iii) of the Karnataka Contract Labour(Regulation & Abolition) Rules, 1974;<br> 4. Form XIII of Rule 43, Form XVII, XVIII, XIX, XX, XXI, XXII, of Rule 46(2) (a), (c) & (d) of Karnataka inter state Migrant Workmen Rules, 1981";
+
+                string line4 = "Clientid :" + ddlClients.SelectedValue + "";
+
+                string line5 = "Name & Address of Principal Employer : " + ddlcname.SelectedItem + "";
+
+                string line6 = "Client Name : " + ddlcname.SelectedItem + "";
+
+                string line7 = "Place of Payment";
+                string Filename = ddlcname.SelectedItem + "" + GetMonthName().ToUpper() + "" + GetMonthOfYear() + ".xls";
+                GVUtill.ExportGridNew(Filename, totalcount, line, line1, line2, line3, line4, line5, line6, line7, hidGridView);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void ExcelData()
+        {
+            try
+            {
+
+
+                if (ddlClients.SelectedIndex <= 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "Showalert()", "alert('Please Select Client ID/Name')", true);
+                    return;
+                }
+                var Gendays = 0;
+                var formatInfoinfo = new DateTimeFormatInfo();
+                string[] monthName = formatInfoinfo.MonthNames;
+                int payMonth = GetMonth(ddlmonth.SelectedValue);
+                //int month = GetMonthAndYear();
+                int month = GetMonthBasedOnSelectionDateorMonth();
+
+                // Gendays = Timings.Instance.GetNoofDaysForEnteredMonth(mGendays, bPaySheetDates);
+                DateTime LastDay = DateTime.Now;
+                if (Chk_Month.Checked == false)
+                {
+                    LastDay = Timings.Instance.GetLastDayForSelectedMonth(ddlmonth.SelectedIndex);
+                }
+                if (Chk_Month.Checked == true)
+                {
+                    LastDay = DateTime.Parse(Txt_Month.Text, CultureInfo.GetCultureInfo("en-gb"));
+                }
+                DataTable DtEmppaysheet = null;
+                Hashtable HTEmppaysheet = new Hashtable();
+
+                var G_Sdays = 0;
+
+                var ContractID = "";
+                var bBillDates = 0;
+                var bPaySheetDates = 0;
+
+
+                #region  Begin Get Contract Id Based on The Last Day
+
+
+                Hashtable HtGetContractID = new Hashtable();
+                var SPNameForGetContractID = "GetContractIDBasedOnthMonth";
+                HtGetContractID.Add("@clientid", ddlClients.SelectedValue);
+                HtGetContractID.Add("@LastDay", LastDay);
+                // DataTable DTContractID = SqlHelper.Instance.ExecuteStoredProcedureWithParams(SPNameForGetContractID, HtGetContractID);
+                DataTable DTContractID = config.ExecuteAdaptorAsyncWithParams(SPNameForGetContractID, HtGetContractID).Result;
+
+                if (DTContractID.Rows.Count > 0)
+                {
+                    ContractID = DTContractID.Rows[0]["contractid"].ToString();
+                    bBillDates = int.Parse(DTContractID.Rows[0]["BillDates"].ToString());
+                    bPaySheetDates = int.Parse(DTContractID.Rows[0]["PaySheetDates"].ToString());
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('Contract Details Are Not  Avaialable For This Client.');", true);
+                    return;
+                }
+
+                #endregion  End Get Contract Id Based on The Last Day
+
+
+
+
+                DataTable dt = null;
+                string strQry = "Select * from CompanyInfo  where   ClientidPrefix='" + CmpIDPrefix + "'";
+                DataTable compInfo = SqlHelper.Instance.GetTableByQuery(strQry);
+                string companyName = "Your Company Name";
+                string companyAddress = "Your Company Address";
+
+                if (compInfo.Rows.Count > 0)
+                {
+                    companyName = compInfo.Rows[0]["CompanyName"].ToString();
+                    companyAddress = compInfo.Rows[0]["Address"].ToString();
+                }
+
+
+
+
+
+                string selectcontracts = "select typeofwork from Contracts where clientid= '" + ddlClients.SelectedValue + "'";
+                DataTable dtcontraccts = SqlHelper.Instance.GetTableByQuery(selectcontracts);
+                string typeofwork = "";
+                if (dtcontraccts.Rows.Count > 0)
+                {
+                    typeofwork = dtcontraccts.Rows[0]["typeofwork"].ToString() + "";
+                }
+
+                decimal totalActualamount = 0;
+                decimal totalctcamount = 0;
+                decimal totalDuties = 0;
+                decimal totalOts = 0;
+                decimal totalwo = 0;
+                decimal totalnhs = 0;
+                decimal totalnpots = 0;
+                decimal totaltempgross = 0;
+                decimal totalBasic = 0;
+                decimal totalDA = 0;
+                decimal totalHRA = 0;
+                decimal totalTotalPay1 = 0;
+                decimal totalTotalPay2 = 0;
+                decimal totalTotalPay3 = 0;
+                decimal totalElamount = 0;
+                decimal totalLunchAmount = 0;
+                decimal totalPerformanceAllw = 0;
+                decimal totalleavamount = 0;
+                decimal totalCCA = 0;
+                decimal totalConveyance = 0;
+                decimal totalWA = 0;
+                decimal totalOA = 0;
+                decimal totalGrass = 0;
+                decimal totalGendays = 0;
+                decimal totalpresentduties = 0;
+                decimal totalOTAmount = 0;
+                decimal totalPF = 0;
+                decimal totalESI = 0;
+                decimal totalProfTax = 0;
+                decimal totalSalAdv = 0;
+                decimal totalUniformDed = 0;
+                decimal totalAdvDed = 0;
+                decimal totalWCDed = 0;
+                decimal totalCanteenAdv = 0;
+                decimal totalLeaveEncashAmt = 0;
+                decimal totalGratuity = 0;
+                decimal totalBonus = 0;
+                decimal totalnfhs = 0;
+                decimal totalDed = 0;
+                decimal totalOtherDed = 0;
+                decimal totalIncentivs = 0;
+                decimal totalWoAmt = 0;
+                decimal totalNhsAmt = 0;
+                decimal totalNpotsAmt = 0;
+                decimal totalPenalty = 0;
+                decimal totalRC = 0;
+                decimal totalCS = 0;
+                decimal totalOWF = 0;
+                decimal totalSecDepDed = 0;
+                decimal totalloanded = 0;
+                decimal totalGenDed = 0;
+                decimal totalctc = 0;
+
+                decimal totalAttBonus = 0;
+                decimal totalTravelAllw = 0;
+                decimal totalNightShiftAllw = 0;
+                decimal totalFoodAllowance = 0;
+                decimal totalmedicalallowance = 0;
+                decimal totalUniformAllw = 0;
+
+                decimal totalAdv4Ded = 0;
+                decimal totalNightRoundDed = 0;
+                decimal totalManpowerMobDed = 0;
+                decimal totalMobileusageDed = 0;
+                decimal totalMediClaimDed = 0;
+                decimal totalCrisisDed = 0;
+                decimal totalMobInstDed = 0;
+                decimal totalTDSDed = 0;
+
+                decimal totalRoomRentDed = 0;
+                decimal totalSpecialAllowance = 0;
+                decimal totalMobileAllowance = 0;
+                decimal totalNPCl25Per = 0;
+                decimal totalTransport6Per = 0;
+                decimal totalTransport = 0;
+
+                decimal totalRentDed = 0;
+                decimal totalMedicalDed = 0;
+                decimal totalMLWFDed = 0;
+                decimal totalFoodDed = 0;
+                decimal totalAddlAmount = 0;
+
+
+                decimal totalElectricityDed = 0;
+                decimal totalTransportDed = 0;
+                decimal totalDccDed = 0;
+                decimal totalLeaveDed = 0;
+                decimal totalLicenseDed = 0;
+                decimal totalpfempr = 0;
+                decimal totalesiempr = 0;
+                decimal totalDiv = 0;
+                decimal totalArea = 0;
+                decimal totalTelephoneBillDed = 0;
+                decimal totalPetrolAllowance = 0;
+
+                string SelectmonthWithbankacno = string.Empty;
+                string SelectmonthWithoutbankacno = string.Empty;
+                //DataTable dt = null;
+
+
+                var clientid = ddlClients.SelectedValue;
+                var Paysheetoption = ddlpaymenttype.SelectedIndex;
+                var Noofattendance = ddlnoofattendance.SelectedIndex;
+                var pfesioptions = ddl_Pf_Esi_Options.SelectedIndex;
+
+                var SPName = "";
+                Hashtable HTPaysheet = new Hashtable();
+                SPName = "IMEPaysheetpdfs";
+                HTPaysheet.Add("@ClientId", clientid);
+                HTPaysheet.Add("@month", month);
+                HTPaysheet.Add("@PaymentOption", 13);
+                HTPaysheet.Add("@Attendance", 0);
+                HTPaysheet.Add("@PfesiOptions", 0);
+                HTPaysheet.Add("@Gendays", Gendays);
+
+                dt = SqlHelper.Instance.ExecuteStoredProcedureWithParams(SPName, HTPaysheet);
+
+                if (dt.Rows.Count > 0)
+                {
+
+                    GVListEmployees.DataSource = dt;
+                    GVListEmployees.DataBind();
+                    lbtn_Export.Visible = true;
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        decimal actAmount = 0;
+                        string actualAmount = dt.Rows[i]["ActualAmount"].ToString();
+                        if (actualAmount.Trim().Length > 0)
+                        {
+                            actAmount = Convert.ToDecimal(actualAmount);
+                        }
+                        //if (actAmount >= 0)
+                        {
+                            totalActualamount += actAmount;
+                            string duties = dt.Rows[i]["NoOfDuties"].ToString();
+                            if (duties.Trim().Length > 0)
+                            {
+                                totalDuties += Convert.ToDecimal(duties);
+                            }
+                            string ots = dt.Rows[i]["OTs"].ToString();
+                            if (ots.Trim().Length > 0)
+                            {
+                                totalOts += Convert.ToDecimal(ots);
+                            }
+
+                            string wos = dt.Rows[i]["wo"].ToString();
+                            if (wos.Trim().Length > 0)
+                            {
+                                totalwo += Convert.ToDecimal(wos);
+                            }
+                            string nhs = dt.Rows[i]["nhs"].ToString();
+                            if (nhs.Trim().Length > 0)
+                            {
+                                totalnhs += Convert.ToDecimal(nhs);
+                            }
+                            string npots = dt.Rows[i]["npots"].ToString();
+                            if (npots.Trim().Length > 0)
+                            {
+                                totalnpots += Convert.ToDecimal(npots);
+                            }
+                            string ntempgross = dt.Rows[i]["tempgross"].ToString();
+                            if (ntempgross.Trim().Length > 0)
+                            {
+                                totaltempgross += Convert.ToDecimal(ntempgross);
+                            }
+
+                            string strBasic = dt.Rows[i]["Basic"].ToString();
+                            if (strBasic.Trim().Length > 0)
+                            {
+                                totalBasic += Convert.ToDecimal(strBasic);
+                            }
+                            string strDA = dt.Rows[i]["DA"].ToString();
+                            if (strDA.Trim().Length > 0)
+                            {
+                                totalDA += Convert.ToDecimal(strDA);
+                            }
+                            string strhHRA = dt.Rows[i]["HRA"].ToString();
+                            if (strhHRA.Trim().Length > 0)
+                            {
+                                totalHRA += Convert.ToDecimal(strhHRA);
+                            }
+                            string strCCA = dt.Rows[i]["CCA"].ToString();
+                            if (strCCA.Trim().Length > 0)
+                            {
+                                totalCCA += Convert.ToDecimal(strCCA);
+                            }
+                            string strConveyance = dt.Rows[i]["Conveyance"].ToString();
+                            if (strConveyance.Trim().Length > 0)
+                            {
+                                totalConveyance += Convert.ToDecimal(strConveyance);
+                            }
+                            string strWA = dt.Rows[i]["WashAllowance"].ToString();
+                            if (strWA.Trim().Length > 0)
+                            {
+                                totalWA += Convert.ToDecimal(strWA);
+                            }
+                            string strOA = dt.Rows[i]["OtherAllowance"].ToString();
+                            if (strOA.Trim().Length > 0)
+                            {
+                                totalOA += Convert.ToDecimal(strOA);
+                            }
+                            string strLeaveEncashAmt = dt.Rows[i]["LeaveEncashAmt"].ToString();
+                            if (strCCA.Trim().Length > 0)
+                            {
+                                totalLeaveEncashAmt += Convert.ToDecimal(strLeaveEncashAmt);
+                            }
+                            string strGratuity = dt.Rows[i]["Gratuity"].ToString();
+                            if (strGratuity.Trim().Length > 0)
+                            {
+                                totalGratuity += Convert.ToDecimal(strGratuity);
+                            }
+                            string strBonus = dt.Rows[i]["Bonus"].ToString();
+                            if (strBonus.Trim().Length > 0)
+                            {
+                                totalBonus += Convert.ToDecimal(strBonus);
+                            }
+                            string strNfhs = dt.Rows[i]["Nfhs"].ToString();
+                            if (strNfhs.Trim().Length > 0)
+                            {
+                                totalnfhs += Convert.ToDecimal(strNfhs);
+                            }
+
+                            string strGross = dt.Rows[i]["Gross"].ToString();
+                            if (strGross.Trim().Length > 0)
+                            {
+                                totalGrass += Convert.ToDecimal(strGross);
+                            }
+
+
+                            string strIncentivs = dt.Rows[i]["Incentivs"].ToString();
+                            if (strIncentivs.Trim().Length > 0)
+                            {
+                                totalIncentivs += Convert.ToDecimal(strIncentivs);
+                            }
+
+                            string strOTAmount = dt.Rows[i]["OTAmt"].ToString();
+                            if (strOTAmount.Trim().Length > 0)
+                            {
+                                totalOTAmount += Convert.ToDecimal(strOTAmount);
+                            }
+                            string strPF = dt.Rows[i]["PF"].ToString();
+                            if (strPF.Trim().Length > 0)
+                            {
+                                totalPF += Convert.ToDecimal(strPF);
+                            }
+                            string strESI = dt.Rows[i]["ESI"].ToString();
+                            if (strESI.Trim().Length > 0)
+                            {
+                                totalESI += Convert.ToDecimal(strESI);
+                            }
+                            string strProfTax = dt.Rows[i]["ProfTax"].ToString();
+                            if (strProfTax.Trim().Length > 0)
+                            {
+                                totalProfTax += Convert.ToDecimal(strProfTax);
+                            }
+
+                            string strSalAdv = dt.Rows[i]["SalAdvDed"].ToString();
+                            if (strSalAdv.Trim().Length > 0)
+                            {
+                                totalSalAdv += Convert.ToDecimal(strSalAdv);
+                            }
+
+                            string strUniformDed = dt.Rows[i]["UniformDed"].ToString();
+                            if (strUniformDed.Trim().Length > 0)
+                            {
+                                totalUniformDed += Convert.ToDecimal(strUniformDed);
+                            }
+
+                            string strOtherDed = dt.Rows[i]["OtherDed"].ToString();
+                            if (strOtherDed.Trim().Length > 0)
+                            {
+                                totalOtherDed += Convert.ToDecimal(strOtherDed);
+                            }
+                            string strCanteenAdv = dt.Rows[i]["CanteenAdv"].ToString();
+                            if (strCanteenAdv.Trim().Length > 0)
+                            {
+                                totalCanteenAdv += Convert.ToDecimal(strCanteenAdv);
+                            }
+
+                            string strDed = dt.Rows[i]["TotalDeductions"].ToString();
+                            if (strDed.Trim().Length > 0)
+                            {
+                                totalDed += Convert.ToDecimal(strDed);
+                            }
+
+
+                            //New code add as on 24/12/2013 by venkat
+
+                            string strWoAmt = dt.Rows[i]["WOAmt"].ToString();
+                            if (strWoAmt.Trim().Length > 0)
+                            {
+                                totalWoAmt += Convert.ToDecimal(strWoAmt);
+                            }
+
+                            string strNhsAmt = dt.Rows[i]["Nhsamt"].ToString();
+                            if (strNhsAmt.Trim().Length > 0)
+                            {
+                                totalNhsAmt += Convert.ToDecimal(strNhsAmt);
+                            }
+
+                            string strNpotsAmt = dt.Rows[i]["Npotsamt"].ToString();
+                            if (strNpotsAmt.Trim().Length > 0)
+                            {
+                                totalNpotsAmt += Convert.ToDecimal(strNpotsAmt);
+                            }
+
+                            string strPenalty = dt.Rows[i]["Penalty"].ToString();
+                            if (strPenalty.Trim().Length > 0)
+                            {
+                                totalPenalty += Convert.ToDecimal(strPenalty);
+                            }
+
+                            string strRC = dt.Rows[i]["RC"].ToString();
+                            if (strRC.Trim().Length > 0)
+                            {
+                                totalRC += Convert.ToDecimal(strRC);
+                            }
+
+                            string strCS = dt.Rows[i]["CS"].ToString();
+                            if (strCS.Trim().Length > 0)
+                            {
+                                totalCS += Convert.ToDecimal(strCS);
+                            }
+
+                            string strOWF = dt.Rows[i]["OWF"].ToString();
+                            if (strOWF.Trim().Length > 0)
+                            {
+                                totalOWF += Convert.ToDecimal(strOWF);
+                            }
+
+                            string strSecDep = dt.Rows[i]["SecurityDepDed"].ToString();
+                            if (strSecDep.Trim().Length > 0)
+                            {
+                                totalSecDepDed += Convert.ToDecimal(strSecDep);
+                            }
+
+                            string strRoomRent = dt.Rows[i]["RoomRentDed"].ToString();
+                            if (strRoomRent.Trim().Length > 0)
+                            {
+                                totalRoomRentDed += Convert.ToDecimal(strRoomRent);
+                            }
+
+                            string strGeneralDed = dt.Rows[i]["GeneralDed"].ToString();
+                            if (strGeneralDed.Trim().Length > 0)
+                            {
+                                totalGenDed += Convert.ToDecimal(strGeneralDed);
+                            }
+
+                        }
+                    }
+
+
+                    #region for old code
+
+
+                    #endregion for old code
+
+
+                    Label lblTotalNetAmount = GVListEmployees.FooterRow.FindControl("lblTotalNetAmount") as Label;
+                    lblTotalNetAmount.Text = Math.Round(totalActualamount).ToString();
+
+                    Label lblTotalDuties = GVListEmployees.FooterRow.FindControl("lblTotalDuties") as Label;
+                    lblTotalDuties.Text = Math.Round(totalDuties).ToString();
+
+                    Label lblTotaltempgross = GVListEmployees.FooterRow.FindControl("lblTotaltempgross") as Label;
+                    lblTotaltempgross.Text = Math.Round(totaltempgross).ToString();
+
+                    Label lblTotalBasic = GVListEmployees.FooterRow.FindControl("lblTotalBasic") as Label;
+                    lblTotalBasic.Text = Math.Round(totalBasic).ToString();
+
+                    Label lblTotalGross = GVListEmployees.FooterRow.FindControl("lblTotalGross") as Label;
+                    lblTotalGross.Text = Math.Round(totalGrass).ToString();
+
+
+                    Label lblTotalOTs = GVListEmployees.FooterRow.FindControl("lblTotalOTs") as Label;
+                    lblTotalOTs.Text = Math.Round(totalOts).ToString();
+
+
+
+                    Label lblTotalPF = GVListEmployees.FooterRow.FindControl("lblTotalPF") as Label;
+                    lblTotalPF.Text = Math.Round(totalPF).ToString();
+
+
+
+                    Label lblTotalESI = GVListEmployees.FooterRow.FindControl("lblTotalESI") as Label;
+                    lblTotalESI.Text = Math.Round(totalESI).ToString();
+
+
+
+                    Label lblTotalDA = GVListEmployees.FooterRow.FindControl("lblTotalDA") as Label;
+                    lblTotalDA.Text = Math.Round(totalDA).ToString();
+
+
+                    Label lblTotalHRA = GVListEmployees.FooterRow.FindControl("lblTotalHRA") as Label;
+                    lblTotalHRA.Text = Math.Round(totalHRA).ToString();
+
+
+
+                    Label lblTotalCCA = GVListEmployees.FooterRow.FindControl("lblTotalCCA") as Label;
+                    lblTotalCCA.Text = Math.Round(totalCCA).ToString();
+
+
+
+                    Label lblTotalConveyance = GVListEmployees.FooterRow.FindControl("lblTotalConveyance") as Label;
+                    lblTotalConveyance.Text = Math.Round(totalConveyance).ToString();
+
+
+
+                    Label lblTotalWA = GVListEmployees.FooterRow.FindControl("lblTotalWA") as Label;
+                    lblTotalWA.Text = Math.Round(totalWA).ToString();
+
+
+
+                    Label lblTotalOA = GVListEmployees.FooterRow.FindControl("lblTotalOA") as Label;
+                    lblTotalOA.Text = Math.Round(totalOA).ToString();
+
+
+
+
+                    Label lblTotalLeaveEncashAmt = GVListEmployees.FooterRow.FindControl("lblTotalLeaveEncashAmt") as Label;
+                    lblTotalLeaveEncashAmt.Text = Math.Round(totalLeaveEncashAmt).ToString();
+
+
+                    Label lblTotalGratuity = GVListEmployees.FooterRow.FindControl("lblTotalGratuity") as Label;
+                    lblTotalGratuity.Text = Math.Round(totalGratuity).ToString();
+
+
+
+                    Label lblTotalBonus = GVListEmployees.FooterRow.FindControl("lblTotalBonus") as Label;
+                    lblTotalBonus.Text = Math.Round(totalBonus).ToString();
+
+
+
+
+                    Label lblTotalNfhs = GVListEmployees.FooterRow.FindControl("lblTotalNfhs") as Label;
+                    lblTotalNfhs.Text = Math.Round(totalnfhs).ToString();
+
+
+
+                    Label lblTotalrc = GVListEmployees.FooterRow.FindControl("lblTotalrc") as Label;
+                    lblTotalrc.Text = Math.Round(totalRC).ToString();
+
+
+
+                    Label lblTotalcs = GVListEmployees.FooterRow.FindControl("lblTotalcs") as Label;
+                    lblTotalcs.Text = Math.Round(totalCS).ToString();
+
+
+
+
+
+                    Label lblTotalIncentivs = GVListEmployees.FooterRow.FindControl("lblTotalIncentivs") as Label;
+                    lblTotalIncentivs.Text = Math.Round(totalIncentivs).ToString();
+
+
+
+
+
+
+                    Label lblTotalWOAmount = GVListEmployees.FooterRow.FindControl("lblTotalWOAmount") as Label;
+                    lblTotalWOAmount.Text = Math.Round(totalWoAmt).ToString();
+
+
+
+                    Label lblTotalNhsAmount = GVListEmployees.FooterRow.FindControl("lblTotalNhsAmount") as Label;
+                    lblTotalNhsAmount.Text = Math.Round(totalNhsAmt).ToString();
+
+
+
+
+                    Label lblTotalNpotsAmount = GVListEmployees.FooterRow.FindControl("lblTotalNpotsAmount") as Label;
+                    lblTotalNpotsAmount.Text = Math.Round(totalNpotsAmt).ToString();
+
+
+
+
+                    Label lblTotalOTAmount = GVListEmployees.FooterRow.FindControl("lblTotalOTAmount") as Label;
+                    lblTotalOTAmount.Text = Math.Round(totalOTAmount).ToString();
+
+
+
+
+                    Label lblTotalProfTax = GVListEmployees.FooterRow.FindControl("lblTotalProfTax") as Label;
+                    lblTotalProfTax.Text = Math.Round(totalProfTax).ToString();
+
+
+
+                    Label lblTotalsaladv = GVListEmployees.FooterRow.FindControl("lblTotalsaladv") as Label;
+                    lblTotalsaladv.Text = Math.Round(totalSalAdv).ToString();
+
+
+
+                    Label lblTotalUniformDed = GVListEmployees.FooterRow.FindControl("lblTotalUniformDed") as Label;
+                    lblTotalUniformDed.Text = Math.Round(totalUniformDed).ToString();
+
+
+
+
+                    Label lblTotalOtherDed = GVListEmployees.FooterRow.FindControl("lblTotalOtherDed") as Label;
+                    lblTotalOtherDed.Text = Math.Round(totalOtherDed).ToString();
+
+
+
+                    Label lblTotalRoomRentDed = GVListEmployees.FooterRow.FindControl("lblTotalRoomRentDed") as Label;
+                    lblTotalRoomRentDed.Text = Math.Round(totalRoomRentDed).ToString();
+
+
+
+                    Label lblTotalCanteenAdv = GVListEmployees.FooterRow.FindControl("lblTotalcantadv") as Label;
+                    lblTotalCanteenAdv.Text = Math.Round(totalCanteenAdv).ToString();
+
+
+
+
+
+                    Label lblTotalSecDepDed = GVListEmployees.FooterRow.FindControl("lblTotalSecDepDed") as Label;
+                    lblTotalSecDepDed.Text = Math.Round(totalSecDepDed).ToString();
+
+
+
+
+
+                    Label lblTotalGeneralDed = GVListEmployees.FooterRow.FindControl("lblTotalGeneralDed") as Label;
+                    lblTotalGeneralDed.Text = Math.Round(totalGenDed).ToString();
+
+
+
+
+                    Label lblTotalowf = GVListEmployees.FooterRow.FindControl("lblTotalowf") as Label;
+                    lblTotalowf.Text = Math.Round(totalOWF).ToString();
+
+
+                    Label lblTotalPenalty = GVListEmployees.FooterRow.FindControl("lblTotalPenalty") as Label;
+                    lblTotalPenalty.Text = Math.Round(totalPenalty).ToString();
+
+
+
+
+
+                    Label lblTotalDeductions = GVListEmployees.FooterRow.FindControl("lblTotalDeductions") as Label;
+                    lblTotalDeductions.Text = Math.Round(totalDed).ToString();
+
+
+                    //New code add as on 24/12/2013 by venkat
+
+
+
+
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        protected void GVListEmployees_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Cells[1].Attributes.Add("class", "text");
+                e.Row.Cells[40].Attributes.Add("class", "text");
             }
 
         }

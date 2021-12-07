@@ -211,6 +211,15 @@ namespace SRF.P.Module_Employees {
         protected global::System.Web.UI.WebControls.Button btndownloadpdffile;
         
         /// <summary>
+        /// lbtn_Export control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_Export;
+        
+        /// <summary>
         /// btnFreeze control.
         /// </summary>
         /// <remarks>
@@ -443,6 +452,33 @@ namespace SRF.P.Module_Employees {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvattendancezero;
+        
+        /// <summary>
+        /// hidGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidGridView;
+        
+        /// <summary>
+        /// forExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl forExport;
+        
+        /// <summary>
+        /// GVListEmployees control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GVListEmployees;
         
         /// <summary>
         /// lblpayment control.

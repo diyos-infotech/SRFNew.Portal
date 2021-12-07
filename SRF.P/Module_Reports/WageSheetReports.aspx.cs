@@ -1563,7 +1563,6 @@ namespace SRF.P.Module_Reports
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 e.Row.Cells[46].Attributes.Add("class", "text");
-                //((Label)e.Row.FindControl("lblmonth")).Text = GetMonthName() + "-" + GetMonthOfYear();
             }
 
         }

@@ -44,12 +44,26 @@
 
     <script type="text/javascript">
 
+        function AssignExportHTML() {
+            document.getElementById("ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder3_hidGridView").value =
+                htmlEscape(ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder3_forExport.innerHTML);
+        }
+        function htmlEscape(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+
+
         function setProperty() {
             $.widget("custom.combobox", {
                 _create: function () {
                     this.wrapper = $("<span>")
-                      .addClass("custom-combobox")
-                      .insertAfter(this.element);
+                        .addClass("custom-combobox")
+                        .insertAfter(this.element);
 
                     this.element.hide();
                     this._createAutocomplete();
@@ -58,23 +72,23 @@
 
                 _createAutocomplete: function () {
                     var selected = this.element.children(":selected"),
-                      value = selected.val() ? selected.text() : "";
+                        value = selected.val() ? selected.text() : "";
 
                     this.input = $("<input>")
-                      .appendTo(this.wrapper)
-                      .val(value)
-                      .attr("title", "")
-                      .addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
-                      .autocomplete({
-                          delay: 0,
-                          minLength: 0,
-                          source: $.proxy(this, "_source")
-                      })
-                      .tooltip({
-                          classes: {
-                              "ui-tooltip": "ui-state-highlight"
-                          }
-                      });
+                        .appendTo(this.wrapper)
+                        .val(value)
+                        .attr("title", "")
+                        .addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
+                        .autocomplete({
+                            delay: 0,
+                            minLength: 0,
+                            source: $.proxy(this, "_source")
+                        })
+                        .tooltip({
+                            classes: {
+                                "ui-tooltip": "ui-state-highlight"
+                            }
+                        });
 
                     this._on(this.input, {
                         autocompleteselect: function (event, ui) {
@@ -90,35 +104,35 @@
 
                 _createShowAllButton: function () {
                     var input = this.input,
-                      wasOpen = false;
+                        wasOpen = false;
 
                     $("<a>")
-                      .attr("tabIndex", -1)
-                      .attr("title", "Show All Items")
-                      .tooltip()
-                      .appendTo(this.wrapper)
-                      .button({
-                          icons: {
-                              primary: "ui-icon-triangle-1-s"
-                          },
-                          text: false
-                      })
-                      .removeClass("ui-corner-all")
-                      .addClass("custom-combobox-toggle ui-corner-right")
-                      .on("mousedown", function () {
-                          wasOpen = input.autocomplete("widget").is(":visible");
-                      })
-                      .on("click", function () {
-                          input.trigger("focus");
+                        .attr("tabIndex", -1)
+                        .attr("title", "Show All Items")
+                        .tooltip()
+                        .appendTo(this.wrapper)
+                        .button({
+                            icons: {
+                                primary: "ui-icon-triangle-1-s"
+                            },
+                            text: false
+                        })
+                        .removeClass("ui-corner-all")
+                        .addClass("custom-combobox-toggle ui-corner-right")
+                        .on("mousedown", function () {
+                            wasOpen = input.autocomplete("widget").is(":visible");
+                        })
+                        .on("click", function () {
+                            input.trigger("focus");
 
-                          // Close if already visible
-                          if (wasOpen) {
-                              return;
-                          }
+                            // Close if already visible
+                            if (wasOpen) {
+                                return;
+                            }
 
-                          // Pass empty string as value to search for, displaying all results
-                          input.autocomplete("search", "");
-                      });
+                            // Pass empty string as value to search for, displaying all results
+                            input.autocomplete("search", "");
+                        });
                 },
 
                 _source: function (request, response) {
@@ -143,8 +157,8 @@
 
                     // Search for a match (case-insensitive)
                     var value = this.input.val(),
-                      valueLowerCase = value.toLowerCase(),
-                      valid = false;
+                        valueLowerCase = value.toLowerCase(),
+                        valid = false;
                     this.element.children("option").each(function () {
                         if ($(this).text().toLowerCase() === valueLowerCase) {
                             this.selected = valid = true;
@@ -159,9 +173,9 @@
 
                     // Remove invalid value
                     this.input
-                      .val("")
-                      .attr("title", value + " didn't match any item")
-                      .tooltip("open");
+                        .val("")
+                        .attr("title", value + " didn't match any item")
+                        .tooltip("open");
                     this.element.val("");
                     this._delay(function () {
                         this.input.tooltip("close").attr("title", "");
@@ -176,23 +190,23 @@
             });
             $(".ddlautocomplete").combobox({
                 select: function (event, ui) { $("#<%=ddlClients.ClientID %>").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientidchange(event, ui); },
-                  select: function (event, ui) { $("#<%=ddlcname.ClientID %>").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientnamechange(event, ui); },
+                select: function (event, ui) { $("#<%=ddlcname.ClientID %>").attr("data-clientId", ui.item.value); OnAutoCompleteDDLClientnamechange(event, ui); },
 
-                  minLength: 4
-              });
-          }
+                minLength: 4
+            });
+        }
 
-          $(document).ready(function () {
-              setProperty();
-          });
+        $(document).ready(function () {
+            setProperty();
+        });
 
-          function OnAutoCompleteDDLClientidchange(event, ui) {
-              $("#<%=ddlClients.ClientID %>").trigger('change');
-          }
+        function OnAutoCompleteDDLClientidchange(event, ui) {
+            $("#<%=ddlClients.ClientID %>").trigger('change');
+        }
 
-          function OnAutoCompleteDDLClientnamechange(event, ui) {
-              $("#<%=ddlcname.ClientID %>").trigger('change');
-          }
+        function OnAutoCompleteDDLClientnamechange(event, ui) {
+            $("#<%=ddlcname.ClientID %>").trigger('change');
+        }
 
     </script>
 
@@ -338,9 +352,15 @@
                                             <td>
                                                 <asp:Button ID="btndownloadpdffile" runat="server" Text="Download" class="btn save"
                                                     OnClick="btndownloadpdffile_Click" />
+                                                <br />  
+                                                 <asp:LinkButton ID="lbtn_Export" runat="server" OnClick="lbtn_Export_Click" OnClientClick="AssignExportHTML()">Export to Excel</asp:LinkButton>
                                             </td>
                                         </tr>
-
+                                        <tr>
+                                            <td>
+                                               
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td colspan="11"></td>
                                             <td>
@@ -1043,6 +1063,460 @@
                                         <AlternatingRowStyle BackColor="White" />
                                     </asp:GridView>
                                     <br />
+                                </div>
+                                <asp:HiddenField ID="hidGridView" runat="server" />
+                                <div id="forExport" class="rounded_corners" runat="server" style="overflow: scroll">
+                                    <asp:GridView ID="GVListEmployees" runat="server" AutoGenerateColumns="False" CellPadding="10" Style="margin: 0px auto; margin-top: 10px;"
+                                        OnRowDataBound="GVListEmployees_RowDataBound">
+                                        <Columns>
+                                            <%-- 0--%>
+                                            <asp:TemplateField HeaderText="S.No" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblSno" runat="server" Text="<%#Container.DataItemIndex+1 %>"></asp:Label>
+                                                </ItemTemplate>
+                                                <EditItemTemplate>
+                                                    <asp:Label ID="lblSno" runat="server" Text="<%#Container.DataItemIndex+1 %>"></asp:Label>
+                                                </EditItemTemplate>
+                                            </asp:TemplateField>
+
+
+
+                                            <%-- 3--%>
+                                            <asp:TemplateField HeaderText="Emp Id" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblempid" runat="server" Text='<%#Bind("EmpId") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 4--%>
+                                            <asp:TemplateField HeaderText="Name" ItemStyle-HorizontalAlign="Left">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label1" runat="server" Text=" Name : " Style="font-weight: bold"></asp:Label>
+                                                    <asp:Label ID="lblempname" runat="server" Text='<%#Bind("FullName") %>'></asp:Label><br />
+
+                                                    <asp:Label ID="lblepfNo1" runat="server" Text=" EPF No : " Style="font-weight: bold"></asp:Label>
+                                                    <asp:Label ID="lblepfNo1v" runat="server" Text='<%#Bind("EmpEpfNo") %>'></asp:Label><br />
+
+                                                    <asp:Label ID="lblesiNo" runat="server" Text=" ESI No : " Style="font-weight: bold"></asp:Label>
+                                                    <asp:Label ID="lblesiNov" runat="server" Text='<%#Bind("EmpEsiNo") %>'></asp:Label><br />
+
+                                                    <asp:Label ID="Label2" runat="server" Text="UAN No : " Style="font-weight: bold"></asp:Label>
+                                                    <asp:Label ID="Label3" runat="server" Text='<%#Bind("EmpUANNumber") %>'></asp:Label><br />
+
+
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Left" />
+                                            </asp:TemplateField>
+
+                                            <%-- 5--%>
+                                            <asp:TemplateField HeaderText="Desgn" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lbldesgn" runat="server" Text='<%#Bind("Desgn") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+
+
+                                            <%-- 7--%>
+                                            <asp:TemplateField HeaderText="Duties" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lbldutyhrs" runat="server" Text='<%#Bind("NoOfDuties") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalDuties" Text=""></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 8--%>
+                                            <asp:TemplateField HeaderText="ED" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblOts" runat="server" Text='<%#Bind("OTs") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalOTs"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+
+                                            <%-- 12--%>
+                                            <asp:TemplateField HeaderText="Sal Rate" ItemStyle-Width="2%" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lbltempgross" runat="server" Text='<%#Bind("TempGross") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotaltempgross"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+
+
+
+                                            <%-- 13--%>
+
+                                            <asp:TemplateField HeaderText="Basic" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <%-- <asp:Label ID="lblbasic" runat="server" Text='<%#Bind("basic") %>'>--%>
+                                                    <asp:Label ID="lblbasic" runat="server" Text='<%#Eval("basic", "{0:0}") %>'>
+                                                    </asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalBasic"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 14--%>
+                                            <asp:TemplateField HeaderText="DA" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblda" runat="server" Text='<%#Eval("da","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalDA"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 15--%>
+                                            <asp:TemplateField HeaderText="HRA" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblhra" runat="server" Text='<%#Bind("hra","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalHRA"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 16--%>
+                                            <asp:TemplateField HeaderText="CCA" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblcca" runat="server" Text='<%#Bind("CCa","{0:0}") %>'>  
+                                                    </asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalCCA"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 17--%>
+                                            <asp:TemplateField HeaderText="Conv" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblConveyance" runat="server" Text='<%#Bind("conveyance","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalConveyance"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 18--%>
+                                            <asp:TemplateField HeaderText="W.A." ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblwashallowance" runat="server" Text='<%#Bind("WashAllowance","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalWA"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 19--%>
+                                            <asp:TemplateField HeaderText="O.A." ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblOtherallowance" runat="server" Text='<%#Bind("OtherAllowance","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalOA"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 20--%>
+                                            <asp:TemplateField HeaderText="L.W" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblLeaveEncashAmt" runat="server" Text='<%#Bind("LeaveEncashAmt","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalLeaveEncashAmt"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 21--%>
+                                            <asp:TemplateField HeaderText="Gratuity" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblGratuity" runat="server" Text='<%#Bind("Gratuity","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalGratuity"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 22--%>
+                                            <asp:TemplateField HeaderText="Bonus" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblBonus" runat="server" Text='<%#Bind("Bonus","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalBonus"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 23--%>
+                                            <asp:TemplateField HeaderText="Nfhs" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblNfhs" runat="server" Text='<%#Bind("Nfhs","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalNfhs"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 24--%>
+                                            <asp:TemplateField HeaderText="RC" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblrc" runat="server" Text='<%#Bind("rc","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalrc"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 25--%>
+                                            <asp:TemplateField HeaderText="CS" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblcs" runat="server" Text='<%#Bind("cs","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalcs"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+
+                                            <%-- 26--%>
+
+                                            <asp:TemplateField HeaderText="Incentivs" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblIncentivs" runat="server" Text='<%#Bind("Incentivs","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalIncentivs"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 27--%>
+
+                                            <asp:TemplateField HeaderText="WO Amt" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblWoAmt" runat="server" Text='<%#Bind("WOAmt","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalWOAmount"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 28--%>
+
+                                            <asp:TemplateField HeaderText="NHs Amt" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblNhsAmt" runat="server" Text='<%#Bind("Nhsamt","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalNhsAmount"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 29--%>
+
+                                            <asp:TemplateField HeaderText="NPOTs Amt" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblNpotsAmt" runat="server" Text='<%#Bind("Npotsamt","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalNpotsAmount"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+
+
+                                            <%-- 30--%>
+                                            <asp:TemplateField HeaderText="Gross" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblGross" runat="server" Text='<%#Bind("Gross","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalGross"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+
+                                            <%-- 31--%>
+
+                                            <asp:TemplateField HeaderText="OT Amt" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblOTAmt" runat="server" Text='<%#Bind("OTAmt","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalOTAmount"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+
+
+                                            <%-- 32--%>
+                                            <asp:TemplateField HeaderText="PF" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblPF" runat="server" Text='<%#Bind("PF","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalPF"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 33--%>
+                                            <asp:TemplateField HeaderText="ESI" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblESI" runat="server" Text='<%#Bind("ESI","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalESI"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 34--%>
+                                            <asp:TemplateField HeaderText="ProfTax" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblProfTax" runat="server" Text='<%#Bind("ProfTax","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalProfTax"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 35--%>
+                                            <asp:TemplateField HeaderText="Sal.Adv" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblsaladv" runat="server" Text='<%#Bind("SalAdvDed","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalsaladv"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 36--%>
+                                            <asp:TemplateField HeaderText="Uniform" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lbluniform" runat="server" Text='<%#Bind("UniformDed","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <div style="text-align: justify">
+                                                        <asp:Label runat="server" ID="lblTotalUniformDed"></asp:Label>
+                                                    </div>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+
+
+                                            <%-- 37--%>
+                                            <asp:TemplateField HeaderText="Other Ded" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblOtherDed" runat="server" Text='<%#Bind("OtherDed","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <div style="text-align: justify">
+                                                        <asp:Label runat="server" ID="lblTotalOtherDed"></asp:Label>
+                                                    </div>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 38--%>
+                                            <asp:TemplateField HeaderText="Room Rent" ItemStyle-HorizontalAlign="Center" Visible="false">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblRoomRentDed" runat="server" Text='<%#Bind("RoomRentDed","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <div style="text-align: justify">
+                                                        <asp:Label runat="server" ID="lblTotalRoomRentDed"></asp:Label>
+                                                    </div>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 39--%>
+                                            <asp:TemplateField HeaderText="Mess Ded" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblcantadv" runat="server" Text='<%#Bind("CanteenAdv","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <div style="text-align: justify">
+                                                        <asp:Label runat="server" ID="lblTotalcantadv"></asp:Label>
+                                                    </div>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 40--%>
+                                            <asp:TemplateField HeaderText="Sec Dep" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblSecDepDed" runat="server" Text='<%#Bind("SecurityDepDed","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <div style="text-align: justify">
+                                                        <asp:Label runat="server" ID="lblTotalSecDepDed"></asp:Label>
+                                                    </div>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 41--%>
+                                            <asp:TemplateField HeaderText="Gen Ded" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblGeneralDed" runat="server" Text='<%#Bind("GeneralDed","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <div style="text-align: justify">
+                                                        <asp:Label runat="server" ID="lblTotalGeneralDed"></asp:Label>
+                                                    </div>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+
+
+                                            <%-- 42--%>
+                                            <asp:TemplateField HeaderText="LWF" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblowf" runat="server" Text='<%#Bind("OWF","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <div style="text-align: justify">
+                                                        <asp:Label runat="server" ID="lblTotalowf"></asp:Label>
+                                                    </div>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 43--%>
+                                            <asp:TemplateField HeaderText="Rent" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblPenalty" runat="server" Text='<%#Bind("Penalty","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <div style="text-align: justify">
+                                                        <asp:Label runat="server" ID="lblTotalPenalty"></asp:Label>
+                                                    </div>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+
+
+                                            <%-- 44--%>
+                                            <asp:TemplateField HeaderText="Total Ded" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblDeductions" runat="server" Text='<%#Bind("TotalDeductions","{0:0}") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalDeductions"></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+
+                                            <%-- 45--%>
+                                            <asp:TemplateField HeaderText="Net Amt" ItemStyle-HorizontalAlign="Center">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblnetamount" runat="server" Text='<%#Bind("ActualAmount","{0:0}") %>'> </asp:Label>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <asp:Label runat="server" ID="lblTotalNetAmount" Text=""></asp:Label>
+                                                </FooterTemplate>
+                                            </asp:TemplateField>
+                                            <%-- 46--%>
+                                            <asp:TemplateField HeaderText="Bank A/c No./ Signature" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="15px">
+                                                <HeaderStyle Width="15px" />
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblEmpBankAcNo" runat="server" Text='<%#Bind("EmpBankAcNo") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+
+
+                                        </Columns>
+
+                                    </asp:GridView>
                                 </div>
                                 <div style="margin-left: 550px; margin-top: 150px; display: none">
                                     <asp:Label ID="lblpayment" runat="server" Text="Total Amount For This Month" Style="color: Red"></asp:Label>
