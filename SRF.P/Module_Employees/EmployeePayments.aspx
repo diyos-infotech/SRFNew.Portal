@@ -1065,8 +1065,8 @@
                                     <br />
                                 </div>
                                 <asp:HiddenField ID="hidGridView" runat="server" />
-                                <div id="forExport" class="rounded_corners" runat="server" style="overflow: scroll">
-                                    <asp:GridView ID="GVListEmployees" runat="server" AutoGenerateColumns="False" CellPadding="10" Style="margin: 0px auto; margin-top: 10px;"
+                                <div id="forExport" class="rounded_corners" runat="server" style="overflow: scroll;display:none">
+                                    <asp:GridView ID="GVListEmployees" runat="server"  AutoGenerateColumns="False" CellPadding="10" Style="margin: 0px auto; margin-top: 10px;"
                                         OnRowDataBound="GVListEmployees_RowDataBound">
                                         <Columns>
                                             <%-- 0--%>

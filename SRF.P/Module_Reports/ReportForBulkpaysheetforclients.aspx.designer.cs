@@ -175,6 +175,15 @@ namespace SRF.P.Module_Reports {
         protected global::System.Web.UI.WebControls.Button btnDownload;
         
         /// <summary>
+        /// lbtn_Export control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_Export;
+        
+        /// <summary>
         /// LblResult control.
         /// </summary>
         /// <remarks>
@@ -200,5 +209,32 @@ namespace SRF.P.Module_Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// hidGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidGridView;
+        
+        /// <summary>
+        /// forExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl forExport;
+        
+        /// <summary>
+        /// GVListEmployeesNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GVListEmployeesNew;
     }
 }
