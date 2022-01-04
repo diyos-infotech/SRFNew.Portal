@@ -108,71 +108,10 @@ namespace SRF.P
                     return;
                 }
             }
-            int testDate = 0;
-            if (txtFromDate.Text.Trim().Length > 0)
-            {
-                testDate = GlobalData.Instance.CheckEnteredDate(txtFromDate.Text);
-                if (testDate > 0)
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(),
-                        "show alert", "alert('You Are Entered Invalid Contract From Date.Date Format Should be [DD/MM/YYYY].Ex.01/01/1990');", true);
-                    return;
-                }
-                else
-                {
-                    string CheckSD = Timings.Instance.CheckDateFormat(txtFromDate.Text);
-
-                    string CheckFromDate = "";
-
-                    if (DdlStates.SelectedIndex == 0)
-                    {
-                        CheckFromDate = " select state from LWFmaster  where ToDate>='" +
-                            CheckSD + "'  and state='" + DdlStates.SelectedValue + "'";
-
-                        DataTable Dt = SqlHelper.Instance.GetTableByQuery(CheckFromDate);
-                        if (Dt.Rows.Count > 0)
-                        {
-                            ScriptManager.RegisterStartupScript(this, GetType(),
-                              "show alert", "alert('You Are Entered Invalid From Date.From Date Should Not Be Interval of the Previous LWF From and To Dates  Date Format Should be [DD/MM/YYYY].Ex.01/01/1990');", true);
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        if (DdlStates.SelectedIndex > 1)
-                        {
-                            string CIDForCheck = DdlStates.SelectedValue;
-                            CheckFromDate = " select state from LWFMaster  where ToDate>='" +
-                                CheckSD + "'  and state='" + DdlStates.SelectedValue + "'";
-
-                            DataTable Dt = SqlHelper.Instance.GetTableByQuery(CheckFromDate);
-                            if (Dt.Rows.Count > 0)
-                            {
-                                ScriptManager.RegisterStartupScript(this, GetType(),
-                                  "show alert", "alert('You Are Entered Invalid From Date.From Date Should Not Be Interval of the Previous LWF From and To Dates  Date Format Should be [DD/MM/YYYY].Ex.01/01/1990');", true);
-                                return;
-                            }
-                        }
-                    }
-
-                }
-
-
-            }
-            if (txtToDate.Text.Trim().Length > 0)
-            {
-                testDate = GlobalData.Instance.CheckEnteredDate(txtToDate.Text);
-                if (testDate > 0)
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(),
-                        "show alert", "alert('You Are Entered Invalid ToDate Format Should be [DD/MM/YYYY].Ex.01/01/1990');", true);
-                    return;
-                }
-
-                ToDate = Timings.Instance.CheckDateFormat(txtToDate.Text);
-
-            }
+           
             FromDate = Timings.Instance.CheckDateFormat(txtFromDate.Text);
+            ToDate = Timings.Instance.CheckDateFormat(txtToDate.Text);
+
             State = DdlStates.SelectedValue;
             Type = ddltype.SelectedIndex;
             PerOn = ddlperon.SelectedIndex;
