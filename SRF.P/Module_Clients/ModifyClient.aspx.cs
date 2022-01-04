@@ -79,6 +79,11 @@ namespace SRF.P.Module_Clients
                 ddlstate.DataSource = DtStateNames;
                 ddlstate.DataBind();
 
+                ddlLWFState.DataValueField = "StateID";
+                ddlLWFState.DataTextField = "State";
+                ddlLWFState.DataSource = DtStateNames;
+                ddlLWFState.DataBind();
+
 
                 ddlStateCode.DataValueField = "StateID";
                 ddlStateCode.DataTextField = "GSTStateCode";
@@ -87,6 +92,7 @@ namespace SRF.P.Module_Clients
             }
             ddlstate.Items.Insert(0, new ListItem("-Select-", "0"));
             ddlStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlLWFState.Items.Insert(0, new ListItem("-Select-", "0"));
 
         }
 
@@ -346,6 +352,7 @@ namespace SRF.P.Module_Clients
                 var StateCode = "0";
                 var GSTIN = "";
                 var OurGSTIN = "";
+                var LWFState = "0";
                 #endregion  End Code  Person-Designation To PIN-No
 
                 #region  Begin Code  Line-One To Line-Five
@@ -427,7 +434,10 @@ namespace SRF.P.Module_Clients
                 {
                     StateCode = ddlStateCode.SelectedValue;
                 }
-
+                if (ddlLWFState.SelectedIndex > 0)
+                {
+                    LWFState = ddlLWFState.SelectedValue;
+                }
 
                 GSTIN = txtGSTUniqueID.Text;
                 OurGSTIN = ddlOurGSTIN.SelectedValue;
@@ -502,6 +512,8 @@ namespace SRF.P.Module_Clients
                 ModifyClientDetails.Add("@StateCode", StateCode);
                 ModifyClientDetails.Add("@GSTIN", GSTIN);
                 ModifyClientDetails.Add("@OurGSTIN", OurGSTIN);
+                ModifyClientDetails.Add("@LWFState", LWFState);
+
                 #endregion  End Code  Person-Designation To PIN-No
 
 
@@ -575,8 +587,8 @@ namespace SRF.P.Module_Clients
             txtpin.Text = txtchno.Text = txtstreet.Text = txtarea.Text = TxtCity.Text = txtcolony.Text =
             txtstate.Text = txtdescription.Text = txtclientid.Text = string.Empty;
 
-            ddlsegment.SelectedIndex = ddldesgn.SelectedIndex = ddlUnits.SelectedIndex = ddlcid.SelectedIndex = ddlZone.SelectedIndex = ddlArea.SelectedIndex = 0;
-            ddlUnits.Visible = false;
+            ddlsegment.SelectedIndex = ddlLWFState.SelectedIndex = ddldesgn.SelectedIndex = ddlUnits.SelectedIndex = ddlcid.SelectedIndex = ddlZone.SelectedIndex = ddlArea.SelectedIndex = 0;
+            ddlUnits.Visible =  false;
 
             chkSubUnit.Checked = false;
 
@@ -683,6 +695,17 @@ namespace SRF.P.Module_Clients
                     ddlstate.SelectedIndex = 0;
 
                 }
+
+                if (DtClientInfo.Rows[0]["LWFState"].ToString() != "0")
+                {
+                    ddlLWFState.SelectedValue = DtClientInfo.Rows[0]["LWFState"].ToString();
+                }
+                else
+                {
+                    ddlLWFState.SelectedIndex = 0;
+
+                }
+
                 if (DtClientInfo.Rows[0]["statecode"].ToString() != "0")
                 {
                     ddlStateCode.SelectedValue = DtClientInfo.Rows[0]["statecode"].ToString();

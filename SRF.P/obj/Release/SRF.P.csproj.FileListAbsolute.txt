@@ -47,7 +47,6 @@ D:\GitProjects\SRFNew.Portal\SRF.P\bin\itextsharp.dll
 D:\GitProjects\SRFNew.Portal\SRF.P\bin\Microsoft.IO.RecyclableMemoryStream.dll
 D:\GitProjects\SRFNew.Portal\SRF.P\bin\EPPlus.xml
 D:\GitProjects\SRFNew.Portal\SRF.P\bin\Microsoft.IO.RecyclableMemoryStream.xml
-D:\GitProjects\SRFNew.Portal\SRF.P\obj\Release\SRF.P.csprojResolveAssemblyReference.cache
 D:\GitProjects\SRFNew.Portal\SRF.P\obj\Release\SRF.P.dll
 D:\GitProjects\SRFNew.Portal\SRF.P\obj\Release\SRF.P.pdb
 F:\GitProjects\SRFNew.Portal\SRF.P\bin\ApplicationInsights.config
@@ -78,3 +77,6 @@ F:\GitProjects\SRFNew.Portal\SRF.P\obj\Release\SRF.P.csproj.CoreCompileInputs.ca
 F:\GitProjects\SRFNew.Portal\SRF.P\obj\Release\SRF.P.csproj.CopyComplete
 F:\GitProjects\SRFNew.Portal\SRF.P\obj\Release\SRF.P.dll
 F:\GitProjects\SRFNew.Portal\SRF.P\obj\Release\SRF.P.pdb
+D:\GitProjects\SRFNew.Portal\SRF.P\obj\Release\SRF.P.csproj.AssemblyReference.cache
+D:\GitProjects\SRFNew.Portal\SRF.P\obj\Release\SRF.P.csproj.CoreCompileInputs.cache
+D:\GitProjects\SRFNew.Portal\SRF.P\obj\Release\SRF.P.csproj.CopyComplete

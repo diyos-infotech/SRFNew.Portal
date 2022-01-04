@@ -182,6 +182,14 @@
                                         </td>
                                     </tr>
 
+                                      <tr>
+                                                <td>LWF State
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList runat="server" ID="ddlLWFState" TabIndex="19" class="sdrop" >
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
 
                                 </table>
                                 </td>

@@ -1779,6 +1779,15 @@ namespace KLTS.Data
             return DtStateNames;
 
         }
+
+        public DataTable GetMonthNames()
+        {
+
+            string ProcedureName = "GetMonthNames";
+            System.Data.DataTable DtStateNames = SqlHelper.Instance.ExecuteSPWithoutParams(ProcedureName);
+            return DtStateNames;
+
+        }
         public DataTable LoadHSNNumbers()
         {
 

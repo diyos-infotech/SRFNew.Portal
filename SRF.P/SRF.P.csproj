@@ -535,6 +535,7 @@
     <Content Include="Module_Settings\CreateLogin.aspx" />
     <Content Include="Module_Settings\Department.aspx" />
     <Content Include="Module_Settings\Designation.aspx" />
+    <Content Include="Module_Settings\LWFMaster.aspx" />
     <Content Include="Module_Settings\Menu.aspx" />
     <Content Include="Module_Settings\Previligers.aspx" />
     <Content Include="Module_Settings\Resources.aspx" />
@@ -2179,6 +2180,13 @@
     </Compile>
     <Compile Include="Module_Settings\Designation.aspx.designer.cs">
       <DependentUpon>Designation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module_Settings\LWFMaster.aspx.cs">
+      <DependentUpon>LWFMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Settings\LWFMaster.aspx.designer.cs">
+      <DependentUpon>LWFMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="Module_Settings\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>

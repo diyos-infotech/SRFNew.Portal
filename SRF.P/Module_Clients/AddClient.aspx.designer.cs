@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SRF.P.Module_Clients {
-    
-    
-    public partial class AddClient {
-        
+namespace SRF.P.Module_Clients
+{
+
+
+    public partial class AddClient
+    {
+
         /// <summary>
         /// lblMsg control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMsg;
-        
+
         /// <summary>
         /// lblSuc control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSuc;
-        
+
         /// <summary>
         /// fileupload1 control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fileupload1;
-        
+
         /// <summary>
         /// btnImportData control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnImportData;
-        
+
         /// <summary>
         /// Scriptmanager1 control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager Scriptmanager1;
-        
+
         /// <summary>
         /// txtCId control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCId;
-        
+
         /// <summary>
         /// txtshortname control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtshortname;
-        
+
         /// <summary>
         /// txtcontactperson control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcontactperson;
-        
+
         /// <summary>
         /// txtphonenumbers control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtphonenumbers;
-        
+
         /// <summary>
         /// RequiredFieldValidator2 control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
+
         /// <summary>
         /// FilteredTextBoxExtender1 control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender1;
-        
+
         /// <summary>
         /// txtemailid control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtemailid;
-        
+
         /// <summary>
         /// ddlOurGSTIN control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlOurGSTIN;
-        
+
         /// <summary>
         /// txtchno control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtchno;
-        
+
         /// <summary>
         /// txtarea control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtarea;
-        
+
         /// <summary>
         /// txtcity control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcity;
-        
+
         /// <summary>
         /// ddlstate control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlstate;
-        
+
         /// <summary>
         /// txtGSTUniqueID control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtGSTUniqueID;
-        
+
         /// <summary>
         /// txtdescription control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdescription;
-        
+
         /// <summary>
         /// ddlEmpId control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEmpId;
-        
+
         /// <summary>
         /// txtLocation control.
         /// </summary>
@@ -200,7 +202,16 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLocation;
-        
+
+        /// <summary>
+        /// ddlLWFState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLWFState;
+
         /// <summary>
         /// txtCname control.
         /// </summary>
@@ -209,7 +220,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCname;
-        
+
         /// <summary>
         /// ddlsegment control.
         /// </summary>
@@ -218,7 +229,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlsegment;
-        
+
         /// <summary>
         /// ddldesgn control.
         /// </summary>
@@ -227,7 +238,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddldesgn;
-        
+
         /// <summary>
         /// txtpin control.
         /// </summary>
@@ -236,7 +247,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtpin;
-        
+
         /// <summary>
         /// FilteredTextBoxExtender3 control.
         /// </summary>
@@ -245,7 +256,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender3;
-        
+
         /// <summary>
         /// txtfaxno control.
         /// </summary>
@@ -254,7 +265,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtfaxno;
-        
+
         /// <summary>
         /// FilteredTextBoxExtender2 control.
         /// </summary>
@@ -263,7 +274,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender2;
-        
+
         /// <summary>
         /// ddlArea control.
         /// </summary>
@@ -272,7 +283,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlArea;
-        
+
         /// <summary>
         /// ddlZone control.
         /// </summary>
@@ -281,7 +292,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlZone;
-        
+
         /// <summary>
         /// txtstreet control.
         /// </summary>
@@ -290,7 +301,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtstreet;
-        
+
         /// <summary>
         /// txtcolony control.
         /// </summary>
@@ -299,7 +310,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcolony;
-        
+
         /// <summary>
         /// txtstate control.
         /// </summary>
@@ -308,7 +319,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtstate;
-        
+
         /// <summary>
         /// ddlStateCode control.
         /// </summary>
@@ -317,7 +328,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlStateCode;
-        
+
         /// <summary>
         /// chkSubUnit control.
         /// </summary>
@@ -326,7 +337,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkSubUnit;
-        
+
         /// <summary>
         /// ddlUnits control.
         /// </summary>
@@ -335,7 +346,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlUnits;
-        
+
         /// <summary>
         /// radioyesmu control.
         /// </summary>
@@ -344,7 +355,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radioyesmu;
-        
+
         /// <summary>
         /// radionomu control.
         /// </summary>
@@ -353,7 +364,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radionomu;
-        
+
         /// <summary>
         /// radioinvoiceyes control.
         /// </summary>
@@ -362,7 +373,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radioinvoiceyes;
-        
+
         /// <summary>
         /// radioinvoiceno control.
         /// </summary>
@@ -371,7 +382,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radioinvoiceno;
-        
+
         /// <summary>
         /// radiopaysheetyes control.
         /// </summary>
@@ -380,7 +391,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radiopaysheetyes;
-        
+
         /// <summary>
         /// radiopaysheetno control.
         /// </summary>
@@ -389,7 +400,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radiopaysheetno;
-        
+
         /// <summary>
         /// btnaddclint control.
         /// </summary>
@@ -398,7 +409,7 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnaddclint;
-        
+
         /// <summary>
         /// btncancel control.
         /// </summary>

@@ -12,9 +12,7 @@
             height: 24px;
         }
     </style>
-    <script type="text/javascript" src="script/jscript.js">
-    </script>
-
+   
 
     <div id="content-holder">
         <div class="content-holder">
@@ -182,7 +180,14 @@
                                                     &nbsp;</td>
                                             </tr>
 
-
+                                             <tr>
+                                                <td>LWF State
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList runat="server" ID="ddlLWFState" TabIndex="19" class="sdrop" >
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
 
                                         </table>
 
