@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
-using System.Web;
 using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.Xml.Linq;
 using KLTS.Data;
 using System.Web.Script.Serialization;
 using System.Data;
@@ -12,6 +8,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Web.Script.Services;
 using SRF.P.DAL;
+using System.Text.RegularExpressions;
 
 /// <summary>
 /// Summary description for FameService
@@ -147,7 +144,7 @@ public class FameService : System.Web.Services.WebService
                        select new
                        {
                            ClientId = row.Field<string>("clientid"),
-                           ClientName = row.Field<string>("clientname"),
+                           ClientName = Regex.Replace(row.Field<string>("clientname"), @"[^0-9a-zA-Z\x20]+", ""),
                            PhoneNumber = row.Field<string>("clientphonenumbers"),
                            ContactPerson = row.Field<string>("ourcontactpersonid")
                        }).ToList();
@@ -176,7 +173,7 @@ public class FameService : System.Web.Services.WebService
                            select new
                            {
                                EmpId = row.Field<string>("Empid"),
-                               EmpName = row.Field<string>("FullName"),
+                               EmpName = Regex.Replace(row.Field<string>("FullName"), @"[^0-9a-zA-Z\x20]+", ""),
                                EmpDesg = row.Field<string>("Designation"),
                                empstatus = row.Field<bool>("empstatus")
                            }).ToList();
@@ -210,7 +207,7 @@ public class FameService : System.Web.Services.WebService
                            select new
                            {
                                EmpId = row.Field<string>("Empid"),
-                               EmpName = row.Field<string>("FullName"),
+                               EmpName = Regex.Replace(row.Field<string>("FullName"), @"[^0-9a-zA-Z\x20]+", ""),
                                EmpDesg = row.Field<string>("Designation"),
                                empstatus = row.Field<bool>("empstatus")
                            }).ToList();
@@ -359,7 +356,7 @@ public class FameService : System.Web.Services.WebService
                                select new EmpAttendanceGrid()
                                {
                                    EmpId = row.Field<string>("EmpId"),
-                                   EmpName = row.Field<string>("EmpName"),
+                                   EmpName = Regex.Replace(row.Field<string>("EmpName"), @"[^0-9a-zA-Z\x20]+", ""),
                                    DesgId = row.Field<int>("DesId"),
                                    DesgName = row.Field<string>("DesName"),
                                    noofdays = row.Field<float>("noofdays"),
@@ -408,7 +405,7 @@ public class FameService : System.Web.Services.WebService
                             empdata.Add(new EmpAttendanceGrid
                             {
                                 EmpId = item["EmpId"].ToString(),
-                                EmpName = item["EmpName"].ToString(),
+                                EmpName = Regex.Replace(item["EmpName"].ToString(), @"[^0-9a-zA-Z\x20]+", ""),
                                 DesgId = int.Parse(item["DesId"].ToString()),
                                 DesgName = item["DesName"].ToString(),
                                 noofdays = float.Parse(item["noofdays"].ToString()),

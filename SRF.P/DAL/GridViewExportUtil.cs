@@ -1,8 +1,10 @@
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ClosedXML.Excel;
 using OfficeOpenXml;
 
 /// <summary>
@@ -1097,7 +1099,80 @@ public class GridViewExportUtil
         HttpContext.Current.Response.Flush();
         HttpContext.Current.Response.End();
     }
-   
 
+    public void NewExport(string fileName, GridView gv)
+    {
+
+
+        DataTable dt = new DataTable();
+
+        // add the columns to the datatable            
+        if (gv.HeaderRow != null)
+        {
+
+            for (int i = 0; i < gv.HeaderRow.Cells.Count; i++)
+            {
+                dt.Columns.Add(gv.HeaderRow.Cells[i].Text);
+            }
+
+        }
+
+        //  add each of the data rows to the table
+        foreach (GridViewRow row in gv.Rows)
+        {
+            DataRow dr;
+            dr = dt.NewRow();
+
+            for (int i = 0; i < row.Cells.Count; i++)
+            {
+                dr[i] = row.Cells[i].Text.Replace("&nbsp;", " ");
+            }
+            dt.Rows.Add(dr);
+        }
+
+
+
+        //  add the footer row to the table
+        if (gv.FooterRow != null)
+        {
+            DataRow dr;
+            dr = dt.NewRow();
+
+            for (int i = 0; i < gv.FooterRow.Cells.Count; i++)
+            {
+                dr[i] = gv.FooterRow.Cells[i].Text.Replace("&nbsp;", " ");
+            }
+
+
+            dt.Rows.Add(dr);
+        }
+
+        DataSet ds = new DataSet();
+        ds.Tables.Add(dt);
+        ds.Tables[0].TableName = "Sheet1";
+
+        using (XLWorkbook wb = new XLWorkbook())
+        {
+            var ws = wb.Worksheets.Add(ds.Tables[0]);
+            ws.Name = fileName;
+            ws.Tables.FirstOrDefault().ShowAutoFilter = false;
+            ws.Table(0).Theme = XLTableTheme.None; // Remove Theme.
+            ws.Columns().AdjustToContents();
+            ws.Row(1).Style.Font.Bold = true;
+            ws.Row(1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+            HttpContext.Current.Response.Clear();
+            HttpContext.Current.Response.Buffer = true;
+            HttpContext.Current.Response.Charset = "";
+            HttpContext.Current.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            HttpContext.Current.Response.AddHeader("content-disposition", "attachment;filename= " + fileName);
+            using (var memoryStream = new MemoryStream())
+            {
+                wb.SaveAs(memoryStream);
+                memoryStream.WriteTo(HttpContext.Current.Response.OutputStream);
+                HttpContext.Current.Response.Flush();
+                HttpContext.Current.Response.End();
+            }
+        }
+    }
 
 }

@@ -87,8 +87,8 @@ namespace SRF.P
             }
 
 
-            Session["homepage"] = "Reminders.aspx";
-            Response.Redirect("Reminders.aspx");
+            Session["homepage"] = "Employees.aspx";
+            Response.Redirect("~/Module_Employees/Employees.aspx");
 
         }
 

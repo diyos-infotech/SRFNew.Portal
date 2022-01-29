@@ -4,26 +4,23 @@ using System.Data;
 using System.Web.UI;
 using System.IO;
 using System.Data.OleDb;
-using KLTS.Data;
 using System.Data.SqlClient;
 using SRF.P.DAL;
+using ClosedXML.Excel;
 
 namespace SRF.P.Module_Reports
 {
     public partial class ImportVoterNo : System.Web.UI.Page
     {
         DataTable dt;
-        string CmpIDPrefix = "";
-        string EmpIDPrefix = "";
-        string Elength = "";
-        string Clength = "";
+        
 
         AppConfiguration config = new AppConfiguration();
         GridViewExportUtil GVUtil = new GridViewExportUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            GetWebConfigdata();
+         
 
             if (!IsPostBack)
             {
@@ -36,14 +33,7 @@ namespace SRF.P.Module_Reports
                     Response.Redirect("login.aspx");
                 }
 
-                string ImagesFolderPath = Server.MapPath("ImportDocuments");
-                string[] filePaths = Directory.GetFiles(ImagesFolderPath);
-
-                foreach (string file in filePaths)
-                {
-                    File.Delete(file);
-                }
-
+               
                 SampleExport();
 
             }
@@ -53,13 +43,7 @@ namespace SRF.P.Module_Reports
 
         bool EmpStatus = false;
 
-        protected void GetWebConfigdata()
-        {
-            EmpIDPrefix = Session["EmpIDPrefix"].ToString();
-            CmpIDPrefix = Session["CmpIDPrefix"].ToString();
-        }
-
-
+       
 
 
         protected void Cleardata()
@@ -82,7 +66,7 @@ namespace SRF.P.Module_Reports
 
         protected void lnkSample_Click(object sender, EventArgs e)
         {
-            GVUtil.Export("SampleVoterIDNo.xls", this.gvlistofemp);
+            GVUtil.NewExport("SampleVoterIDNo.xlsx", this.gvlistofemp);
 
         }
 
@@ -114,24 +98,94 @@ namespace SRF.P.Module_Reports
             GvNotInsertedlist.DataBind();
             BtnUnSave.Visible = false;
             int result = 0;
-            string ExcelSheetname = "";
-            string FileName = FlUploadAadhaarNo.FileName;
-            string path = Path.Combine(Server.MapPath("~/ImportDocuments"), Guid.NewGuid().ToString() + Path.GetExtension(FlUploadAadhaarNo.PostedFile.FileName));
-            FlUploadAadhaarNo.PostedFile.SaveAs(path);
 
-            OleDbConnection con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";Extended Properties=Excel 12.0;");
-            con.Open();
-            dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-            ExcelSheetname = dt.Rows[0]["TABLE_NAME"].ToString();
+            //string ExcelSheetname = "";
+            //string FileName = FlUploadAadhaarNo.FileName;
+            //string path = Path.Combine(Server.MapPath("~/ImportDocuments"), Guid.NewGuid().ToString() + Path.GetExtension(FlUploadAadhaarNo.PostedFile.FileName));
+            //FlUploadAadhaarNo.PostedFile.SaveAs(path);
 
-            OleDbCommand cmd = new OleDbCommand("Select [Emp ID],[VoterID No] from [" + ExcelSheetname + "]", con);
-            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            //OleDbConnection con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";Extended Properties=Excel 12.0;");
+            //con.Open();
+            //dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+            //ExcelSheetname = dt.Rows[0]["TABLE_NAME"].ToString();
+
+            //OleDbCommand cmd = new OleDbCommand("Select [Emp ID],[VoterID No] from [" + ExcelSheetname + "]", con);
+            //OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            //DataTable ds = new DataTable();
+            //da.Fill(ds);
+            //da.Dispose();
+            //con.Close();
+            //con.Dispose();
+            //GC.Collect();
+
+            string filePath = Server.MapPath("~/ImportDocuments/") + Path.GetFileName(FlUploadAadhaarNo.PostedFile.FileName);
+            FlUploadAadhaarNo.PostedFile.SaveAs(filePath);
+
+            string extn = Path.GetExtension(FlUploadAadhaarNo.PostedFile.FileName);
+
+            //Create a new DataTable.
             DataTable ds = new DataTable();
-            da.Fill(ds);
-            da.Dispose();
-            con.Close();
-            con.Dispose();
-            GC.Collect();
+
+            if (extn.EndsWith(".xlsx"))
+            {
+                using (XLWorkbook workBook = new XLWorkbook(filePath))
+                {
+                    IXLWorksheet workSheet = workBook.Worksheet(1);
+
+                    //Create a new DataTable.
+
+                    int lastrow = workSheet.LastRowUsed().RowNumber();
+                    var rows = workSheet.Rows(1, lastrow);
+
+                    //Create a new DataTable.
+
+                    //Loop through the Worksheet rows.
+                    bool firstRow = true;
+                    foreach (IXLRow row in rows)
+                    {
+                        //Use the first row to add columns to DataTable.
+                        if (firstRow)
+                        {
+                            foreach (IXLCell cell in row.Cells())
+                            {
+                                if (!string.IsNullOrEmpty(cell.Value.ToString()))
+                                {
+                                    ds.Columns.Add(cell.Value.ToString());
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            firstRow = false;
+                        }
+                        else
+                        {
+                            int i = 0;
+                            DataRow toInsert = ds.NewRow();
+                            foreach (IXLCell cell in row.Cells(1, ds.Columns.Count))
+                            {
+                                try
+                                {
+                                    toInsert[i] = cell.Value.ToString();
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                                i++;
+                            }
+                            ds.Rows.Add(toInsert);
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "Show alert", "alert('Please save file in Excel WorkBook(.xlsx) format');", true);
+                return;
+            }
 
             using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["KLTSConnectionString"].ConnectionString))
             {
@@ -212,13 +266,19 @@ namespace SRF.P.Module_Reports
                     NotInsertGridDisplay();
                 }
             }
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
         }
+
 
         protected void BtnUnSave_Click(object sender, EventArgs e)
         {
             if (GvNotInsertedlist.Rows.Count > 0)
             {
-                GVUtil.Export("UnSavedPFData.xls", this.GvNotInsertedlist);
+                GVUtil.NewExport("UnSavedPFData.xlsx", this.GvNotInsertedlist);
             }
         }
     }

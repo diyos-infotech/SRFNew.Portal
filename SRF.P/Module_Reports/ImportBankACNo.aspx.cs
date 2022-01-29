@@ -3,28 +3,23 @@ using System.Configuration;
 using System.Data;
 using System.Web.UI;
 using System.IO;
-using System.Data.OleDb;
-using KLTS.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using SRF.P.DAL;
+using ClosedXML.Excel;
 
 namespace SRF.P.Module_Reports
 {
     public partial class ImportBankACNo : System.Web.UI.Page
     {
         DataTable dt;
-        string CmpIDPrefix = "";
-        string EmpIDPrefix = "";
-        string Elength = "";
-        string Clength = "";
+       
 
         AppConfiguration config = new AppConfiguration();
         GridViewExportUtil GVUtil = new GridViewExportUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            GetWebConfigdata();
 
             if (!IsPostBack)
             {
@@ -37,13 +32,7 @@ namespace SRF.P.Module_Reports
                     Response.Redirect("login.aspx");
                 }
 
-                string ImagesFolderPath = Server.MapPath("ImportDocuments");
-                string[] filePaths = Directory.GetFiles(ImagesFolderPath);
-
-                foreach (string file in filePaths)
-                {
-                    File.Delete(file);
-                }
+               
 
                 SampleExport();
 
@@ -54,17 +43,7 @@ namespace SRF.P.Module_Reports
 
         bool EmpStatus = false;
 
-        protected void GetWebConfigdata()
-        {
-            if (Session.Keys.Count > 0)
-            {
-                EmpIDPrefix = Session["EmpIDPrefix"].ToString();
-            }
-            else
-            {
-                Response.Redirect("Login.aspx");
-            }
-        }
+    
         public void SampleExport()
         {
 
@@ -103,7 +82,7 @@ namespace SRF.P.Module_Reports
 
         protected void lnkSample_Click(object sender, EventArgs e)
         {
-            GVUtil.Export("SampleBankAC.xls", this.gvlistofemp);
+            GVUtil.NewExport("SampleBankAC.xlsx", this.gvlistofemp);
 
         }
 
@@ -117,7 +96,7 @@ namespace SRF.P.Module_Reports
                 GVBankNames.DataSource = dt;
                 GVBankNames.DataBind();
                 GVBankNames.Visible = false;
-                GVUtil.Export("BankNamesMaster.xls", this.GVBankNames);
+                GVUtil.NewExport("BankNamesMaster.xlsx", this.GVBankNames);
 
             }
             else
@@ -162,22 +141,103 @@ namespace SRF.P.Module_Reports
                 return;
             }
 
-            string path = Path.Combine(Server.MapPath("~/ImportDocuments"), Guid.NewGuid().ToString() + Path.GetExtension(FlUploadBankAC.PostedFile.FileName));
-            FlUploadBankAC.PostedFile.SaveAs(path);
+            //string path = Path.Combine(Server.MapPath("~/ImportDocuments"), Guid.NewGuid().ToString() + Path.GetExtension(FlUploadBankAC.PostedFile.FileName));
+            //FlUploadBankAC.PostedFile.SaveAs(path);
 
-            OleDbConnection con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";Extended Properties=Excel 12.0;");
-            con.Open();
-            dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-            ExcelSheetname = dt.Rows[0]["TABLE_NAME"].ToString();
+            //OleDbConnection con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";Extended Properties=Excel 12.0;");
+            //con.Open();
+            //dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+            //ExcelSheetname = dt.Rows[0]["TABLE_NAME"].ToString();
 
-            OleDbCommand cmd = new OleDbCommand("Select [Emp ID],[Bank AC No], [Bank Card Ref No],[Bank Name],[IFSC Code] from [" + ExcelSheetname + "]", con);
-            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            //OleDbCommand cmd = new OleDbCommand("Select [Emp ID],[Bank AC No], [Bank Card Ref No],[Bank Name],[IFSC Code] from [" + ExcelSheetname + "]", con);
+            //OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            //DataTable ds = new DataTable();
+            //da.Fill(ds);
+            //da.Dispose();
+            //con.Close();
+            //con.Dispose();
+            //GC.Collect();
+
+            string filePath = Server.MapPath("~/ImportDocuments/") + Path.GetFileName(FlUploadBankAC.PostedFile.FileName);
+            FlUploadBankAC.PostedFile.SaveAs(filePath);
+
+            string extn = Path.GetExtension(FlUploadBankAC.PostedFile.FileName);
+
+            //Create a new DataTable.
             DataTable ds = new DataTable();
-            da.Fill(ds);
-            da.Dispose();
-            con.Close();
-            con.Dispose();
-            GC.Collect();
+
+            if (extn.EndsWith(".xlsx"))
+            {
+                using (XLWorkbook workBook = new XLWorkbook(filePath))
+                {
+                    IXLWorksheet workSheet = workBook.Worksheet(1);
+
+                    //Create a new DataTable.
+
+                    int lastrow = workSheet.LastRowUsed().RowNumber();
+                    var rows = workSheet.Rows(1, lastrow);
+
+                    //Create a new DataTable.
+
+                    //Loop through the Worksheet rows.
+                    bool firstRow = true;
+                    foreach (IXLRow row in rows)
+                    {
+                        //Use the first row to add columns to DataTable.
+                        if (firstRow)
+                        {
+                            foreach (IXLCell cell in row.Cells())
+                            {
+                                if (!string.IsNullOrEmpty(cell.Value.ToString()))
+                                {
+                                    ds.Columns.Add(cell.Value.ToString());
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            firstRow = false;
+                        }
+                        else
+                        {
+                            int i = 0;
+                            DataRow toInsert = ds.NewRow();
+                            foreach (IXLCell cell in row.Cells(1, ds.Columns.Count))
+                            {
+                                try
+                                {
+                                    toInsert[i] = cell.Value.ToString();
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                                i++;
+                            }
+                            ds.Rows.Add(toInsert);
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "Show alert", "alert('Please save file in Excel WorkBook(.xlsx) format');", true);
+                return;
+            }
+
+            for (int s = 0; s < ds.Rows.Count; s++)
+            {
+                string clid = ds.Rows[s][1].ToString().Trim();
+
+                if (clid.Length == 0)
+                {
+                    ds.Rows.RemoveAt(s);
+                }
+            }
+
+
             using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["KLTSConnectionString"].ConnectionString))
             {
                 sqlcon.Open();
@@ -340,6 +400,13 @@ namespace SRF.P.Module_Reports
                         NotInsertGridDisplay();
                     }
                 }
+
+
+            }
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
             }
         }
         protected void BtnUnSave_Click(object sender, EventArgs e)
@@ -347,7 +414,7 @@ namespace SRF.P.Module_Reports
             if (GvNotInsertedlist.Rows.Count > 0)
             {
 
-                GVUtil.Export("UnSavedPFData.xls", this.GvNotInsertedlist);
+                GVUtil.NewExport("UnSavedPFData.xlsx", this.GvNotInsertedlist);
             }
         }
     }

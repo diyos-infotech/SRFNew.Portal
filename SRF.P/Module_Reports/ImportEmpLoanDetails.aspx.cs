@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Data.OleDb;
 using SRF.P.DAL;
+using ClosedXML.Excel;
 
 namespace SRF.P.Module_Reports
 {
@@ -14,11 +15,7 @@ namespace SRF.P.Module_Reports
         string EmpIDPrefix = "";
         string CmpIDPrefix = "";
         string UserID = "";
-        string Username = "";
-        string Elength = "";
-        string Clength = "";
-        string Fontstyle = "";
-        string BranchID = "";
+        
 
         AppConfiguration config = new AppConfiguration();
         GridViewExportUtil GVUtil = new GridViewExportUtil();
@@ -67,7 +64,7 @@ namespace SRF.P.Module_Reports
         public void sampleGrid()
         {
 
-            string query = "select top 1 '' as 'ID NO','' as 'Loan Type', '' as 'Amount', '' as 'NoofInstalments','' as 'LoanIssuedDate', '' as 'LoanCuttingFrom','' as 'Description' from Emploandetails";
+            string query = "select top 1 '' as 'ID NO','' as 'Loan Type', '' as 'Amount', '' as 'NoofInstalments','' as 'LoanIssuedDate', '' as 'LoanCuttingFrom','' as 'Description' ";
 
             DataTable dt = config.ExecuteAdaptorAsyncWithQueryParams(query).Result;
             if (dt.Rows.Count > 0)
@@ -83,7 +80,7 @@ namespace SRF.P.Module_Reports
         }
         protected void LinkSample_Click(object sender, EventArgs e)
         {
-            GVUtil.Export("SampleLoanDetailsSheet.xls", this.GvInputEmpLoanDetails);
+            GVUtil.NewExport("SampleLoanDetailsSheet.xlsx", this.GvInputEmpLoanDetails);
         }
         public string GetExcelSheetNames()
         {
@@ -121,41 +118,98 @@ namespace SRF.P.Module_Reports
 
         protected void btnsave_Click(object sender, EventArgs e)
         {
-            string filename = Path.Combine(Server.MapPath("~/ImportDocuments"), Guid.NewGuid().ToString() + Path.GetExtension(FlUploadLoanDetails.PostedFile.FileName));
-            FlUploadLoanDetails.PostedFile.SaveAs(filename);
-            string extn = Path.GetExtension(FlUploadLoanDetails.PostedFile.FileName);
-            string constring = "";
-            if (extn.ToLower() == ".xls")
-            {
-                //constring = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filename + ";Extended properties=\"excel 8.0;HDR=Yes;IMEX=2\"";
-                constring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filename + ";Extended properties=\"excel 12.0;HDR=Yes;IMEX=2\"";
-            }
-            else if (extn.ToLower() == ".xlsx")
-            {
-                constring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filename + ";Extended properties=\"excel 12.0;HDR=Yes;IMEX=2\"";
-            }
-
             string Sheetname = string.Empty;
+            Sheetname = FlUploadLoanDetails.PostedFile.FileName;
 
-
-
-
-            string qry = "select [ID NO],[Loan Type],[Amount],[NoofInstalments],[LoanIssuedDate],[LoanCuttingFrom],[Description]" +
-            "  from  [" + GetExcelSheetNames() + "]" + "";
-
-
-            OleDbConnection con = new OleDbConnection(constring);
-            if (con.State == ConnectionState.Closed)
+            string qrychk = "select top(1) * from emploanmaster where isnull(SheetName,'')='" + Sheetname + "'";
+            DataTable dtchk = config.ExecuteAdaptorAsyncWithQueryParams(qrychk).Result;
+            if (dtchk.Rows.Count > 0)
             {
-                con.Open();
+                ScriptManager.RegisterStartupScript(this, GetType(), "showlalert", "alert('Attached excel Sheet is already uploaded');", true);
+                return;
             }
-            OleDbCommand cmd = new OleDbCommand(qry, con);
-            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+
+            string filePath = Server.MapPath("~/ImportDocuments/") + Path.GetFileName(FlUploadLoanDetails.PostedFile.FileName);
+            FlUploadLoanDetails.PostedFile.SaveAs(filePath);
+
+            string extn = Path.GetExtension(FlUploadLoanDetails.PostedFile.FileName);
+
+            //Create a new DataTable.
+            DataTable dtexcel = new DataTable();
+
+            if (extn.EndsWith(".xlsx"))
+            {
+                using (XLWorkbook workBook = new XLWorkbook(filePath))
+                {
+                    IXLWorksheet workSheet = workBook.Worksheet(1);
+
+
+                    int lastrow = workSheet.LastRowUsed().RowNumber();
+                    var rows = workSheet.Rows(1, lastrow);
+
+                    //Create a new DataTable.
+
+                    //Loop through the Worksheet rows.
+                    bool firstRow = true;
+                    foreach (IXLRow row in rows)
+                    {
+                        //Use the first row to add columns to DataTable.
+                        if (firstRow)
+                        {
+                            foreach (IXLCell cell in row.Cells())
+                            {
+                                if (!string.IsNullOrEmpty(cell.Value.ToString()))
+                                {
+                                    dtexcel.Columns.Add(cell.Value.ToString());
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            firstRow = false;
+                        }
+                        else
+                        {
+                            int i = 0;
+                            DataRow toInsert = dtexcel.NewRow();
+                            foreach (IXLCell cell in row.Cells(1, dtexcel.Columns.Count))
+                            {
+                                try
+                                {
+                                    toInsert[i] = cell.Value.ToString();
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                                i++;
+                            }
+                            dtexcel.Rows.Add(toInsert);
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "Show alert", "alert('Please save file in Excel WorkBook(.xlsx) format');", true);
+                return;
+            }
+
+            for (int s = 0; s < dtexcel.Rows.Count; s++)
+            {
+                string clid = dtexcel.Rows[s][1].ToString().Trim();
+
+                if (clid.Length == 0)
+                {
+                    dtexcel.Rows.RemoveAt(s);
+                }
+            }
+
             DataSet ds = new DataSet();
-            da.Fill(ds);
-            da.Dispose();
-            con.Close();
-            con.Dispose();
+            ds.Tables.Add(dtexcel);
 
             #region Begin Getmax Id from DB
             int ExcelNo = 0;
@@ -214,13 +268,10 @@ namespace SRF.P.Module_Reports
                 Date = DateTime.Now.ToString("dd/MM/yyyy");
                 Date = DateTime.Parse(Date, CultureInfo.GetCultureInfo("en-gb")).ToString();
 
-                //string sqlverifyemp = "select empid from EmpLoanMaster where LoanIssuedDate='" + LoanIssuedDate + "' and empid='" + Empid + "'";
-                //DataTable dtemp = SqlHelper.Instance.GetTableByQuery(sqlverifyemp);
-                //if (dtemp.Rows.Count == 0)
-                //{
+              
 
                 string insertquery = " insert into EmpLoanMaster(loandt,empid,loanamount,NoInstalments,  " +
-              " LoanStatus,TypeOfLoan,LoanIssuedDate,Created_By,Created_On,Excel_No,LoanType) values( '" + LoanCuttingMonth + "', '" + Empid + "', '" + Amount + "','" + NoOfInstalments + "' ,'" + loanStatus + "' ,'" + TypeOfLoan + "' ,'" + LoanIssuedDate + "' ,'" + UserID + "' ,'" + Date + "' ,'" + ExcelNo + "' ,'" + Description + "' )";
+              " LoanStatus,TypeOfLoan,LoanIssuedDate,Created_By,Created_On,Excel_No,LoanType,Sheetname) values( '" + LoanCuttingMonth + "', '" + Empid + "', '" + Amount + "','" + NoOfInstalments + "' ,'" + loanStatus + "' ,'" + TypeOfLoan + "' ,'" + LoanIssuedDate + "' ,'" + UserID + "' ,'" + Date + "' ,'" + ExcelNo + "' ,'" + Description + "' ,'"+Sheetname+"')";
                 int status = config.ExecuteNonQueryWithQueryAsync(insertquery).Result;
                 if (status != 0)
                 {
@@ -231,8 +282,13 @@ namespace SRF.P.Module_Reports
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "showlalert", "alert('Loan not Generated for '" + Empid + "'');", true);
                 }
-                // }
+                
 
+            }
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
             }
 
         }
