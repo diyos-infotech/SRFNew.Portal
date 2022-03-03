@@ -530,6 +530,7 @@
                                                                 <asp:ListItem>WOs+NHs+NPOTs</asp:ListItem>
                                                                 <asp:ListItem>OTs+WOs+NHs+NPOTs</asp:ListItem>
                                                                 <asp:ListItem>OTs(Basic+DA)</asp:ListItem>
+                                                                <asp:ListItem>OTs(Basic+Da+EL+NFH)</asp:ListItem>
 
                                                             </asp:DropDownList>
                                                             <asp:CheckBox ID="checkPFonOT" Text="  PF on OTs" Checked="false" runat="server"
