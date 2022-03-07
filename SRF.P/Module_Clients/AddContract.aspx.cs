@@ -1629,8 +1629,12 @@ namespace SRF.P.Module_Clients
                             {
                                 NoOfDaysForWages = "5";
                             }
+                            if (ddlNoOfDaysForWages.SelectedIndex == 6)
+                            {
+                                NoOfDaysForWages = "6";
+                            }
 
-                            if (ddlNoOfDaysForWages.SelectedIndex > 5)
+                            if (ddlNoOfDaysForWages.SelectedIndex > 6)
                             {
                                 NoOfDaysForWages = ddlNoOfDaysForWages.SelectedValue;
                             }
@@ -2888,6 +2892,9 @@ namespace SRF.P.Module_Clients
                                 else
                                     if (noofdays == 5)
                                     CNoOfDaysFoWages.SelectedIndex = 5;
+                                else
+                                    if (noofdays == 6)
+                                    CNoOfDaysFoWages.SelectedIndex = 6;
                                 else
                                     CNoOfDaysFoWages.SelectedValue = dtspecialwage.Rows[i]["NoofDays"].ToString();
 
@@ -4402,8 +4409,12 @@ namespace SRF.P.Module_Clients
                             {
                                 NoOfDaysForWages = "5";
                             }
+                            if (ddlNoOfDaysForWages.SelectedIndex == 6)
+                            {
+                                NoOfDaysForWages = "6";
+                            }
 
-                            if (ddlNoOfDaysForWages.SelectedIndex > 5)
+                            if (ddlNoOfDaysForWages.SelectedIndex > 6)
                             {
                                 NoOfDaysForWages = ddlNoOfDaysForWages.SelectedValue;
                             }

@@ -530,6 +530,7 @@
                                                                 <asp:ListItem>WOs+NHs+NPOTs</asp:ListItem>
                                                                 <asp:ListItem>OTs+WOs+NHs+NPOTs</asp:ListItem>
                                                                 <asp:ListItem>OTs(Basic+DA)</asp:ListItem>
+                                                                <asp:ListItem>OTs(Basic+Da+EL+NFH)</asp:ListItem>
 
                                                             </asp:DropDownList>
                                                             <asp:CheckBox ID="checkPFonOT" Text="  PF on OTs" Checked="false" runat="server"
@@ -1147,6 +1148,7 @@
                                                         <asp:ListItem>P.Hr</asp:ListItem>
                                                         <asp:ListItem>P.Day</asp:ListItem>
                                                         <asp:ListItem>PM/PD(8Hrs)</asp:ListItem>
+                                                         <asp:ListItem>26/PD/(8Hrs)</asp:ListItem>
                                                         <asp:ListItem>22</asp:ListItem>
                                                         <asp:ListItem>23</asp:ListItem>
                                                         <asp:ListItem>24</asp:ListItem>
