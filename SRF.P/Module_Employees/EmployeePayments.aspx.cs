@@ -26546,7 +26546,7 @@ namespace SRF.P.Module_Employees
                     //30
                     if (salAdvDed != 0)
                     {
-                        PdfPCell CSalAdv = new PdfPCell(new Phrase("Sal Adv", FontFactory.GetFont(Fontstyle, FONT_SIZE, Font.BOLD, BaseColor.BLACK)));
+                        PdfPCell CSalAdv = new PdfPCell(new Phrase("Advance", FontFactory.GetFont(Fontstyle, FONT_SIZE, Font.BOLD, BaseColor.BLACK)));
                         CSalAdv.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
                         CSalAdv.Border = 15;
                         SecondtableHeadings.AddCell(CSalAdv);
@@ -43593,7 +43593,7 @@ namespace SRF.P.Module_Employees
 
                         if (forConvert > 0)
                         {
-                            PdfPCell cellsaladvded = new PdfPCell(new Phrase("Salary Advance", FontFactory.GetFont(fontsyle, Fontsize, Font.NORMAL, BaseColor.BLACK)));
+                            PdfPCell cellsaladvded = new PdfPCell(new Phrase("Advance", FontFactory.GetFont(fontsyle, Fontsize, Font.NORMAL, BaseColor.BLACK)));
                             cellsaladvded.HorizontalAlignment = 0;
                             cellsaladvded.Colspan = 1;
                             //cellsaladvded.MinimumHeight = 20;
