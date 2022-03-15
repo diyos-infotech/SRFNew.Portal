@@ -30642,7 +30642,7 @@ namespace SRF.P.Module_Employees
                     //30
                     if (salAdvDed != 0)
                     {
-                        PdfPCell CSalAdv = new PdfPCell(new Phrase("Sal Adv", FontFactory.GetFont(Fontstyle, FONT_SIZE, Font.BOLD, BaseColor.BLACK)));
+                        PdfPCell CSalAdv = new PdfPCell(new Phrase("Advance", FontFactory.GetFont(Fontstyle, FONT_SIZE, Font.BOLD, BaseColor.BLACK)));
                         CSalAdv.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
                         CSalAdv.Border = 15;
                         SecondtableHeadings.AddCell(CSalAdv);
@@ -30662,7 +30662,7 @@ namespace SRF.P.Module_Employees
                     //32
                     if (otherDed != 0)
                     {
-                        PdfPCell COtherDed = new PdfPCell(new Phrase("Other Ded", FontFactory.GetFont(Fontstyle, FONT_SIZE, Font.BOLD, BaseColor.BLACK)));
+                        PdfPCell COtherDed = new PdfPCell(new Phrase("Fact", FontFactory.GetFont(Fontstyle, FONT_SIZE, Font.BOLD, BaseColor.BLACK)));
                         COtherDed.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
                         COtherDed.Border = 15;
                         SecondtableHeadings.AddCell(COtherDed);
