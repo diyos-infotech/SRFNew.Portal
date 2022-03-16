@@ -26575,7 +26575,7 @@ namespace SRF.P.Module_Employees
                     //33
                     if (canteenAdv != 0)
                     {
-                        PdfPCell Ccanteended = new PdfPCell(new Phrase("Mess. Ded", FontFactory.GetFont(Fontstyle, FONT_SIZE, Font.BOLD, BaseColor.BLACK)));
+                        PdfPCell Ccanteended = new PdfPCell(new Phrase("Canteen Ded", FontFactory.GetFont(Fontstyle, FONT_SIZE, Font.BOLD, BaseColor.BLACK)));
                         Ccanteended.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
                         Ccanteended.Border = 15;
                         SecondtableHeadings.AddCell(Ccanteended);
@@ -30671,7 +30671,7 @@ namespace SRF.P.Module_Employees
                     //33
                     if (canteenAdv != 0)
                     {
-                        PdfPCell Ccanteended = new PdfPCell(new Phrase("Mess. Ded", FontFactory.GetFont(Fontstyle, FONT_SIZE, Font.BOLD, BaseColor.BLACK)));
+                        PdfPCell Ccanteended = new PdfPCell(new Phrase("Canteen Ded", FontFactory.GetFont(Fontstyle, FONT_SIZE, Font.BOLD, BaseColor.BLACK)));
                         Ccanteended.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
                         Ccanteended.Border = 15;
                         SecondtableHeadings.AddCell(Ccanteended);
@@ -43684,7 +43684,7 @@ namespace SRF.P.Module_Employees
 
                         if (forConvert > 0)
                         {
-                            PdfPCell cellMessDed2 = new PdfPCell(new Phrase("Mess Deduction", FontFactory.GetFont(fontsyle, Fontsize, Font.NORMAL, BaseColor.BLACK)));
+                            PdfPCell cellMessDed2 = new PdfPCell(new Phrase("Canteen Deduction", FontFactory.GetFont(fontsyle, Fontsize, Font.NORMAL, BaseColor.BLACK)));
                             cellMessDed2.HorizontalAlignment = 0;
                             cellMessDed2.Colspan = 1;
                             //cellMessDed2.MinimumHeight = 20;
