@@ -485,7 +485,7 @@ namespace SRF.P.Module_Reports
                 string design = string.Empty;
                 int empstatus = 0;
                 string ContractID = "";
-
+                string DOL = "01/01/1900";
                 //foreach (DataRow dr in ds.Tables[0].Rows)
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
@@ -597,18 +597,61 @@ namespace SRF.P.Module_Reports
 
                         empid = ds.Tables[0].Rows[i]["Emp Id"].ToString();
 
-                        string sqlchkempid = "select empid from empdetails where empid='" + empid + "' and empstatus=1";
+                        string sqlchkempid = "select empid,convert(varchar(10),empdtofleaving,103) empdtofleaving from empdetails where empid='" + empid + "' and empstatus=1";
                         DataTable dtchkempid = config.ExecuteAdaptorAsyncWithQueryParams(sqlchkempid).Result;
 
                         if (dtchkempid.Rows.Count > 0)
                         {
                             empstatus = 1;
+                            DOL = dtchkempid.Rows[0]["empdtofleaving"].ToString();
                         }
                         else
                         {
                             empstatus = 0;
                         }
 
+                        string RemarksText = "";
+
+                        string Fmonth = (DtLastDay).Month.ToString();
+                        string FYear = (DtLastDay).Year.ToString();
+
+                        string DOLDate = "";
+                        if (Fmonth.Length == 1)
+                        {
+                            DOLDate = FYear + "-0" + Fmonth + "-01";
+                        }
+                        else
+                        {
+                            DOLDate = FYear + "-" + Fmonth + "-01";
+                        }
+
+                        if (empstatus == 1)
+                        {
+                            string QryDOJCheck = "Select Empid from empdetails where Empid='" + empid + "' and cast(cast(FORMAT(EmpDtofJoining,'MM') as varchar)+'/'+'01/'+cast(year(empdtofjoining) as varchar) as date)<= cast('" + DOLDate + "' as date)   ";
+                            DataTable dtDOJ = config.ExecuteAdaptorAsyncWithQueryParams(QryDOJCheck).Result;
+                            if (dtDOJ.Rows.Count > 0)
+                            {
+                            }
+                            else
+                            {
+                                empstatus = 0;
+                                RemarksText = "Please check date of Joining";
+                            }
+                            if (DOL != "01/01/1900")
+                            {
+                                string QryDOLCheck = "Select Empid from empdetails where Empid='" + empid + "' and cast(cast(FORMAT(empdtofleaving,'MM') as varchar)+'/'+'01/'+cast(year(empdtofleaving) as varchar) as date)>= cast('" + DOLDate + "' as date)   ";
+                                DataTable dtDOL = config.ExecuteAdaptorAsyncWithQueryParams(QryDOLCheck).Result;
+                                if (dtDOL.Rows.Count > 0)
+                                {
+                                }
+                                else
+                                {
+                                    empstatus = 0;
+                                    RemarksText = "Please check date of Leaving";
+                                }
+                            }
+
+                        }
 
 
                         //Create Procedure
@@ -694,6 +737,8 @@ namespace SRF.P.Module_Reports
                             Httable.Add("@Excel_Number", ExcelNo);
                             Httable.Add("@sno", SNo);
                             Httable.Add("@RowNo", i+2);
+                            Httable.Add("@RemarksText", RemarksText);
+
 
                             #endregion
 
