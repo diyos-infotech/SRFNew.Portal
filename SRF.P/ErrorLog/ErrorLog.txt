@@ -1,0 +1,17 @@
+Time: 14/04/2022 07:02:29 PM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.module_clients_clientbilling_aspx.ProcessRequest(HttpContext context) in c:\Users\DIYOS\AppData\Local\Temp\Temporary ASP.NET Files\root\0dd2d758\4fb52ab0\App_Web_lwuwjd0l.4.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+Source: System.Web
+TargetSite: Boolean HandleError(System.Exception)
+-----------------------------------------------------------
+

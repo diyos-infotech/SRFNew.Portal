@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SRF.P.Module_Clients
-{
-
-
-    public partial class AddClient
-    {
-
+namespace SRF.P.Module_Clients {
+    
+    
+    public partial class AddClient {
+        
         /// <summary>
         /// lblMsg control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMsg;
-
+        
         /// <summary>
         /// lblSuc control.
         /// </summary>
@@ -31,25 +29,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSuc;
-
-        /// <summary>
-        /// fileupload1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileupload1;
-
-        /// <summary>
-        /// btnImportData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnImportData;
-
+        
         /// <summary>
         /// Scriptmanager1 control.
         /// </summary>
@@ -58,7 +38,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager Scriptmanager1;
-
+        
         /// <summary>
         /// txtCId control.
         /// </summary>
@@ -67,7 +47,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCId;
-
+        
         /// <summary>
         /// txtshortname control.
         /// </summary>
@@ -76,7 +56,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtshortname;
-
+        
         /// <summary>
         /// txtcontactperson control.
         /// </summary>
@@ -85,7 +65,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcontactperson;
-
+        
         /// <summary>
         /// txtphonenumbers control.
         /// </summary>
@@ -94,16 +74,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtphonenumbers;
-
-        /// <summary>
-        /// RequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-
+        
         /// <summary>
         /// FilteredTextBoxExtender1 control.
         /// </summary>
@@ -112,7 +83,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender1;
-
+        
         /// <summary>
         /// txtemailid control.
         /// </summary>
@@ -121,7 +92,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtemailid;
-
+        
         /// <summary>
         /// ddlOurGSTIN control.
         /// </summary>
@@ -130,43 +101,61 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlOurGSTIN;
-
+        
         /// <summary>
-        /// txtchno control.
+        /// ddlSupplyType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtchno;
-
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplyType;
+        
         /// <summary>
-        /// txtarea control.
+        /// txtBillToLglName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtarea;
-
+        protected global::System.Web.UI.WebControls.TextBox txtBillToLglName;
+        
         /// <summary>
-        /// txtcity control.
+        /// txtBillToAddr1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcity;
-
+        protected global::System.Web.UI.WebControls.TextBox txtBillToAddr1;
+        
         /// <summary>
-        /// ddlstate control.
+        /// txtBillToAddr2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlstate;
-
+        protected global::System.Web.UI.WebControls.TextBox txtBillToAddr2;
+        
+        /// <summary>
+        /// txtBillToLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBillToLocation;
+        
+        /// <summary>
+        /// txtBillToPIN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBillToPIN;
+        
         /// <summary>
         /// txtGSTUniqueID control.
         /// </summary>
@@ -175,151 +164,16 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtGSTUniqueID;
-
+        
         /// <summary>
-        /// txtdescription control.
+        /// ddlstate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdescription;
-
-        /// <summary>
-        /// ddlEmpId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEmpId;
-
-        /// <summary>
-        /// txtLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocation;
-
-        /// <summary>
-        /// ddlLWFState control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLWFState;
-
-        /// <summary>
-        /// txtCname control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCname;
-
-        /// <summary>
-        /// ddlsegment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlsegment;
-
-        /// <summary>
-        /// ddldesgn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddldesgn;
-
-        /// <summary>
-        /// txtpin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpin;
-
-        /// <summary>
-        /// FilteredTextBoxExtender3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender3;
-
-        /// <summary>
-        /// txtfaxno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtfaxno;
-
-        /// <summary>
-        /// FilteredTextBoxExtender2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender2;
-
-        /// <summary>
-        /// ddlArea control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlArea;
-
-        /// <summary>
-        /// ddlZone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlZone;
-
-        /// <summary>
-        /// txtstreet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtstreet;
-
-        /// <summary>
-        /// txtcolony control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcolony;
-
-        /// <summary>
-        /// txtstate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtstate;
-
+        protected global::System.Web.UI.WebControls.DropDownList ddlstate;
+        
         /// <summary>
         /// ddlStateCode control.
         /// </summary>
@@ -328,7 +182,358 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlStateCode;
-
+        
+        /// <summary>
+        /// ddlPOSStateCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPOSStateCode;
+        
+        /// <summary>
+        /// txtchno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtchno;
+        
+        /// <summary>
+        /// txtstreet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtstreet;
+        
+        /// <summary>
+        /// txtarea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtarea;
+        
+        /// <summary>
+        /// txtcolony control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtcolony;
+        
+        /// <summary>
+        /// txtcity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtcity;
+        
+        /// <summary>
+        /// txtstate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtstate;
+        
+        /// <summary>
+        /// txtdescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtdescription;
+        
+        /// <summary>
+        /// ddlEmpId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEmpId;
+        
+        /// <summary>
+        /// txtBuyerOrderNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuyerOrderNo;
+        
+        /// <summary>
+        /// ddlPTState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPTState;
+        
+        /// <summary>
+        /// dllfieldofficer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dllfieldofficer;
+        
+        /// <summary>
+        /// ddllocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ddllocation;
+        
+        /// <summary>
+        /// ddlLWFState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLWFState;
+        
+        /// <summary>
+        /// txtCname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCname;
+        
+        /// <summary>
+        /// ddlsegment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlsegment;
+        
+        /// <summary>
+        /// ddldesgn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddldesgn;
+        
+        /// <summary>
+        /// txtpin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtpin;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender3;
+        
+        /// <summary>
+        /// txtEmailCC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmailCC;
+        
+        /// <summary>
+        /// txtfaxno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtfaxno;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender2;
+        
+        /// <summary>
+        /// ddlArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlArea;
+        
+        /// <summary>
+        /// ddlZone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlZone;
+        
+        /// <summary>
+        /// ddlCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
+        
+        /// <summary>
+        /// txtShipToLglName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToLglName;
+        
+        /// <summary>
+        /// txtShipToAddr1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToAddr1;
+        
+        /// <summary>
+        /// txtShipToAddr2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToAddr2;
+        
+        /// <summary>
+        /// txtShipToLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToLocation;
+        
+        /// <summary>
+        /// txtShipToPIN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToPIN;
+        
+        /// <summary>
+        /// txtShipToGSTIN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToGSTIN;
+        
+        /// <summary>
+        /// ddlShipToSate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlShipToSate;
+        
+        /// <summary>
+        /// ddlShipToStateCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlShipToStateCode;
+        
+        /// <summary>
+        /// txtShipToLine1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToLine1;
+        
+        /// <summary>
+        /// txtShipToLine2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToLine2;
+        
+        /// <summary>
+        /// txtShipToLine3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToLine3;
+        
+        /// <summary>
+        /// txtShipToLine4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToLine4;
+        
+        /// <summary>
+        /// txtShipToLine5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToLine5;
+        
+        /// <summary>
+        /// txtShipToLine6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtShipToLine6;
+        
         /// <summary>
         /// chkSubUnit control.
         /// </summary>
@@ -337,7 +542,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkSubUnit;
-
+        
         /// <summary>
         /// ddlUnits control.
         /// </summary>
@@ -346,7 +551,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlUnits;
-
+        
         /// <summary>
         /// radioyesmu control.
         /// </summary>
@@ -355,7 +560,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radioyesmu;
-
+        
         /// <summary>
         /// radionomu control.
         /// </summary>
@@ -364,7 +569,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radionomu;
-
+        
         /// <summary>
         /// radioinvoiceyes control.
         /// </summary>
@@ -373,7 +578,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radioinvoiceyes;
-
+        
         /// <summary>
         /// radioinvoiceno control.
         /// </summary>
@@ -382,7 +587,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radioinvoiceno;
-
+        
         /// <summary>
         /// radiopaysheetyes control.
         /// </summary>
@@ -391,7 +596,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radiopaysheetyes;
-
+        
         /// <summary>
         /// radiopaysheetno control.
         /// </summary>
@@ -400,7 +605,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radiopaysheetno;
-
+        
         /// <summary>
         /// btnaddclint control.
         /// </summary>
@@ -409,7 +614,7 @@ namespace SRF.P.Module_Clients
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnaddclint;
-
+        
         /// <summary>
         /// btncancel control.
         /// </summary>

@@ -41,7 +41,7 @@ namespace SRF.P.Module_Clients
                     LoadStatenames();
                     LoadAreas();
                     LoadZones();
-                    
+
                 }
             }
             catch (Exception ex)
@@ -51,44 +51,30 @@ namespace SRF.P.Module_Clients
             }
         }
 
-        protected void LoadStatenames()
+        protected void LoadShipStatenames()
         {
 
             DataTable DtStateNames = GlobalData.Instance.LoadStateNames();
             if (DtStateNames.Rows.Count > 0)
             {
-                ddlstate.DataValueField = "StateID";
-                ddlstate.DataTextField = "State";
-                ddlstate.DataSource = DtStateNames;
-                ddlstate.DataBind();
-
-                ddlLWFState.DataValueField = "StateID";
-                ddlLWFState.DataTextField = "State";
-                ddlLWFState.DataSource = DtStateNames;
-                ddlLWFState.DataBind();
+                ddlShipToSate.DataValueField = "StateID";
+                ddlShipToSate.DataTextField = "State";
+                ddlShipToSate.DataSource = DtStateNames;
+                ddlShipToSate.DataBind();
 
 
-                ddlStateCode.DataValueField = "StateID";
-                ddlStateCode.DataTextField = "GSTStateCode";
-                ddlStateCode.DataSource = DtStateNames;
-                ddlStateCode.DataBind();
+                ddlShipToStateCode.DataValueField = "StateID";
+                ddlShipToStateCode.DataTextField = "GSTStateCode";
+                ddlShipToStateCode.DataSource = DtStateNames;
+                ddlShipToStateCode.DataBind();
+
+               
+
             }
-            ddlstate.Items.Insert(0, new ListItem("-Select-", "0"));
-            ddlStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
-            ddlLWFState.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlShipToSate.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlShipToStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
 
-        }
 
-        private void LoadOurGSTNos()
-        {
-            DataTable DtGSTNos = GlobalData.Instance.LoadGSTNumbers();
-            if (DtGSTNos.Rows.Count > 0)
-            {
-                ddlOurGSTIN.DataValueField = "Id";
-                ddlOurGSTIN.DataTextField = "GSTNo";
-                ddlOurGSTIN.DataSource = DtGSTNos;
-                ddlOurGSTIN.DataBind();
-            }
         }
 
         private void LoadAreas()
@@ -104,6 +90,7 @@ namespace SRF.P.Module_Clients
             ddlArea.Items.Insert(0, "-Select-");
 
         }
+
         private void LoadZones()
         {
             DataTable DtZone = GlobalData.Instance.LoadZone();
@@ -117,6 +104,7 @@ namespace SRF.P.Module_Clients
             ddlZone.Items.Insert(0, "-Select-");
 
         }
+
         protected void LoadClients()
         {
             DataTable DtCnames = GlobalData.Instance.LoadCNames(CmpIDPrefix);
@@ -128,6 +116,71 @@ namespace SRF.P.Module_Clients
                 ddlUnits.DataBind();
             }
             ddlUnits.Items.Insert(0, "-Select-");
+        }
+
+        private void LoadOurGSTNos()
+        {
+            DataTable DtGSTNos = GlobalData.Instance.LoadGSTNumbers();
+            if (DtGSTNos.Rows.Count > 0)
+            {
+                ddlOurGSTIN.DataValueField = "Id";
+                ddlOurGSTIN.DataTextField = "GSTNo";
+                ddlOurGSTIN.DataSource = DtGSTNos;
+                ddlOurGSTIN.DataBind();
+            }
+        }
+
+        protected void LoadDivisions()
+        {
+
+
+        }
+
+        protected void LoadStatenames()
+        {
+
+            DataTable DtStateNames = GlobalData.Instance.LoadStateNames();
+            if (DtStateNames.Rows.Count > 0)
+            {
+                ddlstate.DataValueField = "StateID";
+                ddlstate.DataTextField = "State";
+                ddlstate.DataSource = DtStateNames;
+                ddlstate.DataBind();
+
+                ddlPTState.DataValueField = "StateID";
+                ddlPTState.DataTextField = "State";
+                ddlPTState.DataSource = DtStateNames;
+                ddlPTState.DataBind();
+
+
+                ddlStateCode.DataValueField = "StateID";
+                ddlStateCode.DataTextField = "GSTStateCode";
+                ddlStateCode.DataSource = DtStateNames;
+                ddlStateCode.DataBind();
+
+                ddlPOSStateCode.DataValueField = "StateID";
+                ddlPOSStateCode.DataTextField = "GSTStateCode";
+                ddlPOSStateCode.DataSource = DtStateNames;
+                ddlPOSStateCode.DataBind();
+
+                ddlLWFState.DataValueField = "StateID";
+                ddlLWFState.DataTextField = "State";
+                ddlLWFState.DataSource = DtStateNames;
+                ddlLWFState.DataBind();
+            }
+
+            ddlstate.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlPTState.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlPOSStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlPTState.SelectedValue = "12";
+            ddlLWFState.Items.Insert(0, new ListItem("-Select-", "0"));
+
+        }
+
+        protected void LoadBranches()
+        {
+
         }
 
         protected void LoadopmEmpsIDs()
@@ -169,32 +222,10 @@ namespace SRF.P.Module_Clients
             ddlsegment.Items.Insert(0, "-Select-");
         }
 
+
         private void clientid()
         {
             txtCId.Text = GlobalData.Instance.LoadMaxClientid(CmpIDPrefix);
-        }
-        protected void ddlstate_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string qry = "select GSTstatecode,stateid from states where stateid='" + ddlstate.SelectedValue + "'";
-            DataTable dt = config.ExecuteReaderWithQueryAsync(qry).Result;
-            if (dt.Rows.Count > 0)
-            {
-
-                if (dt.Rows[0]["stateid"].ToString() != "0")
-                {
-                    ddlStateCode.SelectedValue = dt.Rows[0]["stateid"].ToString();
-                }
-                else
-                {
-                    ddlStateCode.SelectedIndex = 0;
-                }
-
-            }
-            else
-            {
-                ddlStateCode.SelectedIndex = 0;
-
-            }
         }
 
         protected void btnaddclint_Click(object sender, EventArgs e)
@@ -214,22 +245,23 @@ namespace SRF.P.Module_Clients
                 #endregion  End Check Client Name is  Empty or ?
 
                 #region   Begin Check   Contact Person   Name
-                if (txtcontactperson.Text.Trim().Length == 0)
-                {
-                    lblMsg.Text = "Please fill Contact Person name";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please fill Contact Person name ');", true);
-                    return;
-                }
+                //if (txtcontactperson.Text.Trim().Length == 0)
+                //{
+                //    lblMsg.Text = "Please fill Contact Person name";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please fill Contact Person name ');", true);
+                //    return;
+                //}
                 #endregion  Begin Check   Contact Person   Name
 
                 #region  Begin Check Designation Selected or ?
-                if (ddldesgn.SelectedIndex == 0)
-                {
-                    lblMsg.Text = "Please Select Designation";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Select Designation ');", true);
-                    return;
-                }
+                //if (ddldesgn.SelectedIndex == 0)
+                //{
+                //    lblMsg.Text = "Please Select Designation";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Select Designation ');", true);
+                //    return;
+                //}
                 #endregion End Check Designation Selected or ?
+
                 #region  Begin Check Area Selected or ?
                 if (ddlArea.SelectedIndex == 0)
                 {
@@ -248,18 +280,18 @@ namespace SRF.P.Module_Clients
                 #endregion End Check Zone Selected or ?
 
                 #region Begin Check Phone Number Entered or ?
-                if (txtphonenumbers.Text.Trim().Length == 0)
-                {
-                    lblMsg.Text = "Please Enter the Phone No.";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Enter the Phone No.');", true);
-                    return;
-                }
-                if (txtphonenumbers.Text.Trim().Length < 8)
-                {
-                    lblMsg.Text = "Please enter a valid Phone No.";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please enter a valid Phone No.');", true);
-                    return;
-                }
+                //if (txtphonenumbers.Text.Trim().Length == 0)
+                //{
+                //    lblMsg.Text = "Please Enter the Phone No.";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Enter the Phone No.');", true);
+                //    return;
+                //}
+                //if (txtphonenumbers.Text.Trim().Length < 8)
+                //{
+                //    lblMsg.Text = "Please enter a valid Phone No.";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please enter a valid Phone No.');", true);
+                //    return;
+                //}
                 #endregion  End Check Phone Number Entered or ?
 
                 #region  Begin Check if Sub unit Check then Should be Select MAin unit ID
@@ -303,6 +335,15 @@ namespace SRF.P.Module_Clients
                 }
                 #endregion  End Check  Main Unit Selected  Entered or ?
 
+                #region Begin Check Field Officer
+                //if(dllfieldofficer.SelectedIndex==0)
+                //{
+                //    lblMsg.Text = "Please Select the  Field Officer";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Select the  Field Officer');", true);
+                //    return;
+                //}
+                #endregion End Check Field Officer
+
 
                 #endregion End   Check Validations as on  [19-09-2013]
 
@@ -321,13 +362,8 @@ namespace SRF.P.Module_Clients
                 var ClientFax = string.Empty;
                 var ClientEmail = string.Empty;
                 var ClientAddrPin = string.Empty;
-                var State = "0";
-                var StateCode = "0";
-                var GSTIN = "";
-                var OurGSTIN = "";
-                var Area = string.Empty;
-                var Zone = string.Empty;
-                var LWFState = "0";
+                var EmailCC = string.Empty;
+
                 #endregion  End Code  Person-Designation To PIN-No
 
                 #region  Begin Code  Line-One To Line-Five
@@ -336,6 +372,9 @@ namespace SRF.P.Module_Clients
                 var ClientAddrArea = string.Empty;
                 var ClientAddrCity = string.Empty;
                 var ClientAddrColony = string.Empty;
+                var Line7 = "";
+                var Line8 = "";
+
                 #endregion  End Code Line-One To Line-Five
 
                 #region Begin Code Line Six To PaySheet
@@ -349,7 +388,31 @@ namespace SRF.P.Module_Clients
                 #endregion End Code Line Six To PaySheet
 
 
-                var Location = "";
+
+                var Area = string.Empty;
+                var Zone = string.Empty;
+                var LWFState = "0";
+
+                int Category = 0;
+                var State = "0";
+                var StateCode = "0";
+                var GSTIN = "";
+                var OurGSTIN = "";
+
+                var ShiptoLine1 = "";
+                var ShiptoLine2 = "";
+                var ShiptoLine3 = "";
+                var ShiptoLine4 = "";
+                var ShiptoLine5 = "";
+                var ShiptoLine6 = "";
+                var ShipToState = "0";
+                var ShipToStateCode = "0";
+                var ShipToGSTIN = "";
+                var Locationid = "0";
+                var Fieldofficer = "0";
+                var Areamanager = "0";
+                var Branch = "";
+
 
                 #region   Begin Extra Varibles for This Event   As on [20-09-2013]
                 var IRecordStatus = 0;
@@ -370,22 +433,6 @@ namespace SRF.P.Module_Clients
                 {
                     ClientSegment = ddlsegment.SelectedValue;
                 }
-                if (ddlArea.SelectedIndex == 0)
-                {
-                    Area = "0";
-                }
-                else
-                {
-                    Area = ddlArea.SelectedValue;
-                }
-                if (ddlZone.SelectedIndex == 0)
-                {
-                    Zone = "0";
-                }
-                else
-                {
-                    Zone = ddlZone.SelectedValue;
-                }
 
                 ClientContactPerson = txtcontactperson.Text;
                 #endregion  End Code Client-id to Contact Person
@@ -396,24 +443,7 @@ namespace SRF.P.Module_Clients
                 ClientFax = txtfaxno.Text;
                 ClientEmail = txtemailid.Text;
                 ClientAddrPin = txtpin.Text;
-                if (ddlstate.SelectedIndex > 0)
-                {
-                    State = ddlstate.SelectedValue;
-                }
-
-                if (ddlStateCode.SelectedIndex > 0)
-                {
-                    StateCode = ddlStateCode.SelectedValue;
-                }
-
-                if (ddlLWFState.SelectedIndex > 0)
-                {
-                    LWFState = ddlLWFState.SelectedValue;
-                }
-
-                GSTIN = txtGSTUniqueID.Text;
-                OurGSTIN = ddlOurGSTIN.SelectedValue;
-
+                EmailCC = txtEmailCC.Text;
 
                 #endregion  End Code  Person-Designation To PIN-No
 
@@ -423,6 +453,7 @@ namespace SRF.P.Module_Clients
                 ClientAddrArea = txtarea.Text;
                 ClientAddrCity = txtcity.Text;
                 ClientAddrColony = txtcolony.Text;
+
                 #endregion  End Code Line-One To Line-Five
 
                 #region Begin Code Line Six To PaySheet
@@ -448,12 +479,203 @@ namespace SRF.P.Module_Clients
                 ClientDesc = txtdescription.Text;
                 #endregion End Code Line Six To PaySheet
 
-                if (txtLocation.Text.Trim().Length > 0)
+
+
+
+                //if (ddlCategory.SelectedIndex == 0)
+                //{
+                //    lblMsg.Text = "Please Select Category";
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Select Category');", true);
+                //    return;
+                //}
+
+                //if (ddlCategory.SelectedIndex > 0)
+                //{
+                //    Category = ddlCategory.SelectedIndex;
+
+                //}
+
+                if (ddlstate.SelectedIndex > 0)
                 {
-                    Location = txtLocation.Text;
+                    State = ddlstate.SelectedValue;
                 }
 
-                #endregion   End Code For Assign Values Into Declared Variables as on [19-09-2013]
+                if (ddlStateCode.SelectedIndex > 0)
+                {
+                    StateCode = ddlStateCode.SelectedValue;
+                }
+
+
+                GSTIN = txtGSTUniqueID.Text;
+                OurGSTIN = ddlOurGSTIN.SelectedValue;
+
+                string BuyersOrderNo = "";
+                BuyersOrderNo = txtBuyerOrderNo.Text;
+
+
+                if (ddlArea.SelectedIndex == 0)
+                {
+                    Area = "0";
+                }
+                else
+                {
+                    Area = ddlArea.SelectedValue;
+                }
+                if (ddlZone.SelectedIndex == 0)
+                {
+                    Zone = "0";
+                }
+                else
+                {
+                    Zone = ddlZone.SelectedValue;
+                }
+
+
+                if (ddlLWFState.SelectedIndex > 0)
+                {
+                    LWFState = ddlLWFState.SelectedValue;
+                }
+
+                var PTState = "0";
+
+                if (ddlPTState.SelectedIndex > 0)
+                {
+                    PTState = ddlPTState.SelectedValue;
+                }
+
+
+                #endregion End Code Line Six To PaySheet
+
+
+
+                if (txtShipToLine1.Text.Trim().Length > 0)
+                {
+                    ShiptoLine1 = txtShipToLine1.Text;
+                }
+
+
+                if (txtShipToLine2.Text.Trim().Length > 0)
+                {
+                    ShiptoLine2 = txtShipToLine2.Text;
+                }
+
+                if (txtShipToLine3.Text.Trim().Length > 0)
+                {
+                    ShiptoLine3 = txtShipToLine3.Text;
+                }
+
+
+                if (txtShipToLine4.Text.Trim().Length > 0)
+                {
+                    ShiptoLine4 = txtShipToLine4.Text;
+                }
+
+                if (txtShipToLine5.Text.Trim().Length > 0)
+                {
+                    ShiptoLine5 = txtShipToLine5.Text;
+                }
+
+                if (txtShipToLine6.Text.Trim().Length > 0)
+                {
+                    ShiptoLine6 = txtShipToLine6.Text;
+                }
+
+                if (txtShipToGSTIN.Text.Trim().Length > 0)
+                {
+                    ShipToGSTIN = txtShipToGSTIN.Text;
+                }
+
+                if (dllfieldofficer.SelectedIndex == 0)
+                {
+                    Fieldofficer = "0";
+                }
+                else
+                {
+                    Fieldofficer = dllfieldofficer.SelectedValue;
+                }
+
+
+                if (ddllocation.Text.Length > 0)
+                {
+                    Locationid = ddllocation.Text;
+                }
+
+
+
+
+
+                ShipToState = ddlShipToSate.SelectedValue;
+                ShipToStateCode = ddlShipToStateCode.SelectedValue;
+                var SupplyType = ddlSupplyType.SelectedValue;
+
+
+                var BillToLegalName = "";
+                var BillToAddr1 = "";
+                var BillToAddr2 = "";
+                var BillToLocation = "";
+                var BillToPOS = "0";
+                var BillToPIN = "0";
+
+
+                if (txtBillToLglName.Text.Trim().Length > 0)
+                {
+                    BillToLegalName = txtBillToLglName.Text;
+                }
+                if (txtBillToAddr1.Text.Trim().Length > 0)
+                {
+                    BillToAddr1 = txtBillToAddr1.Text;
+                }
+
+                if (txtBillToAddr2.Text.Trim().Length > 0)
+                {
+                    BillToAddr2 = txtBillToAddr2.Text;
+                }
+                if (txtBillToLocation.Text.Trim().Length > 0)
+                {
+                    BillToLocation = txtBillToLocation.Text;
+                }
+
+                if (txtBillToPIN.Text.Trim().Length > 0)
+                {
+                    BillToPIN = txtBillToPIN.Text;
+                }
+
+                if (ddlPOSStateCode.SelectedIndex > 0)
+                {
+                    BillToPOS = ddlPOSStateCode.SelectedValue;
+                }
+
+
+                var ShipToLegalName = "";
+                var ShipToAddr1 = "";
+                var ShipToAddr2 = "";
+                var ShipToLocation = "";
+                var ShipToPIN = "0";
+
+                if (txtShipToLglName.Text.Trim().Length > 0)
+                {
+                    ShipToLegalName = txtShipToLglName.Text;
+                }
+                if (txtShipToAddr1.Text.Trim().Length > 0)
+                {
+                    ShipToAddr1 = txtShipToAddr1.Text;
+                }
+
+                if (txtShipToAddr2.Text.Trim().Length > 0)
+                {
+                    ShipToAddr2 = txtShipToAddr2.Text;
+                }
+
+                if (txtShipToPIN.Text.Trim().Length > 0)
+                {
+                    ShipToPIN = txtShipToPIN.Text;
+                }
+
+                if (txtShipToLocation.Text.Trim().Length > 0)
+                {
+                    ShipToLocation = txtShipToLocation.Text;
+                }
+
 
                 #region    Begin Code For Stored Procedure Parameters as on [20-09-2013]
                 Hashtable AddClientDetails = new Hashtable();
@@ -467,7 +689,6 @@ namespace SRF.P.Module_Clients
                 AddClientDetails.Add("@ClientContactPerson", ClientContactPerson);
                 #endregion  End Code Client-id to Contact Person
 
-
                 #region  Begin Code  Person-Designation To PIN-No
 
                 AddClientDetails.Add("@ClientPersonDesgn", ClientPersonDesgn);
@@ -475,13 +696,9 @@ namespace SRF.P.Module_Clients
                 AddClientDetails.Add("@ClientFax", ClientFax);
                 AddClientDetails.Add("@ClientEmail", ClientEmail);
                 AddClientDetails.Add("@ClientAddrPin", ClientAddrPin);
-                AddClientDetails.Add("@state", State);
-                AddClientDetails.Add("@StateCode", StateCode);
-                AddClientDetails.Add("@GSTIN", GSTIN);
-                AddClientDetails.Add("@OurGSTIN", OurGSTIN);
-                AddClientDetails.Add("@LWFState", LWFState);
-                #endregion  End Code  Person-Designation To PIN-No
+                AddClientDetails.Add("@EmailCC", EmailCC);
 
+                #endregion  End Code  Person-Designation To PIN-No
 
                 #region  Begin Code  Line-One To Line-Five
 
@@ -490,6 +707,8 @@ namespace SRF.P.Module_Clients
                 AddClientDetails.Add("@ClientAddrArea", ClientAddrArea);
                 AddClientDetails.Add("@ClientAddrCity", ClientAddrCity);
                 AddClientDetails.Add("@ClientAddrColony", ClientAddrColony);
+                AddClientDetails.Add("@Line7", Line7);
+                AddClientDetails.Add("@Line8", Line8);
 
                 #endregion  End Code Line-One To Line-Five
 
@@ -503,22 +722,57 @@ namespace SRF.P.Module_Clients
                 AddClientDetails.Add("@Paysheet", Paysheet);
                 AddClientDetails.Add("@ClientDesc", ClientDesc);
                 AddClientDetails.Add("@ClientPrefix", CmpIDPrefix);
+
+                #endregion End Code Line Six To PaySheet
+              
+                AddClientDetails.Add("@Category", Category);
+                AddClientDetails.Add("@state", State);
+                AddClientDetails.Add("@StateCode", StateCode);
+                AddClientDetails.Add("@GSTIN", GSTIN);
+                AddClientDetails.Add("@OurGSTIN", OurGSTIN);
+                AddClientDetails.Add("@ShiptoLine1", ShiptoLine1);
+                AddClientDetails.Add("@ShiptoLine2", ShiptoLine2);
+                AddClientDetails.Add("@ShiptoLine3", ShiptoLine3);
+                AddClientDetails.Add("@ShiptoLine4", ShiptoLine4);
+                AddClientDetails.Add("@ShiptoLine5", ShiptoLine5);
+                AddClientDetails.Add("@ShiptoLine6", ShiptoLine6);
+                AddClientDetails.Add("@ShipToState", ShipToState);
+                AddClientDetails.Add("@ShipToStateCode", ShipToStateCode);
+                AddClientDetails.Add("@ShipToGSTIN", ShipToGSTIN);
+                AddClientDetails.Add("@PTState", PTState);
+                AddClientDetails.Add("@BuyersOrderNo", BuyersOrderNo);
+                AddClientDetails.Add("@Locationid", Locationid);
+                AddClientDetails.Add("@Fieldofficer", Fieldofficer);
+                AddClientDetails.Add("@Areamanager", Areamanager);
+
+                AddClientDetails.Add("@BillToLegalName", BillToLegalName);
+                AddClientDetails.Add("@BillToAddr1", BillToAddr1);
+                AddClientDetails.Add("@BillToAddr2", BillToAddr2);
+                AddClientDetails.Add("@BillToLocation", BillToLocation);
+                AddClientDetails.Add("@BillToPIN", BillToPIN);
+                AddClientDetails.Add("@BillToPOS", BillToPOS);
+                AddClientDetails.Add("@ShipToLegalName", ShipToLegalName);
+                AddClientDetails.Add("@ShipToAddr1", ShipToAddr1);
+                AddClientDetails.Add("@ShipToAddr2", ShipToAddr2);
+                AddClientDetails.Add("@ShipToLocation", ShipToLocation);
+                AddClientDetails.Add("@ShipToPIN", ShipToPIN);
+                AddClientDetails.Add("@SupplyType", SupplyType);
+
+                AddClientDetails.Add("@LWFState", LWFState);
                 AddClientDetails.Add("@Area", Area);
                 AddClientDetails.Add("@Zone", Zone);
-                #endregion End Code Line Six To PaySheet
-
-                AddClientDetails.Add("@Location", Location);
 
                 #endregion End Code For Stored Procedure Parameters as on [20-09-2013]
 
                 #region     Begin Code For Calling Stored Procedure as on [20-09-2013]
-                IRecordStatus = config.ExecuteNonQueryParamsAsync(AddClientDetailsPName, AddClientDetails).Result;
+                IRecordStatus = SqlHelper.Instance.ExecuteQuery(AddClientDetailsPName, AddClientDetails);
                 #endregion   End   Code For Calling Stored Procedure as on [20-09-2013]
 
                 #region     Begin Code For Status/Resulted Message of the Inserted Record as on [20-09-2013]
 
                 if (IRecordStatus > 0)
                 {
+                    lblMsg.Text = "";
                     lblSuc.Text = "Client Details Added Sucessfully  With  Client Id   :- " + txtCId.Text + " ";
 
                     //ScriptManager.RegisterStartupScript(this, GetType(), "Show Alert", "alert('Client Details Added Sucessfully  With  Client Id   :- " + txtCId.Text + " -: ');", true);
@@ -544,17 +798,20 @@ namespace SRF.P.Module_Clients
         private void ClearClientsFieldsData()
         {
 
-            txtCname.Text = txtshortname.Text = txtcontactperson.Text = txtphonenumbers.Text = txtfaxno.Text = txtemailid.Text =
+            txtCname.Text = txtshortname.Text = txtcontactperson.Text = txtphonenumbers.Text = txtfaxno.Text = ddllocation.Text = txtemailid.Text =
             txtpin.Text = txtchno.Text = txtstreet.Text = txtarea.Text = txtcity.Text = txtcolony.Text =
-            txtstate.Text = txtdescription.Text = txtGSTUniqueID.Text = string.Empty;
+            txtstate.Text = txtdescription.Text = txtGSTUniqueID.Text = txtEmailCC.Text =
+            txtBillToAddr1.Text = txtBillToAddr2.Text = txtBillToLglName.Text = txtBillToLocation.Text = txtBillToPIN.Text =
+            txtShipToAddr1.Text = txtShipToAddr2.Text = txtShipToLglName.Text = txtShipToLocation.Text = txtShipToPIN.Text = string.Empty;
 
-            ddlsegment.SelectedIndex = ddlLWFState.SelectedIndex = ddldesgn.SelectedIndex = ddlUnits.SelectedIndex = ddlstate.SelectedIndex = ddlStateCode.SelectedIndex = ddlZone.SelectedIndex = ddlArea.SelectedIndex = 0;
+            ddlsegment.SelectedIndex = ddlArea.SelectedIndex = ddldesgn.SelectedIndex = ddlUnits.SelectedIndex = ddlZone.SelectedIndex = ddlstate.SelectedIndex =
+            ddlStateCode.SelectedIndex = dllfieldofficer.SelectedIndex = ddlPOSStateCode.SelectedIndex = ddlLWFState.SelectedIndex = 0;
             ddlUnits.Visible = false;
 
             chkSubUnit.Checked = false;
 
             radioinvoiceyes.Checked = radioinvoiceno.Checked = radiopaysheetyes.Checked = radiopaysheetno.Checked = radioyesmu.Checked = radionomu.Checked = false;
-            txtLocation.Text = string.Empty;
+
         }
 
         protected void btncancel_Click(object sender, EventArgs e)
@@ -576,315 +833,87 @@ namespace SRF.P.Module_Clients
 
         #region Begin New code for client imports from excel on 24/02/2014 by venkat
 
-        public string GetExcelSheetNames()
-        {
-            string ExcelSheetname = "";
-            OleDbConnection con = null;
-            DataTable dt = null;
-            string filename = Path.Combine(Server.MapPath("~/ImportDocuments"), Guid.NewGuid().ToString() + Path.GetExtension(fileupload1.PostedFile.FileName));
-            fileupload1.PostedFile.SaveAs(filename);
-            string extn = Path.GetExtension(fileupload1.PostedFile.FileName);
-            string conStr = string.Empty;
-            if (extn.ToLower() == ".xls")
-            {
-                conStr = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filename + ";Extended properties=\"excel 8.0;HDR=Yes;IMEX=2\"";
-            }
-            else if (extn.ToLower() == ".xlsx")
-            {
-                conStr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filename + ";Extended properties=\"excel 12.0;HDR=Yes;IMEX=2\"";
-            }
 
-            con = new OleDbConnection(conStr);
-            con.Open();
-            dt = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-
-            if (dt == null)
-            {
-                return null;
-            }
-            ExcelSheetname = dt.Rows[0]["TABLE_NAME"].ToString();
-            ////foreach (DataRow row in dt.Rows)
-            ////{
-            ////    ExcelSheetname = row["TABLE_NAME"].ToString();
-            ////}
-
-            return ExcelSheetname;
-        }
-
-        protected void btnImportData_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string filename = Path.Combine(Server.MapPath("ImportDocuments"), Guid.NewGuid().ToString() + Path.GetExtension(fileupload1.PostedFile.FileName));
-                fileupload1.PostedFile.SaveAs(filename);
-                string extn = Path.GetExtension(fileupload1.PostedFile.FileName);
-                string constring = string.Empty;
-
-                if (extn.ToLower() == ".xls")
-                {
-                    constring = "Provider=Microsoft.Jet.OLEDB.8.0;Data Source='" + filename + "';Extended Properties=\"excel 8.0;HDR=Yes;IMEX\"";
-                }
-                if (extn.ToLower() == ".xlsx")
-                {
-                    constring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + filename + "';Extended Properties=\"excel 12.0;HDR=Yes;IMEX=2\"";
-                }
-                string qry = "select [Client Id],[Client Name],[Short Name],[Segment],[Contact Person],[Designation]," +
-                        " [Phone],[Fax No],[Email Id],[Pin No],[Line One],[Line Two],[Line Three],[Line Four]," +
-                        " [Line Five],[Line Six],[Description],[Sub Unit],[Main Unit],[Pay Sheet],[Invoice],[Area],[Zone] from [" + GetExcelSheetNames() + "]" + "";
-                OleDbConnection con = new OleDbConnection(constring);
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
-
-                OleDbCommand cmd = new OleDbCommand(qry, con);
-                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-                da.Dispose();
-                con.Close();
-                con.Dispose();
-
-                foreach (DataRow dr in ds.Tables[0].Rows)
-                {
-
-                    var ClientId = string.Empty;
-                    var Name = string.Empty;
-                    var ShortName = string.Empty;
-                    var Segment = string.Empty;
-                    var Contactperson = string.Empty;
-                    var Designation = string.Empty;
-                    var Phoneno = string.Empty;
-                    var Emailid = string.Empty;
-                    var Faxno = string.Empty;
-                    var Pinno = string.Empty;
-                    var ClientAddrHno = string.Empty;
-                    var ClientAddrStreet = string.Empty;
-                    var ClientAddrArea = string.Empty;
-                    var ClientAddrCity = string.Empty;
-                    var ClientAddrColony = string.Empty;
-                    var ClientAddrState = string.Empty;
-                    var Description = string.Empty;
-
-                    int Subunit = 0;
-                    int Mainunit = 0;
-                    int Paysheet = 0;
-                    int Invoice = 0;
-                    int MAinunitStatus = 0;
-
-                    var IRecordStatus = 0;
-                    var URecordStatus = 0;
-                    var Area = string.Empty;
-                    var Zone = string.Empty;
-
-                    ClientId = dr["Client Id"].ToString();
-                    Name = dr["Client Name"].ToString();
-                    ShortName = dr["Short Name"].ToString();
-                    Segment = dr["Segment"].ToString();
-                    Contactperson = dr["Contact Person"].ToString();
-                    Designation = dr["Designation"].ToString();
-                    Phoneno = dr["Phone"].ToString();
-                    Emailid = dr["Email Id"].ToString();
-                    Faxno = dr["Fax No"].ToString();
-                    Pinno = dr["Pin No"].ToString();
-                    ClientAddrHno = dr["Line One"].ToString();
-                    ClientAddrStreet = dr["Line Two"].ToString();
-                    ClientAddrArea = dr["Line Three"].ToString();
-                    ClientAddrCity = dr["Line Four"].ToString();
-                    ClientAddrColony = dr["Line Five"].ToString();
-                    ClientAddrState = dr["Line Six"].ToString();
-                    Description = dr["Description"].ToString();
-                    Area = dr["Area"].ToString();
-                    Zone = dr["Zone"].ToString();
-
-                    // MAinunitStatus = int.Parse(dr["Main Unit"].ToString().ToString());
-
-                    if (String.IsNullOrEmpty(dr["Sub Unit"].ToString()) == false)
-                    {
-                        Subunit = int.Parse(dr["Sub Unit"].ToString());
-                    }
-                    if (String.IsNullOrEmpty(dr["Main Unit"].ToString()) == false)
-                    {
-                        Mainunit = int.Parse(dr["Main Unit"].ToString());
-                    }
-
-                    if (String.IsNullOrEmpty(dr["Pay Sheet"].ToString()) == false)
-                    {
-                        Paysheet = int.Parse(dr["Pay Sheet"].ToString());
-                    }
-
-                    if (String.IsNullOrEmpty(dr["Invoice"].ToString()) == false)
-                    {
-                        Invoice = int.Parse(dr["Invoice"].ToString());
-                    }
-
-                    if (ClientId.Length == 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert('Please Enter Client Id');", true);
-                        return;
-                    }
-                    if (Name.Length == 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert('Please Enter Client Name');", true);
-                        return;
-                    }
-                    if (Contactperson.Length == 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert('Please Enter Contact Person');", true);
-                        return;
-                    }
-                    if (Designation.Length == 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert('Please Enter Designation');", true);
-                        return;
-                    }
-                    if (Phoneno.Length == 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert('Please Enter Phone No');", true);
-                        return;
-                    }
-
-
-                    string sqlclient = "select * from clients where clientid='" + ClientId + "'";
-                    DataTable dtclient = config.ExecuteReaderWithQueryAsync(sqlclient).Result;
-                    if (dtclient.Rows.Count > 0)
-                    {
-                        Hashtable ModifyClientDetails = new Hashtable();
-                        string ModifyClientDetailsPName = "ModifyClientDetails";
-
-                        #region     Begin Code Client-id to  Contact Person
-                        ModifyClientDetails.Add("@ClientId", ClientId);
-                        ModifyClientDetails.Add("@ClientName", Name);
-                        ModifyClientDetails.Add("@ClientShortName", ShortName);
-                        ModifyClientDetails.Add("@ClientSegment", Segment);
-                        ModifyClientDetails.Add("@ClientContactPerson", Contactperson);
-                        #endregion  End Code Client-id to Contact Person
-
-
-                        #region  Begin Code  Person-Designation To PIN-No
-
-                        ModifyClientDetails.Add("@ClientPersonDesgn", Designation);
-                        ModifyClientDetails.Add("@ClientPhonenumbers", Phoneno);
-                        ModifyClientDetails.Add("@ClientFax", Faxno);
-                        ModifyClientDetails.Add("@ClientEmail", Emailid);
-                        ModifyClientDetails.Add("@ClientAddrPin", Pinno);
-
-                        #endregion  End Code  Person-Designation To PIN-No
-
-
-                        #region  Begin Code  Line-One To Line-Five
-
-                        ModifyClientDetails.Add("@ClientAddrHno", ClientAddrHno);
-                        ModifyClientDetails.Add("@ClientAddrStreet", ClientAddrStreet);
-                        ModifyClientDetails.Add("@ClientAddrArea", ClientAddrArea);
-                        ModifyClientDetails.Add("@ClientAddrCity", ClientAddrCity);
-                        ModifyClientDetails.Add("@ClientAddrColony", ClientAddrColony);
-
-                        #endregion  End Code Line-One To Line-Five
-
-                        #region Begin Code Line Six To PaySheet
-
-                        ModifyClientDetails.Add("@ClientAddrState", ClientAddrState);
-                        ModifyClientDetails.Add("@SubUnitStatus", Subunit);
-                        ModifyClientDetails.Add("@MainUnitId", Mainunit);
-                        ModifyClientDetails.Add("@MAinunitStatus", MAinunitStatus);
-                        ModifyClientDetails.Add("@Invoice", Invoice);
-                        ModifyClientDetails.Add("@Paysheet", Paysheet);
-                        ModifyClientDetails.Add("@ClientDesc", Description);
-                        ModifyClientDetails.Add("@ClientPrefix", CmpIDPrefix);
-                        ModifyClientDetails.Add("@Area", Area);
-                        ModifyClientDetails.Add("@Zone", Zone);
-                        #endregion End Code Line Six To PaySheet
-
-                        URecordStatus = config.ExecuteNonQueryParamsAsync(ModifyClientDetailsPName, ModifyClientDetails).Result;
-
-                        if (URecordStatus > 0)
-                        {
-                            ScriptManager.RegisterStartupScript(this, GetType(), "Show Alert", "alert('Client Details Modified Sucessfully.  With  Client Id   :- " + ClientId + " -: ');", true);
-
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, GetType(), "Show Alert", "alert('Client Details Not  Added Sucessfully  With  Client Id   :- " + ClientId + " -: ');", true);
-                            //return;
-                        }
-                    }
-                    else
-                    {
-
-
-                        Hashtable AddClientDetails = new Hashtable();
-                        string AddClientDetailsPName = "ADDClientDetails";
-
-                        #region     Begin Code Client-id to  Contact Person
-                        AddClientDetails.Add("@ClientId", ClientId);
-                        AddClientDetails.Add("@ClientName", Name);
-                        AddClientDetails.Add("@ClientShortName", ShortName);
-                        AddClientDetails.Add("@ClientSegment", Segment);
-                        AddClientDetails.Add("@ClientContactPerson", Contactperson);
-                        #endregion  End Code Client-id to Contact Person
-
-
-                        #region  Begin Code  Person-Designation To PIN-No
-
-                        AddClientDetails.Add("@ClientPersonDesgn", Designation);
-                        AddClientDetails.Add("@ClientPhonenumbers", Phoneno);
-                        AddClientDetails.Add("@ClientFax", Faxno);
-                        AddClientDetails.Add("@ClientEmail", Emailid);
-                        AddClientDetails.Add("@ClientAddrPin", Pinno);
-
-                        #endregion  End Code  Person-Designation To PIN-No
-
-
-                        #region  Begin Code  Line-One To Line-Five
-
-                        AddClientDetails.Add("@ClientAddrHno", ClientAddrHno);
-                        AddClientDetails.Add("@ClientAddrStreet", ClientAddrStreet);
-                        AddClientDetails.Add("@ClientAddrArea", ClientAddrArea);
-                        AddClientDetails.Add("@ClientAddrCity", ClientAddrCity);
-                        AddClientDetails.Add("@ClientAddrColony", ClientAddrColony);
-
-                        #endregion  End Code Line-One To Line-Five
-
-                        #region Begin Code Line Six To PaySheet
-
-                        AddClientDetails.Add("@ClientAddrState", ClientAddrState);
-                        AddClientDetails.Add("@SubUnitStatus", Subunit);
-                        AddClientDetails.Add("@MainUnitId", Mainunit);
-                        AddClientDetails.Add("@MAinunitStatus", MAinunitStatus);
-                        AddClientDetails.Add("@Invoice", Invoice);
-                        AddClientDetails.Add("@Paysheet", Paysheet);
-                        AddClientDetails.Add("@ClientDesc", Description);
-                        AddClientDetails.Add("@ClientPrefix", CmpIDPrefix);
-                        AddClientDetails.Add("@Zone", Zone);
-                        AddClientDetails.Add("@Area", Area);
-                        #endregion End Code Line Six To PaySheet
-
-                        IRecordStatus = config.ExecuteNonQueryParamsAsync(AddClientDetailsPName, AddClientDetails).Result;
-
-                        if (IRecordStatus > 0)
-                        {
-
-                            ScriptManager.RegisterStartupScript(this, GetType(), "Show Alert", "alert('Client Details Added Sucessfully  With  Client Id   :- " + txtCId.Text + " -: ');", true);
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, GetType(), "Show Alert", "alert('Client Details Not  Added Sucessfully  With  Client Id   :- " + txtCId.Text + " -: ');", true);
-
-                        }
-
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert('Please upload valid data');", true);
-            }
-
-        }
 
         #endregion
+
+        protected void ddlstate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string qry = "select GSTstatecode,stateid from states where stateid='" + ddlstate.SelectedValue + "'";
+            DataTable dt = SqlHelper.Instance.GetTableByQuery(qry);
+            if (dt.Rows.Count > 0)
+            {
+
+                if (dt.Rows[0]["stateid"].ToString() != "0")
+                {
+                    ddlStateCode.SelectedValue = dt.Rows[0]["stateid"].ToString();
+                    ddlPOSStateCode.SelectedValue = dt.Rows[0]["stateid"].ToString();
+                }
+                else
+                {
+                    ddlStateCode.SelectedIndex = 0;
+                    ddlPOSStateCode.SelectedIndex = 0;
+                }
+
+            }
+            else
+            {
+                ddlStateCode.SelectedIndex = 0;
+                ddlPOSStateCode.SelectedIndex = 0;
+
+            }
+        }
+
+        protected void ddlShipToSate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string qry = "select GSTstatecode,stateid from states where stateid='" + ddlShipToSate.SelectedValue + "'";
+            DataTable dt = SqlHelper.Instance.GetTableByQuery(qry);
+            if (dt.Rows.Count > 0)
+            {
+
+                if (dt.Rows[0]["stateid"].ToString() != "0")
+                {
+                    ddlShipToStateCode.SelectedValue = dt.Rows[0]["stateid"].ToString();
+                }
+                else
+                {
+                    ddlShipToStateCode.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                ddlShipToStateCode.SelectedIndex = 0;
+
+            }
+        }
+
+        protected void ddlBillToSate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string qry = "select GSTstatecode,stateid from states where stateid='" + ddlShipToSate.SelectedValue + "'";
+            DataTable dt = SqlHelper.Instance.GetTableByQuery(qry);
+            if (dt.Rows.Count > 0)
+            {
+
+                if (dt.Rows[0]["stateid"].ToString() != "0")
+                {
+                    ddlShipToStateCode.SelectedValue = dt.Rows[0]["stateid"].ToString();
+                }
+                else
+                {
+                    ddlShipToStateCode.SelectedIndex = 0;
+                }
+
+            }
+            else
+            {
+                ddlShipToStateCode.SelectedIndex = 0;
+
+            }
+        }
+
+        protected void fillfieldofficer()
+        {
+        }
 
         protected void ddlArea_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -910,5 +939,6 @@ namespace SRF.P.Module_Clients
             }
 
         }
+
     }
 }

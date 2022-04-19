@@ -37,7 +37,7 @@
         <div class="content-holder">
             <div class="col-md-12" style="margin-top: 8px; margin-bottom: 8px">
 
-                 <asp:ScriptManager runat="server" ID="Scriptmanager1">
+                <asp:ScriptManager runat="server" ID="Scriptmanager1">
                 </asp:ScriptManager>
 
                 <div align="center">
@@ -432,8 +432,15 @@
                                                             <asp:CheckBox ID="Chkpdfs" runat="server" Text="  PDFs" Checked="true" />
                                                         </td>
 
+                                                       
+                                                    </tr>
+
+                                                    <tr>
                                                         <td>
                                                             <asp:CheckBox ID="ChkRoundOff" runat="server" Text=" Without Round Off" />
+                                                        </td>
+                                                        <td>
+                                                            <asp:CheckBox ID="Chkgrandtotwroff" runat="server" TabIndex="40" Text="&nbsp;&nbsp;Grand Total (With Round off)&nbsp;&nbsp;" />
                                                         </td>
                                                     </tr>
 
@@ -897,6 +904,36 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
+
+                                        <asp:TemplateField HeaderText="HSN Number">
+                                            <ItemTemplate>
+                                                <asp:DropDownList ID="ddlHSNNumber" runat="server" Width="100px"></asp:DropDownList>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+
+                                        <asp:TemplateField HeaderText="CGST" ItemStyle-HorizontalAlign="center">
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="chkcdCGST" Text="" Checked="true" runat="server" />
+                                            </ItemTemplate>
+                                            <ItemStyle HorizontalAlign="Center" />
+                                        </asp:TemplateField>
+
+
+                                        <asp:TemplateField HeaderText="SGST" ItemStyle-HorizontalAlign="center">
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="chkcdSGST" Text="" Checked="true" runat="server" AutoPostBack="true" />
+                                            </ItemTemplate>
+                                            <ItemStyle HorizontalAlign="Center" />
+                                        </asp:TemplateField>
+
+
+                                        <asp:TemplateField HeaderText="IGST" ItemStyle-HorizontalAlign="center">
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="chkcdIGST" Text="" runat="server" AutoPostBack="true" OnCheckedChanged="chkcdIGST_CheckedChanged" />
+                                            </ItemTemplate>
+                                            <ItemStyle HorizontalAlign="Center" />
+                                        </asp:TemplateField>
+
                                         <asp:TemplateField HeaderText="Nots">
                                             <ItemTemplate>
                                                 <asp:DropDownList ID="ddlNoOfOtsPaysheet" runat="server">
@@ -1148,7 +1185,7 @@
                                                         <asp:ListItem>P.Hr</asp:ListItem>
                                                         <asp:ListItem>P.Day</asp:ListItem>
                                                         <asp:ListItem>PM/PD(8Hrs)</asp:ListItem>
-                                                         <asp:ListItem>26/PD/(8Hrs)</asp:ListItem>
+                                                        <asp:ListItem>26/PD/(8Hrs)</asp:ListItem>
                                                         <asp:ListItem>22</asp:ListItem>
                                                         <asp:ListItem>23</asp:ListItem>
                                                         <asp:ListItem>24</asp:ListItem>

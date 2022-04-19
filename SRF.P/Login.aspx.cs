@@ -31,6 +31,8 @@ namespace SRF.P
                 Session["BillprefixWithST"] = string.Empty;
                 Session["BillprefixWithoutST"] = string.Empty;
 
+                Session["Emp_Id"] = string.Empty;
+
 
                 lblcname.Text = SqlHelper.Instance.GetCompanyname();
 

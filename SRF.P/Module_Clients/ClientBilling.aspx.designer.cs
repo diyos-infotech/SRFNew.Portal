@@ -40,6 +40,78 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.DropDownList ddlclientid;
         
         /// <summary>
+        /// ddlCname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCname;
+        
+        /// <summary>
+        /// btngenratepayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btngenratepayment;
+        
+        /// <summary>
+        /// btnFreeze control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFreeze;
+        
+        /// <summary>
+        /// btnUnFreeze control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUnFreeze;
+        
+        /// <summary>
+        /// ddlType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlType;
+        
+        /// <summary>
+        /// txtyear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtyear;
+        
+        /// <summary>
+        /// btncredited control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btncredited;
+        
+        /// <summary>
+        /// btnSendMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSendMail;
+        
+        /// <summary>
         /// ddlmonth control.
         /// </summary>
         /// <remarks>
@@ -76,33 +148,6 @@ namespace SRF.P.Module_Clients {
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender2;
         
         /// <summary>
-        /// ddlCname control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCname;
-        
-        /// <summary>
-        /// btngenratepayment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btngenratepayment;
-        
-        /// <summary>
-        /// txtyear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtyear;
-        
-        /// <summary>
         /// txtfromdate control.
         /// </summary>
         /// <remarks>
@@ -119,6 +164,15 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender txtfromdate_CalendarExtender;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
         /// txttodate control.
@@ -139,13 +193,49 @@ namespace SRF.P.Module_Clients {
         protected global::AjaxControlToolkit.CalendarExtender txttodate_Calender;
         
         /// <summary>
-        /// linkmanualbilling control.
+        /// lblbilltype control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkmanualbilling;
+        protected global::System.Web.UI.WebControls.Label lblbilltype;
+        
+        /// <summary>
+        /// rdbcreatebill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdbcreatebill;
+        
+        /// <summary>
+        /// rdbmodifybill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdbmodifybill;
+        
+        /// <summary>
+        /// lblManualBillNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblManualBillNo;
+        
+        /// <summary>
+        /// ddlMBBillnos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMBBillnos;
         
         /// <summary>
         /// lblbillnolatesttest control.
@@ -229,13 +319,67 @@ namespace SRF.P.Module_Clients {
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
         
         /// <summary>
-        /// FilteredTextBoxExtender8 control.
+        /// FTBduedate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender8;
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FTBduedate;
+        
+        /// <summary>
+        /// txtdescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtdescription;
+        
+        /// <summary>
+        /// txtBankname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBankname;
+        
+        /// <summary>
+        /// txtBankAccNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBankAccNo;
+        
+        /// <summary>
+        /// txtifsccode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtifsccode;
+        
+        /// <summary>
+        /// linkmanualbilling control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkmanualbilling;
+        
+        /// <summary>
+        /// LINKNEWMANUALBILLING control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LINKNEWMANUALBILLING;
         
         /// <summary>
         /// linkdelete control.
@@ -319,6 +463,60 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.Button btncancel;
         
         /// <summary>
+        /// ModalFreezeDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender ModalFreezeDetails;
+        
+        /// <summary>
+        /// pnlFreeze control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlFreeze;
+        
+        /// <summary>
+        /// UpFreeze control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpFreeze;
+        
+        /// <summary>
+        /// TxtFreeze control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtFreeze;
+        
+        /// <summary>
+        /// btnFreezeSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFreezeSubmit;
+        
+        /// <summary>
+        /// btnFreezeClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFreezeClose;
+        
+        /// <summary>
         /// modelLogindetails control.
         /// </summary>
         /// <remarks>
@@ -373,6 +571,69 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.Button btnClose;
         
         /// <summary>
+        /// hdDesignations control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdDesignations;
+        
+        /// <summary>
+        /// lblIRN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIRN;
+        
+        /// <summary>
+        /// btnGenerateIRN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGenerateIRN;
+        
+        /// <summary>
+        /// btnCancelIRN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelIRN;
+        
+        /// <summary>
+        /// btncleardata control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btncleardata;
+        
+        /// <summary>
+        /// pnlcreditdetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlcreditdetails;
+        
+        /// <summary>
+        /// gvCreditNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvCreditNote;
+        
+        /// <summary>
         /// gvClientBilling control.
         /// </summary>
         /// <remarks>
@@ -380,6 +641,24 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvClientBilling;
+        
+        /// <summary>
+        /// btnAddNewRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddNewRow;
+        
+        /// <summary>
+        /// btnCalculateTotals control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCalculateTotals;
         
         /// <summary>
         /// checkExtraData control.
@@ -706,15 +985,6 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.TextBox txtRemarks;
         
         /// <summary>
-        /// lblTotalResources control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalResources;
-        
-        /// <summary>
         /// lblRelChrTitle control.
         /// </summary>
         /// <remarks>
@@ -733,6 +1003,24 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.Label lblRelChrgAmt;
         
         /// <summary>
+        /// lbltotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltotal;
+        
+        /// <summary>
+        /// lblTotalResources control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox lblTotalResources;
+        
+        /// <summary>
         /// lblServiceChargeTitle control.
         /// </summary>
         /// <remarks>
@@ -742,13 +1030,22 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.Label lblServiceChargeTitle;
         
         /// <summary>
+        /// TxtservicechrgPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtservicechrgPrc;
+        
+        /// <summary>
         /// lblServiceCharges control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblServiceCharges;
+        protected global::System.Web.UI.WebControls.TextBox lblServiceCharges;
         
         /// <summary>
         /// lblStaxamtonServicechargetitle control.
@@ -994,13 +1291,22 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.Label lblServiceTaxTitle;
         
         /// <summary>
+        /// TxtServiceTaxPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtServiceTaxPrc;
+        
+        /// <summary>
         /// lblServiceTax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblServiceTax;
+        protected global::System.Web.UI.WebControls.TextBox lblServiceTax;
         
         /// <summary>
         /// lblSBCESSTitle control.
@@ -1012,13 +1318,22 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.Label lblSBCESSTitle;
         
         /// <summary>
+        /// TxtSBCESSPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtSBCESSPrc;
+        
+        /// <summary>
         /// lblSBCESS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSBCESS;
+        protected global::System.Web.UI.WebControls.TextBox lblSBCESS;
         
         /// <summary>
         /// lblKKCESSTitle control.
@@ -1030,13 +1345,22 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.Label lblKKCESSTitle;
         
         /// <summary>
+        /// TxtKKCESSPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtKKCESSPrc;
+        
+        /// <summary>
         /// lblKKCESS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblKKCESS;
+        protected global::System.Web.UI.WebControls.TextBox lblKKCESS;
         
         /// <summary>
         /// lblCGSTTitle control.
@@ -1063,7 +1387,7 @@ namespace SRF.P.Module_Clients {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCGST;
+        protected global::System.Web.UI.WebControls.TextBox lblCGST;
         
         /// <summary>
         /// lblSGSTTitle control.
@@ -1090,7 +1414,7 @@ namespace SRF.P.Module_Clients {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSGST;
+        protected global::System.Web.UI.WebControls.TextBox lblSGST;
         
         /// <summary>
         /// lblIGSTTitle control.
@@ -1117,7 +1441,7 @@ namespace SRF.P.Module_Clients {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIGST;
+        protected global::System.Web.UI.WebControls.TextBox lblIGST;
         
         /// <summary>
         /// lblCess1Title control.
@@ -1144,7 +1468,7 @@ namespace SRF.P.Module_Clients {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCess1;
+        protected global::System.Web.UI.WebControls.TextBox lblCess1;
         
         /// <summary>
         /// lblCess2Title control.
@@ -1171,7 +1495,7 @@ namespace SRF.P.Module_Clients {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCess2;
+        protected global::System.Web.UI.WebControls.TextBox lblCess2;
         
         /// <summary>
         /// lblCESSTitle control.
@@ -1183,13 +1507,22 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.Label lblCESSTitle;
         
         /// <summary>
+        /// TxtCESSPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtCESSPrc;
+        
+        /// <summary>
         /// lblCESS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCESS;
+        protected global::System.Web.UI.WebControls.TextBox lblCESS;
         
         /// <summary>
         /// lblSheCESSTitle control.
@@ -1201,13 +1534,22 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.Label lblSheCESSTitle;
         
         /// <summary>
+        /// TxtSheCESSPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtSheCESSPrc;
+        
+        /// <summary>
         /// lblSheCESS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSheCESS;
+        protected global::System.Web.UI.WebControls.TextBox lblSheCESS;
         
         /// <summary>
         /// lblST75Title control.
@@ -1372,13 +1714,40 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.Label lblDiscounttwo;
         
         /// <summary>
+        /// lblroundoffs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblroundoffs;
+        
+        /// <summary>
+        /// txtRoundoffamt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRoundoffamt;
+        
+        /// <summary>
+        /// lblgrandtotalss control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblgrandtotalss;
+        
+        /// <summary>
         /// lblGrandTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGrandTotal;
+        protected global::System.Web.UI.WebControls.TextBox lblGrandTotal;
         
         /// <summary>
         /// lblRemarks control.
@@ -1388,78 +1757,6 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRemarks;
-        
-        /// <summary>
-        /// btninvoice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btninvoice;
-        
-        /// <summary>
-        /// btninvoice2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btninvoice2;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// Button2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
-        
-        /// <summary>
-        /// btninvoice3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btninvoice3;
-        
-        /// <summary>
-        /// btninvoiceletterhead control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btninvoiceletterhead;
-        
-        /// <summary>
-        /// ddlpaymenttype control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlpaymenttype;
-        
-        /// <summary>
-        /// btndownloadpdffile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btndownloadpdffile;
         
         /// <summary>
         /// lbltotalamount control.
@@ -1478,5 +1775,608 @@ namespace SRF.P.Module_Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblamtinwords;
+        
+        /// <summary>
+        /// ddlfontsize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlfontsize;
+        
+        /// <summary>
+        /// btninvoicenew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btninvoicenew;
+        
+        /// <summary>
+        /// btncreditbill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btncreditbill;
+        
+        /// <summary>
+        /// btnDeleteCreditNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDeleteCreditNote;
+        
+        /// <summary>
+        /// lblClientdetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblClientdetails;
+        
+        /// <summary>
+        /// ddlCnclRsn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCnclRsn;
+        
+        /// <summary>
+        /// txtCnclRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCnclRemarks;
+        
+        /// <summary>
+        /// rdbfull control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdbfull;
+        
+        /// <summary>
+        /// rdbPart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdbPart;
+        
+        /// <summary>
+        /// txtCreditnotedt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditnotedt;
+        
+        /// <summary>
+        /// CalendarExtender3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender3;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender9;
+        
+        /// <summary>
+        /// txtCreditNoteRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditNoteRemarks;
+        
+        /// <summary>
+        /// lblcnhsn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblcnhsn;
+        
+        /// <summary>
+        /// txtCreditNoteHSN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditNoteHSN;
+        
+        /// <summary>
+        /// lblcreditnoteamtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcreditnoteamtn;
+        
+        /// <summary>
+        /// txtCreditNoteAmt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditNoteAmt;
+        
+        /// <summary>
+        /// FTBCrediteNoteamt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FTBCrediteNoteamt;
+        
+        /// <summary>
+        /// lblCreditNoteCGSTPrcn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCreditNoteCGSTPrcn;
+        
+        /// <summary>
+        /// txtCreditNoteCGSTPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditNoteCGSTPrc;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender14;
+        
+        /// <summary>
+        /// lblCreditNoteCGSTn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCreditNoteCGSTn;
+        
+        /// <summary>
+        /// txtCreditNoteCGST control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditNoteCGST;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender10;
+        
+        /// <summary>
+        /// lblCreditNoteSGSTPrcn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCreditNoteSGSTPrcn;
+        
+        /// <summary>
+        /// txtCreditNoteSGSTPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditNoteSGSTPrc;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender15;
+        
+        /// <summary>
+        /// lblCreditNoteSGSTn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCreditNoteSGSTn;
+        
+        /// <summary>
+        /// txtCreditNoteSGST control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditNoteSGST;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender11;
+        
+        /// <summary>
+        /// lblCreditNoteIGSTPrcn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCreditNoteIGSTPrcn;
+        
+        /// <summary>
+        /// txtCreditNoteIGSTPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditNoteIGSTPrc;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender16;
+        
+        /// <summary>
+        /// lblCreditNoteIGSTn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCreditNoteIGSTn;
+        
+        /// <summary>
+        /// txtCreditNoteIGST control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditNoteIGST;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender12;
+        
+        /// <summary>
+        /// lbltotaltaxamtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltotaltaxamtn;
+        
+        /// <summary>
+        /// txtCreditNoteTaxamt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreditNoteTaxamt;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender13;
+        
+        /// <summary>
+        /// btnAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdd;
+        
+        /// <summary>
+        /// gvCreditNoteSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvCreditNoteSummary;
+        
+        /// <summary>
+        /// hfnCnclRsn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCnclRsn;
+        
+        /// <summary>
+        /// hfCnclRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCnclRemarks;
+        
+        /// <summary>
+        /// hfCreditNoteDt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCreditNoteDt;
+        
+        /// <summary>
+        /// hfCreditNoteRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCreditNoteRemarks;
+        
+        /// <summary>
+        /// hfCreditNoteHSN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCreditNoteHSN;
+        
+        /// <summary>
+        /// hfCreditNoteAmt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCreditNoteAmt;
+        
+        /// <summary>
+        /// hfnCreditNoteRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCreditNoteRemarks;
+        
+        /// <summary>
+        /// hfnCreditNoteHSN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCreditNoteHSN;
+        
+        /// <summary>
+        /// hfnCreditNoteAmt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCreditNoteAmt;
+        
+        /// <summary>
+        /// hfnCreditNoteCGSTPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCreditNoteCGSTPrc;
+        
+        /// <summary>
+        /// hfnCreditNoteCGST control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCreditNoteCGST;
+        
+        /// <summary>
+        /// hfnCreditNoteSGSTPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCreditNoteSGSTPrc;
+        
+        /// <summary>
+        /// hfnCreditNoteSGST control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCreditNoteSGST;
+        
+        /// <summary>
+        /// hfnCreditNoteIGSTPrc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCreditNoteIGSTPrc;
+        
+        /// <summary>
+        /// hfnCreditNoteIGST control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCreditNoteIGST;
+        
+        /// <summary>
+        /// hfnCreditNoteTotalTaxAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnCreditNoteTotalTaxAmount;
+        
+        /// <summary>
+        /// hfCreditPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCreditPayment;
+        
+        /// <summary>
+        /// hfCreditIsServ control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCreditIsServ;
+        
+        /// <summary>
+        /// hfCreditUOM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCreditUOM;
+        
+        /// <summary>
+        /// hfRadio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfRadio;
+        
+        /// <summary>
+        /// tempBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button tempBtn;
+        
+        /// <summary>
+        /// tempCN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button tempCN;
+        
+        /// <summary>
+        /// tempRef control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button tempRef;
+        
+        /// <summary>
+        /// tempCnDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button tempCnDetails;
+        
+        /// <summary>
+        /// tempBindGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button tempBindGrid;
+        
+        /// <summary>
+        /// lblcname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcname;
     }
 }

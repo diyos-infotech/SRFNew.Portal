@@ -108,7 +108,20 @@
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net45\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp.Net2, Version=102.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.Net2.1.1.11\lib\net20\RestSharp.Net2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.DynamicData" />

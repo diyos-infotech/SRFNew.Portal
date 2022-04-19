@@ -56,6 +56,41 @@ namespace SRF.P.Module_Clients
             }
         }
 
+        protected void LoadShipStatenames()
+        {
+
+            DataTable DtStateNames = GlobalData.Instance.LoadStateNames();
+            if (DtStateNames.Rows.Count > 0)
+            {
+                ddlShipToSate.DataValueField = "StateID";
+                ddlShipToSate.DataTextField = "State";
+                ddlShipToSate.DataSource = DtStateNames;
+                ddlShipToSate.DataBind();
+
+
+                ddlShipToStateCode.DataValueField = "StateID";
+                ddlShipToStateCode.DataTextField = "GSTStateCode";
+                ddlShipToStateCode.DataSource = DtStateNames;
+                ddlShipToStateCode.DataBind();
+            }
+            ddlShipToSate.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlShipToStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
+
+        }
+
+        protected void LoadClients()
+        {
+            DataTable DtCnames = GlobalData.Instance.LoadCNames(CmpIDPrefix);
+            if (DtCnames.Rows.Count > 0)
+            {
+                ddlUnits.DataValueField = "clientid";
+                ddlUnits.DataTextField = "clientname";
+                ddlUnits.DataSource = DtCnames;
+                ddlUnits.DataBind();
+            }
+            ddlUnits.Items.Insert(0, "-Select-");
+        }
+
         private void LoadOurGSTNos()
         {
             DataTable DtGSTNos = GlobalData.Instance.LoadGSTNumbers();
@@ -66,6 +101,11 @@ namespace SRF.P.Module_Clients
                 ddlOurGSTIN.DataSource = DtGSTNos;
                 ddlOurGSTIN.DataBind();
             }
+        }
+
+        protected void LoadBranches()
+        {
+
         }
 
         protected void LoadStatenames()
@@ -79,35 +119,40 @@ namespace SRF.P.Module_Clients
                 ddlstate.DataSource = DtStateNames;
                 ddlstate.DataBind();
 
-                ddlLWFState.DataValueField = "StateID";
-                ddlLWFState.DataTextField = "State";
-                ddlLWFState.DataSource = DtStateNames;
-                ddlLWFState.DataBind();
 
+                ddlPTState.DataValueField = "StateID";
+                ddlPTState.DataTextField = "State";
+                ddlPTState.DataSource = DtStateNames;
+                ddlPTState.DataBind();
+
+                ddlPOSStateCode.DataValueField = "StateID";
+                ddlPOSStateCode.DataTextField = "GSTStateCode";
+                ddlPOSStateCode.DataSource = DtStateNames;
+                ddlPOSStateCode.DataBind();
 
                 ddlStateCode.DataValueField = "StateID";
                 ddlStateCode.DataTextField = "GSTStateCode";
                 ddlStateCode.DataSource = DtStateNames;
                 ddlStateCode.DataBind();
+
+                ddlLWFState.DataValueField = "StateID";
+                ddlLWFState.DataTextField = "State";
+                ddlLWFState.DataSource = DtStateNames;
+                ddlLWFState.DataBind();
+
             }
             ddlstate.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlPTState.Items.Insert(0, new ListItem("-Select-", "0"));
             ddlStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlPOSStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
             ddlLWFState.Items.Insert(0, new ListItem("-Select-", "0"));
 
         }
 
-        protected void LoadClients()
+        protected void LoadDivisions()
         {
-            DataTable DtCnames = GlobalData.Instance.LoadCNames(CmpIDPrefix);
-            if (DtCnames.Rows.Count > 0)
-            {
-                ddlUnits.DataValueField = "clientid";
-                ddlUnits.DataTextField = "clientname";
-                ddlUnits.DataSource = DtCnames;
-                ddlUnits.DataBind();
 
-            }
-            ddlUnits.Items.Insert(0, "-Select-");
+
         }
 
         protected void LoadClientids()
@@ -162,6 +207,12 @@ namespace SRF.P.Module_Clients
             ddlsegment.Items.Insert(0, "-Select-");
         }
 
+        protected void fillfieldofficer()
+        {
+
+
+        }
+
         private void LoadAreas()
         {
             DataTable DtArea = GlobalData.Instance.LoadArea();
@@ -190,35 +241,11 @@ namespace SRF.P.Module_Clients
 
         }
 
-
-        protected void ddlstate_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string qry = "select GSTstatecode,stateid from states where stateid='" + ddlstate.SelectedValue + "'";
-            DataTable dt = config.ExecuteReaderWithQueryAsync(qry).Result;
-            if (dt.Rows.Count > 0)
-            {
-
-                if (dt.Rows[0]["stateid"].ToString() != "0")
-                {
-                    ddlStateCode.SelectedValue = dt.Rows[0]["stateid"].ToString();
-                }
-                else
-                {
-                    ddlStateCode.SelectedIndex = 0;
-                }
-
-            }
-            else
-            {
-                ddlStateCode.SelectedIndex = 0;
-
-            }
-        }
-
         protected void GetWebConfigdata()
         {
             EmpIDPrefix = Session["EmpIDPrefix"].ToString();
             CmpIDPrefix = Session["CmpIDPrefix"].ToString();
+
         }
 
         protected void btnaddclint_Click(object sender, EventArgs e)
@@ -247,7 +274,7 @@ namespace SRF.P.Module_Clients
                 #endregion  End CCheck Client id Selected or  ?
 
                 #region     Begin Check Client Name is  Empty or ?
-                if (txtcname.Text.Trim().Length == 0)
+                if (txtCname.Text.Trim().Length == 0)
                 {
                     lblMsg.Text = "Please Enter The Client Name";
                     //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Enter The Client Name ');", true);
@@ -256,36 +283,45 @@ namespace SRF.P.Module_Clients
                 #endregion  End Check Client Name is  Empty or ?
 
                 #region   Begin Check   Contact Person   Name
-                if (txtcontactperson.Text.Trim().Length == 0)
-                {
-                    lblMsg.Text = "Please fill Contact Person name";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please fill Contact Person name ');", true);
-                    return;
-                }
+                //if (txtcontactperson.Text.Trim().Length == 0)
+                //{
+                //    lblMsg.Text = "Please fill Contact Person name";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please fill Contact Person name ');", true);
+                //    return;
+                //}
                 #endregion  Begin Check   Contact Person   Name
 
                 #region  Begin Check Designation Selected or ?
-                if (ddldesgn.SelectedIndex == 0)
-                {
-                    lblMsg.Text = "Please Select Designation";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Select Designation ');", true);
-                    return;
-                }
+                //if (ddldesgn.SelectedIndex == 0)
+                //{
+                //    lblMsg.Text = "Please Select Designation";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Select Designation ');", true);
+                //    return;
+                //}
                 #endregion End Check Designation Selected or ?
 
+                #region  Begin Check Zone Selected or ?
+                //if (ddlZones.SelectedIndex == 0)
+                //{
+                //    lblMsg.Text = "Please Select Zone";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Select Designation ');", true);
+                //    return;
+                //}
+                #endregion End Check Zone Selected or ?
+
                 #region Begin Check Phone Number Entered or ?
-                if (txtphonenumbers.Text.Trim().Length == 0)
-                {
-                    lblMsg.Text = "Please Enter the Phone No.";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Enter the Phone No.');", true);
-                    return;
-                }
-                if (txtphonenumbers.Text.Trim().Length < 8)
-                {
-                    lblMsg.Text = "Please enter a valid Phone No.";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please enter a valid Phone No.');", true);
-                    return;
-                }
+                //if (txtphonenumbers.Text.Trim().Length == 0)
+                //{
+                //    lblMsg.Text = "Please Enter the Phone No.";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Enter the Phone No.');", true);
+                //    return;
+                //}
+                //if (txtphonenumbers.Text.Trim().Length < 8)
+                //{
+                //    lblMsg.Text = "Please enter a valid Phone No.";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please enter a valid Phone No.');", true);
+                //    return;
+                //}
                 #endregion  End Check Phone Number Entered or ?
 
                 #region  Begin Check if Sub unit Check then Should be Select MAin unit ID
@@ -329,6 +365,15 @@ namespace SRF.P.Module_Clients
                 }
                 #endregion  End Check  Main Unit Selected  Entered or ?
 
+                #region Begin Check Field Officer
+                //if(dllfieldofficer.SelectedIndex==0)
+                //{
+                //    lblMsg.Text = "Please Select the  Field Officer";
+                //    //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert(' Please Select the  Field Officer');", true);
+                //    return;
+                //}
+                #endregion End Check Field Officer
+
 
                 #endregion End   Check Validations as on  [19-09-2013]
 
@@ -348,11 +393,8 @@ namespace SRF.P.Module_Clients
                 var ClientFax = string.Empty;
                 var ClientEmail = string.Empty;
                 var ClientAddrPin = string.Empty;
-                var State = "0";
-                var StateCode = "0";
-                var GSTIN = "";
-                var OurGSTIN = "";
-                var LWFState = "0";
+                var EmailCC = string.Empty;
+
                 #endregion  End Code  Person-Designation To PIN-No
 
                 #region  Begin Code  Line-One To Line-Five
@@ -361,6 +403,8 @@ namespace SRF.P.Module_Clients
                 var ClientAddrArea = string.Empty;
                 var ClientAddrCity = string.Empty;
                 var ClientAddrColony = string.Empty;
+                var Line7 = "";
+                var Line8 = "";
                 #endregion  End Code Line-One To Line-Five
 
                 #region Begin Code Line Six To PaySheet
@@ -371,25 +415,49 @@ namespace SRF.P.Module_Clients
                 var Invoice = 0;
                 var Paysheet = 0;
                 var ClientDesc = string.Empty;
-                var Area = string.Empty;
-                var Zone = string.Empty;
-
                 #endregion End Code Line Six To PaySheet
 
                 #region   Begin Extra Varibles for This Event   As on [20-09-2013]
                 var URecordStatus = 0;
                 #endregion End Extra Varibles for This Event   As on [20-09-2013]
 
-                var Location = "";
+
+                var Area = string.Empty;
+                var Zone = string.Empty; var LWFState = "0";
+                int Category = 0;
+                var State = "0";
+                var StateCode = "0";
+                var GSTIN = "";
+                var OurGSTIN = "";
+
 
                 #endregion  End Declare Variables as on [19-09-2013]
+
+                var ShiptoLine1 = "";
+                var ShiptoLine2 = "";
+                var ShiptoLine3 = "";
+                var ShiptoLine4 = "";
+                var ShiptoLine5 = "";
+                var ShiptoLine6 = "";
+                var ShipToState = "0";
+                var ShipToStateCode = "0";
+                var ShipToGSTIN = "";
+                var Division = "0";
+                var ESIBranch = "0";
+                var Location = "";
+                var FieldOfficer = "";
+                var AreaManager = "0";
+                var Branch = "";
+                var BillSeq = string.Empty;
+                var PONumber = "";
+                var ClientSector = 0;
 
 
                 #region    Begin Code For Assign Values Into Declared Variables as on [19-09-2013]
                 #region    Begin Code Client-id to  Contact Person
                 //ClientId =ddlcid.SelectedValue;
                 ClientId = txtclientid.Text;
-                ClientName = txtcname.Text;
+                ClientName = txtCname.Text;
                 ClientShortName = txtshortname.Text;
                 if (ddlsegment.SelectedIndex == 0)
                 {
@@ -400,22 +468,6 @@ namespace SRF.P.Module_Clients
                     ClientSegment = ddlsegment.SelectedValue;
                 }
 
-                if (ddlArea.SelectedIndex == 0)
-                {
-                    Area = "0";
-                }
-                else
-                {
-                    Area = ddlArea.SelectedValue;
-                }
-                if (ddlZone.SelectedIndex == 0)
-                {
-                    Zone = "0";
-                }
-                else
-                {
-                    Zone = ddlZone.SelectedValue;
-                }
                 ClientContactPerson = txtcontactperson.Text;
                 #endregion  End Code Client-id to Contact Person
 
@@ -425,30 +477,17 @@ namespace SRF.P.Module_Clients
                 ClientFax = txtfaxno.Text;
                 ClientEmail = txtemailid.Text;
                 ClientAddrPin = txtpin.Text;
-                if (ddlstate.SelectedIndex > 0)
-                {
-                    State = ddlstate.SelectedValue;
-                }
+                EmailCC = txtEmailCC.Text;
 
-                if (ddlStateCode.SelectedIndex > 0)
-                {
-                    StateCode = ddlStateCode.SelectedValue;
-                }
-                if (ddlLWFState.SelectedIndex > 0)
-                {
-                    LWFState = ddlLWFState.SelectedValue;
-                }
-
-                GSTIN = txtGSTUniqueID.Text;
-                OurGSTIN = ddlOurGSTIN.SelectedValue;
                 #endregion  End Code  Person-Designation To PIN-No
 
                 #region  Begin Code  Line-One To Line-Five
                 ClientAddrHno = txtchno.Text;
                 ClientAddrStreet = txtstreet.Text;
                 ClientAddrArea = txtarea.Text;
-                ClientAddrCity = TxtCity.Text;
+                ClientAddrCity = txtcity.Text;
                 ClientAddrColony = txtcolony.Text;
+
                 #endregion  End Code Line-One To Line-Five
 
                 #region Begin Code Line Six To PaySheet
@@ -478,12 +517,195 @@ namespace SRF.P.Module_Clients
                 ClientDesc = txtdescription.Text;
                 #endregion End Code Line Six To PaySheet
 
-                if (txtLocation.Text.Trim().Length > 0)
+
+
+                if (ddlZones.SelectedIndex > 0)
                 {
-                    Location = txtLocation.Text;
+                    Zone = ddlZones.SelectedValue;
+                }
+
+                if (ddlstate.SelectedIndex > 0)
+                {
+                    State = ddlstate.SelectedValue;
+                }
+
+                if (ddlStateCode.SelectedIndex > 0)
+                {
+                    StateCode = ddlStateCode.SelectedValue;
+                }
+
+
+                GSTIN = txtGSTUniqueID.Text;
+                OurGSTIN = ddlOurGSTIN.SelectedValue;
+
+                string BuyersOrderNo = "";
+                BuyersOrderNo = txtBuyerOrderNo.Text;
+
+
+
+
+                var PTState = "0";
+
+                if (ddlPTState.SelectedIndex > 0)
+                {
+                    PTState = ddlPTState.SelectedValue;
+                }
+
+
+
+                if (txtShipToLine1.Text.Trim().Length > 0)
+                {
+                    ShiptoLine1 = txtShipToLine1.Text;
+                }
+
+
+                if (txtShipToLine2.Text.Trim().Length > 0)
+                {
+                    ShiptoLine2 = txtShipToLine2.Text;
+                }
+
+                if (txtShipToLine3.Text.Trim().Length > 0)
+                {
+                    ShiptoLine3 = txtShipToLine3.Text;
+                }
+
+
+                if (txtShipToLine4.Text.Trim().Length > 0)
+                {
+                    ShiptoLine4 = txtShipToLine4.Text;
+                }
+
+                if (txtShipToLine5.Text.Trim().Length > 0)
+                {
+                    ShiptoLine5 = txtShipToLine5.Text;
+                }
+
+                if (txtShipToLine6.Text.Trim().Length > 0)
+                {
+                    ShiptoLine6 = txtShipToLine6.Text;
+                }
+
+                if (txtShipToGSTIN.Text.Trim().Length > 0)
+                {
+                    ShipToGSTIN = txtShipToGSTIN.Text;
+                }
+
+
+                if (dllfieldofficer.SelectedIndex == 0)
+                {
+                    FieldOfficer = "0";
+                }
+                else
+                {
+                    FieldOfficer = dllfieldofficer.SelectedValue;
+                }
+
+
+
+
+                if (ddllocation.Text.Length > 0)
+                {
+                    Location = ddllocation.Text;
+                }
+
+
+                ShipToState = ddlShipToSate.SelectedValue;
+                ShipToStateCode = ddlShipToStateCode.SelectedValue;
+
+                var SupplyType = ddlSupplyType.SelectedValue;
+
+
+                var BillToLegalName = "";
+                var BillToAddr1 = "";
+                var BillToAddr2 = "";
+                var BillToLocation = "";
+                var BillToPOS = "0";
+                var BillToPIN = "0";
+
+
+                if (txtBillToLglName.Text.Trim().Length > 0)
+                {
+                    BillToLegalName = txtBillToLglName.Text;
+                }
+                if (txtBillToAddr1.Text.Trim().Length > 0)
+                {
+                    BillToAddr1 = txtBillToAddr1.Text;
+                }
+
+                if (txtBillToAddr2.Text.Trim().Length > 0)
+                {
+                    BillToAddr2 = txtBillToAddr2.Text;
+                }
+                if (txtBillToLocation.Text.Trim().Length > 0)
+                {
+                    BillToLocation = txtBillToLocation.Text;
+                }
+
+                if (txtBillToPIN.Text.Trim().Length > 0)
+                {
+                    BillToPIN = txtBillToPIN.Text;
+                }
+
+                if (ddlPOSStateCode.SelectedIndex > 0)
+                {
+                    BillToPOS = ddlPOSStateCode.SelectedValue;
+                }
+
+
+
+                var ShipToLegalName = "";
+                var ShipToAddr1 = "";
+                var ShipToAddr2 = "";
+                var ShipToLocation = "";
+                var ShipToPIN = "0";
+
+                if (txtShipToLglName.Text.Trim().Length > 0)
+                {
+                    ShipToLegalName = txtShipToLglName.Text;
+                }
+                if (txtShipToAddr1.Text.Trim().Length > 0)
+                {
+                    ShipToAddr1 = txtShipToAddr1.Text;
+                }
+
+                if (txtShipToAddr2.Text.Trim().Length > 0)
+                {
+                    ShipToAddr2 = txtShipToAddr2.Text;
+                }
+
+                if (txtShipToPIN.Text.Trim().Length > 0)
+                {
+                    ShipToPIN = txtShipToPIN.Text;
+                }
+
+                if (txtShipToLocation.Text.Trim().Length > 0)
+                {
+                    ShipToLocation = txtShipToLocation.Text;
                 }
 
                 #endregion   End Code For Assign Values Into Declared Variables as on [19-09-2013]
+
+                if (ddlLWFState.SelectedIndex > 0)
+                {
+                    LWFState = ddlLWFState.SelectedValue;
+                }
+
+                if (ddlArea.SelectedIndex == 0)
+                {
+                    Area = "0";
+                }
+                else
+                {
+                    Area = ddlArea.SelectedValue;
+                }
+                if (ddlZone.SelectedIndex == 0)
+                {
+                    Zone = "0";
+                }
+                else
+                {
+                    Zone = ddlZone.SelectedValue;
+                }
 
 
                 #region    Begin Code For Stored Procedure Parameters as on [20-09-2013]
@@ -508,11 +730,7 @@ namespace SRF.P.Module_Clients
                 ModifyClientDetails.Add("@ClientFax", ClientFax);
                 ModifyClientDetails.Add("@ClientEmail", ClientEmail);
                 ModifyClientDetails.Add("@ClientAddrPin", ClientAddrPin);
-                ModifyClientDetails.Add("@state", State);
-                ModifyClientDetails.Add("@StateCode", StateCode);
-                ModifyClientDetails.Add("@GSTIN", GSTIN);
-                ModifyClientDetails.Add("@OurGSTIN", OurGSTIN);
-                ModifyClientDetails.Add("@LWFState", LWFState);
+                ModifyClientDetails.Add("@EmailCC", EmailCC);
 
                 #endregion  End Code  Person-Designation To PIN-No
 
@@ -536,18 +754,53 @@ namespace SRF.P.Module_Clients
                 ModifyClientDetails.Add("@Invoice", Invoice);
                 ModifyClientDetails.Add("@Paysheet", Paysheet);
                 ModifyClientDetails.Add("@ClientDesc", ClientDesc);
-                ModifyClientDetails.Add("@Area", Area);
-                ModifyClientDetails.Add("@Zone", Zone);
+
 
                 #endregion End Code Line Six To PaySheet
 
+
+                ModifyClientDetails.Add("@Category", Category);
+                ModifyClientDetails.Add("@state", State);
+                ModifyClientDetails.Add("@StateCode", StateCode);
+                ModifyClientDetails.Add("@GSTIN", GSTIN);
+                ModifyClientDetails.Add("@OurGSTIN", OurGSTIN);
+                ModifyClientDetails.Add("@Line7", Line7);
+                ModifyClientDetails.Add("@Line8", Line8);
+               
+
+                ModifyClientDetails.Add("@ShiptoLine1", ShiptoLine1);
+                ModifyClientDetails.Add("@ShiptoLine2", ShiptoLine2);
+                ModifyClientDetails.Add("@ShiptoLine3", ShiptoLine3);
+                ModifyClientDetails.Add("@ShiptoLine4", ShiptoLine4);
+                ModifyClientDetails.Add("@ShiptoLine5", ShiptoLine5);
+                ModifyClientDetails.Add("@ShiptoLine6", ShiptoLine6);
+                ModifyClientDetails.Add("@ShipToState", ShipToState);
+                ModifyClientDetails.Add("@ShipToStateCode", ShipToStateCode);
+                ModifyClientDetails.Add("@ShipToGSTIN", ShipToGSTIN);
                 ModifyClientDetails.Add("@Location", Location);
+              
+
+                ModifyClientDetails.Add("@BillToLegalName", BillToLegalName);
+                ModifyClientDetails.Add("@BillToAddr1", BillToAddr1);
+                ModifyClientDetails.Add("@BillToAddr2", BillToAddr2);
+                ModifyClientDetails.Add("@BillToLocation", BillToLocation);
+                ModifyClientDetails.Add("@BillToPIN", BillToPIN);
+                ModifyClientDetails.Add("@BillToPOS", BillToPOS);
+                ModifyClientDetails.Add("@ShipToLegalName", ShipToLegalName);
+                ModifyClientDetails.Add("@ShipToAddr1", ShipToAddr1);
+                ModifyClientDetails.Add("@ShipToAddr2", ShipToAddr2);
+                ModifyClientDetails.Add("@ShipToLocation", ShipToLocation);
+                ModifyClientDetails.Add("@ShipToPIN", ShipToPIN);
+                ModifyClientDetails.Add("@SupplyType", SupplyType);
+                ModifyClientDetails.Add("@LWFState", LWFState);
+                ModifyClientDetails.Add("@Area", Area);
+                ModifyClientDetails.Add("@Zone", Zone);
 
                 #endregion End Code For Stored Procedure Parameters as on [20-09-2013]
 
 
                 #region     Begin Code For Calling Stored Procedure as on [20-09-2013]
-                URecordStatus = config.ExecuteNonQueryParamsAsync(ModifyClientDetailsPName, ModifyClientDetails).Result;
+                URecordStatus = SqlHelper.Instance.ExecuteQuery(ModifyClientDetailsPName, ModifyClientDetails);
                 #endregion   End   Code For Calling Stored Procedure as on [20-09-2013]
 
 
@@ -555,6 +808,7 @@ namespace SRF.P.Module_Clients
 
                 if (URecordStatus > 0)
                 {
+                    lblMsg.Text = "";
                     lblSuc.Text = "Client Details Modified Sucessfully.  With  Client Id   :- " + ClientId + " ";
                     //ScriptManager.RegisterStartupScript(this, GetType(), "Show Alert", "alert('Client Details Modified Sucessfully.  With  Client Id   :- " + ClientId + " -: ');", true);
                     //ClearClientsFieldsData();
@@ -583,17 +837,17 @@ namespace SRF.P.Module_Clients
         private void ClearClientsFieldsData()
         {
 
-            txtcname.Text = txtshortname.Text = txtcontactperson.Text = txtphonenumbers.Text = txtfaxno.Text = txtemailid.Text =
-            txtpin.Text = txtchno.Text = txtstreet.Text = txtarea.Text = TxtCity.Text = txtcolony.Text =
+            txtCname.Text = txtshortname.Text = txtcontactperson.Text = txtphonenumbers.Text = txtfaxno.Text = ddllocation.Text = txtemailid.Text =
+            txtpin.Text = txtchno.Text = txtstreet.Text = txtarea.Text = txtcity.Text = txtcolony.Text =
             txtstate.Text = txtdescription.Text = txtclientid.Text = string.Empty;
 
-            ddlsegment.SelectedIndex = ddlLWFState.SelectedIndex = ddldesgn.SelectedIndex = ddlUnits.SelectedIndex = ddlcid.SelectedIndex = ddlZone.SelectedIndex = ddlArea.SelectedIndex = 0;
-            ddlUnits.Visible =  false;
+            ddlsegment.SelectedIndex = ddldesgn.SelectedIndex = ddlUnits.SelectedIndex = ddlcid.SelectedIndex = ddlZones.SelectedIndex = ddlOurGSTIN.SelectedIndex = dllfieldofficer.SelectedIndex = ddlAreamanager.SelectedIndex = 0;
+            ddlUnits.Visible = false;
 
             chkSubUnit.Checked = false;
 
             radioinvoiceyes.Checked = radioinvoiceno.Checked = radiopaysheetyes.Checked = radiopaysheetno.Checked = radioyesmu.Checked = radionomu.Checked = false;
-            txtLocation.Text = string.Empty;
+
         }
 
         protected void ddlcid_SelectedIndexChanged(object sender, EventArgs e)
@@ -623,7 +877,7 @@ namespace SRF.P.Module_Clients
                 #region   Begin Code for Calling Stored Procedure as on [20-09-2013]
                 Hashtable HTSpParameters = new Hashtable();
                 HTSpParameters.Add("@Clientid", Clientid);
-                DataTable DtClientInfo = config.ExecuteAdaptorAsyncWithParams(SPName, HTSpParameters).Result;
+                DataTable DtClientInfo = SqlHelper.Instance.ExecuteStoredProcedureWithParams(SPName, HTSpParameters);
                 #endregion End Code for Calling Stored Procedure as on [20-09-2013]
 
                 #region  Begin Code for Check Records Are available for the Entered text as  on [09-10-2013]
@@ -639,7 +893,7 @@ namespace SRF.P.Module_Clients
 
                 #region    Begin Code For Assign  Data Column Values to Controls as on [20-09-2013]
                 #region    Begin Code Client-Name to  Contact Person
-                txtcname.Text = DtClientInfo.Rows[0]["ClientName"].ToString();
+                txtCname.Text = DtClientInfo.Rows[0]["ClientName"].ToString();
                 txtshortname.Text = DtClientInfo.Rows[0]["ClientShortName"].ToString();
                 DdlValue = DtClientInfo.Rows[0]["ClientSegment"].ToString();
                 if (DdlValue != "0")
@@ -650,24 +904,7 @@ namespace SRF.P.Module_Clients
                 {
                     ddlsegment.SelectedIndex = 0;
                 }
-                DdlValue = DtClientInfo.Rows[0]["Area"].ToString();
-                if (DdlValue != "0")
-                {
-                    ddlArea.SelectedValue = DdlValue;
-                }
-                else
-                {
-                    ddlArea.SelectedIndex = 0;
-                }
-                DdlValue = DtClientInfo.Rows[0]["Zone"].ToString();
-                if (DdlValue != "0")
-                {
-                    ddlZone.SelectedValue = DdlValue;
-                }
-                else
-                {
-                    ddlZone.SelectedIndex = 0;
-                }
+
                 txtcontactperson.Text = DtClientInfo.Rows[0]["ClientContactPerson"].ToString();
                 #endregion  End Code Client-Name  to Contact Person
 
@@ -685,38 +922,7 @@ namespace SRF.P.Module_Clients
                 txtfaxno.Text = DtClientInfo.Rows[0]["ClientFax"].ToString();
                 txtemailid.Text = DtClientInfo.Rows[0]["ClientEmail"].ToString();
                 txtpin.Text = DtClientInfo.Rows[0]["ClientAddrPin"].ToString();
-
-                if (DtClientInfo.Rows[0]["state"].ToString() != "0")
-                {
-                    ddlstate.SelectedValue = DtClientInfo.Rows[0]["state"].ToString();
-                }
-                else
-                {
-                    ddlstate.SelectedIndex = 0;
-
-                }
-
-                if (DtClientInfo.Rows[0]["LWFState"].ToString() != "0")
-                {
-                    ddlLWFState.SelectedValue = DtClientInfo.Rows[0]["LWFState"].ToString();
-                }
-                else
-                {
-                    ddlLWFState.SelectedIndex = 0;
-
-                }
-
-                if (DtClientInfo.Rows[0]["statecode"].ToString() != "0")
-                {
-                    ddlStateCode.SelectedValue = DtClientInfo.Rows[0]["statecode"].ToString();
-                }
-                else
-                {
-                    ddlStateCode.SelectedIndex = 0;
-                }
-
-                ddlOurGSTIN.SelectedValue = DtClientInfo.Rows[0]["OurGSTIN"].ToString();
-                txtGSTUniqueID.Text = DtClientInfo.Rows[0]["GSTIN"].ToString();
+                txtEmailCC.Text = DtClientInfo.Rows[0]["EmailCC"].ToString();
 
 
                 #endregion  End Code  Person-Designation To PIN-No
@@ -725,8 +931,10 @@ namespace SRF.P.Module_Clients
                 txtchno.Text = DtClientInfo.Rows[0]["ClientAddrHno"].ToString();
                 txtstreet.Text = DtClientInfo.Rows[0]["ClientAddrStreet"].ToString();
                 txtarea.Text = DtClientInfo.Rows[0]["ClientAddrArea"].ToString();
-                TxtCity.Text = DtClientInfo.Rows[0]["ClientAddrCity"].ToString();
+                txtcity.Text = DtClientInfo.Rows[0]["ClientAddrCity"].ToString();
                 txtcolony.Text = DtClientInfo.Rows[0]["ClientAddrColony"].ToString();
+
+
                 #endregion  End Code Line-One To Line-Five
 
                 #region Begin Code Line Six To PaySheet
@@ -797,9 +1005,117 @@ namespace SRF.P.Module_Clients
                 txtdescription.Text = DtClientInfo.Rows[0]["ClientDesc"].ToString();
                 #endregion End Code Line Six To PaySheet
 
-                txtLocation.Text = DtClientInfo.Rows[0]["Location"].ToString();
+
+                if (DtClientInfo.Rows[0]["state"].ToString() != "0")
+                {
+                    ddlstate.SelectedValue = DtClientInfo.Rows[0]["state"].ToString();
+                }
+                else
+                {
+                    ddlstate.SelectedIndex = 0;
+
+                }
+
+                if (DtClientInfo.Rows[0]["statecode"].ToString() != "0")
+                {
+                    ddlStateCode.SelectedValue = DtClientInfo.Rows[0]["statecode"].ToString();
+                }
+                else
+                {
+                    ddlStateCode.SelectedIndex = 0;
+
+                }
+
+                ddlOurGSTIN.SelectedValue = DtClientInfo.Rows[0]["OurGSTIN"].ToString();
+                txtGSTUniqueID.Text = DtClientInfo.Rows[0]["GSTIN"].ToString();
+                txtShipToLine1.Text = DtClientInfo.Rows[0]["ShiptoLine1"].ToString();
+                txtShipToLine2.Text = DtClientInfo.Rows[0]["ShiptoLine2"].ToString();
+                txtShipToLine3.Text = DtClientInfo.Rows[0]["ShiptoLine3"].ToString();
+                txtShipToLine4.Text = DtClientInfo.Rows[0]["ShiptoLine4"].ToString();
+                txtShipToLine5.Text = DtClientInfo.Rows[0]["ShiptoLine5"].ToString();
+                txtShipToLine6.Text = DtClientInfo.Rows[0]["ShiptoLine6"].ToString();
+                txtShipToGSTIN.Text = DtClientInfo.Rows[0]["ShipToGSTIN"].ToString();
+
+
+                if (DtClientInfo.Rows[0]["ShipToState"].ToString() != "0")
+                {
+                    ddlShipToSate.SelectedValue = DtClientInfo.Rows[0]["ShipToState"].ToString();
+                }
+                else
+                {
+                    ddlShipToSate.SelectedIndex = 0;
+
+                }
+                if (DtClientInfo.Rows[0]["ShipToStateCode"].ToString() != "0")
+                {
+                    ddlShipToStateCode.SelectedValue = DtClientInfo.Rows[0]["ShipToStateCode"].ToString();
+                }
+                else
+                {
+                    ddlShipToStateCode.SelectedIndex = 0;
+                }
+
+
+
+                ddllocation.Text = DtClientInfo.Rows[0]["Location"].ToString();
+
+                txtBillToLglName.Text = DtClientInfo.Rows[0]["BillToLegalName"].ToString();
+                txtBillToAddr1.Text = DtClientInfo.Rows[0]["BillToAddr1"].ToString();
+                txtBillToAddr2.Text = DtClientInfo.Rows[0]["BillToAddr2"].ToString();
+                txtBillToLocation.Text = DtClientInfo.Rows[0]["BillToLocation"].ToString();
+                txtBillToPIN.Text = DtClientInfo.Rows[0]["BillToPIN"].ToString();
+                if (DtClientInfo.Rows[0]["BillToPOS"].ToString() != "0")
+                {
+                    ddlPOSStateCode.SelectedValue = DtClientInfo.Rows[0]["BillToPOS"].ToString();
+                }
+                else
+                {
+                    ddlPOSStateCode.SelectedIndex = 0;
+
+                }
+
+                txtShipToLglName.Text = DtClientInfo.Rows[0]["ShipToLegalName"].ToString();
+                txtShipToAddr1.Text = DtClientInfo.Rows[0]["ShipToAddr1"].ToString();
+                txtShipToAddr2.Text = DtClientInfo.Rows[0]["ShipToAddr2"].ToString();
+                txtShipToLocation.Text = DtClientInfo.Rows[0]["ShipToLocation"].ToString();
+                txtShipToPIN.Text = DtClientInfo.Rows[0]["ShipToPIN"].ToString();
+                ddlSupplyType.SelectedValue = DtClientInfo.Rows[0]["SupplyType"].ToString();
+
+
+                DdlValue = DtClientInfo.Rows[0]["Area"].ToString();
+                if (DdlValue != "0")
+                {
+                    ddlArea.SelectedValue = DdlValue;
+                }
+                else
+                {
+                    ddlArea.SelectedIndex = 0;
+                }
+                DdlValue = DtClientInfo.Rows[0]["Zone"].ToString();
+                if (DdlValue != "0")
+                {
+                    ddlZone.SelectedValue = DdlValue;
+                }
+                else
+                {
+                    ddlZone.SelectedIndex = 0;
+                }
+
+                if (DtClientInfo.Rows[0]["LWFState"].ToString() != "0")
+                {
+                    ddlLWFState.SelectedValue = DtClientInfo.Rows[0]["LWFState"].ToString();
+                }
+                else
+                {
+                    ddlLWFState.SelectedIndex = 0;
+
+                }
+
+
+
 
                 #endregion End   Code For Assign  Data Column Values to Controls as on [20-09-2013]
+
 
             }
 
@@ -835,10 +1151,62 @@ namespace SRF.P.Module_Clients
             if (txtclientid.Text.Trim().Length == 0)
             {
                 lblMsg.Text = "Please Enter the Client ID";
-                //ScriptManager.RegisterStartupScript(this, GetType(), "show alert", "alert('Please Enter the Client ID');", true);
             }
             LoadClientDetails();
 
+        }
+
+        protected void ddlstate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string qry = "select GSTstatecode,stateid from states where stateid='" + ddlstate.SelectedValue + "'";
+            DataTable dt = SqlHelper.Instance.GetTableByQuery(qry);
+            if (dt.Rows.Count > 0)
+            {
+
+                if (dt.Rows[0]["stateid"].ToString() != "0")
+                {
+                    ddlStateCode.SelectedValue = dt.Rows[0]["stateid"].ToString();
+                    ddlPOSStateCode.SelectedValue = dt.Rows[0]["stateid"].ToString();
+
+                }
+                else
+                {
+                    ddlStateCode.SelectedIndex = 0;
+                    ddlPOSStateCode.SelectedIndex = 0;
+
+                }
+
+            }
+            else
+            {
+                ddlStateCode.SelectedIndex = 0;
+                ddlPOSStateCode.SelectedIndex = 0;
+
+
+            }
+        }
+
+        protected void ddlShipToSate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string qry = "select GSTstatecode,stateid from states where stateid='" + ddlShipToSate.SelectedValue + "'";
+            DataTable dt = SqlHelper.Instance.GetTableByQuery(qry);
+            if (dt.Rows.Count > 0)
+            {
+
+                if (dt.Rows[0]["stateid"].ToString() != "0")
+                {
+                    ddlShipToStateCode.SelectedValue = dt.Rows[0]["stateid"].ToString();
+                }
+                else
+                {
+                    ddlShipToStateCode.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                ddlShipToStateCode.SelectedIndex = 0;
+
+            }
         }
 
         protected void ddlArea_SelectedIndexChanged(object sender, EventArgs e)
@@ -854,7 +1222,6 @@ namespace SRF.P.Module_Clients
                 ddlZone.SelectedIndex = 0;
             }
         }
-
 
     }
 }

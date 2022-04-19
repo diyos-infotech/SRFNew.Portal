@@ -12,7 +12,7 @@
             height: 24px;
         }
     </style>
-   
+
 
     <div id="content-holder">
         <div class="content-holder">
@@ -29,11 +29,6 @@
                             <tr>
                                 <td>
                                     <h3 class="panel-title">Add Client</h3>
-                                    <!-- <div align="right"> <b>Import Data: </b> <asp:FileUpload  ID="fileupload1" runat="server" Width="50px"/> 
-                 <asp:Button ID="btnImportData" runat="server" ValidationGroup="b"
-                     Text="Import"  
-                        class=" btn save" onclick="btnImportData_Click"  /></div> -->
-
                                 </td>
                                 <td align="right"><< <a href="Clients.aspx" style="color: #003366">Back</a>  </td>
                             </tr>
@@ -68,19 +63,19 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Contact Person<span style="color: Red">*</span>
+                                                <td>Contact Person<%--<span style="color: Red">*</span>--%>
                                                 </td>
                                                 <td>
                                                     <asp:TextBox ID="txtcontactperson" runat="server" TabIndex="5" class="sinput" MaxLength="200"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Phone No(s)<span style="color: Red">*</span>
+                                                <td>Phone No(s)<%--<span style="color: Red">*</span>--%>
                                                 </td>
                                                 <td>
                                                     <asp:TextBox ID="txtphonenumbers" runat="server" TabIndex="7" class="sinput" MaxLength="50"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                                        ControlToValidate="txtphonenumbers" SetFocusOnError="true" Display="Dynamic" ValidationGroup="a" Text="*"></asp:RequiredFieldValidator>
+                                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                                            ControlToValidate="txtphonenumbers" SetFocusOnError="true" Display="Dynamic" ValidationGroup="a" Text="*"></asp:RequiredFieldValidator>--%>
                                                     <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1"
                                                         runat="server" Enabled="True" TargetControlID="txtphonenumbers"
                                                         ValidChars="0123456789">
@@ -93,9 +88,10 @@
                                                 <td>Email-ID
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtemailid" runat="server" class="sinput" TabIndex="9" MaxLength="200"></asp:TextBox>
+                                                    <asp:TextBox ID="txtemailid" runat="server" class="sinput" TabIndex="9" TextMode="MultiLine"></asp:TextBox>
                                                 </td>
                                             </tr>
+
                                             <tr>
                                                 <td>Our GSTIN
                                                 </td>
@@ -103,6 +99,25 @@
                                                     <asp:DropDownList ID="ddlOurGSTIN" runat="server" class="sdrop" TabIndex="9"></asp:DropDownList>
 
                                                 </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Type of Supply</td>
+                                                <td>
+                                                    <asp:DropDownList ID="ddlSupplyType" runat="server" class="sdrop">
+                                                        <asp:ListItem>B2B</asp:ListItem>
+                                                        <asp:ListItem>B2C</asp:ListItem>
+                                                        <asp:ListItem>SEZWP</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
 
                                             <tr style="font-weight: bold">
@@ -113,28 +128,63 @@
 
 
                                             <tr>
-                                                <td>Line One
+                                                <td style="font-weight: bold; text-decoration: underline">Bill To
                                                 </td>
-                                                <td>
-                                                    <asp:TextBox ID="txtchno" runat="server" class="sinput" TabIndex="11" MaxLength="300">
-                                                    </asp:TextBox>
-                                                </td>
+                                                <td></td>
                                             </tr>
+
                                             <tr>
-                                                <td>Line Three
+                                                <td>Legal Name
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtarea" runat="server" class="sinput" TabIndex="13" MaxLength="300"></asp:TextBox>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Line Five
-                                                </td>
-                                                <td>
-                                                    <asp:TextBox ID="txtcity" runat="server" TabIndex="15" class="sinput" MaxLength="200"></asp:TextBox>
+                                                    <asp:TextBox ID="txtBillToLglName" runat="server" TabIndex="15" class="sinput" MaxLength="100"></asp:TextBox>
 
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td>Addr 1
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtBillToAddr1" runat="server" TabIndex="15" class="sinput" MaxLength="100"></asp:TextBox>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Addr 2
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtBillToAddr2" runat="server" TabIndex="15" class="sinput" MaxLength="100"></asp:TextBox>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Location
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtBillToLocation" runat="server" TabIndex="15" class="sinput" MaxLength="50"></asp:TextBox>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>PIN
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtBillToPIN" runat="server" TabIndex="15" class="sinput" MaxLength="6"></asp:TextBox>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>GSTIN/Unique ID </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtGSTUniqueID" runat="server" TextMode="MultiLine" TabIndex="21"
+                                                        class="sinput"></asp:TextBox>
+                                                </td>
+                                            </tr>
+
                                             <tr>
                                                 <td>State
                                                 </td>
@@ -144,12 +194,77 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>GSTIN/Unique ID </td>
+                                                <td>State Code</td>
                                                 <td>
-                                                    <asp:TextBox ID="txtGSTUniqueID" runat="server" TabIndex="21"
-                                                        class="sinput"></asp:TextBox>
+                                                    <asp:DropDownList runat="server" ID="ddlStateCode" TabIndex="21" class="sdrop">
+                                                    </asp:DropDownList>
                                                 </td>
                                             </tr>
+
+                                            <tr>
+                                                <td>POS (State Code)</td>
+                                                <td>
+                                                    <asp:DropDownList runat="server" ID="ddlPOSStateCode" TabIndex="19" class="sdrop">
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
+
+
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 1</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtchno" runat="server" class="sinput" TabIndex="12">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 2</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtstreet" runat="server" class="sinput" TabIndex="12">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 3</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtarea" runat="server" class="sinput" TabIndex="12">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 4</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtcolony" runat="server" class="sinput" TabIndex="12">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 5</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtcity" runat="server" class="sinput" TabIndex="12">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 6</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtstate" runat="server" class="sinput" TabIndex="12">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+
+
+
+
+                                            <%--  <tr>
+                                                    <td>PAN No </td>
+                                                    <td>
+                                                        <asp:TextBox ID="txtCPanno" runat="server" TabIndex="21"
+                                                            class="sinput"></asp:TextBox>
+                                                    </td>
+                                                </tr>--%>
+
+
                                             <tr>
 
                                                 <td>Description(if any)
@@ -173,18 +288,49 @@
 
 
 
+
+
+                                            <tr runat="server" visible="false">
+                                                <td>Buyer's Order No&nbsp;</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtBuyerOrderNo" runat="server" TabIndex="19" class="sinput"></asp:TextBox>
+                                                    &nbsp;</td>
+                                            </tr>
+                                            <tr runat="server" visible="false">
+                                                <td>PT State
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList runat="server" ID="ddlPTState" TabIndex="20" class="sdrop">
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
+
+                                            <tr runat="server" visible="false">
+                                                <td>Field Officer
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList ID="dllfieldofficer" TabIndex="21" runat="server"
+                                                        class="sdrop">
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
+
                                             <tr>
                                                 <td>Location&nbsp;</td>
                                                 <td>
-                                                    <asp:TextBox ID="txtLocation" runat="server" TabIndex="20" class="sinput"></asp:TextBox>
+                                                    <asp:TextBox ID="ddllocation" TabIndex="18" runat="server"
+                                                        class="sinput">
+                                                    </asp:TextBox>
                                                     &nbsp;</td>
                                             </tr>
 
-                                             <tr>
+
+
+                                            <tr>
                                                 <td>LWF State
                                                 </td>
                                                 <td>
-                                                    <asp:DropDownList runat="server" ID="ddlLWFState" TabIndex="19" class="sdrop" >
+                                                    <asp:DropDownList runat="server" ID="ddlLWFState" TabIndex="19" class="sdrop">
                                                     </asp:DropDownList>
                                                 </td>
                                             </tr>
@@ -206,16 +352,16 @@
                                                 <td>Segment 
                                                 </td>
                                                 <td>
-                                                    <asp:DropDownList ID="ddlsegment" runat="server" ValidationGroup="a" TabIndex="4" class="sdrop">
+                                                    <asp:DropDownList ID="ddlsegment" runat="server" ValidationGroup="a" TabIndex="6" class="sdrop">
                                                     </asp:DropDownList>
 
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Person Designation<span style="color: Red">*</span>
+                                                <td>Person Designation<%--<span style="color: Red">*</span>--%>
                                                 </td>
                                                 <td>
-                                                    <asp:DropDownList ID="ddldesgn" runat="server" ValidationGroup="a" class="sdrop" TabIndex="6">
+                                                    <asp:DropDownList ID="ddldesgn" runat="server" ValidationGroup="a" class="sdrop" TabIndex="8">
                                                     </asp:DropDownList>
 
                                                 </td>
@@ -223,7 +369,7 @@
                                             <tr>
                                                 <td>Landline No.</td>
                                                 <td class="style3">
-                                                    <asp:TextBox ID="txtpin" runat="server" TabIndex="8" class="sinput" MaxLength="7"> </asp:TextBox>
+                                                    <asp:TextBox ID="txtpin" runat="server" TabIndex="10" class="sinput" MaxLength="7"> </asp:TextBox>
                                                     <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3"
                                                         runat="server" Enabled="True" TargetControlID="txtpin"
                                                         ValidChars="0123456789">
@@ -231,10 +377,18 @@
 
                                                 </td>
                                             </tr>
+
+                                            <tr runat="server" visible="false">
+                                                <td>CC</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtEmailCC" runat="server" TabIndex="10" class="sinput" TextMode="MultiLine"></asp:TextBox>
+                                                </td>
+                                            </tr>
+
                                             <tr>
                                                 <td>Fax No.</td>
                                                 <td>
-                                                    <asp:TextBox ID="txtfaxno" runat="server" TabIndex="10" class="sinput" MaxLength="30"></asp:TextBox>
+                                                    <asp:TextBox ID="txtfaxno" runat="server" TabIndex="11" class="sinput" MaxLength="30"></asp:TextBox>
                                                     <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2"
                                                         runat="server" Enabled="True" TargetControlID="txtfaxno"
                                                         ValidChars="0123456789">
@@ -259,42 +413,140 @@
 
                                                 </td>
                                             </tr>
-
+                                            <tr runat="server" visible="false">
+                                                <td>Category <span style="color: Red">*</span>
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList ID="ddlCategory" runat="server" class="sdrop">
+                                                        <asp:ListItem>--Select--</asp:ListItem>
+                                                        <asp:ListItem>Bhubanewar-Security</asp:ListItem>
+                                                        <asp:ListItem>Bhubanewar-House Keeping</asp:ListItem>
+                                                        <asp:ListItem>Kolkata-Security</asp:ListItem>
+                                                        <asp:ListItem>Kolkata-House Keeping</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td>&nbsp;</td>
                                             </tr>
+
                                             <tr>
-                                                <td>Line Two
+                                                <td style="font-weight: bold; text-decoration: underline; padding-top: 26px">Ship To
+                                                </td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Legal Name
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtstreet" runat="server" TabIndex="12" class="sinput" MaxLength="300"></asp:TextBox>
+                                                    <asp:TextBox ID="txtShipToLglName" runat="server" TabIndex="15" class="sinput" MaxLength="100"></asp:TextBox>
 
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Line Four
+                                                <td>Addr 1
                                                 </td>
-                                                <td class="style3">
-                                                    <asp:TextBox ID="txtcolony" runat="server" TabIndex="14" class="sinput" MaxLength="300"> </asp:TextBox>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToAddr1" runat="server" TabIndex="15" class="sinput" MaxLength="100"></asp:TextBox>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Addr 2
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToAddr2" runat="server" TabIndex="15" class="sinput" MaxLength="100"></asp:TextBox>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Location</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToLocation" runat="server" TabIndex="20" class="sinput"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>PIN
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToPIN" runat="server" TabIndex="21" class="sinput" MaxLength="6"></asp:TextBox>
 
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Line Six
+                                                <td>GSTIN/Unique ID </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToGSTIN" runat="server" TabIndex="21"
+                                                        class="sinput"></asp:TextBox>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>State
                                                 </td>
                                                 <td>
-
-                                                    <asp:TextBox ID="txtstate" runat="server" Text="" TabIndex="16" class="sinput" MaxLength="200"> </asp:TextBox>
-
+                                                    <asp:DropDownList runat="server" ID="ddlShipToSate" TabIndex="19" class="sdrop" AutoPostBack="true" OnSelectedIndexChanged="ddlBillToSate_SelectedIndexChanged">
+                                                    </asp:DropDownList>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>State Code</td>
                                                 <td>
-                                                    <asp:DropDownList runat="server" ID="ddlStateCode" TabIndex="21" class="sdrop">
+                                                    <asp:DropDownList runat="server" ID="ddlShipToStateCode" TabIndex="21" class="sdrop">
                                                     </asp:DropDownList>
                                                 </td>
                                             </tr>
+
+
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 1</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToLine1" runat="server" class="sinput" TabIndex="13">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 2</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToLine2" runat="server" class="sinput" TabIndex="13">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 3</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToLine3" runat="server" class="sinput" TabIndex="13">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 4</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToLine4" runat="server" class="sinput" TabIndex="13">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 5</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToLine5" runat="server" class="sinput" TabIndex="13">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 40px">Line 6</td>
+                                                <td>
+                                                    <asp:TextBox ID="txtShipToLine6" runat="server" class="sinput" TabIndex="13">
+                                                    </asp:TextBox>
+                                                </td>
+                                            </tr>
+
+
+
+
                                             <tr>
                                                 <td>
                                                     <asp:CheckBox runat="server" ID="chkSubUnit" Text=" Sub Unit" TabIndex="18"
@@ -334,17 +586,18 @@
 
                                             <tr>
                                                 <td>&nbsp;</td>
+                                                <td style="padding-left: 50px; padding-top: 20px">
+                                                    <asp:Button ID="btnaddclint" runat="server" Text="Save" ToolTip="Add Client" class=" btn save" TabIndex="25"
+                                                        ValidationGroup="a1" OnClick="btnaddclint_Click"
+                                                        OnClientClick='return confirm(" Are you sure you want to add the client details ?");' />
+                                                    <asp:Button ID="btncancel" runat="server" Text="Cancel" ToolTip="Cancel Client"
+                                                        OnClientClick='return confirm(" Are you sure you want to cancel this entry ?");'
+                                                        class=" btn save" OnClick="btncancel_Click" TabIndex="25" /></td>
                                             </tr>
                                             <tr>
                                                 <td>&nbsp;</td>
-                                                <td style="padding-left: 30px">
-                                                    <asp:Button ID="btnaddclint" runat="server" Text="SAVE" ToolTip="Add Client" class=" btn save" TabIndex="25"
-                                                        ValidationGroup="a1" OnClick="btnaddclint_Click"
-                                                        OnClientClick='return confirm(" Are you sure you  want to modify the client details ?");' />
-                                                    <asp:Button ID="btncancel" runat="server" Text="CANCEL" ToolTip="Cancel Client"
-                                                        OnClientClick='return confirm(" Are you  sure you  want to cancel this entry ?");'
-                                                        class=" btn save" OnClick="btncancel_Click" TabIndex="25" /></td>
                                             </tr>
+
                                         </table>
                                     </td>
                                 </tr>

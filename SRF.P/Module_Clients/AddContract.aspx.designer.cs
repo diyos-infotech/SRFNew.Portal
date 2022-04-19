@@ -634,6 +634,15 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.CheckBox ChkRoundOff;
         
         /// <summary>
+        /// Chkgrandtotwroff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Chkgrandtotwroff;
+        
+        /// <summary>
         /// txtEMDValue control.
         /// </summary>
         /// <remarks>

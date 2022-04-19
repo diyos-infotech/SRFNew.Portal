@@ -14,6 +14,8 @@ namespace SRF.P.Module_Clients
         //DataTable dt;
         DropDownList bind_dropdownlist;
         DropDownList bind_dropdownlistsw;
+        DropDownList bind_dropdownlistHSN;
+
         string EmpIDPrefix = "";
         string CmpIDPrefix = "";
         string Zone = "";
@@ -389,6 +391,8 @@ namespace SRF.P.Module_Clients
             // string selectquery = "Select Design from designations ORDER BY Design";
             // DataTable DtDesignation = SqlHelper.Instance.GetTableByQuery(selectquery);
             DataTable DtDesignation = GlobalData.Instance.LoadDesigns();
+            DataTable DtHSNNumber = GlobalData.Instance.LoadHSNNumbers();
+
             gvdesignation.DataSource = DtDesignation;
             gvdesignation.DataBind();
             gvSWDesignations.DataSource = DtDesignation;
@@ -442,7 +446,18 @@ namespace SRF.P.Module_Clients
                 bind_dropdownlistsw.SelectedIndex = 0;
 
 
-                break;
+                bind_dropdownlistHSN = (DropDownList)(gvdesignation.Rows[grdRow.RowIndex].Cells[8].FindControl("ddlHSNNumber"));
+
+                if (DtHSNNumber.Rows.Count > 0)
+                {
+                    bind_dropdownlistHSN.DataValueField = "Id";
+                    bind_dropdownlistHSN.DataTextField = "HSNNo";
+                    bind_dropdownlistHSN.DataSource = DtHSNNumber;
+                    bind_dropdownlistHSN.DataBind();
+
+                }
+
+               
             }
 
         }
@@ -776,6 +791,8 @@ namespace SRF.P.Module_Clients
                 var NoUniformDed = 0;
                 var NoSecDepDed = 0;
                 var NoOtherDed = 0;
+                var Grandtotwroff = 0;
+
 
                 #endregion
 
@@ -1056,6 +1073,13 @@ namespace SRF.P.Module_Clients
                 {
                     RoundOff = 1;
                 }
+
+                if (Chkgrandtotwroff.Checked)
+                {
+
+                    Grandtotwroff = 1;
+                }
+
                 if (chkNoNhsWoDed.Checked)
                 {
 
@@ -1207,6 +1231,7 @@ namespace SRF.P.Module_Clients
                 HtContracts.Add("@NoOtherDed", NoOtherDed);
                 HtContracts.Add("@PaymentDates", PaymentDates);
                 HtContracts.Add("@PFSpl", PFSpl);
+                HtContracts.Add("@Grandtotwroff", Grandtotwroff);
 
                 #endregion  End  Code For Hash Table/Sp Parameters As on [18-10-2013]
 
@@ -1321,6 +1346,33 @@ namespace SRF.P.Module_Clients
                             }
                             #endregion No Of Ots
 
+                            var cdCGST = 0;
+
+                            CheckBox chkcdCGST = gvdesignation.Rows[j].FindControl("chkcdCGST") as CheckBox;
+                            if (chkcdCGST.Checked)
+                            {
+                                cdCGST = 1;
+                            }
+
+
+                            var cdSGST = 0;
+
+                            CheckBox chkcdSGST = gvdesignation.Rows[j].FindControl("chkcdSGST") as CheckBox;
+                            if (chkcdSGST.Checked)
+                            {
+                                cdSGST = 1;
+                            }
+
+
+                            var cdIGST = 0;
+
+                            CheckBox chkcdIGST = gvdesignation.Rows[j].FindControl("chkcdIGST") as CheckBox;
+                            if (chkcdIGST.Checked)
+                            {
+                                cdIGST = 1;
+                            }
+
+                            string HSNNumber = ((DropDownList)gvdesignation.Rows[j].FindControl("ddlHSNNumber")).SelectedValue;
 
                             #region Summary
                             string Csummary = ((TextBox)gvdesignation.Rows[j].FindControl("txtsummary")).Text;
@@ -1570,6 +1622,12 @@ namespace SRF.P.Module_Clients
                             HtContracts.Add("@Uniform", Uniform);
                             HtContracts.Add("@BonusType", bonustype);
                             HtContracts.Add("@LAType", LAType);
+
+                            HtContracts.Add("@cdCGST", cdCGST);
+                            HtContracts.Add("@cdSGST", cdSGST);
+                            HtContracts.Add("@cdIGST", cdIGST);
+                            HtContracts.Add("@HSNNumber", HSNNumber);
+                            HtContracts.Add("@SNo", j + 1);
 
                             #endregion
 
@@ -2560,6 +2618,9 @@ namespace SRF.P.Module_Clients
                 ddlpaymentdates.SelectedValue = DtContractsData.Rows[0]["PaymentDate"].ToString();
                 ChkPFSpl.Checked = bool.Parse(DtContractsData.Rows[0]["PFSpl"].ToString());
 
+                Chkgrandtotwroff.Checked = bool.Parse(DtContractsData.Rows[0]["GrandTotalRoff"].ToString());
+
+
                 #endregion
 
                 #endregion   End  Code For Assign Values to The Controls as on [18-10-2013]
@@ -2709,6 +2770,18 @@ namespace SRF.P.Module_Clients
                             }
 
                         }
+
+                        DropDownList ddlHSNNumber = gvdesignation.Rows[i].FindControl("ddlHSNNumber") as DropDownList;
+                        ddlHSNNumber.SelectedValue = DtContractDetailsData.Rows[i]["HSNNumber"].ToString();
+
+                        CheckBox chkcdCGST = gvdesignation.Rows[i].FindControl("chkcdCGST") as CheckBox;
+                        chkcdCGST.Checked = bool.Parse(DtContractDetailsData.Rows[i]["cdCGST"].ToString());
+
+                        CheckBox chkcdSGST = gvdesignation.Rows[i].FindControl("chkcdSGST") as CheckBox;
+                        chkcdSGST.Checked = bool.Parse(DtContractDetailsData.Rows[i]["cdSGST"].ToString());
+
+                        CheckBox chkcdIGST = gvdesignation.Rows[i].FindControl("chkcdIGST") as CheckBox;
+                        chkcdIGST.Checked = bool.Parse(DtContractDetailsData.Rows[i]["cdIGST"].ToString());
 
                         DropDownList ddlbonustype = gvdesignation.Rows[i].FindControl("ddlbonustype") as DropDownList;
                         ddlbonustype.SelectedIndex = int.Parse(DtContractDetailsData.Rows[i]["BonusType"].ToString());
@@ -3551,7 +3624,7 @@ namespace SRF.P.Module_Clients
                 var NoUniformDed = 0;
                 var NoSecDepDed = 0;
                 var NoOtherDed = 0;
-
+                var Grandtotwroff = 0;
                 #endregion
 
                 #region Begin code For Stored Procedure related Variables declaration as on [18-10-2013]
@@ -3836,6 +3909,13 @@ namespace SRF.P.Module_Clients
                 {
                     RoundOff = 1;
                 }
+
+                if (Chkgrandtotwroff.Checked)
+                {
+
+                    Grandtotwroff = 1;
+                }
+
                 if (chkNoNhsWoDed.Checked)
                 {
 
@@ -3987,6 +4067,7 @@ namespace SRF.P.Module_Clients
                 HtContracts.Add("@NoOtherDed", NoOtherDed);
                 HtContracts.Add("@PaymentDates", PaymentDates);
                 HtContracts.Add("@PFSpl", PFSpl);
+                HtContracts.Add("@Grandtotwroff", Grandtotwroff);
 
                 #endregion  End  Code For Hash Table/Sp Parameters As on [18-10-2013]
 

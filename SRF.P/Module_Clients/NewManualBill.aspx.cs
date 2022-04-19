@@ -11,6 +11,9 @@ using iTextSharp.text;
 using System.IO;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
+using RestSharp;
+using Newtonsoft.Json;
+using QRCoder;
 using SRF.P.DAL;
 
 namespace SRF.P.Module_Clients
