@@ -9042,19 +9042,6 @@ namespace SRF.P.Module_Clients
                     //Celemail.FixedHeight = 20;
                     tablelogo.AddCell(Celemail);
 
-                    if (SignedQRCode.Length > 0)
-                    {
-                        QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                        QRCodeData qrCodeData = qrGenerator.CreateQrCode(SignedQRCode, QRCodeGenerator.ECCLevel.Q, false, false);
-                        QRCode qrCode = new QRCode(qrCodeData);
-                        System.Drawing.Bitmap qrCodeImage = qrCode.GetGraphic(20);
-                        iTextSharp.text.Image qrcodeimg = iTextSharp.text.Image.GetInstance(qrCodeImage, System.Drawing.Imaging.ImageFormat.Bmp);
-                        qrcodeimg.ScalePercent(2.3f);
-                        qrcodeimg.SetAbsolutePosition(490f, 737f);
-                        document.Add(qrcodeimg);
-                    }
-
-
                     //For Space
 
                     PdfPCell celll = new PdfPCell(new Paragraph("\n", FontFactory.GetFont(FontStyle, 12, Font.NORMAL, BaseColor.BLACK)));
@@ -9484,6 +9471,48 @@ namespace SRF.P.Module_Clients
                         tempTable2.AddCell(cell14v);
                     }
 
+                    if (SignedQRCode.Length > 0)
+                    {
+                        QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                        QRCodeData qrCodeData = qrGenerator.CreateQrCode(SignedQRCode, QRCodeGenerator.ECCLevel.Q);
+                        QRCode qrCode = new QRCode(qrCodeData);
+                        System.Drawing.Bitmap qrCodeImage = qrCode.GetGraphic(20);
+                        iTextSharp.text.Image qrcodeimg = iTextSharp.text.Image.GetInstance(qrCodeImage, System.Drawing.Imaging.ImageFormat.Bmp);
+                        qrcodeimg.ScalePercent(4.7f);
+                        qrcodeimg.SetAbsolutePosition(440f, 495f);
+                        document.Add(qrcodeimg);
+                    }
+
+                    if (IRN.Length > 0)
+                    {
+                        if (Status == "ACT")
+                        {
+                            PdfPCell cell14 = new PdfPCell(new Paragraph("IRN : " + IRN, FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
+                            cell14.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                            cell14.BorderWidthBottom = 0;
+                            cell14.BorderWidthTop = 0f;
+                            cell14.SetLeading(0, 1.2f);
+                            cell14.Colspan = 2;
+                            cell14.BorderWidthLeft = 0.5f;
+                            cell14.BorderWidthRight = 1.5f;
+                            cell14.PaddingTop = 120;
+                            tempTable2.AddCell(cell14);
+                        }
+                        if (Status == "CNL")
+                        {
+                            PdfPCell cell14 = new PdfPCell(new Paragraph("IRN is cancelled", FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
+                            cell14.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                            cell14.BorderWidthBottom = 0;
+                            cell14.BorderWidthTop = 0f;
+                            cell14.SetLeading(0, 1.2f);
+                            cell14.Colspan = 2;
+                            cell14.BorderWidthLeft = 0.5f;
+                            cell14.BorderWidthRight = 1.5f;
+                            cell14.PaddingTop = 120;
+                            tempTable2.AddCell(cell14);
+                        }
+                    }
+
 
                     PdfPCell childTable2 = new PdfPCell(tempTable2);
                     childTable2.Border = 0;
@@ -9504,34 +9533,6 @@ namespace SRF.P.Module_Clients
                     address1.LockedWidth = true;
                     float[] addreslogo1 = new float[] { 2f };
                     address1.SetWidths(addreslogo1);
-
-
-                    if (IRN.Length > 0)
-                    {
-                        if (Status == "ACT")
-                        {
-                            PdfPCell cellserIRN = new PdfPCell(new Phrase("IRN : " + IRN, FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
-                            cellserIRN.HorizontalAlignment = 0;
-                            cellserIRN.BorderWidthBottom = 0.5f;
-                            cellserIRN.BorderWidthLeft = 1.5f;
-                            cellserIRN.BorderWidthTop = 0.5f;
-                            cellserIRN.BorderWidthRight = 1.5f;
-                            cellserIRN.Colspan = 1;
-                            address1.AddCell(cellserIRN);
-                        }
-                        if (Status == "CNL")
-                        {
-                            PdfPCell cellserIRN = new PdfPCell(new Phrase("IRN is cancelled ", FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
-                            cellserIRN.HorizontalAlignment = 2;
-                            cellserIRN.BorderWidthBottom = 0.5f;
-                            cellserIRN.BorderWidthLeft = 1.5f;
-                            cellserIRN.BorderWidthTop = 0.5f;
-                            cellserIRN.BorderWidthRight = 1.5f;
-                            cellserIRN.Colspan = 1;
-                            address1.AddCell(cellserIRN);
-
-                        }
-                    }
 
 
                     PdfPCell cellser = new PdfPCell(new Phrase("Sub: -We are presenting our bill for the Security Services provided at your establishment for the month of " + GetMonthName() + " " + GetMonthOfYear() + ".Kindly release the payment at the earliest ", FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
@@ -9876,7 +9877,14 @@ namespace SRF.P.Module_Clients
                     Cellempty.BorderWidthRight = 0.5f;
                     Cellempty.BorderWidthLeft = 1.5f;
                     Cellempty.BorderWidthBottom = 0;
-                    Cellempty.MinimumHeight = 14;
+                    if (Status == "ACT")
+                    {
+                        Cellempty.MinimumHeight = 8;
+                    }
+                    else
+                    {
+                        Cellempty.MinimumHeight = 14;
+                    }
                     PdfPCell Cellempty1 = new PdfPCell(new Phrase("", FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
                     Cellempty1.HorizontalAlignment = 2;
                     Cellempty1.Colspan = 1;
@@ -9884,7 +9892,6 @@ namespace SRF.P.Module_Clients
                     Cellempty1.BorderWidthRight = 0.5f;
                     Cellempty1.BorderWidthLeft = 0.5f;
                     Cellempty1.BorderWidthBottom = 0;
-                    Cellempty1.MinimumHeight = 14;
 
                     PdfPCell Cellempty2 = new PdfPCell(new Phrase("", FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
                     Cellempty2.HorizontalAlignment = 2;
@@ -9893,7 +9900,6 @@ namespace SRF.P.Module_Clients
                     Cellempty2.BorderWidthRight = 0.5f;
                     Cellempty2.BorderWidthLeft = 0.5f;
                     Cellempty2.BorderWidthBottom = 0;
-                    Cellempty2.MinimumHeight = 14;
 
                     PdfPCell Cellempty3 = new PdfPCell(new Phrase("", FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
                     Cellempty3.HorizontalAlignment = 2;
@@ -9902,7 +9908,6 @@ namespace SRF.P.Module_Clients
                     Cellempty3.BorderWidthRight = 0.5f;
                     Cellempty3.BorderWidthLeft = 0.5f;
                     Cellempty3.BorderWidthBottom = 0;
-                    Cellempty3.MinimumHeight = 14;
 
                     PdfPCell Cellempty4 = new PdfPCell(new Phrase("", FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
                     Cellempty4.HorizontalAlignment = 2;
@@ -9911,7 +9916,6 @@ namespace SRF.P.Module_Clients
                     Cellempty4.BorderWidthRight = 0.5f;
                     Cellempty4.BorderWidthLeft = 0.5f;
                     Cellempty4.BorderWidthBottom = 0;
-                    Cellempty4.MinimumHeight = 14;
 
                     PdfPCell Cellempty5 = new PdfPCell(new Phrase("", FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
                     Cellempty5.HorizontalAlignment = 2;
@@ -9920,7 +9924,6 @@ namespace SRF.P.Module_Clients
                     Cellempty5.BorderWidthRight = 1.5f;
                     Cellempty5.BorderWidthLeft = 0.5f;
                     Cellempty5.BorderWidthBottom = 0;
-                    Cellempty5.MinimumHeight = 14;
 
                     if (gvClientBilling.Rows.Count == 1)
                     {
