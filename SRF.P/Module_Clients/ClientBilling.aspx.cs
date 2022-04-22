@@ -9479,7 +9479,14 @@ namespace SRF.P.Module_Clients
                         System.Drawing.Bitmap qrCodeImage = qrCode.GetGraphic(20);
                         iTextSharp.text.Image qrcodeimg = iTextSharp.text.Image.GetInstance(qrCodeImage, System.Drawing.Imaging.ImageFormat.Bmp);
                         qrcodeimg.ScalePercent(4.7f);
-                        qrcodeimg.SetAbsolutePosition(440f, 495f);
+                        if (billdates != "0")
+                        {
+                            qrcodeimg.SetAbsolutePosition(440f, 495f);
+                        }
+                        else
+                        {
+                            qrcodeimg.SetAbsolutePosition(440f, 506f);
+                        }
                         document.Add(qrcodeimg);
                     }
 
