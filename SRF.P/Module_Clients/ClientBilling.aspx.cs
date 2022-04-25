@@ -8990,7 +8990,7 @@ namespace SRF.P.Module_Clients
                     CCompName.SetLeading(0f, 1.3f);
                     tablelogo.AddCell(CCompName);
 
-                    PdfPCell CCompAddress = new PdfPCell(new Paragraph(GSTAddress, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                    PdfPCell CCompAddress = new PdfPCell(new Paragraph(GSTAddress, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                     CCompAddress.HorizontalAlignment = 1;
                     CCompAddress.BorderWidthBottom = 0;
                     CCompAddress.BorderWidthTop = 0f;
@@ -9002,7 +9002,7 @@ namespace SRF.P.Module_Clients
                     CCompAddress.SetLeading(0f, 1.3f);
                     tablelogo.AddCell(CCompAddress);
 
-                    PdfPCell CCompPhone = new PdfPCell(new Paragraph("Tel: " + phoneno, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                    PdfPCell CCompPhone = new PdfPCell(new Paragraph("Tel: " + phoneno, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                     CCompPhone.HorizontalAlignment = 1;
                     CCompPhone.BorderWidthBottom = 0;
                     CCompPhone.BorderWidthTop = 0f;
@@ -9015,7 +9015,7 @@ namespace SRF.P.Module_Clients
                     CCompPhone.SetLeading(0f, 1.3f);
                     tablelogo.AddCell(CCompPhone);
 
-                    PdfPCell CCompFax = new PdfPCell(new Paragraph(" Fax: " + faxno, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                    PdfPCell CCompFax = new PdfPCell(new Paragraph(" Fax: " + faxno, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                     CCompFax.HorizontalAlignment = 1;
                     CCompFax.BorderWidthBottom = 0;
                     CCompFax.BorderWidthTop = 0f;
@@ -9030,7 +9030,7 @@ namespace SRF.P.Module_Clients
                     tablelogo.AddCell(CCompFax);
 
 
-                    PdfPCell Celemail = new PdfPCell(new Paragraph("Email :" + emailid, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                    PdfPCell Celemail = new PdfPCell(new Paragraph("Email :" + emailid, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                     Celemail.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
                     Celemail.BorderWidthBottom = 1.5f;
                     Celemail.BorderWidthTop = 0f;
@@ -9079,7 +9079,7 @@ namespace SRF.P.Module_Clients
                     float[] tempWidth1 = new float[] { 2f, 2f, 2f };
                     tempTable1.SetWidths(tempWidth1);
 
-                    PdfPCell mress = new PdfPCell(new Paragraph("Customer's Details:", FontFactory.GetFont(FontStyle, fontsize, Font.UNDERLINE | Font.BOLD, BaseColor.BLACK)));
+                    PdfPCell mress = new PdfPCell(new Paragraph("Customer's Details:", FontFactory.GetFont(FontStyle, 10, Font.UNDERLINE | Font.BOLD, BaseColor.BLACK)));
                     mress.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                     mress.BorderWidthBottom = 0;
                     mress.BorderWidthTop = 0;
@@ -9093,7 +9093,7 @@ namespace SRF.P.Module_Clients
                     addressData = dtclientaddress.Rows[0]["ClientAddrHno"].ToString();
                     if (addressData.Trim().Length > 0)
                     {
-                        PdfPCell clientaddrhno = new PdfPCell(new Paragraph("M/s. " + addressData, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                        PdfPCell clientaddrhno = new PdfPCell(new Paragraph("M/s. " + addressData, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                         clientaddrhno.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                         clientaddrhno.Colspan = 3;                                 //clientaddrhno.Colspan = 0;
                         clientaddrhno.BorderWidthBottom = 0;
@@ -9106,7 +9106,7 @@ namespace SRF.P.Module_Clients
                     addressData = dtclientaddress.Rows[0]["ClientAddrStreet"].ToString();
                     if (addressData.Trim().Length > 0)
                     {
-                        PdfPCell clientstreet = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                        PdfPCell clientstreet = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                         clientstreet.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                         clientstreet.BorderWidthBottom = 0;
                         clientstreet.BorderWidthTop = 0;
@@ -9121,7 +9121,7 @@ namespace SRF.P.Module_Clients
                     addressData = dtclientaddress.Rows[0]["ClientAddrArea"].ToString();
                     if (addressData.Trim().Length > 0)
                     {
-                        PdfPCell clientstreet = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                        PdfPCell clientstreet = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                         clientstreet.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                         clientstreet.BorderWidthBottom = 0;
                         clientstreet.BorderWidthTop = 0;
@@ -9137,7 +9137,7 @@ namespace SRF.P.Module_Clients
                     addressData = dtclientaddress.Rows[0]["ClientAddrColony"].ToString();
                     if (addressData.Trim().Length > 0)
                     {
-                        PdfPCell clientcolony = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                        PdfPCell clientcolony = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                         clientcolony.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                         clientcolony.Colspan = 3;
                         clientcolony.BorderWidthBottom = 0;
@@ -9150,7 +9150,7 @@ namespace SRF.P.Module_Clients
                     addressData = dtclientaddress.Rows[0]["ClientAddrcity"].ToString();
                     if (addressData.Trim().Length > 0)
                     {
-                        PdfPCell clientcity = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                        PdfPCell clientcity = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                         clientcity.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                         clientcity.Colspan = 3;
                         clientcity.BorderWidthBottom = 0;
@@ -9163,7 +9163,7 @@ namespace SRF.P.Module_Clients
                     addressData = dtclientaddress.Rows[0]["ClientAddrstate"].ToString();
                     if (addressData.Trim().Length > 0)
                     {
-                        PdfPCell clientstate = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                        PdfPCell clientstate = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                         clientstate.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                         clientstate.Colspan = 3;
                         clientstate.BorderWidthBottom = 0;
@@ -9176,7 +9176,7 @@ namespace SRF.P.Module_Clients
                     addressData = dtclientaddress.Rows[0]["ClientAddrpin"].ToString();
                     if (addressData.Trim().Length > 0)
                     {
-                        PdfPCell clietnpin = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                        PdfPCell clietnpin = new PdfPCell(new Paragraph(addressData, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                         clietnpin.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                         clietnpin.Colspan = 3;
                         clietnpin.BorderWidthBottom = 0;
@@ -9194,7 +9194,7 @@ namespace SRF.P.Module_Clients
 
                         if (GSTIN.Length > 0)
                         {
-                            PdfPCell clietnpin = new PdfPCell(new Paragraph(GSTINAlias + ":  " + GSTIN, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                            PdfPCell clietnpin = new PdfPCell(new Paragraph(GSTINAlias + ":  " + GSTIN, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                             clietnpin.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                             clietnpin.Colspan = 3;
                             clietnpin.BorderWidthBottom = 0;
@@ -9207,7 +9207,7 @@ namespace SRF.P.Module_Clients
 
                         if (State.Length > 0)
                         {
-                            PdfPCell clietnpin = new PdfPCell(new Paragraph("State: " + State, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                            PdfPCell clietnpin = new PdfPCell(new Paragraph("State: " + State, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                             clietnpin.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                             clietnpin.Colspan = 3;
                             clietnpin.BorderWidthBottom = 0;
@@ -9219,7 +9219,7 @@ namespace SRF.P.Module_Clients
                         }
                         if (StateCode.Length > 0)
                         {
-                            PdfPCell clietnpin = new PdfPCell(new Paragraph("State Code:  " + StateCode, FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
+                            PdfPCell clietnpin = new PdfPCell(new Paragraph("State Code:  " + StateCode, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
                             clietnpin.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                             clietnpin.Colspan = 3;
                             clietnpin.BorderWidthBottom = 0;
@@ -9251,7 +9251,7 @@ namespace SRF.P.Module_Clients
 
 
                     var phrase = new Phrase();
-                    phrase.Add(new Chunk("Bill No", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                    phrase.Add(new Chunk("Bill No", FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                     PdfPCell cell13 = new PdfPCell();
                     cell13.AddElement(phrase);
                     cell13.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9265,7 +9265,7 @@ namespace SRF.P.Module_Clients
                     tempTable2.AddCell(cell13);
 
                     var phrase10 = new Phrase();
-                    phrase10.Add(new Chunk(": " + BillNo, FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                    phrase10.Add(new Chunk(": " + BillNo, FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                     PdfPCell cell13v = new PdfPCell();
                     cell13v.AddElement(phrase10);
                     cell13v.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9280,7 +9280,7 @@ namespace SRF.P.Module_Clients
                     tempTable2.AddCell(cell13v);
 
                     var phrase11 = new Phrase();
-                    phrase11.Add(new Chunk("Date", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                    phrase11.Add(new Chunk("Date", FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                     PdfPCell cell131 = new PdfPCell();
                     cell131.AddElement(phrase11);
                     cell131.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9295,7 +9295,7 @@ namespace SRF.P.Module_Clients
 
                     var phrase11v = new Phrase();
                     phrase11v.Add(new Chunk(": " + BillDate.Day.ToString("00") + "/" + BillDate.ToString("MM") + "/" +
-                        BillDate.Year, FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                        BillDate.Year, FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                     PdfPCell cell131v = new PdfPCell();
                     cell131v.AddElement(phrase11v);
                     cell131v.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9310,7 +9310,7 @@ namespace SRF.P.Module_Clients
                     tempTable2.AddCell(cell131v);
 
                     var phrase12 = new Phrase();
-                    phrase12.Add(new Chunk("PAN No.", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                    phrase12.Add(new Chunk("PAN No.", FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                     PdfPCell cell1311 = new PdfPCell();
                     cell1311.AddElement(phrase12);
                     cell1311.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9324,7 +9324,7 @@ namespace SRF.P.Module_Clients
                     tempTable2.AddCell(cell1311);
 
                     var phrase12v = new Phrase();
-                    phrase12v.Add(new Chunk(": " + PANNO, FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                    phrase12v.Add(new Chunk(": " + PANNO, FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                     PdfPCell cell1311v = new PdfPCell();
                     cell1311v.AddElement(phrase12v);
                     cell1311v.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9343,7 +9343,7 @@ namespace SRF.P.Module_Clients
                         if (Servicetax.Trim().Length > 0)
                         {
                             var phrase2gg = new Phrase();
-                            phrase2gg.Add(new Chunk("S Tax No", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                            phrase2gg.Add(new Chunk("S Tax No", FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                             PdfPCell cell115 = new PdfPCell();
                             cell115.AddElement(phrase2gg);
                             cell115.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9356,7 +9356,7 @@ namespace SRF.P.Module_Clients
                             tempTable2.AddCell(cell115);
 
                             var phrase2ggv = new Phrase();
-                            phrase2ggv.Add(new Chunk(": " + Servicetax, FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                            phrase2ggv.Add(new Chunk(": " + Servicetax, FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                             PdfPCell cell15v = new PdfPCell();
                             cell15v.AddElement(phrase2ggv);
                             cell15v.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9379,7 +9379,7 @@ namespace SRF.P.Module_Clients
                         {
 
                             var phrase21v = new Phrase();
-                            phrase21v.Add(new Chunk(OurGSTINAlias, FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                            phrase21v.Add(new Chunk(OurGSTINAlias, FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                             PdfPCell cell16v = new PdfPCell();
                             cell16v.AddElement(phrase21v);
                             cell16v.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9392,7 +9392,7 @@ namespace SRF.P.Module_Clients
                             tempTable2.AddCell(cell16v);
 
                             var phrase21vv = new Phrase();
-                            phrase21vv.Add(new Chunk(": " + OurGSTIN, FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                            phrase21vv.Add(new Chunk(": " + OurGSTIN, FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                             PdfPCell cell16vv = new PdfPCell();
                             cell16vv.AddElement(phrase21vv);
                             cell16vv.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9410,7 +9410,7 @@ namespace SRF.P.Module_Clients
                     if (SACCode.Trim().Length > 0)
                     {
                         var phrase222 = new Phrase();
-                        phrase222.Add(new Chunk("SAC Code", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                        phrase222.Add(new Chunk("SAC Code", FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                         PdfPCell cell117 = new PdfPCell();
                         cell117.AddElement(phrase222);
                         cell117.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9423,7 +9423,7 @@ namespace SRF.P.Module_Clients
                         tempTable2.AddCell(cell117);
 
                         var phrase222v = new Phrase();
-                        phrase222v.Add(new Chunk(": " + SACCode, FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                        phrase222v.Add(new Chunk(": " + SACCode, FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                         PdfPCell cell17v = new PdfPCell();
                         cell17v.AddElement(phrase222v);
                         cell17v.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9443,7 +9443,7 @@ namespace SRF.P.Module_Clients
                     if (billdates != "0")
                     {
                         var phrase2 = new Phrase();
-                        phrase2.Add(new Chunk("Bill Period  ", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                        phrase2.Add(new Chunk("Bill Period  ", FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                         PdfPCell cell14 = new PdfPCell();
                         cell14.AddElement(phrase2);
                         cell14.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9457,7 +9457,7 @@ namespace SRF.P.Module_Clients
 
                         var phrase2v = new Phrase();
                         phrase2v.Add(new Chunk(": " + Fromdate + "  to  " +
-                            Todate + " ", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                            Todate + " ", FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
                         PdfPCell cell14v = new PdfPCell();
                         cell14v.AddElement(phrase2v);
                         cell14v.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
@@ -9478,14 +9478,35 @@ namespace SRF.P.Module_Clients
                         QRCode qrCode = new QRCode(qrCodeData);
                         System.Drawing.Bitmap qrCodeImage = qrCode.GetGraphic(20);
                         iTextSharp.text.Image qrcodeimg = iTextSharp.text.Image.GetInstance(qrCodeImage, System.Drawing.Imaging.ImageFormat.Bmp);
-                        qrcodeimg.ScalePercent(4.7f);
-                        if (billdates != "0")
+                        if (fontsize == 6)
                         {
-                            qrcodeimg.SetAbsolutePosition(440f, 495f);
+                            qrcodeimg.ScalePercent(3.7f);
                         }
                         else
                         {
-                            qrcodeimg.SetAbsolutePosition(440f, 506f);
+                            qrcodeimg.ScalePercent(4.7f);
+                        }
+                        if (billdates != "0")
+                        {
+                            if (fontsize == 6)
+                            {
+                                qrcodeimg.SetAbsolutePosition(440f, 522f);
+                            }
+                            else
+                            {
+                                qrcodeimg.SetAbsolutePosition(440f, 495f);
+                            }
+                        }
+                        else
+                        {
+                            if (fontsize == 6)
+                            {
+                                qrcodeimg.SetAbsolutePosition(440f, 532f);
+                            }
+                            else
+                            {
+                                qrcodeimg.SetAbsolutePosition(440f, 506f);
+                            }
                         }
                         document.Add(qrcodeimg);
                     }
@@ -9502,7 +9523,14 @@ namespace SRF.P.Module_Clients
                             cell14.Colspan = 2;
                             cell14.BorderWidthLeft = 0.5f;
                             cell14.BorderWidthRight = 1.5f;
-                            cell14.PaddingTop = 120;
+                            if (fontsize == 6)
+                            {
+                                cell14.PaddingTop = 90;
+                            }
+                            else
+                            {
+                                cell14.PaddingTop = 120;
+                            }
                             tempTable2.AddCell(cell14);
                         }
                         if (Status == "CNL")
@@ -9515,7 +9543,14 @@ namespace SRF.P.Module_Clients
                             cell14.Colspan = 2;
                             cell14.BorderWidthLeft = 0.5f;
                             cell14.BorderWidthRight = 1.5f;
-                            cell14.PaddingTop = 120;
+                            if (fontsize == 6)
+                            {
+                                cell14.PaddingTop = 90;
+                            }
+                            else
+                            {
+                                cell14.PaddingTop = 120;
+                            }
                             tempTable2.AddCell(cell14);
                         }
                     }

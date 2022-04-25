@@ -304,14 +304,14 @@
                                                     else if (CancelRemarks == '') {
                                                         alert("Please fill cancel remarks")
                                                         document.getElementById("<%=txtCnclRemarks.ClientID %>").focus();
-                                                        }
-                                                        else {
-                                                            debugger;
+                                                    }
+                                                    else {
+                                                        debugger;
 
-                                                            document.getElementById("<%=hfnCnclRsn.ClientID %>").value = CancelRsn;
+                                                        document.getElementById("<%=hfnCnclRsn.ClientID %>").value = CancelRsn;
                                                             document.getElementById("<%=hfCnclRemarks.ClientID %>").value = CancelRemarks;
-                                                            $(this).dialog("close");
-                                                            document.getElementById("<%=tempBtn.ClientID %>").click();
+                                                        $(this).dialog("close");
+                                                        document.getElementById("<%=tempBtn.ClientID %>").click();
                                                             return true;
                                                         }
 
@@ -477,13 +477,13 @@
                                                 else {
 
                                                     document.getElementById("<%=hfCreditNoteRemarks.ClientID %>").value = document.getElementById("<%=txtCreditNoteRemarks.ClientID %>").value;
-                                                        document.getElementById("<%=hfCreditNoteDt.ClientID %>").value = document.getElementById("<%=txtCreditnotedt.ClientID %>").value;
+                                                    document.getElementById("<%=hfCreditNoteDt.ClientID %>").value = document.getElementById("<%=txtCreditnotedt.ClientID %>").value;
 
-                                                        $('#<%= rdbfull.ClientID %>').prop('checked', true);
+                                                    $('#<%= rdbfull.ClientID %>').prop('checked', true);
 
-                                                        getvalues();
+                                                    getvalues();
 
-                                                        document.getElementById("<%=tempCnDetails.ClientID %>").click();
+                                                    document.getElementById("<%=tempCnDetails.ClientID %>").click();
                                                         return false;
                                                     }
                                                 }
@@ -501,16 +501,16 @@
                                                     }
                                                     else if (document.getElementById("<%=txtCreditNoteAmt.ClientID %>").value == "0" || document.getElementById("<%=txtCreditNoteAmt.ClientID %>").value == "") {
 
-                                                        alert("Please enter credit note Amount")
-                                                        return;
-                                                    }
-                                                    else {
+                                                    alert("Please enter credit note Amount")
+                                                    return;
+                                                }
+                                                else {
 
-                                                        getvalues();
+                                                    getvalues();
 
-                                                        return false;
-                                                    }
-                                            }
+                                                    return false;
+                                                }
+                                        }
                                         });
 
 
@@ -553,11 +553,11 @@
                                             var txtCreditNoteAmt = $("[id*=txtCreditNoteAmt]");
                                             CreditNoteAmtValues.push(txtCreditNoteAmt.val());
                                             document.getElementById("<%=hfnCreditNoteAmt.ClientID %>").value = CreditNoteAmtValues;
-                                                SetValue(row, 2, "CreditNoteAmt", txtCreditNoteAmt);
+                                            SetValue(row, 2, "CreditNoteAmt", txtCreditNoteAmt);
 
-                                                var txtCreditNoteCGSTPrc = $("[id*=txtCreditNoteCGSTPrc]");
-                                                CreditNoteCGSTPrcValues.push(txtCreditNoteCGSTPrc.val());
-                                                document.getElementById("<%=hfnCreditNoteCGSTPrc.ClientID %>").value = CreditNoteCGSTPrcValues;
+                                            var txtCreditNoteCGSTPrc = $("[id*=txtCreditNoteCGSTPrc]");
+                                            CreditNoteCGSTPrcValues.push(txtCreditNoteCGSTPrc.val());
+                                            document.getElementById("<%=hfnCreditNoteCGSTPrc.ClientID %>").value = CreditNoteCGSTPrcValues;
                                                 SetValue(row, 3, "CreditNoteCGSTPrc", txtCreditNoteCGSTPrc);
 
 
@@ -702,10 +702,10 @@
                                                     var crpayment = "";
 
                                                     if ($('#<%= rdbfull.ClientID %>').is(":checked")) {
-                                                            crpayment = "rdbfull";
-                                                        }
+                                                        crpayment = "rdbfull";
+                                                    }
 
-                                                        if ($('#<%= rdbPart.ClientID %>').is(":checked")) {
+                                                    if ($('#<%= rdbPart.ClientID %>').is(":checked")) {
                                                         crpayment = "rdbPart";
                                                     }
 
@@ -717,19 +717,19 @@
                                                         if (CreditNoteDate == '') {
                                                             alert("Please fill credit note issued date")
                                                             document.getElementById("<%=txtCreditnotedt.ClientID %>").focus();
-                                                            }
+                                                        }
 
-                                                            else {
+                                                        else {
 
 
-                                                                document.getElementById("<%=hfCreditNoteDt.ClientID %>").value = CreditNoteDate;
-                                                                document.getElementById("<%=hfCreditNoteRemarks.ClientID %>").value = "";
-                                                                document.getElementById("<%=hfCreditNoteHSN.ClientID %>").value = "";
-                                                                document.getElementById("<%=hfCreditNoteAmt.ClientID %>").value = "0";
-                                                                document.getElementById("<%=hfCreditPayment.ClientID %>").value = crpayment;
+                                                            document.getElementById("<%=hfCreditNoteDt.ClientID %>").value = CreditNoteDate;
+                                                            document.getElementById("<%=hfCreditNoteRemarks.ClientID %>").value = "";
+                                                            document.getElementById("<%=hfCreditNoteHSN.ClientID %>").value = "";
+                                                            document.getElementById("<%=hfCreditNoteAmt.ClientID %>").value = "0";
+                                                            document.getElementById("<%=hfCreditPayment.ClientID %>").value = crpayment;
 
-                                                                $(this).dialog("close");
-                                                                document.getElementById("<%=tempCN.ClientID %>").click();
+                                                            $(this).dialog("close");
+                                                            document.getElementById("<%=tempCN.ClientID %>").click();
                                                                 return true;
                                                             }
 
@@ -738,13 +738,13 @@
                                                     if (crpayment == "rdbPart") {
 
                                                         var CreditNoteRemarks = document.getElementById("<%=txtCreditNoteRemarks.ClientID %>").value;
-                                                            var CreditNoteHSN = document.getElementById("<%=txtCreditNoteHSN.ClientID %>").value;
-                                                            var CreditNoteAmount = document.getElementById("<%=txtCreditNoteAmt.ClientID %>").value;
+                                                        var CreditNoteHSN = document.getElementById("<%=txtCreditNoteHSN.ClientID %>").value;
+                                                        var CreditNoteAmount = document.getElementById("<%=txtCreditNoteAmt.ClientID %>").value;
 
 
-                                                            if (CreditNoteDate == '') {
-                                                                alert("Please fill credit note issued date")
-                                                                document.getElementById("<%=txtCreditnotedt.ClientID %>").focus();
+                                                        if (CreditNoteDate == '') {
+                                                            alert("Please fill credit note issued date")
+                                                            document.getElementById("<%=txtCreditnotedt.ClientID %>").focus();
                                                             }
                                                             else {
 
@@ -1978,6 +1978,9 @@
                                                 <asp:ListItem Value="10">10</asp:ListItem>
                                                 <asp:ListItem Value="9">9</asp:ListItem>
                                                 <asp:ListItem Value="8">8</asp:ListItem>
+                                                <asp:ListItem Value="7">7</asp:ListItem>
+                                                <asp:ListItem Value="6">6</asp:ListItem>
+
                                             </asp:DropDownList>
                                         </td>
                                         <td style="text-align: right; font-weight: bold">
