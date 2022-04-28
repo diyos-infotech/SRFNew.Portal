@@ -1242,11 +1242,11 @@
                                             </asp:TemplateField>
 
                                             <%-- 1 --%>
-                                            <asp:TemplateField HeaderStyle-Width="150px" HeaderText="Description">
+                                            <asp:TemplateField HeaderStyle-Width="250px" HeaderText="Description">
                                                 <ItemTemplate>
                                                     <asp:Label ID="lbldesignid" runat="server" Text='<%# Bind("Designid") %>' Visible="false"></asp:Label>
                                                     <asp:Label ID="lbltype" runat="server" Text='<%# Bind("type") %>' Visible="false"></asp:Label>
-                                                    <asp:TextBox ID="lbldesgn" runat="server" Text='<%# Bind("Designation") %>' Width="95%" Enabled="false" CssClass="txtautofilldesg" AutoPostBack="True" OnTextChanged="lbldesgn_TextChanged"></asp:TextBox>
+                                                    <asp:TextBox ID="lbldesgn" runat="server" Text='<%# Bind("Designation") %>' Width="150px"  Enabled="false" CssClass="txtautofilldesg" AutoPostBack="True" OnTextChanged="lbldesgn_TextChanged"></asp:TextBox>
                                                     <cc1:FilteredTextBoxExtender runat="server" ID="Ftbdesignid" TargetControlID="lbldesgn"
                                                         FilterMode="InvalidChars" InvalidChars="'">
                                                     </cc1:FilteredTextBoxExtender>
@@ -1260,7 +1260,7 @@
                                                     <asp:DropDownList ID="ddlHSNNumber" runat="server" Width="95%" Style="text-align: left">
                                                     </asp:DropDownList>
                                                     <br />
-                                                    <asp:TextBox ID="txtUOM" runat="server" Text='<%# Bind("UOM") %>' Style="width: 50px" Visible="false"></asp:TextBox>
+                                                    <asp:TextBox ID="txtUOM" runat="server" Text='<%# Bind("UOM") %>' Style="width: 75px" Visible="false"></asp:TextBox>
 
                                                 </ItemTemplate>
                                             </asp:TemplateField>
@@ -1284,7 +1284,7 @@
                                             <%-- 5 --%>
                                             <asp:TemplateField HeaderText="Pay Rate" HeaderStyle-Width="70px">
                                                 <ItemTemplate>
-                                                    <asp:TextBox ID="lblpayrate" runat="server" Text='<%#Eval("payrate", "{0:0.##}")%>' Enabled="false" Width="95%"></asp:TextBox>
+                                                    <asp:TextBox ID="lblpayrate" runat="server" Text='<%#Eval("payrate", "{0:0.##}")%>' Enabled="false" Width="70px"></asp:TextBox>
                                                     <cc1:FilteredTextBoxExtender ID="FTBPayRate" runat="server" Enabled="True"
                                                         TargetControlID="lblpayrate" ValidChars="-0123456789.">
                                                     </cc1:FilteredTextBoxExtender>
@@ -1306,7 +1306,7 @@
                                             <%-- 7 --%>
                                             <asp:TemplateField HeaderText="Duties Type" HeaderStyle-Width="50px">
                                                 <ItemTemplate>
-                                                    <asp:DropDownList ID="ddldutytype" runat="server" Width="95%">
+                                                    <asp:DropDownList ID="ddldutytype" runat="server" Width="75px">
                                                         <asp:ListItem Value="0">P.M</asp:ListItem>
                                                         <asp:ListItem Value="1">P.D</asp:ListItem>
                                                         <asp:ListItem Value="2">P.Hr</asp:ListItem>
@@ -1343,7 +1343,7 @@
                                             <%-- 9--%>
                                             <asp:TemplateField HeaderText="Amount" HeaderStyle-Width="70px">
                                                 <ItemTemplate>
-                                                    <asp:TextBox ID="lblda" runat="server" Text='<%#Eval("BasicDa", "{0:0.##}")%>' Enabled="false" Width="95%"> </asp:TextBox>
+                                                    <asp:TextBox ID="lblda" runat="server" Text='<%#Eval("BasicDa", "{0:0.##}")%>' Enabled="false" Width="75px"> </asp:TextBox>
                                                     <cc1:FilteredTextBoxExtender ID="FTBDa" runat="server" Enabled="True"
                                                         TargetControlID="lblda" ValidChars="-0123456789.">
                                                     </cc1:FilteredTextBoxExtender>
@@ -1972,7 +1972,9 @@
                                 </div>
                                 <table>
                                     <tr>
-
+                                        <td   style="width: 100px">
+                                            <asp:CheckBox ID="chkletterhead" runat="server" Text="Letter Head" Width="100px" />&nbsp                                            
+                                        </td>
                                         <td>
                                             <asp:DropDownList ID="ddlfontsize" Width="60px" runat="server" CssClass="sdrop">
                                                 <asp:ListItem Value="10">10</asp:ListItem>

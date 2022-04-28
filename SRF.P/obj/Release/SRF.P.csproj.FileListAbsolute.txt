@@ -90,3 +90,15 @@ D:\GitProjects\SRFNew.Portal\SRF.P\bin\QRCoder.dll
 D:\GitProjects\SRFNew.Portal\SRF.P\bin\RestSharp.Net2.dll
 D:\GitProjects\SRFNew.Portal\SRF.P\bin\Newtonsoft.Json.pdb
 D:\GitProjects\SRFNew.Portal\SRF.P\bin\Newtonsoft.Json.xml
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\ClosedXML.dll
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\DocumentFormat.OpenXml.dll
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\ExcelNumberFormat.dll
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\Newtonsoft.Json.dll
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\QRCoder.dll
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\RestSharp.Net2.dll
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\ClosedXML.pdb
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\ClosedXML.xml
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\DocumentFormat.OpenXml.xml
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\ExcelNumberFormat.xml
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\Newtonsoft.Json.pdb
+F:\GitProjects\SRFNew.Portal\SRF.P\bin\Newtonsoft.Json.xml

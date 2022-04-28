@@ -304,14 +304,14 @@
                                                     else if (CancelRemarks == '') {
                                                         alert("Please fill cancel remarks")
                                                         document.getElementById("<%=txtCnclRemarks.ClientID %>").focus();
-                                                        }
-                                                        else {
-                                                            debugger;
+                                                    }
+                                                    else {
+                                                        debugger;
 
-                                                            document.getElementById("<%=hfnCnclRsn.ClientID %>").value = CancelRsn;
+                                                        document.getElementById("<%=hfnCnclRsn.ClientID %>").value = CancelRsn;
                                                             document.getElementById("<%=hfCnclRemarks.ClientID %>").value = CancelRemarks;
-                                                            $(this).dialog("close");
-                                                            document.getElementById("<%=tempBtn.ClientID %>").click();
+                                                        $(this).dialog("close");
+                                                        document.getElementById("<%=tempBtn.ClientID %>").click();
                                                             return true;
                                                         }
 
@@ -477,13 +477,13 @@
                                                 else {
 
                                                     document.getElementById("<%=hfCreditNoteRemarks.ClientID %>").value = document.getElementById("<%=txtCreditNoteRemarks.ClientID %>").value;
-                                                        document.getElementById("<%=hfCreditNoteDt.ClientID %>").value = document.getElementById("<%=txtCreditnotedt.ClientID %>").value;
+                                                    document.getElementById("<%=hfCreditNoteDt.ClientID %>").value = document.getElementById("<%=txtCreditnotedt.ClientID %>").value;
 
-                                                        $('#<%= rdbfull.ClientID %>').prop('checked', true);
+                                                    $('#<%= rdbfull.ClientID %>').prop('checked', true);
 
-                                                        getvalues();
+                                                    getvalues();
 
-                                                        document.getElementById("<%=tempCnDetails.ClientID %>").click();
+                                                    document.getElementById("<%=tempCnDetails.ClientID %>").click();
                                                         return false;
                                                     }
                                                 }
@@ -501,16 +501,16 @@
                                                     }
                                                     else if (document.getElementById("<%=txtCreditNoteAmt.ClientID %>").value == "0" || document.getElementById("<%=txtCreditNoteAmt.ClientID %>").value == "") {
 
-                                                        alert("Please enter credit note Amount")
-                                                        return;
-                                                    }
-                                                    else {
+                                                    alert("Please enter credit note Amount")
+                                                    return;
+                                                }
+                                                else {
 
-                                                        getvalues();
+                                                    getvalues();
 
-                                                        return false;
-                                                    }
-                                            }
+                                                    return false;
+                                                }
+                                        }
                                         });
 
 
@@ -553,11 +553,11 @@
                                             var txtCreditNoteAmt = $("[id*=txtCreditNoteAmt]");
                                             CreditNoteAmtValues.push(txtCreditNoteAmt.val());
                                             document.getElementById("<%=hfnCreditNoteAmt.ClientID %>").value = CreditNoteAmtValues;
-                                                SetValue(row, 2, "CreditNoteAmt", txtCreditNoteAmt);
+                                            SetValue(row, 2, "CreditNoteAmt", txtCreditNoteAmt);
 
-                                                var txtCreditNoteCGSTPrc = $("[id*=txtCreditNoteCGSTPrc]");
-                                                CreditNoteCGSTPrcValues.push(txtCreditNoteCGSTPrc.val());
-                                                document.getElementById("<%=hfnCreditNoteCGSTPrc.ClientID %>").value = CreditNoteCGSTPrcValues;
+                                            var txtCreditNoteCGSTPrc = $("[id*=txtCreditNoteCGSTPrc]");
+                                            CreditNoteCGSTPrcValues.push(txtCreditNoteCGSTPrc.val());
+                                            document.getElementById("<%=hfnCreditNoteCGSTPrc.ClientID %>").value = CreditNoteCGSTPrcValues;
                                                 SetValue(row, 3, "CreditNoteCGSTPrc", txtCreditNoteCGSTPrc);
 
 
@@ -702,10 +702,10 @@
                                                     var crpayment = "";
 
                                                     if ($('#<%= rdbfull.ClientID %>').is(":checked")) {
-                                                            crpayment = "rdbfull";
-                                                        }
+                                                        crpayment = "rdbfull";
+                                                    }
 
-                                                        if ($('#<%= rdbPart.ClientID %>').is(":checked")) {
+                                                    if ($('#<%= rdbPart.ClientID %>').is(":checked")) {
                                                         crpayment = "rdbPart";
                                                     }
 
@@ -717,19 +717,19 @@
                                                         if (CreditNoteDate == '') {
                                                             alert("Please fill credit note issued date")
                                                             document.getElementById("<%=txtCreditnotedt.ClientID %>").focus();
-                                                            }
+                                                        }
 
-                                                            else {
+                                                        else {
 
 
-                                                                document.getElementById("<%=hfCreditNoteDt.ClientID %>").value = CreditNoteDate;
-                                                                document.getElementById("<%=hfCreditNoteRemarks.ClientID %>").value = "";
-                                                                document.getElementById("<%=hfCreditNoteHSN.ClientID %>").value = "";
-                                                                document.getElementById("<%=hfCreditNoteAmt.ClientID %>").value = "0";
-                                                                document.getElementById("<%=hfCreditPayment.ClientID %>").value = crpayment;
+                                                            document.getElementById("<%=hfCreditNoteDt.ClientID %>").value = CreditNoteDate;
+                                                            document.getElementById("<%=hfCreditNoteRemarks.ClientID %>").value = "";
+                                                            document.getElementById("<%=hfCreditNoteHSN.ClientID %>").value = "";
+                                                            document.getElementById("<%=hfCreditNoteAmt.ClientID %>").value = "0";
+                                                            document.getElementById("<%=hfCreditPayment.ClientID %>").value = crpayment;
 
-                                                                $(this).dialog("close");
-                                                                document.getElementById("<%=tempCN.ClientID %>").click();
+                                                            $(this).dialog("close");
+                                                            document.getElementById("<%=tempCN.ClientID %>").click();
                                                                 return true;
                                                             }
 
@@ -738,13 +738,13 @@
                                                     if (crpayment == "rdbPart") {
 
                                                         var CreditNoteRemarks = document.getElementById("<%=txtCreditNoteRemarks.ClientID %>").value;
-                                                            var CreditNoteHSN = document.getElementById("<%=txtCreditNoteHSN.ClientID %>").value;
-                                                            var CreditNoteAmount = document.getElementById("<%=txtCreditNoteAmt.ClientID %>").value;
+                                                        var CreditNoteHSN = document.getElementById("<%=txtCreditNoteHSN.ClientID %>").value;
+                                                        var CreditNoteAmount = document.getElementById("<%=txtCreditNoteAmt.ClientID %>").value;
 
 
-                                                            if (CreditNoteDate == '') {
-                                                                alert("Please fill credit note issued date")
-                                                                document.getElementById("<%=txtCreditnotedt.ClientID %>").focus();
+                                                        if (CreditNoteDate == '') {
+                                                            alert("Please fill credit note issued date")
+                                                            document.getElementById("<%=txtCreditnotedt.ClientID %>").focus();
                                                             }
                                                             else {
 
@@ -1242,11 +1242,11 @@
                                             </asp:TemplateField>
 
                                             <%-- 1 --%>
-                                            <asp:TemplateField HeaderStyle-Width="150px" HeaderText="Description">
+                                            <asp:TemplateField HeaderStyle-Width="250px" HeaderText="Description">
                                                 <ItemTemplate>
                                                     <asp:Label ID="lbldesignid" runat="server" Text='<%# Bind("Designid") %>' Visible="false"></asp:Label>
                                                     <asp:Label ID="lbltype" runat="server" Text='<%# Bind("type") %>' Visible="false"></asp:Label>
-                                                    <asp:TextBox ID="lbldesgn" runat="server" Text='<%# Bind("Designation") %>' Width="95%" Enabled="false" CssClass="txtautofilldesg" AutoPostBack="True" OnTextChanged="lbldesgn_TextChanged"></asp:TextBox>
+                                                    <asp:TextBox ID="lbldesgn" runat="server" Text='<%# Bind("Designation") %>' Width="150px"  Enabled="false" CssClass="txtautofilldesg" AutoPostBack="True" OnTextChanged="lbldesgn_TextChanged"></asp:TextBox>
                                                     <cc1:FilteredTextBoxExtender runat="server" ID="Ftbdesignid" TargetControlID="lbldesgn"
                                                         FilterMode="InvalidChars" InvalidChars="'">
                                                     </cc1:FilteredTextBoxExtender>
@@ -1260,7 +1260,7 @@
                                                     <asp:DropDownList ID="ddlHSNNumber" runat="server" Width="95%" Style="text-align: left">
                                                     </asp:DropDownList>
                                                     <br />
-                                                    <asp:TextBox ID="txtUOM" runat="server" Text='<%# Bind("UOM") %>' Style="width: 50px" Visible="false"></asp:TextBox>
+                                                    <asp:TextBox ID="txtUOM" runat="server" Text='<%# Bind("UOM") %>' Style="width: 75px" Visible="false"></asp:TextBox>
 
                                                 </ItemTemplate>
                                             </asp:TemplateField>
@@ -1284,7 +1284,7 @@
                                             <%-- 5 --%>
                                             <asp:TemplateField HeaderText="Pay Rate" HeaderStyle-Width="70px">
                                                 <ItemTemplate>
-                                                    <asp:TextBox ID="lblpayrate" runat="server" Text='<%#Eval("payrate", "{0:0.##}")%>' Enabled="false" Width="95%"></asp:TextBox>
+                                                    <asp:TextBox ID="lblpayrate" runat="server" Text='<%#Eval("payrate", "{0:0.##}")%>' Enabled="false" Width="70px"></asp:TextBox>
                                                     <cc1:FilteredTextBoxExtender ID="FTBPayRate" runat="server" Enabled="True"
                                                         TargetControlID="lblpayrate" ValidChars="-0123456789.">
                                                     </cc1:FilteredTextBoxExtender>
@@ -1306,7 +1306,7 @@
                                             <%-- 7 --%>
                                             <asp:TemplateField HeaderText="Duties Type" HeaderStyle-Width="50px">
                                                 <ItemTemplate>
-                                                    <asp:DropDownList ID="ddldutytype" runat="server" Width="95%">
+                                                    <asp:DropDownList ID="ddldutytype" runat="server" Width="75px">
                                                         <asp:ListItem Value="0">P.M</asp:ListItem>
                                                         <asp:ListItem Value="1">P.D</asp:ListItem>
                                                         <asp:ListItem Value="2">P.Hr</asp:ListItem>
@@ -1343,7 +1343,7 @@
                                             <%-- 9--%>
                                             <asp:TemplateField HeaderText="Amount" HeaderStyle-Width="70px">
                                                 <ItemTemplate>
-                                                    <asp:TextBox ID="lblda" runat="server" Text='<%#Eval("BasicDa", "{0:0.##}")%>' Enabled="false" Width="95%"> </asp:TextBox>
+                                                    <asp:TextBox ID="lblda" runat="server" Text='<%#Eval("BasicDa", "{0:0.##}")%>' Enabled="false" Width="75px"> </asp:TextBox>
                                                     <cc1:FilteredTextBoxExtender ID="FTBDa" runat="server" Enabled="True"
                                                         TargetControlID="lblda" ValidChars="-0123456789.">
                                                     </cc1:FilteredTextBoxExtender>
@@ -1972,12 +1972,17 @@
                                 </div>
                                 <table>
                                     <tr>
-
+                                        <td   style="width: 100px">
+                                            <asp:CheckBox ID="chkletterhead" runat="server" Text="Letter Head" Width="100px" />&nbsp                                            
+                                        </td>
                                         <td>
                                             <asp:DropDownList ID="ddlfontsize" Width="60px" runat="server" CssClass="sdrop">
                                                 <asp:ListItem Value="10">10</asp:ListItem>
                                                 <asp:ListItem Value="9">9</asp:ListItem>
                                                 <asp:ListItem Value="8">8</asp:ListItem>
+                                                <asp:ListItem Value="7">7</asp:ListItem>
+                                                <asp:ListItem Value="6">6</asp:ListItem>
+
                                             </asp:DropDownList>
                                         </td>
                                         <td style="text-align: right; font-weight: bold">

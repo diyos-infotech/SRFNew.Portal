@@ -557,6 +557,10 @@
                                             </asp:TemplateField>
 
 
+                                            <asp:BoundField DataField="IRN" HeaderText="IRN" />
+                                            <asp:BoundField DataField="IRNStatus" HeaderText="IRN Status" />
+                                            <asp:BoundField DataField="ACKNo" HeaderText="Ack No" />
+                                            <asp:BoundField DataField="ACKdt" HeaderText="Ack Date" />
 
 
 

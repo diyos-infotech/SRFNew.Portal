@@ -8275,6 +8275,117 @@ namespace SRF.P.Module_Clients
 
         protected void btninvoicenew_Click(object sender, EventArgs e)
         {
+            int month = GetMonthBasedOnSelectionDateorMonth();
+            
+            MemoryStream ms = new MemoryStream();
+            Document document = new Document();
+            if (chkletterhead.Checked == true)
+            {
+                document = new Document(PageSize.A4, 0, 12, 110, 10);
+            }
+            
+
+
+            Font NormalFont = FontFactory.GetFont("Arial", 12, Font.NORMAL, BaseColor.BLACK);
+            PdfWriter writer = PdfWriter.GetInstance(document, ms);
+            string filename = "";
+            string CopyName = "";
+
+            document.Open();
+
+         
+            //if (chkletterhead.Checked == true)
+            //{
+            //    PageEventHelperL pageEventHelper = new PageEventHelperL();
+            //    writer.PageEvent = pageEventHelper;
+            //}
+            
+            BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+
+            string SelectBillNo = string.Empty;
+            string DisplayBillNo = "";
+
+            if (ddlType.SelectedIndex == 0)
+            {
+                SelectBillNo = "Select RIGHT(billno,5) as DisplayBillNo,* from Unitbill where month='" + month + "' and unitid='" + ddlclientid.SelectedValue + "'";
+            }
+            else
+            {
+                SelectBillNo = "Select RIGHT(billno,5) as DisplayBillNo,* from mUnitbill where month='" + month + "' and unitid='" + ddlclientid.SelectedValue + "' and billno = '" + ddlMBBillnos.SelectedValue + "'";
+            }
+            DataTable DtBilling = config.ExecuteReaderWithQueryAsync(SelectBillNo).Result;
+
+            if (DtBilling.Rows.Count > 0)
+            {
+                DisplayBillNo = DtBilling.Rows[0]["DisplayBillNo"].ToString();
+            }
+
+
+            DownloadBill(document, ms);
+
+            filename = DisplayBillNo + "/" + ddlclientid.SelectedValue + "/" + GetMonthName().Substring(0, 3) + "/" + GetMonthOfYear() + "/Invoice.pdf";
+
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment;filename=\"" + filename + "\"");
+            Response.Buffer = true;
+            Response.Clear();
+            Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
+            Response.OutputStream.Flush();
+            Response.End();
+        }
+
+      
+           
+
+        public class PageEventHelperL : PdfPageEventHelper
+        {
+            PdfContentByte cb;
+            PdfTemplate template;
+
+            BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+
+            public override void OnOpenDocument(PdfWriter writer, Document document)
+            {
+                cb = writer.DirectContent;
+                template = cb.CreateTemplate(10, 10);
+            }
+            public override void OnEndPage(PdfWriter writer, Document document)
+            {
+                base.OnEndPage(writer, document);
+
+
+                iTextSharp.text.Image imghead = iTextSharp.text.Image.GetInstance(HttpContext.Current.Server.MapPath("~/assets/header1.png"));
+                iTextSharp.text.Image imgfoot = iTextSharp.text.Image.GetInstance(HttpContext.Current.Server.MapPath("~/assets/footer1.png"));
+
+                //imgfoot.SetAbsolutePosition(0, 0);
+                imghead.Alignment = (iTextSharp.text.Image.ALIGN_LEFT | iTextSharp.text.Image.UNDERLYING);
+                imghead.ScalePercent(50f);//55
+                imghead.SetAbsolutePosition(0, -5);
+
+                PdfContentByte cbhead = writer.DirectContent;
+                PdfTemplate tpl = cbhead.CreateTemplate(560, 160);//580
+                tpl.AddImage(imghead);
+
+
+                imgfoot.ScalePercent(50f);//55
+                imgfoot.SetAbsolutePosition(0, 0);
+
+                PdfContentByte cbfoot = writer.DirectContent;
+                PdfTemplate tp = cbfoot.CreateTemplate(580, 120);
+                tp.AddImage(imgfoot);
+
+
+                cbfoot.AddTemplate(tp, 8, 10);
+                //19,27
+                cbhead.AddTemplate(tpl, 8, 762);
+
+                Phrase headPhraseImg = new Phrase(cbfoot + "", FontFactory.GetFont(FontFactory.TIMES_ROMAN, 7, iTextSharp.text.Font.NORMAL));
+                Phrase footPhraseImg = new Phrase(cbhead + "", FontFactory.GetFont(FontFactory.TIMES_ROMAN, 7, iTextSharp.text.Font.NORMAL));
+            }
+        }
+
+        public void DownloadBill(Document document, MemoryStream ms)
+        {
             int month = 0;
             int MonthSerch = 0;
             var MonthText = "";
@@ -8294,8 +8405,14 @@ namespace SRF.P.Module_Clients
             {
                 try
                 {
-                    MemoryStream ms = new MemoryStream();
-                    Document document = new Document(PageSize.A4);
+                    //MemoryStream ms = new MemoryStream();
+                    //Document document = new Document(PageSize.A4);
+                    //if (chkletterhead.Checked == true)
+                    //{
+                    //    document = new Document(PageSize.A4, 0, 0, 110, 10);
+                    //}
+                    
+
                     Font NormalFont = FontFactory.GetFont("Arial", 12, Font.NORMAL, BaseColor.BLACK);
                     PdfWriter writer = PdfWriter.GetInstance(document, ms);
 
@@ -8476,23 +8593,48 @@ namespace SRF.P.Module_Clients
 
                     #region For header
 
-                    if (File.Exists(imagepath))
+
+                    if (chkletterhead.Checked == false)
+
                     {
-                        iTextSharp.text.Image gif2 = iTextSharp.text.Image.GetInstance(imagepath);
 
-                        gif2.Alignment = (iTextSharp.text.Image.ALIGN_LEFT | iTextSharp.text.Image.UNDERLYING);
-                        // gif2.SpacingBefore = 50;
-                        gif2.ScalePercent(70f);
-                        gif2.SetAbsolutePosition(34f, 735f);
-                        //document.Add(new Paragraph(" "));
-                        document.Add(gif2);
+                        if (File.Exists(imagepath))
+                        {
+                            iTextSharp.text.Image gif2 = iTextSharp.text.Image.GetInstance(imagepath);
+
+                            gif2.Alignment = (iTextSharp.text.Image.ALIGN_LEFT | iTextSharp.text.Image.UNDERLYING);
+                            // gif2.SpacingBefore = 50;
+                            gif2.ScalePercent(70f);
+                            gif2.SetAbsolutePosition(34f, 735f);
+                            //document.Add(new Paragraph(" "));
+                            document.Add(gif2);
+
+                        }
                     }
+                    string selectshipaddress = "select ShipToLegalName, ShipToAddr1,ShipToAddr2,ShipToLocation,ShipToPIN,SupplyType,LWFState,Area,Zone,ShipToGSTIN,s.state ,s.GSTStateCode from clients c inner join Segments sg on c.ClientSegment = sg.SegId  left join states s on s.stateid=c.state left join GSTMaster gst on gst.id=c.ourgstin where clientid= '" + ddlclientid.SelectedItem.ToString() + "'";
+                    DataTable dtshippingaddress = config.ExecuteReaderWithQueryAsync(selectshipaddress).Result;
+                    string ShipToLegalName = "";
+                    string ShipToAddr1 = "";
+                    string ShipToAddr2 = "0";
+                    string ShipToLocation = "";
+                    string ShipToPIN = "";
+                    string ShipToGSTIN1 = "";
+                    string state = "";
+                    string StateCode1 = "";
+                    if (dtshippingaddress.Rows.Count > 0)
+                    {
+                        ShipToLegalName = dtshippingaddress.Rows[0]["ShipToLegalName"].ToString();
+                        ShipToAddr1 = dtshippingaddress.Rows[0]["ShipToAddr1"].ToString();
+                        ShipToAddr2 = dtshippingaddress.Rows[0]["ShipToAddr2"].ToString();
+                        ShipToLocation = dtshippingaddress.Rows[0]["ShipToLocation"].ToString();
+                        ShipToPIN = dtshippingaddress.Rows[0]["ShipToPIN"].ToString();
+                        ShipToGSTIN1 = dtshippingaddress.Rows[0]["ShipToGSTIN"].ToString();
+                        state = dtshippingaddress.Rows[0]["state"].ToString();
+                        StateCode1 = dtshippingaddress.Rows[0]["GSTStateCode"].ToString();
+                    }
+                        #region
 
-
-
-                    #region
-
-                    string selectclientaddress = "select sg.segname,c.*,s.state as Statename,s.GSTStateCode,gst.gstno,isnull(gst.BillPrefix,'') as BillPrefix,isnull(gst.GSTAddress, '') as GSTAddress from clients c inner join Segments sg on c.ClientSegment = sg.SegId  left join states s on s.stateid=c.state left join GSTMaster gst on gst.id=c.ourgstin where clientid= '" + ddlclientid.SelectedItem.ToString() + "'";
+                        string selectclientaddress = "select sg.segname,c.*,s.state as Statename,s.GSTStateCode,gst.gstno,isnull(gst.BillPrefix,'') as BillPrefix,isnull(gst.GSTAddress, '') as GSTAddress  from clients c inner join Segments sg on c.ClientSegment = sg.SegId  left join states s on s.stateid=c.state left join GSTMaster gst on gst.id=c.ourgstin where clientid= '" + ddlclientid.SelectedItem.ToString() + "'";
                     DataTable dtclientaddress = config.ExecuteReaderWithQueryAsync(selectclientaddress).Result;
                     string OurGSTIN = "";
                     string GSTIN = "";
@@ -8500,6 +8642,18 @@ namespace SRF.P.Module_Clients
                     string State = "";
                     string BillPrefix = "";
                     string GSTAddress = "";
+
+
+
+                    string ShipToGSTIN = "";
+                    string ShipToStateCode = "0";
+                    string ShipToState = "";
+                    string GstAddress = "";
+                    string location = "";
+                    string BuyersOrderNo = "";
+
+                    string ShiptoLine1 = ""; string ShiptoLine2 = ""; string ShiptoLine3 = "";
+                    string ShiptoLine4 = ""; string ShiptoLine5 = ""; string ShiptoLine6 = "";
                     if (dtclientaddress.Rows.Count > 0)
                     {
                         OurGSTIN = dtclientaddress.Rows[0]["gstno"].ToString();
@@ -8508,6 +8662,18 @@ namespace SRF.P.Module_Clients
                         State = dtclientaddress.Rows[0]["Statename"].ToString();
                         BillPrefix = dtclientaddress.Rows[0]["BillPrefix"].ToString();
                         GSTAddress = dtclientaddress.Rows[0]["GSTAddress"].ToString();
+                        //ShiptoLine1 = dtclientaddress.Rows[0]["ShiptoLine1"].ToString();
+                        //ShiptoLine2 = dtclientaddress.Rows[0]["ShiptoLine2"].ToString();
+                        //ShiptoLine3 = dtclientaddress.Rows[0]["ShiptoLine3"].ToString();
+                        //ShiptoLine4 = dtclientaddress.Rows[0]["ShiptoLine4"].ToString();
+                        //ShiptoLine5 = dtclientaddress.Rows[0]["ShiptoLine5"].ToString();
+                        //ShiptoLine6 = dtclientaddress.Rows[0]["ShiptoLine6"].ToString();
+                        ////ShipState = dtclientaddress.Rows[0]["ShipState"].ToString();
+                        //// ShipToStateCode = dtclientaddress.Rows[0]["ShipToStateCode"].ToString();
+                        //ShipToGSTIN = dtclientaddress.Rows[0]["ShipToGSTIN"].ToString();
+
+                        //ShipToStateCode = dtclientaddress.Rows[0]["ShipToStateCode1"].ToString();
+                        //ShipToState = dtclientaddress.Rows[0]["ShipState"].ToString();
                     }
                     string BQry = "select * from TblOptions  where '" + billdt + "' between fromdate and todate ";
                     DataTable Bdt = config.ExecuteReaderWithQueryAsync(BQry).Result;
@@ -8526,7 +8692,7 @@ namespace SRF.P.Module_Clients
                     string BillNo = "";
                     string DisplayBillNo = "";
                     string area = "";
-                    string location = "";
+                    //string location = "";
                     var BankAccountNo = "";
                     var IFSCCode = "";
                     var BankName = "";
@@ -8978,76 +9144,84 @@ namespace SRF.P.Module_Clients
                     tablelogo.TotalWidth = 560f;
                     tablelogo.LockedWidth = true;
                     float[] widtlogo = new float[] { 2f, 2f };
+                    //tablelogo.HeaderRows = 6; 
                     tablelogo.SetWidths(widtlogo);
+                   
+                    if (chkletterhead.Checked == false)
 
-                    PdfPCell CCompName = new PdfPCell(new Paragraph(companyName, FontFactory.GetFont(FontStyle, 14, Font.BOLD, BaseColor.BLACK)));
-                    CCompName.HorizontalAlignment = 1;
-                    CCompName.BorderWidthBottom = 0;
-                    CCompName.BorderWidthTop = 1.5f;
-                    CCompName.BorderWidthRight = 1.5f;
-                    CCompName.BorderWidthLeft = 1.5f;
-                    CCompName.Colspan = 2;
-                    CCompName.SetLeading(0f, 1.3f);
-                    tablelogo.AddCell(CCompName);
-
-                    PdfPCell CCompAddress = new PdfPCell(new Paragraph(GSTAddress, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
-                    CCompAddress.HorizontalAlignment = 1;
-                    CCompAddress.BorderWidthBottom = 0;
-                    CCompAddress.BorderWidthTop = 0f;
-                    CCompAddress.BorderWidthRight = 1.5f;
-                    CCompAddress.BorderWidthLeft = 1.5f;
-                    CCompAddress.Colspan = 2;
-                    //CCompAddress.PaddingLeft = 50;
-                    //CCompAddress.FixedHeight = 70;
-                    CCompAddress.SetLeading(0f, 1.3f);
-                    tablelogo.AddCell(CCompAddress);
-
-                    PdfPCell CCompPhone = new PdfPCell(new Paragraph("Tel: " + phoneno, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
-                    CCompPhone.HorizontalAlignment = 1;
-                    CCompPhone.BorderWidthBottom = 0;
-                    CCompPhone.BorderWidthTop = 0f;
-                    CCompPhone.PaddingLeft = 180f;
-                    CCompPhone.BorderWidthRight = 0f;
-                    CCompPhone.BorderWidthLeft = 1.5f;
-                    CCompPhone.Colspan = 1;
-                    //CCompPhone.PaddingLeft = 50;
-                    //CCompAddress.FixedHeight = 70;
-                    CCompPhone.SetLeading(0f, 1.3f);
-                    tablelogo.AddCell(CCompPhone);
-
-                    PdfPCell CCompFax = new PdfPCell(new Paragraph(" Fax: " + faxno, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
-                    CCompFax.HorizontalAlignment = 1;
-                    CCompFax.BorderWidthBottom = 0;
-                    CCompFax.BorderWidthTop = 0f;
-                    CCompFax.BorderWidthRight = 1.5f;
-                    CCompFax.BorderWidthLeft = 0f;
-                    CCompFax.PaddingLeft = -200f;
-                    //CCompFax.PaddingTop = 2f;
-                    CCompFax.Colspan = 1;
-                    //CCompFax.PaddingLeft = 50;
-                    //CCompAddress.FixedHeight = 70;
-                    CCompFax.SetLeading(0f, 1.3f);
-                    tablelogo.AddCell(CCompFax);
+                    {
 
 
-                    PdfPCell Celemail = new PdfPCell(new Paragraph("Email :" + emailid, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
-                    Celemail.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
-                    Celemail.BorderWidthBottom = 1.5f;
-                    Celemail.BorderWidthTop = 0f;
-                    Celemail.PaddingBottom = 5f;
-                    //Celemail.PaddingTop = 5f;
-                    Celemail.BorderWidthRight = 1.5f;
-                    Celemail.BorderWidthLeft = 1.5f;
-                    Celemail.Colspan = 2;
-                    //Celemail.FixedHeight = 20;
-                    tablelogo.AddCell(Celemail);
+                        PdfPCell CCompName = new PdfPCell(new Paragraph(companyName, FontFactory.GetFont(FontStyle, 14, Font.BOLD, BaseColor.BLACK)));
+                        CCompName.HorizontalAlignment = 1;
+                        CCompName.BorderWidthBottom = 0;
+                        CCompName.BorderWidthTop = 1.5f;
+                        CCompName.BorderWidthRight = 1.5f;
+                        CCompName.BorderWidthLeft = 1.5f;
+                        CCompName.Colspan = 2;
+                        CCompName.SetLeading(0f, 1.3f);
+                        tablelogo.AddCell(CCompName);
 
-                    //For Space
+                        PdfPCell CCompAddress = new PdfPCell(new Paragraph(GSTAddress, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                        CCompAddress.HorizontalAlignment = 1;
+                        CCompAddress.BorderWidthBottom = 0;
+                        CCompAddress.BorderWidthTop = 0f;
+                        CCompAddress.BorderWidthRight = 1.5f;
+                        CCompAddress.BorderWidthLeft = 1.5f;
+                        CCompAddress.Colspan = 2;
+                        //CCompAddress.PaddingLeft = 50;
+                        //CCompAddress.FixedHeight = 70;
+                        CCompAddress.SetLeading(0f, 1.3f);
+                        tablelogo.AddCell(CCompAddress);
 
-                    PdfPCell celll = new PdfPCell(new Paragraph("\n", FontFactory.GetFont(FontStyle, 12, Font.NORMAL, BaseColor.BLACK)));
-                    celll.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                        PdfPCell CCompPhone = new PdfPCell(new Paragraph("Tel: " + phoneno, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                        CCompPhone.HorizontalAlignment = 1;
+                        CCompPhone.BorderWidthBottom = 0;
+                        CCompPhone.BorderWidthTop = 0f;
+                        CCompPhone.PaddingLeft = 180f;
+                        CCompPhone.BorderWidthRight = 0f;
+                        CCompPhone.BorderWidthLeft = 1.5f;
+                        CCompPhone.Colspan = 1;
+                        //CCompPhone.PaddingLeft = 50;
+                        //CCompAddress.FixedHeight = 70;
+                        CCompPhone.SetLeading(0f, 1.3f);
+                        tablelogo.AddCell(CCompPhone);
 
-                    celll.Colspan = 2;
+                        PdfPCell CCompFax = new PdfPCell(new Paragraph(" Fax: " + faxno, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                        CCompFax.HorizontalAlignment = 1;
+                        CCompFax.BorderWidthBottom = 0;
+                        CCompFax.BorderWidthTop = 0f;
+                        CCompFax.BorderWidthRight = 1.5f;
+                        CCompFax.BorderWidthLeft = 0f;
+                        CCompFax.PaddingLeft = -200f;
+                        //CCompFax.PaddingTop = 2f;
+                        CCompFax.Colspan = 1;
+                        //CCompFax.PaddingLeft = 50;
+                        //CCompAddress.FixedHeight = 70;
+                        CCompFax.SetLeading(0f, 1.3f);
+                        tablelogo.AddCell(CCompFax);
+
+
+                        PdfPCell Celemail = new PdfPCell(new Paragraph("Email :" + emailid, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                        Celemail.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+                        Celemail.BorderWidthBottom = 0f;
+                        Celemail.BorderWidthTop = 0f;
+                        Celemail.PaddingBottom = 5f;
+                        //Celemail.PaddingTop = 5f;
+                        Celemail.BorderWidthRight = 1.5f;
+                        Celemail.BorderWidthLeft = 1.5f;
+                        Celemail.Colspan = 2;
+                        //Celemail.FixedHeight = 20;
+                        tablelogo.AddCell(Celemail);
+
+                        //For Space
+
+                        PdfPCell celll = new PdfPCell(new Paragraph("\n", FontFactory.GetFont(FontStyle, 12, Font.NORMAL, BaseColor.BLACK)));
+                        celll.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+
+                        celll.Colspan = 2;
+
+                    }
                     //tablelogo.AddCell(celll);
 
                     // tablelogo.AddCell(celll);
@@ -9055,7 +9229,7 @@ namespace SRF.P.Module_Clients
                     PdfPCell CInvoice = new PdfPCell(new Paragraph("TAX INVOICE", FontFactory.GetFont(FontStyle, 16, Font.BOLD, BaseColor.BLACK)));
                     CInvoice.HorizontalAlignment = 1;
                     CInvoice.BorderWidthBottom = 1.5f;
-                    CInvoice.BorderWidthTop = 0;
+                    CInvoice.BorderWidthTop = 1.5f;
                     CInvoice.FixedHeight = 25;
                     CInvoice.BorderWidthRight = 1.5f;
                     CInvoice.BorderWidthLeft = 1.5f;
@@ -9232,11 +9406,140 @@ namespace SRF.P.Module_Clients
 
                     }
 
+                    PdfPCell empty = new PdfPCell(new Paragraph("", FontFactory.GetFont(FontStyle, 10, Font.UNDERLINE | Font.BOLD, BaseColor.BLACK)));
+                    empty.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                    empty.Colspan = 3;
+                    empty.BorderWidthBottom = 0;
+                    empty.BorderWidthTop = 0;
+                    empty.BorderWidthLeft = 1.5f;
+                    empty.BorderWidthRight = 0.2f;
+                    empty.BorderColor = BaseColor.BLACK;
+                    //clietnpin1.PaddingBottom = 10;
+                    empty.PaddingTop = 5;
+                    tempTable1.AddCell(empty);
+
+                    if (ShipToLegalName.Length > 0)
+                  {
+
+                    
+
+                    PdfPCell shipaddress = new PdfPCell(new Paragraph(" Place Of Supply", FontFactory.GetFont(FontStyle, 10, Font.UNDERLINE | Font.BOLD, BaseColor.BLACK)));
+                        shipaddress.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                        shipaddress.Colspan = 3;
+                        shipaddress.BorderWidthBottom = 0;
+                        shipaddress.BorderWidthTop = 1.5f;
+                        shipaddress.BorderWidthLeft = 1.5f;
+                        shipaddress.BorderWidthRight = 0.2f;
+                        shipaddress.BorderColor = BaseColor.BLACK;
+                        //clietnpin1.PaddingBottom = 10;
+                        shipaddress.PaddingTop = 2;
+                    tempTable1.AddCell(shipaddress);
+
+                    PdfPCell LegalName = new PdfPCell(new Paragraph(ShipToLegalName, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                    LegalName.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                    LegalName.Colspan = 3;
+                    LegalName.BorderWidthBottom = 0;
+                    LegalName.BorderWidthTop = 0;
+                    LegalName.BorderWidthLeft = 1.5f;
+                    LegalName.BorderWidthRight = 0.2f;
+                    LegalName.BorderColor = BaseColor.BLACK;
+                    //clietnpin1.PaddingBottom = 10;
+                    LegalName.PaddingTop = 5;
+                    tempTable1.AddCell(LegalName);
+
+                       
+
+                        PdfPCell LegalName2 = new PdfPCell(new Paragraph(ShipToAddr1, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                        LegalName2.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                        LegalName2.Colspan = 3;
+                        LegalName2.BorderWidthBottom = 0;
+                        LegalName2.BorderWidthTop = 0;
+                        LegalName2.BorderWidthLeft = 1.5f;
+                        LegalName2.BorderWidthRight = 0.2f;
+                        LegalName2.BorderColor = BaseColor.BLACK;
+                        //clietnpin1.PaddingBottom = 10;
+                        LegalName2.PaddingTop = -2;
+                        tempTable1.AddCell(LegalName2);
+
+
+                        PdfPCell LegalName3 = new PdfPCell(new Paragraph(ShipToAddr2, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                        LegalName3.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                        LegalName3.Colspan = 3;
+                        LegalName3.BorderWidthBottom = 0;
+                        LegalName3.BorderWidthTop = 0;
+                        LegalName3.BorderWidthLeft = 1.5f;
+                        LegalName3.BorderWidthRight = 0.2f;
+                        LegalName3.BorderColor = BaseColor.BLACK;
+                        //clietnpin1.PaddingBottom = 10;
+                        LegalName3.PaddingTop = -2;
+                        tempTable1.AddCell(LegalName3);
+
+                        PdfPCell LegalName4 = new PdfPCell(new Paragraph("GSTIN :" + ShipToGSTIN1, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                        LegalName4.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                        LegalName4.Colspan = 3;
+                        LegalName4.BorderWidthBottom = 0;
+                        LegalName4.BorderWidthTop = 0;
+                        LegalName4.BorderWidthLeft = 1.5f;
+                        LegalName4.BorderWidthRight = 0.2f;
+                        LegalName4.BorderColor = BaseColor.BLACK;
+                        //clietnpin1.PaddingBottom = 10;
+                        LegalName4.PaddingTop = -2;
+                        tempTable1.AddCell(LegalName4);
+
+
+                        PdfPCell LegalName5 = new PdfPCell(new Paragraph("State :" + state, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                        LegalName5.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                        LegalName5.Colspan = 3;
+                        LegalName5.BorderWidthBottom = 0;
+                        LegalName5.BorderWidthTop = 0;
+                        LegalName5.BorderWidthLeft = 1.5f;
+                        LegalName5.BorderWidthRight = 0.2f;
+                        LegalName5.BorderColor = BaseColor.BLACK;
+                        //clietnpin1.PaddingBottom = 10;
+                        LegalName5.PaddingTop = -2;
+                        tempTable1.AddCell(LegalName5);
+
+                        PdfPCell LegalName6 = new PdfPCell(new Paragraph("StateCode :" + StateCode1, FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                        LegalName6.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                        LegalName6.Colspan = 3;
+                        LegalName6.BorderWidthBottom = 0;
+                        LegalName6.BorderWidthTop = 0;
+                        LegalName6.BorderWidthLeft = 1.5f;
+                        LegalName6.BorderWidthRight = 0.2f;
+                        LegalName6.BorderColor = BaseColor.BLACK;
+                        //clietnpin1.PaddingBottom = 10;
+                        LegalName6.PaddingTop = -2;
+                        tempTable1.AddCell(LegalName6);
+
+
+
+
+
+                    }
+
+
+
+
+
+
+
 
 
 
                     PdfPCell childTable1 = new PdfPCell(tempTable1);
                     childTable1.Border = 0;
+                    //clietnpin2 = new PdfPCell(new Paragraph("", FontFactory.GetFont(FontStyle, 10, Font.NORMAL, BaseColor.BLACK)));
+                    //clietnpin1.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
+                    //clietnpin1.Colspan = 3;
+                    //clietnpin1.BorderWidthBottom = 0;
+                    //clietnpin1.BorderWidthTop = 0;
+                    //clietnpin1.BorderWidthLeft = 1.5f;
+                    //clietnpin1.BorderWidthRight = 0.2f;
+                    //clietnpin1.BorderColor = BaseColor.BLACK;
+                    //clietnpin1.PaddingLeft = 20;
+                    // clietnpin1.PaddingTop = -10;
+                    // clietnpin1.PaddingBottom = 10;
+                    //tempTable1.AddCell(clietnpin1);
                     childTable1.Colspan = 3;
                     // childTable1.FixedHeight = 100;
                     childTable1.HorizontalAlignment = 0;
@@ -9494,7 +9797,7 @@ namespace SRF.P.Module_Clients
                             }
                             else
                             {
-                                qrcodeimg.SetAbsolutePosition(440f, 495f);
+                                qrcodeimg.SetAbsolutePosition(430f, 495f);
                             }
                         }
                         else
@@ -12095,113 +12398,122 @@ namespace SRF.P.Module_Clients
                     addrssf.AddCell(Chid2);
 
                     document.Add(addrssf);
-
-                    PdfPTable Addterms = new PdfPTable(colCount);
-                    Addterms.TotalWidth = 560f;
-                    Addterms.LockedWidth = true;
-                    float[] widthrerms = new float[] { 1.2f, 6.2f, 2f, 2.2f, 2f, 2.7f };
-                    Addterms.SetWidths(widthrerms);
+                   
 
 
-                    PdfPTable Childterms = new PdfPTable(3);
-                    Childterms.TotalWidth = 323f;
-                    Childterms.LockedWidth = true;
-                    float[] Celters = new float[] { 1.2f, 6.2f, 2f };
-                    Childterms.SetWidths(Celters);
+                        
+                        PdfPTable Addterms = new PdfPTable(colCount);
+                        Addterms.TotalWidth = 560f;
+                        Addterms.LockedWidth = true;
+                        float[] widthrerms = new float[] { 1.2f, 6.2f, 2f, 2.2f, 2f, 2.7f };
+                        Addterms.SetWidths(widthrerms);
 
 
+                        PdfPTable Childterms = new PdfPTable(3);
+                        Childterms.TotalWidth = 323f;
+                        Childterms.LockedWidth = true;
+                        float[] Celters = new float[] { 1.2f, 6.2f, 2f };
+                        Childterms.SetWidths(Celters);
 
+
+                  
 
                     cell = new PdfPCell(new Phrase(" Payment Terms \n\n", FontFactory.GetFont(FontStyle, 9, Font.UNDERLINE | Font.NORMAL, BaseColor.BLACK)));
-                    cell.HorizontalAlignment = 0;
-                    cell.BorderWidthBottom = 0;
-                    cell.BorderWidthTop = 0.5f;
-                    cell.BorderWidthRight = 0.5f;
-                    cell.BorderWidthLeft = 1.5f;
-                    cell.Colspan = 3;
-                    Childterms.AddCell(cell);
-                    cell = new PdfPCell(new Phrase("  1.  Payment to be made as per Agreement Terms.\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
-                    cell.HorizontalAlignment = 0;
-                    cell.BorderWidthBottom = 0;
-                    cell.BorderWidthTop = 0;
-                    cell.BorderWidthRight = 0.5f;
-                    cell.BorderWidthLeft = 1.5f;
-                    cell.Colspan = 3;
-                    Childterms.AddCell(cell);
-                    cell = new PdfPCell(new Phrase("  2.  An interest of 24% p.a.shall be levied from the due date onwards.\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
-                    cell.HorizontalAlignment = 0;
-                    cell.BorderWidthBottom = 0;
-                    cell.BorderWidthTop = 0;
-                    cell.BorderWidthRight = 0.5f;
-                    cell.BorderWidthLeft = 1.5f;
-                    cell.Colspan = 3;
-                    Childterms.AddCell(cell);
-                    //cell = new PdfPCell(new Phrase("  3.  Please Pay this bill by Cheque / DD only favour of", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
-                    //cell.HorizontalAlignment = 0;
-                    //cell.BorderWidthBottom = 0;
-                    //cell.BorderWidthTop = 0;
-                    //cell.BorderWidthRight = 0.5f;
-                    //cell.BorderWidthLeft = 1.5f;
-                    //cell.Colspan = 3;
-                    //Childterms.AddCell(cell);
-                    //cell = new PdfPCell(new Phrase("       " + companyName+"\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
-                    //cell.HorizontalAlignment = 0;
-                    //cell.BorderWidthBottom = 0;
-                    //cell.BorderWidthTop = 0;
-                    //cell.BorderWidthRight = 0.5f;
-                    //cell.BorderWidthLeft = 1.5f;
-                    //cell.Colspan = 3;
-                    //Childterms.AddCell(cell);
-                    cell = new PdfPCell(new Phrase("  3.  All disputes Subjects to Bangalore Jurisdiction.\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
-                    cell.HorizontalAlignment = 0;
-                    cell.BorderWidthBottom = 1.5f;
-                    cell.BorderWidthTop = 0;
-                    cell.BorderWidthRight = 0.5f;
-                    cell.BorderWidthLeft = 1.5f;
-                    cell.Colspan = 3;
-                    Childterms.AddCell(cell);
+                        cell.HorizontalAlignment = 0;
+                        cell.BorderWidthBottom = 0;
+                        cell.BorderWidthTop = 0.5f;
+                        cell.BorderWidthRight = 0.5f;
+                        cell.BorderWidthLeft = 1.5f;
+                        cell.Colspan = 3;
+                        Childterms.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("  1.  Payment to be made as per Agreement Terms.\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 0;
+                        cell.BorderWidthBottom = 0;
+                        cell.BorderWidthTop = 0;
+                        cell.BorderWidthRight = 0.5f;
+                        cell.BorderWidthLeft = 1.5f;
+                        //cell.PaddingTop = -10;
+                        cell.Colspan = 3;
+                        Childterms.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("  2.  An interest of 24% p.a.shall be levied from the due date onwards.\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 0;
+                        cell.BorderWidthBottom = 0;
+                        cell.BorderWidthTop = 0;
+                        cell.BorderWidthRight = 0.5f;
+                        cell.BorderWidthLeft = 1.5f;
+                        cell.PaddingTop = -10;
+                        cell.Colspan = 3;
+                        Childterms.AddCell(cell);
+                        //cell = new PdfPCell(new Phrase("  3.  Please Pay this bill by Cheque / DD only favour of", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        //cell.HorizontalAlignment = 0;
+                        //cell.BorderWidthBottom = 0;
+                        //cell.BorderWidthTop = 0;
+                        //cell.BorderWidthRight = 0.5f;
+                        //cell.BorderWidthLeft = 1.5f;
+                        //cell.Colspan = 3;
+                        //Childterms.AddCell(cell);
+                        //cell = new PdfPCell(new Phrase("       " + companyName+"\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        //cell.HorizontalAlignment = 0;
+                        //cell.BorderWidthBottom = 0;
+                        //cell.BorderWidthTop = 0;
+                        //cell.BorderWidthRight = 0.5f;
+                        //cell.BorderWidthLeft = 1.5f;
+                        //cell.Colspan = 3;
+                        //Childterms.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("  3.  All disputes Subjects to Bangalore Jurisdiction.\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 0;
+                        cell.BorderWidthBottom = 1.5f;
+                        cell.BorderWidthTop = 0;
+                        cell.BorderWidthRight = 0.5f;
+                        cell.BorderWidthLeft = 1.5f;
+                        cell.PaddingTop = -10;
+                        cell.Colspan = 3;
+                        Childterms.AddCell(cell);
 
 
-                    PdfPCell Chid3 = new PdfPCell(Childterms);
-                    Chid3.Border = 0;
-                    Chid3.Colspan = 3;
-                    Chid3.HorizontalAlignment = 0;
-                    Addterms.AddCell(Chid3);
+                        PdfPCell Chid3 = new PdfPCell(Childterms);
+                        Chid3.Border = 0;
+                        Chid3.Colspan = 3;
+                        Chid3.HorizontalAlignment = 0;
+                        Addterms.AddCell(Chid3);
 
 
 
-                    PdfPTable chilk = new PdfPTable(3);
-                    chilk.TotalWidth = 237f;
-                    chilk.LockedWidth = true;
-                    float[] Celterss = new float[] { 2.2f, 2f, 2.7f };
-                    chilk.SetWidths(Celterss);
+                        PdfPTable chilk = new PdfPTable(3);
+                        chilk.TotalWidth = 237f;
+                        chilk.LockedWidth = true;
+                        float[] Celterss = new float[] { 2.2f, 2f, 2.7f };
+                        chilk.SetWidths(Celterss);
 
-                    cell = new PdfPCell(new Phrase("\nFor " + companyName, FontFactory.GetFont(FontStyle, 8, Font.BOLD, BaseColor.BLACK)));
-                    cell.HorizontalAlignment = 1;
-                    cell.BorderWidthBottom = 0;
-                    cell.BorderWidthTop = 0.5f;
-                    cell.BorderWidthRight = 1.5f;
-                    cell.BorderWidthLeft = 0.5f;
-                    cell.Colspan = 3;
-                    chilk.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("\nFor " + companyName, FontFactory.GetFont(FontStyle, 8, Font.BOLD, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 1;
+                        cell.BorderWidthBottom = 0;
+                        cell.BorderWidthTop = 0.5f;
+                        cell.BorderWidthRight = 1.5f;
+                        cell.BorderWidthLeft = 0.5f;
+                        cell.Colspan = 3;
+                        chilk.AddCell(cell);
 
-                    cell = new PdfPCell(new Phrase("\n\n\n\nAuthorised Signatory", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
-                    cell.HorizontalAlignment = 1;
-                    cell.BorderWidthBottom = 1.5f;
-                    cell.BorderWidthTop = 0;
-                    cell.BorderWidthRight = 1.5f;
-                    cell.BorderWidthLeft = 0.5f;
-                    cell.Colspan = 3;
-                    chilk.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("\n\n\n\nAuthorised Signatory", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 1;
+                        cell.BorderWidthBottom = 1.5f;
+                        cell.BorderWidthTop = 0;
+                        cell.BorderWidthRight = 1.5f;
+                        cell.BorderWidthLeft = 0.5f;
+                        cell.PaddingTop = -10;
+                        cell.Colspan = 3;
+                        chilk.AddCell(cell);
 
 
-                    PdfPCell Chid4 = new PdfPCell(chilk);
-                    Chid4.Border = 0;
-                    Chid4.Colspan = 3;
-                    Chid4.HorizontalAlignment = 0;
-                    Addterms.AddCell(Chid4);
+                        PdfPCell Chid4 = new PdfPCell(chilk);
+                        Chid4.Border = 0;
+                        Chid4.Colspan = 3;
+                        Chid4.HorizontalAlignment = 0;
+                        Addterms.AddCell(Chid4);
 
-                    document.Add(Addterms);
+                        document.Add(Addterms);
+
+                    
                     #endregion
 
                     //Childterms.WriteSelectedRows(0, -1, document.LeftMargin - 19, document.BottomMargin + 122, content);
@@ -14166,6 +14478,9 @@ namespace SRF.P.Module_Clients
                         string ShipToState = "";
                         string GstAddress = "";
                         string location = "";
+
+                    
+
                         if (dtclientaddress.Rows.Count > 0)
                         {
                             OurGSTIN = dtclientaddress.Rows[0]["gstno"].ToString();
@@ -14180,6 +14495,7 @@ namespace SRF.P.Module_Clients
                             BuyersOrderNo = dtclientaddress.Rows[0]["BuyersOrderNo"].ToString();
                             GstAddress = dtclientaddress.Rows[0]["GstAddress"].ToString();
                             location = dtclientaddress.Rows[0]["location"].ToString();
+                            
 
                         }
 
