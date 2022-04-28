@@ -9789,6 +9789,10 @@ namespace SRF.P.Module_Clients
                         {
                             qrcodeimg.ScalePercent(4.7f);
                         }
+
+                      //if (chkletterhead.Checked == true)
+                      //{
+
                         if (billdates != "0")
                         {
                             if (fontsize == 6)
@@ -9800,6 +9804,21 @@ namespace SRF.P.Module_Clients
                                 qrcodeimg.SetAbsolutePosition(430f, 495f);
                             }
                         }
+                            //else
+                            //{
+                            //    if (billdates != "0")
+                            //    {
+                            //        if (fontsize == 6)
+                            //        {
+                            //            qrcodeimg.SetAbsolutePosition(440f, 522f);
+                            //        }
+                            //        else
+                            //        {
+                            //            qrcodeimg.SetAbsolutePosition(430f, 495f);
+                            //        }
+                            //    }
+                            //}
+                      //}
                         else
                         {
                             if (fontsize == 6)
@@ -12398,10 +12417,11 @@ namespace SRF.P.Module_Clients
                     addrssf.AddCell(Chid2);
 
                     document.Add(addrssf);
-                   
 
 
-                        
+                    if (chkletterhead.Checked == true)
+                    {
+
                         PdfPTable Addterms = new PdfPTable(colCount);
                         Addterms.TotalWidth = 560f;
                         Addterms.LockedWidth = true;
@@ -12416,9 +12436,11 @@ namespace SRF.P.Module_Clients
                         Childterms.SetWidths(Celters);
 
 
-                  
+                    
 
-                    cell = new PdfPCell(new Phrase(" Payment Terms \n\n", FontFactory.GetFont(FontStyle, 9, Font.UNDERLINE | Font.NORMAL, BaseColor.BLACK)));
+
+
+                        cell = new PdfPCell(new Phrase(" Payment Terms \n\n", FontFactory.GetFont(FontStyle, 9, Font.UNDERLINE | Font.NORMAL, BaseColor.BLACK)));
                         cell.HorizontalAlignment = 0;
                         cell.BorderWidthBottom = 0;
                         cell.BorderWidthTop = 0.5f;
@@ -12426,16 +12448,16 @@ namespace SRF.P.Module_Clients
                         cell.BorderWidthLeft = 1.5f;
                         cell.Colspan = 3;
                         Childterms.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("  1.  Payment to be made as per Agreement Terms.\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        cell = new PdfPCell(new Phrase("  1.  Payment to be made as per Agreement Terms.\n\n", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
                         cell.HorizontalAlignment = 0;
                         cell.BorderWidthBottom = 0;
                         cell.BorderWidthTop = 0;
                         cell.BorderWidthRight = 0.5f;
                         cell.BorderWidthLeft = 1.5f;
-                        //cell.PaddingTop = -10;
+                        cell.PaddingTop = -5;
                         cell.Colspan = 3;
                         Childterms.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("  2.  An interest of 24% p.a.shall be levied from the due date onwards.\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        cell = new PdfPCell(new Phrase("  2.  An interest of 24% p.a.shall be levied from the due date onwards.\n\n", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
                         cell.HorizontalAlignment = 0;
                         cell.BorderWidthBottom = 0;
                         cell.BorderWidthTop = 0;
@@ -12460,7 +12482,7 @@ namespace SRF.P.Module_Clients
                         //cell.BorderWidthLeft = 1.5f;
                         //cell.Colspan = 3;
                         //Childterms.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("  3.  All disputes Subjects to Bangalore Jurisdiction.\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        cell = new PdfPCell(new Phrase("  3.  All disputes Subjects to Bangalore Jurisdiction.\n\n", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
                         cell.HorizontalAlignment = 0;
                         cell.BorderWidthBottom = 1.5f;
                         cell.BorderWidthTop = 0;
@@ -12494,13 +12516,13 @@ namespace SRF.P.Module_Clients
                         cell.Colspan = 3;
                         chilk.AddCell(cell);
 
-                        cell = new PdfPCell(new Phrase("\n\n\n\nAuthorised Signatory", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        cell = new PdfPCell(new Phrase("\n\n\n\nAuthorised Signatory", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
                         cell.HorizontalAlignment = 1;
                         cell.BorderWidthBottom = 1.5f;
                         cell.BorderWidthTop = 0;
                         cell.BorderWidthRight = 1.5f;
                         cell.BorderWidthLeft = 0.5f;
-                        cell.PaddingTop = -10;
+                        cell.PaddingTop = -8;
                         cell.Colspan = 3;
                         chilk.AddCell(cell);
 
@@ -12512,8 +12534,126 @@ namespace SRF.P.Module_Clients
                         Addterms.AddCell(Chid4);
 
                         document.Add(Addterms);
+                    }
 
-                    
+
+                    else
+                    {
+
+                        PdfPTable Addterms = new PdfPTable(colCount);
+                        Addterms.TotalWidth = 560f;
+                        Addterms.LockedWidth = true;
+                        float[] widthrerms = new float[] { 1.2f, 6.2f, 2f, 2.2f, 2f, 2.7f };
+                        Addterms.SetWidths(widthrerms);
+
+
+                        PdfPTable Childterms = new PdfPTable(3);
+                        Childterms.TotalWidth = 323f;
+                        Childterms.LockedWidth = true;
+                        float[] Celters = new float[] { 1.2f, 6.2f, 2f };
+                        Childterms.SetWidths(Celters);
+
+
+
+
+
+
+                        cell = new PdfPCell(new Phrase(" Payment Terms \n\n", FontFactory.GetFont(FontStyle, 9, Font.UNDERLINE | Font.NORMAL, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 0;
+                        cell.BorderWidthBottom = 0;
+                        cell.BorderWidthTop = 0.5f;
+                        cell.BorderWidthRight = 0.5f;
+                        cell.BorderWidthLeft = 1.5f;
+                        cell.Colspan = 3;
+                        Childterms.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("  1.  Payment to be made as per Agreement Terms.\n\n", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 0;
+                        cell.BorderWidthBottom = 0;
+                        cell.BorderWidthTop = 0;
+                        cell.BorderWidthRight = 0.5f;
+                        cell.BorderWidthLeft = 1.5f;
+                        //cell.PaddingTop = -5;
+                        cell.Colspan = 3;
+                        Childterms.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("  2.  An interest of 24% p.a.shall be levied from the due date onwards.\n\n", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 0;
+                        cell.BorderWidthBottom = 0;
+                        cell.BorderWidthTop = 0;
+                        cell.BorderWidthRight = 0.5f;
+                        cell.BorderWidthLeft = 1.5f;
+                        //cell.PaddingTop = -10;
+                        cell.Colspan = 3;
+                        Childterms.AddCell(cell);
+                        //cell = new PdfPCell(new Phrase("  3.  Please Pay this bill by Cheque / DD only favour of", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        //cell.HorizontalAlignment = 0;
+                        //cell.BorderWidthBottom = 0;
+                        //cell.BorderWidthTop = 0;
+                        //cell.BorderWidthRight = 0.5f;
+                        //cell.BorderWidthLeft = 1.5f;
+                        //cell.Colspan = 3;
+                        //Childterms.AddCell(cell);
+                        //cell = new PdfPCell(new Phrase("       " + companyName+"\n\n", FontFactory.GetFont(FontStyle, 9, Font.BOLD, BaseColor.BLACK)));
+                        //cell.HorizontalAlignment = 0;
+                        //cell.BorderWidthBottom = 0;
+                        //cell.BorderWidthTop = 0;
+                        //cell.BorderWidthRight = 0.5f;
+                        //cell.BorderWidthLeft = 1.5f;
+                        //cell.Colspan = 3;
+                        //Childterms.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("  3.  All disputes Subjects to Bangalore Jurisdiction.\n\n", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 0;
+                        cell.BorderWidthBottom = 1.5f;
+                        cell.BorderWidthTop = 0;
+                        cell.BorderWidthRight = 0.5f;
+                        cell.BorderWidthLeft = 1.5f;
+                        //cell.PaddingTop = -10;
+                        cell.Colspan = 3;
+                        Childterms.AddCell(cell);
+
+
+                        PdfPCell Chid3 = new PdfPCell(Childterms);
+                        Chid3.Border = 0;
+                        Chid3.Colspan = 3;
+                        Chid3.HorizontalAlignment = 0;
+                        Addterms.AddCell(Chid3);
+
+
+
+                        PdfPTable chilk = new PdfPTable(3);
+                        chilk.TotalWidth = 237f;
+                        chilk.LockedWidth = true;
+                        float[] Celterss = new float[] { 2.2f, 2f, 2.7f };
+                        chilk.SetWidths(Celterss);
+
+                        cell = new PdfPCell(new Phrase("\nFor " + companyName, FontFactory.GetFont(FontStyle, 8, Font.BOLD, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 1;
+                        cell.BorderWidthBottom = 0;
+                        cell.BorderWidthTop = 0.5f;
+                        cell.BorderWidthRight = 1.5f;
+                        cell.BorderWidthLeft = 0.5f;
+                        cell.Colspan = 3;
+                        chilk.AddCell(cell);
+
+                        cell = new PdfPCell(new Phrase("\n\n\n\nAuthorised Signatory", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                        cell.HorizontalAlignment = 1;
+                        cell.BorderWidthBottom = 1.5f;
+                        cell.BorderWidthTop = 0;
+                        cell.BorderWidthRight = 1.5f;
+                        cell.BorderWidthLeft = 0.5f;
+                        //cell.PaddingTop = -5;
+                        cell.Colspan = 3;
+                        chilk.AddCell(cell);
+
+
+                        PdfPCell Chid4 = new PdfPCell(chilk);
+                        Chid4.Border = 0;
+                        Chid4.Colspan = 3;
+                        Chid4.HorizontalAlignment = 0;
+                        Addterms.AddCell(Chid4);
+
+                        document.Add(Addterms);
+                    }
+
                     #endregion
 
                     //Childterms.WriteSelectedRows(0, -1, document.LeftMargin - 19, document.BottomMargin + 122, content);
