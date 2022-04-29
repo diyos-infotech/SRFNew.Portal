@@ -1795,6 +1795,15 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.DropDownList ddlfontsize;
         
         /// <summary>
+        /// chklogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chklogo;
+        
+        /// <summary>
         /// btninvoicenew control.
         /// </summary>
         /// <remarks>
