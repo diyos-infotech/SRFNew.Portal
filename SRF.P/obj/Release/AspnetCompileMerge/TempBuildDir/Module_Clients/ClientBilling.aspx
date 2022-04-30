@@ -1985,11 +1985,13 @@
 
                                             </asp:DropDownList>
                                         </td>
+                                        <td>
+                                            <asp:CheckBox ID="chklogo" runat="server" Text="QR" />
+                                        </td>
                                         <td style="text-align: right; font-weight: bold">
                                             <asp:Button ID="btninvoicenew" runat="server" Text="Tax Invoice" class="btn save" OnClick="btninvoicenew_Click" />
 
                                         </td>
-
 
                                         <td style="text-align: right; font-weight: bold">
                                             <asp:Button ID="btncreditbill" runat="server" Text="Credit Note" class="btn save" Visible="false" OnClick="btncreditnoteNew_Click" />
