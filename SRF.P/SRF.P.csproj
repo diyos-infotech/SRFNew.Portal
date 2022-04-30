@@ -478,6 +478,7 @@
     <Content Include="Module_Reports\ClientReports.aspx" />
     <Content Include="Module_Reports\ClientWiseEmployeeNetpayReports.aspx" />
     <Content Include="Module_Reports\ConsolidatedUniformDeductionReport.aspx" />
+    <Content Include="Module_Reports\CreditNoteReport.aspx" />
     <Content Include="Module_Reports\EmpBioData.aspx" />
     <Content Include="Module_Reports\EmpIDCard.aspx" />
     <Content Include="Module_Reports\EmployeeForms.aspx" />
@@ -1772,6 +1773,13 @@
     </Compile>
     <Compile Include="Module_Reports\ConsolidatedUniformDeductionReport.aspx.designer.cs">
       <DependentUpon>ConsolidatedUniformDeductionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module_Reports\CreditNoteReport.aspx.cs">
+      <DependentUpon>CreditNoteReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Reports\CreditNoteReport.aspx.designer.cs">
+      <DependentUpon>CreditNoteReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Module_Reports\EmpBioData.aspx.cs">
       <DependentUpon>EmpBioData.aspx</DependentUpon>
