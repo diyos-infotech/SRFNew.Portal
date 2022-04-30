@@ -133,6 +133,7 @@
                                                 <asp:ListItem>B2B</asp:ListItem>
                                                 <asp:ListItem>B2C</asp:ListItem>
                                                 <asp:ListItem>SEZWP</asp:ListItem>
+												<asp:ListItem>SEZWOP</asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
