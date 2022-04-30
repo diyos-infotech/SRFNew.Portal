@@ -11678,13 +11678,6 @@ namespace SRF.P.Module_Clients
                         table.AddCell(Cellempty4);
                         table.AddCell(Cellempty5);
                         //4
-                        table.AddCell(Cellempty);
-                        table.AddCell(Cellempty1);
-                        table.AddCell(Cellempty2);
-                        table.AddCell(Cellempty3);
-                        table.AddCell(Cellempty4);
-                        table.AddCell(Cellempty5);
-
 
                         #endregion
                     }
@@ -11705,13 +11698,7 @@ namespace SRF.P.Module_Clients
                         table.AddCell(Cellempty3);
                         table.AddCell(Cellempty4);
                         table.AddCell(Cellempty5);
-                        //3
-                        table.AddCell(Cellempty);
-                        table.AddCell(Cellempty1);
-                        table.AddCell(Cellempty2);
-                        table.AddCell(Cellempty3);
-                        table.AddCell(Cellempty4);
-                        table.AddCell(Cellempty5);
+                      
 
 
                         #endregion
@@ -11726,13 +11713,7 @@ namespace SRF.P.Module_Clients
                         table.AddCell(Cellempty3);
                         table.AddCell(Cellempty4);
                         table.AddCell(Cellempty5);
-                        //2
-                        table.AddCell(Cellempty);
-                        table.AddCell(Cellempty1);
-                        table.AddCell(Cellempty2);
-                        table.AddCell(Cellempty3);
-                        table.AddCell(Cellempty4);
-                        table.AddCell(Cellempty5);
+                       
 
 
                         #endregion
