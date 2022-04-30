@@ -10260,9 +10260,9 @@ namespace SRF.P.Module_Clients
                     Cellempty.BorderWidthRight = 0.5f;
                     Cellempty.BorderWidthLeft = 1.5f;
                     Cellempty.BorderWidthBottom = 0;
-                    if (Status == "ACT")
+                    if (Status == "ACT" && chklogo.Checked == false)
                     {
-                        Cellempty.MinimumHeight = 8;
+                        Cellempty.MinimumHeight = 5;
                     }
                     else
                     {
