@@ -12154,6 +12154,28 @@ namespace SRF.P.Module_Clients
                             tempTable22.AddCell(CeelRoundOffvalue);
 
                         }
+                       else
+                        {
+                            PdfPCell CeelRoundOffvalue = new PdfPCell(new Phrase("", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                            CeelRoundOffvalue.HorizontalAlignment = 2; //0=Left, 1=Centre, 2=Right
+                            CeelRoundOffvalue.Colspan = 2;
+                            CeelRoundOffvalue.BorderWidthBottom = 0;
+                            CeelRoundOffvalue.BorderWidthLeft = 0;
+                            CeelRoundOffvalue.BorderWidthTop = 0;
+                            CeelRoundOffvalue.BorderWidthRight = 0.5f;
+                            CeelRoundOffvalue.PaddingTop = 5;
+                            tempTable22.AddCell(CeelRoundOffvalue);
+
+                            CeelRoundOffvalue = new PdfPCell(new Phrase("", FontFactory.GetFont(FontStyle, fontsize, Font.BOLD, BaseColor.BLACK)));
+                            CeelRoundOffvalue.HorizontalAlignment = 2; //0=Left, 1=Centre, 2=Right
+                            CeelRoundOffvalue.BorderWidthBottom = 0;
+                            CeelRoundOffvalue.BorderWidthLeft = 0.5f;
+                            CeelRoundOffvalue.BorderWidthTop = 0;
+                            CeelRoundOffvalue.BorderWidthRight = 1.5f;
+                            CeelRoundOffvalue.PaddingTop = 5;
+                            tempTable22.AddCell(CeelRoundOffvalue);
+
+                        }
 
                         if (Cess1 > 0)
                         {
