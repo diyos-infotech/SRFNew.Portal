@@ -1066,6 +1066,15 @@ namespace SRF.P.Module_Clients {
         protected global::System.Web.UI.WebControls.CheckBox chkUniformDed;
         
         /// <summary>
+        /// chkNoSalaryAdvance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkNoSalaryAdvance;
+        
+        /// <summary>
         /// chkSecDepDed control.
         /// </summary>
         /// <remarks>

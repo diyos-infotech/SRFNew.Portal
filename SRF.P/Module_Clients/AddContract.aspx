@@ -14,7 +14,7 @@
     </script>
 
     <script type="text/javascript">
-
+        
         function dtval(d, e) {
             var pK = e ? e.which : window.event.keyCode;
             if (pK == 8) { d.value = substr(0, d.value.length - 1); return; }
@@ -765,6 +765,11 @@
                                         <tr>
                                             <td colspan="2">
                                                 <asp:CheckBox ID="chkUniformDed" runat="server" Text=" No Uniform Ded" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <asp:CheckBox ID="chkNoSalaryAdvance" runat="server" Text=" No Salary Advance" />
                                             </td>
                                         </tr>
                                         <tr>

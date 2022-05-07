@@ -792,7 +792,7 @@ namespace SRF.P.Module_Clients
                 var NoSecDepDed = 0;
                 var NoOtherDed = 0;
                 var Grandtotwroff = 0;
-
+                var NoSalaryAdvance = 0;
 
                 #endregion
 
@@ -1090,6 +1090,11 @@ namespace SRF.P.Module_Clients
 
                     NoUniformDed = 1;
                 }
+                if (chkNoSalaryAdvance.Checked)
+                {
+
+                    NoSalaryAdvance = 1;
+                }
                 if (chkSecDepDed.Checked)
                 {
 
@@ -1227,6 +1232,7 @@ namespace SRF.P.Module_Clients
                 HtContracts.Add("@NoNhsWoDed", NoNhsWoDed);
                 HtContracts.Add("@NoGeneralDed", NoGeneralDed);
                 HtContracts.Add("@NoUniformDed", NoUniformDed);
+                HtContracts.Add("@NoSalaryAdvance", NoSalaryAdvance);
                 HtContracts.Add("@NoSecDepDed", NoSecDepDed);
                 HtContracts.Add("@NoOtherDed", NoOtherDed);
                 HtContracts.Add("@PaymentDates", PaymentDates);
@@ -2613,6 +2619,7 @@ namespace SRF.P.Module_Clients
                 chkNoNhsWoDed.Checked = bool.Parse(DtContractsData.Rows[0]["NoNhsWoDed"].ToString());
                 chkGeneralDed.Checked = bool.Parse(DtContractsData.Rows[0]["NoGeneralDed"].ToString());
                 chkUniformDed.Checked = bool.Parse(DtContractsData.Rows[0]["NoUniformDed"].ToString());
+                chkNoSalaryAdvance.Checked = bool.Parse(DtContractsData.Rows[0]["NoSalaryAdvance"].ToString());
                 chkSecDepDed.Checked = bool.Parse(DtContractsData.Rows[0]["NoSecDepDed"].ToString());
                 chkOtherDed.Checked = bool.Parse(DtContractsData.Rows[0]["NoOtherDed"].ToString());
                 ddlpaymentdates.SelectedValue = DtContractsData.Rows[0]["PaymentDate"].ToString();
@@ -3625,6 +3632,7 @@ namespace SRF.P.Module_Clients
                 var NoSecDepDed = 0;
                 var NoOtherDed = 0;
                 var Grandtotwroff = 0;
+                var NoSalaryAdvance = 0;
                 #endregion
 
                 #region Begin code For Stored Procedure related Variables declaration as on [18-10-2013]
@@ -3926,6 +3934,11 @@ namespace SRF.P.Module_Clients
 
                     NoUniformDed = 1;
                 }
+                if (chkNoSalaryAdvance.Checked)
+                {
+
+                    NoSalaryAdvance = 1;
+                }
                 if (chkSecDepDed.Checked)
                 {
 
@@ -4063,6 +4076,7 @@ namespace SRF.P.Module_Clients
                 HtContracts.Add("@NoNhsWoDed", NoNhsWoDed);
                 HtContracts.Add("@NoGeneralDed", NoGeneralDed);
                 HtContracts.Add("@NoUniformDed", NoUniformDed);
+                HtContracts.Add("@NoSalaryAdvance", NoSalaryAdvance);
                 HtContracts.Add("@NoSecDepDed", NoSecDepDed);
                 HtContracts.Add("@NoOtherDed", NoOtherDed);
                 HtContracts.Add("@PaymentDates", PaymentDates);
