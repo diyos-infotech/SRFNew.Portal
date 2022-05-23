@@ -9743,7 +9743,7 @@ namespace SRF.P.Module_Clients
                     string Fromdate = txtfromdate.Text;
                     string Todate = txttodate.Text;
 
-                    if (billdates != "0")
+                   // if (billdates != "0")
                     {
                         var phrase2 = new Phrase();
                         phrase2.Add(new Chunk("Bill Period  ", FontFactory.GetFont(FontStyle, 10, Font.BOLD, BaseColor.BLACK)));
