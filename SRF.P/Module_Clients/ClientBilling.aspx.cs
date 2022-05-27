@@ -10266,7 +10266,7 @@ namespace SRF.P.Module_Clients
                     }
                     else
                     {
-                        Cellempty.MinimumHeight = 14;
+                        Cellempty.MinimumHeight = 10;
                     }
                     PdfPCell Cellempty1 = new PdfPCell(new Phrase("", FontFactory.GetFont(FontStyle, fontsize, Font.NORMAL, BaseColor.BLACK)));
                     Cellempty1.HorizontalAlignment = 2;
