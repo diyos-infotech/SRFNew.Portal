@@ -119,6 +119,22 @@ namespace SRF.P.Module_Clients
                 ddlstate.DataSource = DtStateNames;
                 ddlstate.DataBind();
 
+                ddlStateCode.DataValueField = "StateID";
+                ddlStateCode.DataTextField = "GSTStateCode";
+                ddlStateCode.DataSource = DtStateNames;
+                ddlStateCode.DataBind();
+
+
+                ddlShipToSate.DataValueField = "StateID";
+                ddlShipToSate.DataTextField = "State";
+                ddlShipToSate.DataSource = DtStateNames;
+                ddlShipToSate.DataBind();
+
+                ddlShipToStateCode.DataValueField = "StateID";
+                ddlShipToStateCode.DataTextField = "GSTStateCode";
+                ddlShipToStateCode.DataSource = DtStateNames;
+                ddlShipToStateCode.DataBind();
+
 
                 ddlPTState.DataValueField = "StateID";
                 ddlPTState.DataTextField = "State";
@@ -130,10 +146,7 @@ namespace SRF.P.Module_Clients
                 ddlPOSStateCode.DataSource = DtStateNames;
                 ddlPOSStateCode.DataBind();
 
-                ddlStateCode.DataValueField = "StateID";
-                ddlStateCode.DataTextField = "GSTStateCode";
-                ddlStateCode.DataSource = DtStateNames;
-                ddlStateCode.DataBind();
+              
 
                 ddlLWFState.DataValueField = "StateID";
                 ddlLWFState.DataTextField = "State";
@@ -142,8 +155,10 @@ namespace SRF.P.Module_Clients
 
             }
             ddlstate.Items.Insert(0, new ListItem("-Select-", "0"));
-            ddlPTState.Items.Insert(0, new ListItem("-Select-", "0"));
             ddlStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlShipToSate.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlShipToStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
+            ddlPTState.Items.Insert(0, new ListItem("-Select-", "0"));
             ddlPOSStateCode.Items.Insert(0, new ListItem("-Select-", "0"));
             ddlLWFState.Items.Insert(0, new ListItem("-Select-", "0"));
 
