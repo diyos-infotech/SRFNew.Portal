@@ -9423,7 +9423,7 @@ namespace SRF.P.Module_Clients
 
 
 
-                        PdfPCell shipaddress = new PdfPCell(new Paragraph(" Place Of Supply", FontFactory.GetFont(FontStyle, 10, Font.UNDERLINE | Font.BOLD, BaseColor.BLACK)));
+                        PdfPCell shipaddress = new PdfPCell(new Paragraph(" Place Of Service", FontFactory.GetFont(FontStyle, 10, Font.UNDERLINE | Font.BOLD, BaseColor.BLACK)));
                         shipaddress.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                         shipaddress.Colspan = 3;
                         shipaddress.BorderWidthBottom = 0;
@@ -15508,7 +15508,7 @@ namespace SRF.P.Module_Clients
 
 
 
-                        PdfPCell shipaddress = new PdfPCell(new Paragraph(" Place Of Supply", FontFactory.GetFont(FontStyle, 10, Font.UNDERLINE | Font.BOLD, BaseColor.BLACK)));
+                        PdfPCell shipaddress = new PdfPCell(new Paragraph(" Place Of Service", FontFactory.GetFont(FontStyle, 10, Font.UNDERLINE | Font.BOLD, BaseColor.BLACK)));
                         shipaddress.HorizontalAlignment = 0; //0=Left, 1=Centre, 2=Right
                         shipaddress.Colspan = 3;
                         shipaddress.BorderWidthBottom = 0;
