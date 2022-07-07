@@ -1668,7 +1668,13 @@ namespace KLTS.Data
             return DtEmpNames;
         }
 
+        public DataTable LoadStaffIDs()
+        {
 
+            string Sqlqry = "select   Empid,Empid+' - '+(ISnull(Empfname,'')+' '+ Isnull(empmname,'')+' '+ isnull(Emplname,'') ) AS FullName  From Empdetails where employeetype='S' Order By Right(Empid,6)";
+            System.Data.DataTable DtEmpIds = config.ExecuteAdaptorAsyncWithQueryParams(Sqlqry).Result;
+            return DtEmpIds;
+        }
 
         public DataTable LoadActiveClientnames(string ClientIdPrefix, DataTable dt, bool SelectAll, string order, string Type)
         {

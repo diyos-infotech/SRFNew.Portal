@@ -29,6 +29,7 @@ namespace SRF.P.DAL
         /// </summary>
         string connectionString = ConfigurationManager.ConnectionStrings["KLTSConnectionString"].ConnectionString;
         string CentralconnectionString = ConfigurationManager.ConnectionStrings["CentralConnectionString"].ConnectionString;
+        string PocketFameConnectionString = ConfigurationManager.ConnectionStrings["PocketFameConnectionString"].ConnectionString;
 
         /// <summary>
         /// Command object
@@ -458,6 +459,90 @@ namespace SRF.P.DAL
                     var reader = dr.Result;
                     ds.Load(reader, LoadOption.OverwriteChanges, "Result");
                     return ds.Tables[0];
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<DataTable> PocketFameExecuteAdaptorAsyncWithParams(string spName, Hashtable HTParms)
+        {
+            try
+            {
+                using (SqlConnection con = new System.Data.SqlClient.SqlConnection(PocketFameConnectionString))
+                {
+                    DataTable _table = new DataTable();
+                    command.Connection = con;
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        await con.OpenAsync();//.ConfigureAwait(false); ;
+                    }
+
+                    command = new SqlCommand(spName, con);
+                    command.CommandTimeout = 120;
+                    command.CommandType = CommandType.StoredProcedure;
+                    foreach (DictionaryEntry de in HTParms)
+                    {
+                        command.Parameters.AddWithValue(de.Key.ToString(), de.Value);
+                    }
+                    SqlDataAdapter adaptor = new SqlDataAdapter(command);
+                    adaptor.Fill(_table);
+                    return _table;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<int> PocketFameExecuteNonQueryWithQueryAsync(string Query)
+        {
+            try
+            {
+                int result = 0;
+                using (SqlConnection con = new System.Data.SqlClient.SqlConnection(PocketFameConnectionString))
+                {
+                    command.Connection = con;
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        await con.OpenAsync().ConfigureAwait(false); ;
+                    }
+                    command = new SqlCommand(Query, con);
+                    command.CommandTimeout = 80;
+                    command.CommandType = CommandType.Text;
+                    result = await command.ExecuteNonQueryAsync().ConfigureAwait(false); ;
+                }
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public async Task<DataTable> PocketFameExecuteAdaptorAsyncWithQueryParams(string query)
+        {
+            try
+            {
+                using (SqlConnection con = new System.Data.SqlClient.SqlConnection(PocketFameConnectionString))
+                {
+                    DataTable _table = new DataTable();
+                    command.Connection = con;
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        await con.OpenAsync();//.ConfigureAwait(false); ;
+                    }
+
+                    command = new SqlCommand(query, con);
+                    command.CommandTimeout = 80;
+                    command.CommandType = CommandType.Text;
+                    SqlDataAdapter adaptor = new SqlDataAdapter(command);
+                    adaptor.Fill(_table);
+                    return _table;
                 }
             }
             catch (Exception)

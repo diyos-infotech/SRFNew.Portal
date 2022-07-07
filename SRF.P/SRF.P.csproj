@@ -492,6 +492,7 @@
     <Content Include="Module_Reports\ESIReports.aspx" />
     <Content Include="Module_Reports\ESIUploadReport.aspx" />
     <Content Include="Module_Reports\FullandFinal.aspx" />
+    <Content Include="Module_Reports\GetDaywise_Android_Attendance.aspx" />
     <Content Include="Module_Reports\IDCardExpireDetails.aspx" />
     <Content Include="Module_Reports\IDCardReport.aspx" />
     <Content Include="Module_Reports\Images\006464.jpg" />
@@ -535,6 +536,7 @@
     <Content Include="Module_Reports\PaySheetWagesReport.aspx" />
     <Content Include="Module_Reports\PfdetailsReport.aspx" />
     <Content Include="Module_Reports\PFReports.aspx" />
+    <Content Include="Module_Reports\PinMyVisits.aspx" />
     <Content Include="Module_Reports\PTReport.aspx" />
     <Content Include="Module_Reports\QuarterlyandYearlyReport.aspx" />
     <Content Include="Module_Reports\ReportforBillingAndPaysheet.aspx" />
@@ -557,6 +559,7 @@
     <Content Include="Module_Settings\BillingAndSalary.aspx" />
     <Content Include="Module_Settings\ChangePassword.aspx" />
     <Content Include="Module_Settings\CreateLogin.aspx" />
+    <Content Include="Module_Settings\CreateLoginPocketFame.aspx" />
     <Content Include="Module_Settings\Department.aspx" />
     <Content Include="Module_Settings\Designation.aspx" />
     <Content Include="Module_Settings\LWFMaster.aspx" />
@@ -1872,6 +1875,13 @@
     <Compile Include="Module_Reports\FullandFinal.aspx.designer.cs">
       <DependentUpon>FullandFinal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Module_Reports\GetDaywise_Android_Attendance.aspx.cs">
+      <DependentUpon>GetDaywise_Android_Attendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Reports\GetDaywise_Android_Attendance.aspx.designer.cs">
+      <DependentUpon>GetDaywise_Android_Attendance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Module_Reports\IDCardExpireDetails.aspx.cs">
       <DependentUpon>IDCardExpireDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2040,6 +2050,13 @@
     <Compile Include="Module_Reports\PFReports.aspx.designer.cs">
       <DependentUpon>PFReports.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Module_Reports\PinMyVisits.aspx.cs">
+      <DependentUpon>PinMyVisits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Reports\PinMyVisits.aspx.designer.cs">
+      <DependentUpon>PinMyVisits.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Module_Reports\PTReport.aspx.cs">
       <DependentUpon>PTReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2197,6 +2214,13 @@
     </Compile>
     <Compile Include="Module_Settings\CreateLogin.aspx.designer.cs">
       <DependentUpon>CreateLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module_Settings\CreateLoginPocketFame.aspx.cs">
+      <DependentUpon>CreateLoginPocketFame.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module_Settings\CreateLoginPocketFame.aspx.designer.cs">
+      <DependentUpon>CreateLoginPocketFame.aspx</DependentUpon>
     </Compile>
     <Compile Include="Module_Settings\Department.aspx.cs">
       <DependentUpon>Department.aspx</DependentUpon>

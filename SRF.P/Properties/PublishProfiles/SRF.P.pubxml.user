@@ -416,10 +416,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/10/2021 10:19:28</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>06/06/2022 16:41:15</publishTime>
+      <publishTime>07/07/2022 15:55:51</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>06/06/2022 16:41:15</publishTime>
+      <publishTime>07/07/2022 15:55:51</publishTime>
     </File>
     <File Include="bin/bootstrap/css/bootstrap.css">
       <publishTime>11/10/2021 10:19:41</publishTime>
@@ -551,10 +551,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/10/2021 10:20:01</publishTime>
     </File>
     <File Include="bin/SRF.P.dll">
-      <publishTime>06/06/2022 16:40:50</publishTime>
+      <publishTime>07/07/2022 15:55:33</publishTime>
     </File>
     <File Include="bin/SRF.P.pdb">
-      <publishTime>06/06/2022 16:40:50</publishTime>
+      <publishTime>07/07/2022 15:55:33</publishTime>
     </File>
     <File Include="companyinfo.aspx">
       <publishTime>11/10/2021 10:19:41</publishTime>
@@ -1474,6 +1474,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Module_Reports/FullandFinal.aspx">
       <publishTime>11/10/2021 10:19:30</publishTime>
     </File>
+    <File Include="Module_Reports/GetDaywise_Android_Attendance.aspx">
+      <publishTime>07/07/2022 15:32:32</publishTime>
+    </File>
     <File Include="Module_Reports/IDCardExpireDetails.aspx">
       <publishTime>11/10/2021 10:19:30</publishTime>
     </File>
@@ -1603,6 +1606,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Module_Reports/PFReports.aspx">
       <publishTime>11/10/2021 10:19:32</publishTime>
     </File>
+    <File Include="Module_Reports/PinMyVisits.aspx">
+      <publishTime>07/06/2022 14:40:42</publishTime>
+    </File>
     <File Include="Module_Reports/PTReport.aspx">
       <publishTime>11/10/2021 10:19:32</publishTime>
     </File>
@@ -1672,6 +1678,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Module_Settings/CreateLogin.aspx">
       <publishTime>11/10/2021 10:19:33</publishTime>
     </File>
+    <File Include="Module_Settings/CreateLoginPocketFame.aspx">
+      <publishTime>07/07/2022 15:42:46</publishTime>
+    </File>
     <File Include="Module_Settings/Department.aspx">
       <publishTime>11/10/2021 10:19:33</publishTime>
     </File>
@@ -1706,7 +1715,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/28/2022 11:11:16</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/06/2022 16:41:04</publishTime>
+      <publishTime>07/07/2022 15:55:44</publishTime>
     </File>
     <File Include="Reminders.aspx">
       <publishTime>11/10/2021 10:19:33</publishTime>
@@ -4007,7 +4016,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/10/2021 10:19:37</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/02/2022 19:43:19</publishTime>
+      <publishTime>07/07/2022 15:55:39</publishTime>
     </File>
   </ItemGroup>
 </Project>
