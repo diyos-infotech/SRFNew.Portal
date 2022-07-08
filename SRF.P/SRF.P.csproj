@@ -399,6 +399,7 @@
     <Content Include="Module_Clients\NewManualBill.aspx" />
     <Content Include="Module_Clients\Receipts.aspx" />
     <Content Include="Module_Employees\AddEmployee.aspx" />
+    <Content Include="Module_Employees\AndroidEmployee.aspx" />
     <Content Include="Module_Employees\ClientAttendancePage.aspx" />
     <Content Include="Module_Employees\EmployeePayments.aspx" />
     <Content Include="Module_Employees\Employees.aspx" />
@@ -1496,6 +1497,12 @@
     </Compile>
     <Compile Include="Module_Employees\AddEmployee.aspx.designer.cs">
       <DependentUpon>AddEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module_Employees\AndroidEmployee.aspx.cs">
+      <DependentUpon>AndroidEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module_Employees\AndroidEmployee.aspx.designer.cs">
+      <DependentUpon>AndroidEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Module_Employees\ClientAttendancePage.aspx.cs">
       <DependentUpon>ClientAttendancePage.aspx</DependentUpon>

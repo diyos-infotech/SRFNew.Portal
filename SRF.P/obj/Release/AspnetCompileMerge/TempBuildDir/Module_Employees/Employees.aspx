@@ -211,6 +211,7 @@
                                     <asp:Button ID="btnSearch" runat="server" Text="Search" class=" btn save" OnClick="btnSearch_Click" ToolTip="Search" />
                                 </td>
                                 <td align="right"><a href="AddEmployee.aspx" id="AddEmployeeLink" runat="server" class=" btn save">Add New Employee</a></td>
+                                <td align="right"><a href="AndroidEmployee.aspx" id="A1" runat="server" class=" btn save">Android Employee</a></td>
                             </tr>
                         </table>
                         <div class="col-md-12">

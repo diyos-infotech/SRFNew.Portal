@@ -416,10 +416,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/10/2021 10:19:28</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>07/07/2022 15:55:51</publishTime>
+      <publishTime>07/08/2022 19:22:49</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>07/07/2022 15:55:51</publishTime>
+      <publishTime>07/08/2022 19:22:47</publishTime>
     </File>
     <File Include="bin/bootstrap/css/bootstrap.css">
       <publishTime>11/10/2021 10:19:41</publishTime>
@@ -551,10 +551,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/10/2021 10:20:01</publishTime>
     </File>
     <File Include="bin/SRF.P.dll">
-      <publishTime>07/07/2022 15:55:33</publishTime>
+      <publishTime>07/08/2022 19:21:57</publishTime>
     </File>
     <File Include="bin/SRF.P.pdb">
-      <publishTime>07/07/2022 15:55:33</publishTime>
+      <publishTime>07/08/2022 19:21:57</publishTime>
     </File>
     <File Include="companyinfo.aspx">
       <publishTime>11/10/2021 10:19:41</publishTime>
@@ -1189,6 +1189,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Module_Employees/AddEmployee.aspx">
       <publishTime>11/10/2021 10:19:29</publishTime>
     </File>
+    <File Include="Module_Employees/AndroidEmployee.aspx">
+      <publishTime>07/08/2022 18:47:25</publishTime>
+    </File>
     <File Include="Module_Employees/ClientAttendancePage.aspx">
       <publishTime>11/10/2021 10:19:29</publishTime>
     </File>
@@ -1199,7 +1202,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/15/2022 13:25:41</publishTime>
     </File>
     <File Include="Module_Employees/Employees.aspx">
-      <publishTime>11/10/2021 09:51:13</publishTime>
+      <publishTime>07/08/2022 19:08:44</publishTime>
     </File>
     <File Include="Module_Employees/ModifyEmployee.aspx">
       <publishTime>11/10/2021 10:19:29</publishTime>
@@ -1715,7 +1718,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/28/2022 11:11:16</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/07/2022 15:55:44</publishTime>
+      <publishTime>07/08/2022 19:22:25</publishTime>
     </File>
     <File Include="Reminders.aspx">
       <publishTime>11/10/2021 10:19:33</publishTime>
