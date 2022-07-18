@@ -5482,8 +5482,23 @@ namespace SRF.P.Module_Employees
             }
         }
 
+        private void ClearImages()
+        {
+            #region Images clear code done by Mahesh Goud on 2022-07-18
+
+            Imageempphoto.ImageUrl = null;
+            AadharImg.ImageUrl = null;
+            AadharBackImg.ImageUrl = null;
+            pancardimageb.ImageUrl = null;
+            pancardBackimageb.ImageUrl = null;
+            BankpassImageb.ImageUrl = null;
+            #endregion
+
+        }
+
         protected void ddlAndroidEmpid_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ClearImages();
             string AndroidEmpid = ddlAndroidEmpid.SelectedValue;
             LoadPersonalInfo(AndroidEmpid);
         }
